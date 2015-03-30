@@ -1,0 +1,61 @@
+<?php
+
+use \Omnipay\Common\GatewayFactory;
+use \Carbon\Carbon;
+
+class PaymentService {
+
+	protected $config;
+
+	public function __construct()
+	{
+		$this->config = Config::get('paypal');
+	}
+
+	public function getConfig()
+	{
+		return $this->config;
+	}
+
+	public function getPricing()
+	{
+		return $this->config['pricing'];
+	}
+
+	public function getGateway()
+	{
+		$gateway = new GatewayFactory();
+		$gateway = $gateway->create($this->config['gateway']);
+
+		$gateway->setUsername($this->config['username']);
+		$gateway->setPassword($this->config['password']); 
+		$gateway->setSignature($this->config['signature']);
+		$gateway->setTestMode($this->config['test_mode']);
+
+		return $gateway;
+	}
+
+	public function getPurchaseData($params, $timestamp)
+	{
+		$now = Carbon::now();
+        $pricing = $this->getPricing();
+        $package  = $pricing[$params['product_id']];
+        
+        $paypal_data = array(
+			'amount'      => (float) $package['amount'],
+			'description' => $package['description'],
+			'returnUrl'   => url('complete_payment', $timestamp),
+			'cancelUrl'   => url('cancel_payment', $timestamp),
+			'currency'    => $this->config['currency'],
+		);
+
+		return $paypal_data;
+	}
+
+    public function savePayment($payment_data)
+    {
+        $owner_purchase = new OwnerPurchase();
+        $owner_purchase->fill($payment_data);
+        $owner_purchase->save();
+    }
+}

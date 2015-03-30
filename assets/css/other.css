@@ -1,0 +1,19 @@
+div.header {
+	width: 100%;
+	float: left;
+	background-color: #66bae8;
+}
+
+div.header a {
+	color: #ffffff !important;
+}
+
+div.footer {
+	width: 100%;
+	float: left;
+	background-color: #66bae8;
+}
+
+#footer, div.footer a {
+	color: #ffffff !important;
+}

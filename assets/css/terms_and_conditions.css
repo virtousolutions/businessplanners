@@ -1,0 +1,120 @@
+
+.tac-title {
+	font-size: 20px;
+	line-height: 25px;
+	font-weight: 700;
+	padding: 0px;
+	text-align: center;
+}
+
+.tac-contents {
+	 padding: 30px 0;
+}
+
+.tac-text {
+	padding: 20px 0px;
+
+}
+
+.tac-text p, .tac-text li {
+	font-size: 16px;
+	text-align: left;
+	line-height: 18px;
+}
+
+ul li {
+	margin-bottom: 5px;
+}
+
+div.section-number {
+	width: 5%;
+	float: left;
+	margin-bottom: 15px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+div.section-title {
+	float: left;
+	width: 95%;
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+div.section-content {
+	margin-left: 5%;
+	width: 95%;
+	float: left;
+	margin-bottom: 15px;
+	font-size: 16px;
+}
+
+ul.decimal-in-content {
+	 list-style-type: decimal; 
+	 padding-left: 20px;
+	 font-size: 16px;
+}
+
+ul.bullet-in-content {
+	 list-style-type: disc; 
+	 padding-left: 20px;
+	 font-size: 16px;
+}
+
+ul.sub-sections-in-content {
+	 list-style-type: none; 
+	 padding-left: 0px;
+	 font-size: 16px;
+}
+
+ul.sub-sections-in-content li span
+{
+  display: block;
+  float: left;
+  width: 60px;
+  font-size: 16px;
+}
+
+ul.sub-sections-in-content li
+{
+	float: left;
+	width: 100%;
+	font-size: 16px;
+}
+
+ul.sub-sections-in-content li p
+{
+	float: left;
+	margin: 0;
+	width: calc(100% - 60px);
+	font-size: 16px;
+
+}
+
+ul.letters-in-sections-in-content {
+	 list-style-type: lower-alpha; 
+	 padding-left: 65px;
+	 float: left;
+	 margin: 10px 0;
+	 font-size: 16px;
+}
+
+ul.letters-in-sections-in-content li {
+	float: left;
+}
+
+@media (max-width: 500px) {
+	.tac-contents {
+		padding: 20px 0px;
+	}
+
+	.tac-title {
+		padding: 0px;
+		font-size: 30px;
+	}
+
+	.tac-text {
+		padding: 0px;
+	}
+}

@@ -1,0 +1,47 @@
+
+html, body{
+	height: 100%;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 19px;
+}
+
+.wrapper{
+	max-width: 900px;
+	margin: 0 auto;
+	position: relative;
+}
+
+/*helpers*/
+.wrapper .heading{
+	font-size: 2.1rem;
+}
+
+.wrapper .spacer{
+	margin-bottom: 1.5rem;
+}
+
+/*Header navigation*/
+header ul.navigation{
+	max-width: 80rem;
+	margin: 0 auto;
+	padding: 0;
+}
+header ul.navigation > li{
+	display: inline-block;
+	float: left;
+	padding: 2%;
+}
+header a{
+	font-size: 1rem;
+}
+
+
+/*FOOTER*/
+#footer{
+	color: #2863a7;
+	font-size: 0.8rem;
+}
+
+#footer .wrapper{
+	padding: 0.8rem 0;
+}
