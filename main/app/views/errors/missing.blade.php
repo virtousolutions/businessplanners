@@ -7,5 +7,5 @@
 		<li>You've clicked a broken link.</li>
 	</ul>
 
-	Click here to return to the <a href=" {{ url('wills') }} ">main page.</a>
+	Click here to return to the <a href=" {{ url('') }} ">main page.</a>
 @stop

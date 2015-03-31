@@ -20,14 +20,14 @@
         Amount: {{ $payment_data['amount'] }}
     </p>
     <br>
-    <!--p>
+    <p>
         If you have any concerns, kindly email us at {{ Config::get('mail.contact_us.address') }}.
-    </p-->
+    </p>
     <br>
     <br>
     <p>
         Best wishes,
         <br>
-        Yours Slenderly Team
+        The CREATE MY CV Team
     </p>
 </body>

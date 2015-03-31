@@ -6,7 +6,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Create My CV</title>
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon-bizplanner.png') }}">
+
+    <title>The Business Planners</title>
     {{ HTML::style('assets/plugins/bootstrap-3.3.2-dist/css/bootstrap.min.css') }}
     {{ HTML::style('assets/plugins/font-awesome/css/font-awesome.css') }}
   </head>

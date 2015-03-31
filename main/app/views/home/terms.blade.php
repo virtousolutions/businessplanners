@@ -29,7 +29,7 @@
             <div class="section-content">
                 <ul class="sub-sections-in-content"> 
                     <li><span>2.1</span><p>We operate a professional business planning service through various packages on our site.</p></li>
-                    <li><span>2.2</span>The supply of all software will be subject to the terms of our Software Licence included in these terms and conditions.</li>
+                    <li><span>2.2</span><p>The supply of all software will be subject to the terms of our Software Licence included in these terms and conditions.</p></li>
                 </ul>
             </div>
 

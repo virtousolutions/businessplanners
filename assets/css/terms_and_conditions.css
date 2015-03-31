@@ -28,8 +28,9 @@ ul li {
 
 div.section-number {
 	width: 5%;
+	max-width: 30px;
 	float: left;
-	margin-bottom: 15px;
+	margin-bottom: 8px;
 	font-size: 16px;
 	font-weight: bold;
 }
@@ -39,11 +40,11 @@ div.section-title {
 	width: 95%;
 	font-size: 16px;
 	font-weight: bold;
-	margin-bottom: 15px;
+	margin-bottom: 8px;
 }
 
 div.section-content {
-	margin-left: 5%;
+	margin-left: 30px;
 	width: 95%;
 	float: left;
 	margin-bottom: 15px;
@@ -72,7 +73,7 @@ ul.sub-sections-in-content li span
 {
   display: block;
   float: left;
-  width: 60px;
+  width: 45px;
   font-size: 16px;
 }
 

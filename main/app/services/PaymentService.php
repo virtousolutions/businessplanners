@@ -38,12 +38,10 @@ class PaymentService {
 	public function getPurchaseData($params, $timestamp)
 	{
 		$now = Carbon::now();
-        $pricing = $this->getPricing();
-        $package  = $pricing[$params['product_id']];
         
         $paypal_data = array(
-			'amount'      => (float) $package['amount'],
-			'description' => $package['description'],
+			'amount'      => (float) $params['amount'],
+			'description' => $params['description'],
 			'returnUrl'   => url('complete_payment', $timestamp),
 			'cancelUrl'   => url('cancel_payment', $timestamp),
 			'currency'    => $this->config['currency'],

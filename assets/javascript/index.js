@@ -25,58 +25,66 @@ $(document).ready( function () {
 		);
 	});
 
-    $.ajax({
-        method: "post",
-        dataType: 'json',
-        url: "recaptcha.php", 
-        success: function(result){
-            if(result.code == 0){
-              $("#captchaImages").attr('src', result.src);
-            }else{
-              $(".message").show();
-              $(".message").html(result.msg);
-            }
-        }
-    });
-
-    function refreshCaptcha()
-    {
-        $.ajax({
-            method: "post",
-            dataType: 'json',
-            url: "recaptcha.php", 
-            success: function(result){
-                if(result.code == 0){
-                    $("#captchaImages").attr('src', result.src);
-                }else{
-                  $(".message").show();
-                  $(".message").html(result.msg);
+    $('#contactus').bootstrapValidator({
+        fields: {
+            name: {
+                validators: {
+                    notEmpty: {
+                        message: 'Name is a required field.'
+                    },
+                    stringLength: {
+                        min: 3,
+                        message: 'Name must be more than 5 characters long.'
+                    }
                 }
-            }
-        });
-    }
-
-    $("#refresh").on('click',function(e){
-        refreshCaptcha();
-        e.preventDefault();
+            },
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'Email is a required field.'
+                    },
+                    emailAddress: {
+                        message: 'Email is not valid.'
+                    }
+                }
+            },
+            message : {
+                validators: {
+                    notEmpty: {
+                        message: 'Message is a required field.'
+                    },
+                    stringLength: {
+                        min: 3,
+                        message: 'Message must be more than 10 characters long.'
+                    }
+                }
+            },
+            /*captcha_code : {
+                validators: {
+                    notEmpty: {
+                        message: 'Kindly copy the code.'
+                    }
+                }
+            }*/
+        }
     });
 
     $("#contactus").submit(function(e){
         $("#contactSubmit").attr('disabled','disabled');
-        var name, email, message, captcha;
-
-        name = $("#name").val();
-        email = $("#email").val();
-        message = $("#message").val();
-        captcha = $("#captchaCode").val();
+        post_data = {
+            'name'     : $('input[name=name]').val(),
+            'email'    : $('input[name=email]').val(),
+            'message'  : $('textarea[name=message]').val(),
+            '_token'   : $('meta[name="_token"]').attr('content')
+        };
 
         $.ajax({
             method: "post",
-            url: "app/contact_us", 
+            url: "contact_us", 
             dataType: 'json',
-            data: {'name' : name, 'email': email, 'message': message, 'captcha': captcha},
+            data: post_data,
             success: function(result){
-                $(".message").html(result.text);
+                $("#contact-results").html(result.text);
                 $("#contactSubmit").removeAttr('disabled');
                 
                 if(result.type == 'success')
@@ -84,9 +92,6 @@ $(document).ready( function () {
                     name = $("#name").val('');
                     email = $("#email").val('');
                     message = $("#message").val('');
-                    captcha = $("#captchaCode").val('');
-
-                    refreshCaptcha();
                 }
             }
         });

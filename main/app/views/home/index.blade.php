@@ -87,73 +87,15 @@
 </div>
 <div class="wrapper">
   <div id="price" class="clearfix row">
-    <div class="price-box col-md-4 ">
-      <div class="header">
-      <div class="star">3 STAR</div>
-      <div class="price">&pound;999</div>
-      </div>
-      <ul class="list-unstyled">
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Professionally written Business Plan written by MBA Graduates</p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>IHT Report</p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Remuneration Report</p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Company Will brochure</p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Subscription to BizDoc Pro - 1 month</p></li>
-        <li><img src="{{ asset('assets/img/cross.png') }}" align="right"/><p>Financial forecasting with qualified inhouse accountant - 3 years</p></li>
-        <li><img src="{{ asset('assets/img/cross.png') }}" align="right"/><p>Business valuation </p></li>
-        <li><img src="{{ asset('assets/img/cross.png') }}" align="right"/><p>Free trademark review </p></li>
-        <li><img src="{{ asset('assets/img/cross.png') }}" align="right"/><p>Importance of protecting your business factsheet</p></li>
-        <li><img src="{{ asset('assets/img/cross.png') }}" align="right"/><p>Access to legal docs & free review of your M&A with recommendations, & free review of company strucutre with recommendations</p>
-        </li>
-      </ul>
-      <a href="order.php?p=1" class="packages-btn">Buy now</a>
+    <div class="col-xs-12 col-sm-4">
+        @include('package.package', ['package' => $packages[1], 'show_button' => true])
     </div>
-
-    <div class="price-box col-md-4">
-      <div class="header">
-      <div class="star">4 STAR</div>
-      <div class="price">&pound;1,750</div>
-      </div>
-
-      <ul class="list-unstyled">
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Professionally written Business Plan written by MBA Graduates</p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>IHT Report</p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Remuneration Report</p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Company Will brochure</p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Subscription to BizDoc Pro - 1 month</p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Financial forecasting with qualified inhouse accountant - 3 years</p></li>
-        <li><img src="{{ asset('assets/img/cross.png') }}" align="right"/><p>Business valuation </p></li>
-        <li><img src="{{ asset('assets/img/cross.png') }}" align="right"/><p>Free trademark review </p></li>
-        <li><img src="{{ asset('assets/img/cross.png') }}" align="right"/><p>Importance of protecting your business factsheet</p></li>
-        <li><img src="{{ asset('assets/img/cross.png') }}" align="right"/><p>Access to legal docs & free review of your M&A with recommendations, & free review of company strucutre with recommendations</p>
-        </li>
-      </ul>
-      <a href="order.php?p=2" class="packages-btn">Buy now</a>
+    <div class="col-xs-12 col-sm-4">
+        @include('package.package', ['package' => $packages[2], 'show_button' => true])
     </div>
-
-
-
-    <div class="price-box col-md-4">
-      <div class="header">
-        <div class="star">5 STAR</div>
-        <div class="price">&pound;1,950</div>
-      </div>
-
-      <ul class="list-unstyled">
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Professionally written Business Plan written by MBA Graduates</p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>IHT Report</p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Remuneration Report</p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Company Will brochure</p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Subscription to BizDoc Pro - 1 month</p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Financial forecasting with qualified inhouse accountant - 3 years</p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Business valuation </p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Free trademark review </p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Importance of protecting your business factsheet</p></li>
-        <li><img src="{{ asset('assets/img/tick.png') }}" align="right"/><p>Access to legal docs & free review of your M&A with recommendations, & free review of company strucutre with recommendations</p>
-        </li>
-      </ul>
-      <a href="order.php?p=3" class="packages-btn">Buy now</a>
+    <div class="col-xs-12 col-sm-4">
+        @include('package.package', ['package' => $packages[3], 'show_button' => true])
     </div>
-  </div>
   </div>
 </div>
 </div>
@@ -198,27 +140,30 @@
   <p>Need help or have any questions? Then simply fill out our contact form below and we'll be in
 touch shortly!</p>
 <p>&nbsp;</p>
-  <form id="contactus" >
+  {{ Form::open(array('method' => 'post', 'class' => 'form-horizontal', 'id' => 'contactus')) }}
     <div class="form-group">
-      <input id="name" name="name" type="text" placeholder="Full Name" class="form-control input-lg" required/>
+      <input id="name" name="name" type="text" placeholder="Full Name" class="form-control input-lg"/>
     </div>
     <div class="form-group">
-      <input id="email" name="email" type="email" placeholder="Email" class="form-control input-lg" required/>
+      <input id="email" name="email" type="email" placeholder="Email" class="form-control input-lg"/>
     </div>
     <div class="form-group">
-      <textarea id="message" name="message" class="form-control input-lg" rows="5" placeholder="Message" required></textarea>
+      <textarea id="message" name="message" class="form-control input-lg" rows="5" placeholder="Message"></textarea>
     </div>
-    <div class="form-group clearfix">
+    <!--div class="form-group clearfix">
 
-    <div class="pull-left " id="captcha">
-    <input id="captchaCode" type="text" class="form-control pull-left" required />
-    <img id="captchaImages" src="" width="85px" />
-    <a href="#" id="refresh" type="button">Refresh</a>
-    </div>
-
-    <button type="submit" class="pull-right" id="contactSubmit" >Submit</button>
+        <div class="pull-left col-xs-6" style="padding-left: 0px;">
+            <input id="captchaCode" name="captcha_code" type="text" class="form-control pull-left" />
+        </div>
+        <div class="pull-left col-xs-6">
+            <img id="captchaImages" src="" width="85px" />
+            <a href="#" id="refresh" type="button">Refresh</a>
+        </div>
+    </div--> 
+    <div class="form-group">
+    <button type="submit" class="pull-left" id="contactSubmit" >Submit</button>
     </div>  
-    <p class="message"></p>
+    <p id="contact-results"></p>
   </form>
   
 

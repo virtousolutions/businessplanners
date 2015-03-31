@@ -20,11 +20,11 @@ Route::post("contact_us", array(
 
 Route::get("terms", 'HomeController@terms');
 Route::get("privacy", 'HomeController@privacy');
-/*Route::get("order/{number}", "HomeController@order");
+Route::get("license", 'HomeController@license');
+Route::get("order/{number}", "HomeController@order");
 Route::post("order/{number}", "HomeController@orderSubmit");
-Route::get('paymentcomplete', 'HomeController@paymentComplete');*/
+Route::get('paymentcomplete', 'HomeController@paymentComplete');
 
-Route::post('start_payment', 'PaypalPaymentController@startPayment');
+Route::get('start_payment', 'PaypalPaymentController@startPayment');
 Route::get('cancel_payment/{timestamp}', 'PaypalPaymentController@cancelPayment');
 Route::get('complete_payment/{timestamp}', 'PaypalPaymentController@completePayment');
-Route::get('complete_payment_message', 'PaypalPaymentController@showMessage');

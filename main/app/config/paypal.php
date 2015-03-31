@@ -31,20 +31,7 @@ return array(
 	|
 	*/
 
-	'pricing' => [
-        1 => [
-            'amount' => 29.95,
-            'description' => 'Get Started'
-        ],
-		2 => [
-            'amount' => 49.95,
-            'description' => 'Most Popular'
-        ],
-		3 => [
-            'amount' => 79.95,
-            'description' => 'Best Value'
-        ]
-	],
+	'pricing' => [1 => 999, 2 => 1750, 3 => 1950],
 
 	/*
 	|--------------------------------------------------------------------------

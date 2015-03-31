@@ -7,12 +7,7 @@
     <p>
         {{ $the_message }}
     </p>
-    @if (isset($phone))
     <br>
-    <p>
-        Phone number: {{ $phone }}
-    </p>
-    @endif
     <br>
     <br>
     <p>

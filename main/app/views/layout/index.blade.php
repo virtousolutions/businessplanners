@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="_token" content="{{ csrf_token() }}" />
 	<title>The Business Planners</title>
 
 <!-- biz planner fav icon -->
@@ -40,8 +41,9 @@
 
 <a href="#0" class="cd-top cd-is-visible cd-fade-out">Top</a>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-<script type="text/javascript" src="{{ asset('assets/javascript/index.js') }}"></script>
+{{ HTML::script('assets/plugins/jquery-1.11.1.min.js') }}
+{{ HTML::script('assets/plugins/bootstrap-3.3.2-dist/js/bootstrap.min.js') }}
+{{ Asset::container('footer')->scripts() }}
 
     <!--Start of Zopim Live Chat Script-->
     <script type="text/javascript">
@@ -54,13 +56,13 @@
     <!--End of Zopim Live Chat Script-->
 
     <!-- Google Tag Manager -->
-    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-W34H63"
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WHWNCX"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-W34H63');</script>
+    })(window,document,'script','dataLayer','GTM-WHWNCX');</script>
     <!-- End Google Tag Manager -->
 
 </body>

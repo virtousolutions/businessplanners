@@ -22,19 +22,22 @@
         Town/City: {{ $params['city'] }}
     </p>
     <p>
-        County: {{ $params['state'] }}
+        County: {{ $params['county'] }}
     </p>
     <p>
         Country: {{ $params['country_name'] }}
     </p>
     <p>
-        Post Code: {{ $params['zip'] }}
+        Post Code: {{ $params['post_code'] }}
     </p>
     <p>
-        Email Address: {{ $params['email'] }}
+        Email Address: {{ $params['email_address'] }}
     </p>
     <p>
-        Contact Number: {{ $params['contact_number'] }}
+        Telephone Number: {{ $params['telephone'] }}
+    </p>
+    <p>
+        Mobile Number: {{ $params['mobile'] }}
     </p>
     <br>
     <p>
