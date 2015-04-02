@@ -29,7 +29,7 @@
     {{ Asset::container('header')->styles() }}
   </head>
 
-  <body>
+  <body style="background-color: #66bae8;">
     <!-- Google Tag Manager -->
     <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WHWNCX"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -39,26 +39,31 @@
     '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-WHWNCX');</script>
     <!-- End Google Tag Manager -->
-    <div class="container" style="padding-top: 10px;">
-        <div class="wrapper">
-            <div class="col-xs-12 col-sm-7" style="padding: 0px; margin: 20px 0; text-align: left;">
-                <a href="{{ url('') }}">
-                    <img style="width: 250px; margin-left: 0px;" src="{{ url('assets/img/logo.png') }}"/>
-                </a>
+
+    <div class="col-xs-12" style="padding: 0; background-color: #ffffff;">
+        <div class="container" style="padding-top: 10px;">
+            <div class="wrapper">
+                <div class="col-xs-12 col-sm-7" style="padding: 0px; margin: 20px 0; text-align: left;">
+                    <a href="{{ url('') }}">
+                        <img style="width: 250px; margin-left: 0px;" src="{{ url('assets/img/logo.png') }}"/>
+                    </a>
+                </div>
+                <!--div class="col-xs-12 col-sm-5 text-right">
+                    <img src="{{ asset('assets/img/secureseal.png') }}" style="width: 200px" alt="" class="seal">
+                    <p>Questions? Call - 01732 2042 4188</p>
+                </div-->
             </div>
-            <!--div class="col-xs-12 col-sm-5 text-right">
-                <img src="{{ asset('assets/img/secureseal.png') }}" style="width: 200px" alt="" class="seal">
-                <p>Questions? Call - 01732 2042 4188</p>
-            </div-->
         </div>
     </div>
     <div class="header">
         @include('layout.header')
     </div>
-	<div class="wrapper">
+    <div class="col-xs-12" style="padding: 0; background-color: #ffffff;">
         <div class="wrapper">
-            @yield('content')
-		</div>	
+            <div class="wrapper">
+                @yield('content')
+            </div>	
+        </div>
     </div>
     <div class="footer">
     @include('layout/footer')
