@@ -15,7 +15,7 @@ class CreateUserPaymentsTable extends Migration {
 		Schema::create('user_payments', function(Blueprint $table) {
 
 			$table->increments('id');			
-			$table->integer('user_id'); 
+			$table->integer('user_id')->unsigned(); 
 			$table->string('transaction_id', 50)->nullable();
 			$table->string('description', 100)->nullable();
 			$table->string('order_time', 50)->nullable();

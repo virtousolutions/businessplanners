@@ -15,7 +15,7 @@ class CreateTempPasswordsTable extends Migration {
 		Schema::create('temp_passwords', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id'); 
+			$table->integer('user_id')->unsigned(); 
 			$table->string('password', 15)->nullable();
 			$table->timestamps();
 

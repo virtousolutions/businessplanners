@@ -6,7 +6,7 @@
 	max-width: 100%;
 }
 
-#packages .price-box u, .diy-content {
+#packages .price-box ul, .diy-content {
 	border: 1px solid #2863a7;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
@@ -15,4 +15,9 @@
 .diy-content {
 	padding: 20px;
 	float: left;
+}
+
+div.checkbox label {
+	font-size: 18px;
+	line-height: 22px;
 }
