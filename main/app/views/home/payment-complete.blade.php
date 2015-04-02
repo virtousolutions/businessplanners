@@ -27,4 +27,24 @@ Order Package
         var PRODUCT_QUANTITY = '{{ isset($old_data['product_quantity']) ? $old_data['product_quantity'] : 1 }}';
     </script>
 </div>
+
+<!-- Google Code for Business Planner Pro - Sales Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 948938532;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "ppAKCPjY5loQpM6-xAM";
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/948938532/?label=ppAKCPjY5loQpM6-xAM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
 @stop

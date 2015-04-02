@@ -52,8 +52,8 @@ class PaymentService {
 
     public function savePayment($payment_data)
     {
-        $owner_purchase = new OwnerPurchase();
-        $owner_purchase->fill($payment_data);
-        $owner_purchase->save();
+        $payment = new UserPayment();
+        $payment->fill($payment_data);
+        $payment->save();
     }
 }

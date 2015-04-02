@@ -102,11 +102,11 @@ class PaypalPaymentController extends BaseController {
 			throw $e;
 		}
 
-        $owner = new Owner();
-        $owner = $owner->create($params);
+        $user = new User();
+        $user = $user->create($params);
         
         $payment_data += [ 
-            'owner_id'        => $owner->id,
+            'user_id'        => $user->id,
             'description'     => $params['description'],
             'package_number'  => $params['package_number']
         ];
