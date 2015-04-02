@@ -1,0 +1,18 @@
+#packages {
+	background-color: #ffffff;
+}
+
+#packages .price-box {
+	max-width: 100%;
+}
+
+#packages .price-box u, .diy-content {
+	border: 1px solid #2863a7;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.diy-content {
+	padding: 20px;
+	float: left;
+}

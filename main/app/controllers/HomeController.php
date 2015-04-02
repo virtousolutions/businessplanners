@@ -81,6 +81,8 @@ class HomeController extends BaseController {
         $data['features'] = $this->getFeatures();
         $data['show_button'] = false;
 
+        Asset::container('header')->add('package-css', 'assets/css/package.css');
+
         Asset::container('footer')->add('bootstrap-validator-js', 'assets/plugins/bootstrap_validator/js/bootstrapValidator.js');
         Asset::container('footer')->add('wills-js', 'assets/javascript/package.js');
 

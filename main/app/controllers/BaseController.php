@@ -40,20 +40,26 @@ class BaseController extends Controller {
         $packages = [
             1 => [
                 'id'         => 1,
-                'name'       => '3 STAR',
+                'name'       => 'DIY Business Plan',
                 'price'      => $pricing[1],
                 'features'   => [1, 2, 3, 4, 5]
             ],
             2 => [
                 'id'         => 2,
-                'name'       => '4 STAR',
+                'name'       => '3 STAR',
                 'price'      => $pricing[2],
-                'features'   => [1, 2, 3, 4, 5, 6]
+                'features'   => [1, 2, 3, 4, 5]
             ],
             3 => [
                 'id'         => 3,
-                'name'       => 'Gold',
+                'name'       => '4 STAR',
                 'price'      => $pricing[3],
+                'features'   => [1, 2, 3, 4, 5, 6]
+            ],
+            4 => [
+                'id'         => 4,
+                'name'       => 'Gold',
+                'price'      => $pricing[4],
                 'features'   => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             ]
         ];

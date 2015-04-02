@@ -88,13 +88,13 @@
 <div class="wrapper">
   <div id="price" class="clearfix row">
     <div class="col-xs-12 col-sm-4">
-        @include('package.package', ['package' => $packages[1], 'show_button' => true])
-    </div>
-    <div class="col-xs-12 col-sm-4">
         @include('package.package', ['package' => $packages[2], 'show_button' => true])
     </div>
     <div class="col-xs-12 col-sm-4">
         @include('package.package', ['package' => $packages[3], 'show_button' => true])
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        @include('package.package', ['package' => $packages[4], 'show_button' => true])
     </div>
   </div>
 </div>
@@ -105,7 +105,7 @@
 <div class="wrapper">
 <div class="arrow-down blue"></div>
   <h1 class="heading spacer">DIY Business Plan - &pound;199 </h1>
-  <p>Wiht our DIY business plan, you can go and create your business plan yourself. (Please note that this service does not include a financial review). Make sure to also check out our three business plan packages</p>
+  <p>With our DIY business plan, you can go and create your business plan yourself. (Please note that this service does not include a financial review). Make sure to also check out our three business plan packages</p>
 
   <div class="row">
     <div class="step-box col-md-4">
@@ -127,7 +127,7 @@
   <p>&nbsp;</p>
 
 
-   <a href="#" class="buy-btn">Buy now</a>
+   <a href="order/1" class="buy-btn">Buy now</a>
 
 </div>
 </div>

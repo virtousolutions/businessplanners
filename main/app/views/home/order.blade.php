@@ -1,8 +1,22 @@
 @section('content')
     <div class="col-xs-12" style="margin-top: 20px; margin-bottom: 20px;">
-        <div id="packages" class="col-sm-4" style="padding-top: 20px; padding-bottom: 20px; margin-bottom: 20px;">
-            @include('package.package')
-        </div>
+        @if ($package['id'] == 1)
+            <div id="packages" class="col-sm-4" style="padding: 0px; margin-bottom: 20px; margin-top: 20px;">
+                <div class="price-box col-xs-12">
+                    <div class="header">
+                        <div class="price">{{ $package['name'] }}</div>
+                        <div class="price">&pound;{{ number_format($package['price']) }}</div>
+                    </div>
+                    <div class="diy-content">
+                        With our DIY business plan, you can go and create your business plan yourself. (Please note that this service does not include a financial review). Make sure to also check out our three business plan packages
+                    </div>
+                </div>
+            </div>
+        @else
+            <div id="packages" class="col-sm-4" style="padding: 0px; margin-bottom: 20px;">
+                @include('package.package')
+            </div>
+        @endif
         <div class="col-sm-7 col-sm-offset-1 col-xs-12">
             <h2>Secure Payment Form</h2>
             <p>&nbsp;</p>
