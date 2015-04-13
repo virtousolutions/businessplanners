@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost/bizplanner',
+	'url' => 'http://localhost/thebusinessplanners',
 
 	/*
 	|--------------------------------------------------------------------------
