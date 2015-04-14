@@ -5,10 +5,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    
     <meta name="author" content="">
     <meta name="_token" content="{{ csrf_token() }}" />
-	<title>The Business Planners</title>
+    <meta name="description" content="We create professionally written business plan that will help you to succeed, we'll find out everything we need to know about a business in order to create a professional business plan">
+    <title>The Business Planners - Professional Business Plans</title> 
+	
 
 <!-- biz planner fav icon -->
 <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon-bizplanner.png') }}">
