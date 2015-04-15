@@ -47,9 +47,22 @@ extends PlanCalculatorService
         $this->gross_margin_yearly_totals[1] = ($this->money_sales_yearly_totals[1] - $this->money_cost_yearly_totals[1]);
         $this->gross_margin_yearly_totals[2] = ($this->money_sales_yearly_totals[2] - $this->money_cost_yearly_totals[2]);
 
-        $this->gross_margin_yearly_percent[0] = ($this->gross_margin_yearly_totals[0] / $this->money_sales_yearly_totals[0]) * 100;
-        $this->gross_margin_yearly_percent[1] = ($this->gross_margin_yearly_totals[1] / $this->money_sales_yearly_totals[1]) * 100;
-        $this->gross_margin_yearly_percent[2] = ($this->gross_margin_yearly_totals[2] / $this->money_sales_yearly_totals[2]) * 100;
+        if ($this->money_sales_yearly_totals[0] > 0) {
+            $this->gross_margin_yearly_percent[0] = ($this->gross_margin_yearly_totals[0] / $this->money_sales_yearly_totals[0]) * 100;
+        }
+        else {
+            $this->gross_margin_yearly_percent[0] = 0;
+        }
+        if ($this->money_sales_yearly_totals[1] > 0) {
+            $this->gross_margin_yearly_percent[1] = ($this->gross_margin_yearly_totals[1] / $this->money_sales_yearly_totals[1]) * 100;
+        else {
+            $this->gross_margin_yearly_percent[1] = 0;
+        }
+        if ($this->money_sales_yearly_totals[2] > 0) {
+            $this->gross_margin_yearly_percent[2] = ($this->gross_margin_yearly_totals[2] / $this->money_sales_yearly_totals[2]) * 100;
+        else {
+            $this->gross_margin_yearly_percent[2] = 0;
+        }
 
         /*echo '<pre>';
         var_dump($this->sales);
