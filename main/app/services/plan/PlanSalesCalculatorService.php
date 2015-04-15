@@ -55,11 +55,13 @@ extends PlanCalculatorService
         }
         if ($this->money_sales_yearly_totals[1] > 0) {
             $this->gross_margin_yearly_percent[1] = ($this->gross_margin_yearly_totals[1] / $this->money_sales_yearly_totals[1]) * 100;
+        }
         else {
             $this->gross_margin_yearly_percent[1] = 0;
         }
         if ($this->money_sales_yearly_totals[2] > 0) {
             $this->gross_margin_yearly_percent[2] = ($this->gross_margin_yearly_totals[2] / $this->money_sales_yearly_totals[2]) * 100;
+        }
         else {
             $this->gross_margin_yearly_percent[2] = 0;
         }
