@@ -20,6 +20,9 @@ extends Eloquent
 		'bp_income_tax_in_percentage',
 		'user_id'
 	];
+
+    protected $start_months = null;
+    protected $start_year = null;
     
     public static function create(array $data)
     {
@@ -53,5 +56,34 @@ extends Eloquent
     {
         $id = DB::table('expenditure')->where('expenditure_bp_id', $this->id)->pluck('exp_id');
         return $id ? BudgetExpenditure::find($id) : null;
+    }
+
+    public function getStartYear()
+    {
+        if (! $this->start_year) {
+            $date = strtotime($this->bp_financial_start_date);
+            $this->start_year = date('Y', $date) + 1;
+        }
+
+        return $this->start_year;
+    }
+
+    public function getStartMonths()
+    {
+        if (! $this->start_months) {
+            $start_date = strtotime($this->bp_financial_start_date);
+            $start_year = date('Y', $start_date);
+            $start_month = date('F', $start_date);
+            $this->start_months = [];
+            
+            for ($x = 0; $x < 12; $x++) 
+            {															
+                $time = strtotime("+" . $x . " months", strtotime( $start_year . "-" . $start_month . "-01"));
+                $key = date('M Y', $time);
+                $this->start_months[] = $key;
+            }
+        }
+
+        return $this->start_months;
     }
 }

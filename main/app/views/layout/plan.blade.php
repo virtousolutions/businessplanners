@@ -13,11 +13,11 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon-bizplanner.png') }}">
 
     <!-- google font CDN -->
-    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <!--link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=PT+Serif:400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open%20Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Chelsea%20Market' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Chelsea%20Market' rel='stylesheet' type='text/css'-->
 
     <!-- bootstrap css framework -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lib/bootstrap.min.css') }}"/>
@@ -35,13 +35,13 @@
     @yield('ecommerce')
 
     <!-- Google Tag Manager -->
-    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WHWNCX"
+    <!--noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WHWNCX"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WHWNCX');</script>
+    })(window,document,'script','dataLayer','GTM-WHWNCX');</script-->
     <!-- End Google Tag Manager -->
 
     <div class="col-xs-12" style="padding: 0; background-color: #ffffff;">
@@ -91,7 +91,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Plans <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     @foreach ($business_plans as $id => $name)
-                                        <li><a href="{{ url('plan/executive-summary/' . $id) }}">{{ $name }}</a></li>
+                                        <li><a href="{{ url('plan/executive-summary/index/' . $id) }}">{{ $name }}</a></li>
                                     @endforeach
                                     <li class="divider"></li>
                                     <li><a href="{{ url('plan') }}">New Plan</a></li>
@@ -119,6 +119,7 @@
     {{ Asset::container('footer')->scripts() }}
 
     <!--Start of Zopim Live Chat Script-->
+    <!--
     <script type="text/javascript">
     window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
     d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.

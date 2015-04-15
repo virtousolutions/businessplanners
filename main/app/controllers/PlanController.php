@@ -45,7 +45,7 @@ extends BaseController
         $new_plan = BusinessPlan::create($input);
 
         // redirect to executive summary
-        return Redirect::to('plan/executive-summary/' . $new_plan->id);
+        return Redirect::to('plan/executive-summary/index/' . $new_plan->id);
     }
 
     public function details($id)
@@ -76,6 +76,7 @@ extends BaseController
                 'bp_id' => $business_plan->id,
                 'plan_details_form_button_text' => 'Save Details'
             ], 
+            null,
             ['layout_page' => "plan.details"]
         );
     }
@@ -109,7 +110,7 @@ extends BaseController
         return $values;
     }
 
-    protected function displayPage($business_plan, $images, $instructions, $sub_page_sections_data = [])
+    protected function displayPage($business_plan, $images, $instructions, $section, $sub_page_sections_data = [])
     {
         Asset::container('footer')->add('tinymce-js', 'assets/plugins/tinymce/jscripts/tiny_mce/tiny_mce.js');
         Asset::container('footer')->add("plan-edit-js", "assets/javascript/plan/edit.js");
@@ -195,13 +196,14 @@ extends BaseController
                 'sub_page_images' => $images,
                 'values' => $values,
                 'instructions' => $instructions,
+                'section' => $section,
                 'section_values' => $section_values,
                 'sub_page_sections_data' => $sub_page_sections_data
             ]
         );
     }
 
-    public function executiveSummary($id)
+    public function executiveSummary($section, $id)
     {
         $images = [
             'contract.png',
@@ -218,10 +220,10 @@ extends BaseController
         ];
 
         $business_plan = BusinessPlan::find($id);
-        $this->displayPage($business_plan, $images, $instructions);
+        $this->displayPage($business_plan, $images, $instructions, $section);
     }
 
-    public function company($id)
+    public function company($section, $id)
     {
         $images = [
             'com_over.gif',
@@ -269,10 +271,10 @@ Mention the good years, bad years, new services, new locations and new partners/
         ];
 
         $business_plan = BusinessPlan::find($id);
-        $this->displayPage($business_plan, $images, $instructions);
+        $this->displayPage($business_plan, $images, $instructions, $section);
     }
 
-    public function products($id)
+    public function products($section, $id)
     {
         $images = [
             'Prodservi.gif',
@@ -327,10 +329,10 @@ Mention the good years, bad years, new services, new locations and new partners/
         ];
 
         $business_plan = BusinessPlan::find($id);
-        $this->displayPage($business_plan, $images, $instructions);
+        $this->displayPage($business_plan, $images, $instructions, $section);
     }
 
-    public function targetMarket($id)
+    public function targetMarket($section, $id)
     {
         $images = [
             'com_over.gif',
@@ -394,10 +396,10 @@ Mention the good years, bad years, new services, new locations and new partners/
         ];
 
         $business_plan = BusinessPlan::find($id);
-        $this->displayPage($business_plan, $images, $instructions);
+        $this->displayPage($business_plan, $images, $instructions, $section);
     }
 
-    public function strategy($id)
+    public function strategy($section, $id)
     {
         $images = [
             '',
@@ -510,10 +512,10 @@ Two exit strategies are common;</p>
         ];
         
         $business_plan = BusinessPlan::find($id);
-        $this->displayPage($business_plan, $images, $instructions);
+        $this->displayPage($business_plan, $images, $instructions, $section);
     }
 
-    public function financialPlan($id)
+    public function financialPlan($section, $id)
     {
         $business_plan = BusinessPlan::find($id);
 
@@ -555,12 +557,12 @@ Two exit strategies are common;</p>
             $cash_flow_data = $cash_flow_data[0];
         }
         
-        $expenditure_data = BudgetExpenditure::getAll($business_plan->id);
-        $budget_data = ['expenses' => $expenditure_data];
+        $sales_calculator = new PlanSalesCalculatorService($business_plan);
+        $personnel_calculator = new PlanPersonnelCalculatorService($business_plan);
+        $budget_calculator = new PlanBudgetCalculatorService($business_plan);
 
-        $options = Input::old();
+        $options = Input::get();
         
-
         $sub_page_sections_data = [
             'details' => [
                 ['Sales Forecast Table', 'Gross Margin by Year', 'About Sales Forecast'],
@@ -570,31 +572,25 @@ Two exit strategies are common;</p>
                 ['Loans and Investments Table', 'Expenses by the Year', 'About Loans and Investments']
             ],
             'includes' => [
-                null,
-                null,
+                'plan.financial-plan.sales-forecast',
+                'plan.financial-plan.human-resources',
                 'plan.financial-plan.budget',
                 'plan.financial-plan.cash-flow-projections'
             ],
-            'modals' => [
-                null,
-                null,
-                null,
-                null
-            ],
             'data' => [
-                null,
-                null,
-                $budget_data,
+                ['calculator' => $sales_calculator],
+                ['calculator' => $personnel_calculator],
+                ['calculator' => $budget_calculator],
                 $cash_flow_data,
                 null,
             ],
             'options' => $options
         ];
 
-        $this->displayPage($business_plan, $images, $instructions, $sub_page_sections_data);
+        $this->displayPage($business_plan, $images, $instructions, $section, $sub_page_sections_data);
     }
 
-    public function financialStatements($id)
+    public function financialStatements($section, $id)
     {
         $images = [
             '',
@@ -627,7 +623,7 @@ Two exit strategies are common;</p>
         ];
         
         $business_plan = BusinessPlan::find($id);
-        $this->displayPage($business_plan, $images, $instructions, $sub_page_details, $sub_page_add_sections);
+        $this->displayPage($business_plan, $images, $instructions, $section);
     }
 
     public function savePage()
@@ -769,27 +765,13 @@ Two exit strategies are common;</p>
         Asset::container('footer')->add("financial-plan-budget-js", "assets/javascript/plan/financial_plan/budget.js");
 
         $expenditure_list = BudgetExpenditure::getAll($business_plan->id);
+        $purchases_list = BudgetPurchase::getAll($business_plan->id);
         
-        $start_date_str = $business_plan->bp_financial_start_date;
-        $start_date = strtotime($start_date_str);
-        $start_year = date('Y', $start_date);
-        $start_month = date('F', $start_date);
-		
-		$months = array();
-		
-		for ($x = 0; $x < 12; $x++) 
-		{															
-			$time = strtotime("+" . $x . " months", strtotime( $start_year . "-" . $start_month . "-01"));
-			
-			$key = date('M Y', $time);
-			$months[$key] = $key;
-		}
-
-        $data = [
-            'months' => $months,
-            'default_month_year' => $start_date_str,
+		$data = [
+            'months' => $business_plan->getStartMonths(),
+            'default_month_year' => $business_plan->bp_financial_start_date,
             'expenses' => $expenditure_list,
-            'purchases' => []
+            'purchases' => $purchases_list
         ];
 
         $this->layout = View::make('layout.plan');
@@ -822,20 +804,183 @@ Two exit strategies are common;</p>
             $msg = "Successfully added a new expenditure";
         }
 
-        return Redirect::to('plan/financial-plan-budget/' . $business_plan->id . '?budget_selected_tab=expenses')->withMessage($msg);
+        return Redirect::to('plan/financial-plan-budget/' . $business_plan->id . '?selected_tab=expenses')->withMessage($msg);
     }
 
-    public function refreshPage()
+    public function saveFinancialPlanBudgetDeleteExpenditure($id)
+    {
+        $obj = BudgetExpenditure::find($id);
+        $obj->delete();
+        return Redirect::to('plan/financial-plan-budget/' . $obj->businessPlan()->id . '?selected_tab=expenses')->withMessage("Successfully deleted expenditure");
+    }
+
+    public function saveFinancialPlanBudgetPurchase()
     {
         $input = Input::get();
+
+        $business_plan = BusinessPlan::find($input['business_plan_id']);
+        $mp_id = $input['mp_id'];
+        $save_data = [
+            'mp_bpid' => $business_plan->id,
+            'mp_name' => $input['mp_name'],
+            'mp_price' => $input['mp_price'],
+            'mp_date' => $input['mp_date'],
+            'mp_depreciate' => $input['mp_depreciate']
+        ];
+
+        if ($mp_id) {
+            $obj = BudgetPurchase::find($mp_id);
+            $obj->update($save_data);
+            $msg = "Successfully saved your changes";
+        }
+        else {
+            $obj = BudgetPurchase::create($save_data);
+            $msg = "Successfully added a new major purchase";
+        }
+
+        return Redirect::to('plan/financial-plan-budget/' . $business_plan->id . '?selected_tab=purchases')->withMessage($msg);
+    }
+
+    public function saveFinancialPlanBudgetDeletePurchase($id)
+    {
+        $obj = BudgetPurchase::find($id);
+        $obj->delete();
+        return Redirect::to('plan/financial-plan-budget/' . $obj->businessPlan()->id . '?selected_tab=purchases')->withMessage("Successfully deleted major purchase");
+    }
+
+    public function saveFinancialPlanBudgetTax()
+    {
+        $input = Input::get();
+
+        $business_plan = BusinessPlan::find($input['business_plan_id']);
+        $business_plan->bp_income_tax_in_percentage = $input['bp_income_tax_in_percentage'];
+        $business_plan->save();
+        $msg = "Successfully saved your changes";
         
-        $id = $input['business_plan_id'];
-        $page = $input['page'];
+        return Redirect::to('plan/financial-plan-budget/' . $business_plan->id . '?selected_tab=tax')->withMessage($msg);
+    }
 
-        unset($input['business_plan_id']);
-        unset($input['page']);
+    public function editFinancialPlanHumanResources($id)
+    {
+        $business_plan = BusinessPlan::find($id);
+        View::share('business_plan', $business_plan);
 
-        // redirect to
-        return Redirect::to("plan/$page/$id")->withInput($input);
+        Asset::container('header')->add("financial-plan-css", "assets/css/plan/financial_plan.css");
+        Asset::container('header')->add("create-css", "assets/css/plan/widget_pages.css");
+        Asset::container('footer')->add('bootstrap-validator-js', 'assets/plugins/bootstrap_validator/js/bootstrapValidator.js');
+        Asset::container('footer')->add("financial-plan-js", "assets/javascript/plan/financial_plan.js");
+        Asset::container('footer')->add("financial-plan-budget-js", "assets/javascript/plan/financial_plan/human_resources.js");
+
+        $employee_list = Employee::getAll($business_plan->id);
+
+        $data = [
+            'months' => $business_plan->getStartMonths(),
+            'default_month_year' => $business_plan->bp_financial_start_date,
+            'employees' => $employee_list
+        ];
+
+        $this->layout = View::make('layout.plan');
+        $this->layout->content = View::make('plan.financial-plan.edits.human-resources', ['data' => $data, 'options' => Input::get()]);
+    }
+
+    public function saveFinancialPlanHumanResourcesPersonnel()
+    {
+        $input = Input::get();
+
+        $business_plan = BusinessPlan::find($input['business_plan_id']);
+        $employee_id = $input['employee_id'];
+        $save_data = [
+            'employee_bp_id' => $business_plan->id,
+            'employee_name' => $input['employee_name'],
+            'employee_start_date' => $input['employee_start_date'],
+            'employee_type' => $input['employee_type'],
+            'employee_pay_per_year' => $input['employee_pay_per_year'],
+            'employee_pay_amount' => $input['employee_pay_amount']
+        ];
+
+        if ($employee_id) {
+            $obj = Employee::find($employee_id);
+            $obj->update($save_data);
+            $msg = "Successfully saved your changes";
+        }
+        else {
+            $obj = Employee::create($save_data);
+            $msg = "Successfully added a new employee";
+        }
+
+        return Redirect::to('plan/financial-plan-human-resources/' . $business_plan->id . '?selected_tab=personnel')->withMessage($msg);
+    }
+
+    public function saveFinancialPlanHumanResourcesExpenses()
+    {
+        $input = Input::get();
+
+        $business_plan = BusinessPlan::find($input['business_plan_id']);
+        $business_plan->bp_related_expenses_in_percentage = $input['bp_related_expenses_in_percentage'];
+        $business_plan->save();
+        $msg = "Successfully saved your changes";
+        
+        return Redirect::to('plan/financial-plan-human-resources/' . $business_plan->id . '?selected_tab=expenses')->withMessage($msg);
+    }
+
+    public function saveFinancialPlanHumanResourcesDeletePersonnel($id)
+    {
+        $obj = Employee::find($id);
+        $obj->delete();
+        return Redirect::to('plan/financial-plan-human-resources/' . $obj->businessPlan()->id . '?selected_tab=personnel')->withMessage("Successfully deleted employee");
+    }
+
+    public function editFinancialPlanSalesForecast($id)
+    {
+        $business_plan = BusinessPlan::find($id);
+        View::share('business_plan', $business_plan);
+
+        Asset::container('header')->add("financial-plan-css", "assets/css/plan/financial_plan.css");
+        Asset::container('header')->add("create-css", "assets/css/plan/widget_pages.css");
+        Asset::container('footer')->add('bootstrap-validator-js', 'assets/plugins/bootstrap_validator/js/bootstrapValidator.js');
+        Asset::container('footer')->add("financial-plan-js", "assets/javascript/plan/financial_plan.js");
+        Asset::container('footer')->add("financial-plan-budget-js", "assets/javascript/plan/financial_plan/sales_forecast.js");
+
+        $sales = SalesForecast::getAll($business_plan->id);
+
+        $data = [
+            'months' => $business_plan->getStartMonths(),
+            'default_month_year' => $business_plan->bp_financial_start_date,
+            'start_year' => $business_plan->getStartYear(),
+            'sales' => $sales
+        ];
+
+        $this->layout = View::make('layout.plan');
+        $this->layout->content = View::make('plan.financial-plan.edits.sales-forecast', $data);
+    }
+
+    public function saveFinancialPlanSalesForecast()
+    {
+        $input = Input::get();
+
+        $business_plan = BusinessPlan::find($input['business_plan_id']);
+        $sf_id = $input['sf_id'];
+        $input['sales_forecast_bp_id'] = $input['business_plan_id'];
+
+        unset($input['sf_id']);
+
+        if ($sf_id) {
+            $obj = SalesForecast::find($sf_id);
+            $obj->update($input);
+            $msg = "Successfully saved your changes";
+        }
+        else {
+            $obj = SalesForecast::create($input);
+            $msg = "Successfully added a sales forecast";
+        }
+
+        return Redirect::to('plan/financial-plan-sales-forecast/' . $business_plan->id)->withMessage($msg);
+    }
+
+    public function deleteFinancialPlanSalesForecast($id)
+    {
+        $obj = SalesForecast::find($id);
+        $obj->delete();
+        return Redirect::to('plan/financial-plan-sales-forecast/' . $obj->businessPlan()->id)->withMessage("Successfully deleted a sales forecast");
     }
 }

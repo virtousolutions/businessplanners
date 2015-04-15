@@ -18,7 +18,7 @@ $payment_type = (isset($options['payment_type']) && $options['payment_type'] == 
     <div class="col-xs-12 financial-plan-editor">
         <legend class="modal-title" id="myModalLabel">Cash Flow Projections</legend>
         <div class="col-xs-12" style="padding: 0px;">
-            <a class="backtoplan back-to-outline" href="{{ url('plan/refresh-page?business_plan_id=' . $business_plan->id . '&page=financial-plan&pageurl=cash-flow-projections') }}" >Back to Outline</a>
+            <a class="backtoplan back-to-outline" href="{{ url('plan/financial-plan/cash-flow-projections/' . $business_plan->id) }}" >Back to Outline</a>
         </div>
         <div class="col-xs-12" style="padding: 15px 0px;">
             <div class="tableBuilder">
@@ -134,7 +134,7 @@ $payment_type = (isset($options['payment_type']) && $options['payment_type'] == 
         </div>
         <div class="col-xs-6" style="padding: 10px 0px; text-align: right;">
             <a class="btn btn-primary" href="#" id="save-cash-flow-projection">Save</a>
-            <a class="btn btn-default back-to-outline" href="{{ url('plan/refresh-page?business_plan_id=' . $business_plan->id . '&page=financial-plan&pageurl=cash-flow-projections') }}">I'm Done</a>
+            <a class="btn btn-default back-to-outline" href="{{ url('plan/financial-plan/cash-flow-projections/' . $business_plan->id) }}">I'm Done</a>
         </div>
     </div>
 </form>

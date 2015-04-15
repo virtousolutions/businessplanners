@@ -1,5 +1,5 @@
 <?php
-$selected_tab = isset($options['budget_selected_tab']) ? $options['budget_selected_tab'] : 'expenses';
+$selected_tab = isset($options['selected_tab']) ? $options['selected_tab'] : 'expenses';
 ?>
 @section('content')
 <div id="notification" class="col-xs-12" style="margin-bottom: 20px; padding: 0px;">
@@ -14,7 +14,7 @@ $selected_tab = isset($options['budget_selected_tab']) ? $options['budget_select
 <div class="col-xs-12 financial-plan-editor">
     <legend>Budget Table</legend>
     <div class="col-xs-12" style="padding: 0px;">
-        <a class="backtoplan back-to-outline" href="{{ url('plan/refresh-page?business_plan_id=' . $business_plan->id . '&page=financial-plan&pageurl=budget') }}" >Back to Outline</a>
+        <a class="backtoplan back-to-outline" href="{{ url('plan/financial-plan/budget/' . $business_plan->id) }}" >Back to Outline</a>
     </div>
     <div class="col-xs-12" style="padding: 15px 0px;">
         <div class="tableBuilder">
@@ -36,7 +36,7 @@ $selected_tab = isset($options['budget_selected_tab']) ? $options['budget_select
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="financial-plan-tab-edit {{ $selected_tab == 'taxes' ? 'active' : '' }}" data-name="taxes" data-elem_name="budget-selected-tab">
+                    <a href="#" class="financial-plan-tab-edit {{ $selected_tab == 'tax' ? 'active' : '' }}" data-name="tax" data-elem_name="budget-selected-tab">
                         <span class="num">
                          2</span>
                         <span class="label" style="width: 120px;">Income Taxes</span>
@@ -138,7 +138,7 @@ $selected_tab = isset($options['budget_selected_tab']) ? $options['budget_select
                                             <div class="step-inner form-group">
                                                 <select name="expenditure_month_year_date" class="entry-period form-control" size="1" style="float: left; width: 200px;"  data-default_value="{{ $data['default_month_year'] }}">	
                                                     @foreach ($data['months'] as $key => $value)    
-                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                                    <option value="{{ $value }}">{{ $value }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -169,6 +169,7 @@ $selected_tab = isset($options['budget_selected_tab']) ? $options['budget_select
                                 </div>
                                 <div class="col-xs-12" style="padding: 0px; text-align: right;">
                                     <button type="submit" class="btn btn-primary" id="save-expenditure">Save</button>
+                                    <a href="{{ url('plan/financial-plan-budget-delete-expenditure') }}" class="btn btn-danger" id="delete-expenditure">Delete</a>
                                     <a href="#" class="btn btn-default" id="cancel-expenditure">Cancel</a>
                                 </div>
                             </form>
@@ -191,7 +192,7 @@ $selected_tab = isset($options['budget_selected_tab']) ? $options['budget_select
                                     <div class="each-entry-title col-xs-12">{{ $row->mp_name}}</div>
                                     <div class="click-to-edit" style="margin-right: -15px;  margin-top: -34px;">
                                         <div class="tuck">
-                                            <a href="{{ url('plan/financial-plan-budget/edit/' . $row->exp_id) }}" class="edit-expenditure" data-id="{{ $row->exp_id }}" data-name="{{ $row->mp_name }}" data-start_date="{{ $row->expenditure_start_date }}" data-expected_change="{{ $row->expected_change }}" data-percentage_of_change="{{ $row->percentage_of_change }}" data-pay_per_year="{{ $row->pay_per_year }}" data-pay_amount="{{ $row->pay_amount }}">
+                                            <a href="{{ url('plan/financial-plan-budget/edit/' . $row->mp_id) }}" class="edit-purchase" data-mp_id="{{ $row->mp_id }}" data-mp_name="{{ $row->mp_name }}" data-mp_date="{{ $row->mp_date }}" data-mp_price="{{ $row->mp_price }}" data-mp_depreciate="{{ $row->mp_depreciate }}">
                                                 <div class="flag">
                                                     <span class="click-to-edit-text" id="ext-gen6"> &nbsp;</span> 
                                                 </div>
@@ -199,28 +200,10 @@ $selected_tab = isset($options['budget_selected_tab']) ? $options['budget_select
                                         </div>
                                     </div>
                                     <div class="col-xs-12" style="padding: 0px;">
-                                    <?php $count = 1; ?>
-                                    @foreach ($data['months'] as $month)
-                                        <div class="col-xs-1" style="padding: 0 5px;">
-                                            <p class="each-entry-month">{{ $month }}</p>
-                                            <?php $key = "month_" . ($count < 10 ? '0' : '') . $count; ?>
-                                            <p class="each-entry-value">&pound;{{ number_format($row->$key, 2) }}</p>
+                                        <div class="col-xs-2" style="padding: 0 5px;">
+                                            <p class="each-entry-month">{{ $row->mp_date }}</p>
+                                            <p class="each-entry-value">&pound;{{ number_format($row->mp_price, 2) }}</p>
                                         </div>
-                                        <?php $count++; ?>
-                                    @endforeach
-                                    </div>
-                                    <?php 
-                                    $year_totals = explode(",", $row->totals); 
-                                    $count = 0;
-                                    ?>
-                                    <div class="col-xs-12" style="padding: 0px;">
-                                    @foreach ($year_totals as $total)
-                                        <div class="col-xs-1" style="padding: 0 5px;">
-                                            <p class="each-entry-month">{{ 'FY' . ($row->financial_yr_forecast + $count) }}</p>
-                                            <p class="each-entry-value">&pound;{{ number_format($total, 2) }}</p>
-                                        </div>
-                                        <?php $count++; ?>
-                                    @endforeach
                                     </div>
                                 </div>
                             @endforeach
@@ -263,7 +246,7 @@ $selected_tab = isset($options['budget_selected_tab']) ? $options['budget_select
                                             <div class="step-inner form-group">
                                                 <select name="mp_date" class="entry-period form-control" size="1" style="float: left; width: 200px;"  data-default_value="{{ $data['default_month_year'] }}">	
                                                     @foreach ($data['months'] as $key => $value)    
-                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                                    <option value="{{ $value }}">{{ $value }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -274,27 +257,32 @@ $selected_tab = isset($options['budget_selected_tab']) ? $options['budget_select
                                             <div class="num"> 4</div>
                                             <h4 class="label">How do you want to depreciate this purchase?</h4>
                                             <div class="step-inner form-group">
-                                                <label class="radio inline">
-                                                    <input type="radio" value="1"/>
-                                                    First
-                                                </label>
-                                                <label class="radio">
-                                                    <input type="radio" name="mp_depreciate" class="form-control" value="0">
-                                                    Do not depreciate this purchase
-                                                </label>
+                                                <div class="col-xs-12">
+                                                    <label class="radio">
+                                                        <input type="radio" name="mp_depreciate" id="mp_depreciate_1" value="1">
+                                                        Use the Average Depreciation Period option
+                                                    </label>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <label class="radio">
+                                                        <input type="radio" name="mp_depreciate" id="mp_depreciate_0" value="0">
+                                                        Do not depreciate this purchase
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-xs-12" style="padding: 0px; text-align: right;">
                                     <button type="submit" class="btn btn-primary" id="save-purchase">Save</button>
+                                    <a href="{{ url('plan/financial-plan-budget-delete-purchase') }}"  class="btn btn-danger" id="delete-purchase">Delete</a>
                                     <a href="#" class="btn btn-default" id="cancel-purchase">Cancel</a>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                <div class="page financial-plan-tab-edit taxes-financial-plan-tab-edit" style="{{ $selected_tab == 'taxes' ? '' : 'display: none;' }}">
+                <div class="page financial-plan-tab-edit tax-financial-plan-tab-edit" style="{{ $selected_tab == 'tax' ? '' : 'display: none;' }}">
                     <div class="page-body">
                         <div id="" class="intro-block">
                             <div class="widget-content">
@@ -302,6 +290,28 @@ $selected_tab = isset($options['budget_selected_tab']) ? $options['budget_select
                                 <p>If your business is profitable in a given year, you will need to pay a variety of taxes on that profit. Enter an overall tax rate to include in your plan. This estimated rate should cover all applicable income taxes - federal, state, local, etc. Don't stress too much about this. This is business planning, not tax planning. It's good to include a reasonable allotment for taxes. If you're not sure what to put, though, a 30% rate is probably close. These taxes typically apply only when you are profitable. Any year without a profit should show zero taxes.</p>
                                 <p>Note that this rate is only for income taxes. Employee-related taxes like payroll and social welfare taxes are covered in the Personnel Plan table. Other taxes, such as property taxes, are generally best added as miscellaneous expenses.</p>
                             </div>
+                        </div>
+                        <div class="col-xs-12" style="padding: 0px;">
+                            <form id="budget-tax-form" action="{{ asset('plan/financial-plan-budget-tax') }}" method="POST">
+                                <input name="business_plan_id" value="{{ $business_plan->id }}" type="hidden"/>
+                                <div class="selected-expense">
+                                    <div class="item-header">
+                                        <h3>Income Tax Rate</h3>
+                                    </div>
+                                    <div class="expense-budget-entryMethod" style="width: 100%;">
+                                        <div class="step expense-name" style="width: 100%; padding: 20px;">
+                                            <h4 class="label">Enter your estimated rate for income taxes</h4>
+                                            <div class="step-inner form-group"  style="width: 100%; padding: 10px 0;">
+                                                <input type="text" name="bp_income_tax_in_percentage" value="{{ $business_plan->bp_income_tax_in_percentage }}" maxlength="10" class="form-control" style="width: 100px; float: left; margin-right: 15px;">
+                                                <span class="currency" style="float: left;">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12" style="padding: 0px; text-align: right;">
+                                    <button type="submit" class="btn btn-primary" id="save-tax">Save</button>
+                                </div>
+                            </form>
                         </div>
                     </div>    
                 </div>
@@ -318,7 +328,7 @@ $selected_tab = isset($options['budget_selected_tab']) ? $options['budget_select
         </div>
     </div>
     <div class="col-xs-6" style="padding: 10px 0px; text-align: right;">
-        <a class="btn btn-default back-to-outline" href="{{ url('plan/refresh-page?business_plan_id=' . $business_plan->id . '&page=financial-plan&pageurl=budget') }}" >I'm Done</a>
+        <a class="btn btn-default back-to-outline" href="{{ url('plan/financial-plan/budget/' . $business_plan->id) }}" >I'm Done</a>
     </div>
 </div> <!-- end row -->
 

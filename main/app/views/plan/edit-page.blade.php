@@ -1,7 +1,7 @@
 @section('content')
 
 <script type="text/javascript">
-    var SELECTED_SUB_PAGE = "{{ isset($sub_page_sections_data['options']) && isset($sub_page_sections_data['options']['pageurl']) ? $sub_page_sections_data['options']['pageurl'] : '' }}";
+    var SELECTED_SUB_PAGE = "{{ $section == 'index' ? '' : $section }}";
     var THE_URL = '{{ Config::get("app.url") }}';
 </script>
 

@@ -32,13 +32,13 @@ Route::get('complete_payment/{timestamp}', 'PaypalPaymentController@completePaym
 Route::get("plan", 'PlanController@create');
 Route::post("plan", 'PlanController@createSubmit');
 
-Route::get("plan/executive-summary/{id}", 'PlanController@executiveSummary');
-Route::get("plan/company/{id}", 'PlanController@company');
-Route::get("plan/products-and-services/{id}", 'PlanController@products');
-Route::get("plan/target-market/{id}", 'PlanController@targetMarket');
-Route::get("plan/strategy-and-implementation/{id}", 'PlanController@strategy');
-Route::get("plan/financial-plan/{id}", 'PlanController@financialPlan');
-Route::get("plan/financial-statements/{id}", 'PlanController@financialStatements');
+Route::get("plan/executive-summary/{section}/{id}", 'PlanController@executiveSummary');
+Route::get("plan/company/{section}/{id}", 'PlanController@company');
+Route::get("plan/products-and-services/{section}/{id}", 'PlanController@products');
+Route::get("plan/target-market/{section}/{id}", 'PlanController@targetMarket');
+Route::get("plan/strategy-and-implementation/{section}/{id}", 'PlanController@strategy');
+Route::get("plan/financial-plan/{section}/{id}", 'PlanController@financialPlan');
+Route::get("plan/financial-statements/{section}/{id}", 'PlanController@financialStatements');
 Route::get("plan/details/{id}", 'PlanController@details');
 Route::get("plan/refresh-page", 'PlanController@refreshPage');
 
@@ -47,6 +47,20 @@ Route::post("plan/financial-plan-cash-flow-projections", 'PlanController@saveFin
 
 Route::get("plan/financial-plan-budget/{id}", 'PlanController@editFinancialPlanBudget');
 Route::post("plan/financial-plan-budget-expenditure", 'PlanController@saveFinancialPlanBudgetExpenditure');
+Route::post("plan/financial-plan-budget-purchase", 'PlanController@saveFinancialPlanBudgetPurchase');
+Route::post("plan/financial-plan-budget-tax", 'PlanController@saveFinancialPlanBudgetTax');
+Route::get("plan/financial-plan-budget-delete-expenditure/{id}", 'PlanController@saveFinancialPlanBudgetDeleteExpenditure');
+Route::get("plan/financial-plan-budget-delete-purchase/{id}", 'PlanController@saveFinancialPlanBudgetDeletePurchase');
+
+
+Route::get("plan/financial-plan-human-resources/{id}", 'PlanController@editFinancialPlanHumanResources');
+Route::post("plan/financial-plan-human-resources-personnel", 'PlanController@saveFinancialPlanHumanResourcesPersonnel');
+Route::post("plan/financial-plan-human-resources-expenses", 'PlanController@saveFinancialPlanHumanResourcesExpenses');
+Route::get("plan/financial-plan-human-resources-delete-personnel/{id}", 'PlanController@saveFinancialPlanHumanResourcesDeletePersonnel');
+
+Route::get("plan/financial-plan-sales-forecast/{id}", 'PlanController@editFinancialPlanSalesForecast');
+Route::post("plan/financial-plan-sales-forecast", 'PlanController@saveFinancialPlanSalesForecast');
+Route::get("plan/financial-plan-sales-forecast-delete/{id}", 'PlanController@deleteFinancialPlanSalesForecast');
 
 Route::post("plan/details/{id}", 'PlanController@submitDetails');
 Route::post("plan/save_page", 'PlanController@savePage');

@@ -11,7 +11,7 @@
                         <span></span>
                     </a>-->
                     
-                    <a href="{{ url('plan/' . trim($main_page->pageurl) . '/' . $business_plan->id) }}" class="main-menu-link {{ $plan_main_page == $main_page->pageurl ? 'link-main-page' : '' }}">{{ $main_page->pagetitle }}</a>
+                    <a href="{{ url('plan/' . trim($main_page->pageurl) . '/index/' . $business_plan->id) }}" class="main-menu-link {{ $plan_main_page == $main_page->pageurl ? 'link-main-page' : '' }}">{{ $main_page->pagetitle }}</a>
                 </div>
 
                 @if ($plan_main_page == $main_page->pageurl)

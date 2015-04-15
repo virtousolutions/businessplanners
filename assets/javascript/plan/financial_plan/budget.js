@@ -14,7 +14,7 @@ var budget = {
 
         $('a.back-to-outline').click(function () {
             // refresh the page
-            var new_location = $(this).attr('href') + "&cash_flow_payment_type=" + $("input[name='cash-flow-payment-type']").val();
+            var new_location = $(this).attr('href') + "?b-tab=" + SELECTED_TAB;
             window.location = new_location;
             return false;
         })
@@ -70,6 +70,20 @@ var budget = {
             $("#edit-expenditure").hide();
             
             return false;
+        })
+
+        $("#delete-expenditure").click(function() {
+            if (confirm('Are you sure you want to delete this expenditure?'))
+            {
+                var id = $('#budget-expenditure-form').find("input[name='expenditure_id']").val();
+                var href = $(this).attr('href') + "/" + id;
+                $(this).attr('href', href);
+
+                return true;
+            }
+            else {
+                return false;
+            }
         })
 
         $('#budget-expenditure-form').bootstrapValidator({
@@ -180,6 +194,20 @@ var budget = {
             return false;
         })
 
+        $("#delete-purchase").click(function() {
+            if (confirm('Are you sure you want to delete this major purchase?'))
+            {
+                var id = $('#budget-purchase-form').find("input[name='mp_id']").val();
+                var href = $(this).attr('href') + "/" + id;
+                $(this).attr('href', href);
+
+                return true;
+            }
+            else {
+                return false;
+            }
+        })
+
         $('#budget-purchase-form').bootstrapValidator({
             fields: {
                 mp_name: {
@@ -219,6 +247,42 @@ var budget = {
         })
     },
 
+    initTax : function () {
+        var self = this;
+
+        $('#budget-tax-form').bootstrapValidator({
+            fields: {
+                bp_income_tax_in_percentage: {
+                    validators: {
+                        notEmpty: {
+                            message: 'This is a required field.'
+                        },
+                        numeric: {
+                            message: 'The value should be a valid number.'
+                        },
+                        between: {
+                            min: 0,
+                            max: 100,
+                            message: 'The value should be between 0 to 100.'
+                        }
+                    }
+                }
+            }
+        });
+
+        $("#budget-tax-form").submit(function() {
+            var has_errors = $(this).find('div.form-group').hasClass('has-error');
+
+            if (has_errors == true)
+            {
+                return false;
+            }
+            else {
+                return true;
+            }
+        })
+    },
+
     setExpenditureValues : function (values) {
         $("#budget-expenditure-form").find('.form-group').removeClass('has-error has-feedback');
         $("#budget-expenditure-form").find('.form-group').find('small.help-block').hide();
@@ -231,6 +295,13 @@ var budget = {
         $("select[name='expenditure_how_you_pay']").val(values['expenditure_how_you_pay']);
         $("select[name='expenditure_month_year_date']").val(values['expenditure_month_year_date']);
         $("select[name='expenditure_expected_change']").val(values['expenditure_expected_change']);
+
+        if (values['expenditure_id'] * 1 == 0) {
+            $("#delete-expenditure").hide();
+        }
+        else {
+            $("#delete-expenditure").show();
+        }
     },
 
     setPurchaseValues : function (values) {
@@ -241,7 +312,14 @@ var budget = {
         $("input[name='mp_id']").val(values['mp_id']);
         $("input[name='mp_name']").val(values['mp_name']);
         $("input[name='mp_price']").val(values['mp_price']);
-        $("input[name='mp_depreciate']").val(values['mp_depreciate']);
         $("select[name='mp_date']").val(values['mp_date']);
+        $("#mp_depreciate_" + values['mp_depreciate']).attr('checked', true);
+
+        if (values['mp_id'] * 1 == 0) {
+            $("#delete-purchase").hide();
+        }
+        else {
+            $("#delete-purchase").show();
+        }
     }
 }

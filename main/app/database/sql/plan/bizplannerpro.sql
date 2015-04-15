@@ -52,12 +52,14 @@ CREATE TABLE IF NOT EXISTS `cash_flow_projection` (
 
 DROP TABLE IF EXISTS `employee`;
 CREATE TABLE IF NOT EXISTS `employee` (
-  `emplye_id` int(110) NOT NULL AUTO_INCREMENT,
-  `emplye_name` varchar(225) NOT NULL,
-  `employee_start_date` varchar(110) NOT NULL,
-  `emplye_type` varchar(255) NOT NULL,
+  `employee_id` int(110) NOT NULL AUTO_INCREMENT,
   `employee_bp_id` int(110) NOT NULL,
-  PRIMARY KEY (`emplye_id`)
+  `employee_name` varchar(225) NOT NULL,
+  `employee_start_date` varchar(110) NOT NULL,
+  `employee_type` varchar(255) NOT NULL,
+  employee_pay_per_year BOOLEAN,
+  employee_pay_amount decimal(11,2) NOT NULL DEFAULT '0.00',
+  PRIMARY KEY (`employee_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=111 ;
 
 -- --------------------------------------------------------

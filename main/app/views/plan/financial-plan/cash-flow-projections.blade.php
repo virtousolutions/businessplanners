@@ -1,9 +1,9 @@
 @if ($data)
-<div class="col-xs-12" style="padding: 0px; margin-top: 30px;">
+<div class="col-xs-12" style="padding: 0px; margin-top: 30px; margin-bottom: 30px;">
     <h4>Cash Flow Projections</h4>
-    <div class="click-to-edit" style="margin-right: -40px;  margin-top: -30px;">
+    <div class="click-to-edit" style="margin-right: -10px;  margin-top: -30px;">
         <div class="tuck">
-            <a href="{{ url('plan/financial-plan-cash-flow-projections/' . $business_plan->id . '?payment_type=' . (isset($options['cash_flow_payment_type']) ? $options['cash_flow_payment_type'] : 'incoming')) }}" class="">
+            <a href="{{ url('plan/financial-plan-cash-flow-projections/' . $business_plan->id . '?payment_type=' . (isset($options['c-tab']) ? $options['c-tab'] : 'incoming')) }}" class="">
                 <div class="flag">
                     <span class="click-to-edit-text" id="ext-gen6"> &nbsp;</span> 
                 </div>

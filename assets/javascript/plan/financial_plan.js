@@ -22,4 +22,11 @@ $(document).ready(function () {
 
         return false;
     })
+
+    // get the selected tab value
+    $("a.financial-plan-tab-edit").each(function (i, e) {
+        if ($(e).hasClass('active')) {
+            SELECTED_TAB = $(e).data('name');
+        }
+    });
 });

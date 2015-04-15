@@ -123,7 +123,7 @@ var cash_flow_projection = {
 
         $('a.back-to-outline').click(function () {
             // refresh the page
-            var new_location = $(this).attr('href') + "&cash_flow_payment_type=" + SELECTED_TAB;
+            var new_location = $(this).attr('href') + "?c-tab=" + SELECTED_TAB;
             window.location = new_location;
             return false;
         })
