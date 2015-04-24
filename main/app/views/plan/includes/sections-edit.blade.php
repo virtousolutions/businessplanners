@@ -23,20 +23,30 @@
         <h4></h4>
         <div class="sub-page-sub-section-value-container" style="font-size: 14px; margin-bottom: 15px;">Fill up the text area below</div>
     </div>
-    <div id="sub-page-sub-sections-1" style="display: none; float: left; width: 100%;">
-    </div>
-    <a class="intro-block-toggle expanded" href="javascript:void(0);" id="ext-gen13"><span>Hide Instructions</span></a>
-    <div id="introText" class="intro-block dim-action-intro-block" style="display: block;">
-        <span class="tip"></span>
-        <div class="widget-content">
-            <p></p>
-            <span class="clear"></span>
+    <div class="col-xs-12" style="padding: 0px; display: none;" id="builder-info-container">
+        <a class="intro-block-toggle expanded" href="javascript:void(0);" id="ext-gen13"><span>Hide Instructions</span></a>
+        <div id="introText" class="intro-block dim-action-intro-block" style="display: block;">
+            <span class="tip"></span>
+            <div class="widget-content">
+                <p></p>
+                <span class="clear"></span>
+            </div>
         </div>
     </div>
     <div id="sub-page-builder-container" style="display: none; float: left; width: 100%;">
-        
     </div>
-    
+    <div id="sub-page-sub-sections-1" style="display: none; float: left; width: 100%;">
+    </div>
+    <div class="col-xs-12" style="padding: 0px;" id="edit-info-container">
+        <a class="intro-block-toggle expanded" href="javascript:void(0);" id="ext-gen13"><span>Hide Instructions</span></a>
+        <div id="introText" class="intro-block dim-action-intro-block" style="display: block;">
+            <span class="tip"></span>
+            <div class="widget-content">
+                <p></p>
+                <span class="clear"></span>
+            </div>
+        </div>
+    </div>
     <form method="post" id="form-edit-section-content" data-action_page="{{ url('plan/save_page') }}" data-action_section="{{ url('plan/save_section') }}">
         <input type="hidden" name="business_plan_id" value="{{ $business_plan->id }}"/>
         <input type="hidden" name="main_section" value="{{ $plan_main_page }}"/>
@@ -80,18 +90,29 @@
                     <span name="section_id">0</span>
                     <span name="value">{{ isset($values[$pageurl_key]) ? $values[$pageurl_key] : '' }}</span>
                     <span name="instructions">{{ isset($instructions[$i]) ? $instructions[$i] : '' }}</span>
+                    <span name="include-about-section">No</span>
+
+                    @if (
+                        !empty($sub_page_sections_data['includes']) && 
+                        isset($sub_page_sections_data['includes'][$i]) && 
+                        $sub_page_sections_data['includes'][$i] !== null)
+                    )
+                        <div name="the-builder">
+                            @include($sub_page_sections_data['includes'][$i], ['data' => $sub_page_sections_data['data'][$i], 'options' => $sub_page_sections_data['options']])
+                        </div>
+                    @endif
                 </div>
 
-            @foreach ($plan_sub_page_sections[$subpage->pageid] as $subpagesection)
-                <div class="chapter-sub-section-data chapter-sub-section-data-{{ $subpagesection->section_id }}">
-                    <span name="title">{{ $subpagesection->section_title }}</span>
-                    <span name="url">{{ $pageurl }}</span>
-                    <span name="id">{{ $subpage->pageid }}</span>
-                    <span name="section_id">{{ $subpagesection->section_id }}</span>
-                    <span name="value">{{ isset($section_values[$subpagesection->section_id]) ? $section_values[$subpagesection->section_id] : '' }}</span>
-                    <span name="instructions">{{ $subpagesection->section_desc }}</span>
-                </div>
-            @endforeach
+                @foreach ($plan_sub_page_sections[$subpage->pageid] as $subpagesection)
+                    <div class="chapter-sub-section-data chapter-sub-section-data-{{ $subpagesection->section_id }}">
+                        <span name="title">{{ $subpagesection->section_title }}</span>
+                        <span name="url">{{ $pageurl }}</span>
+                        <span name="id">{{ $subpage->pageid }}</span>
+                        <span name="section_id">{{ $subpagesection->section_id }}</span>
+                        <span name="value">{{ isset($section_values[$subpagesection->section_id]) ? $section_values[$subpagesection->section_id] : '' }}</span>
+                        <span name="instructions">{{ $subpagesection->section_desc }}</span>
+                    </div>
+                @endforeach
 
             </div>
         @else
@@ -101,15 +122,16 @@
                 <span name="id">{{ $subpage->pageid }}</span>
                 <span name="value">{{ isset($values[$pageurl_key]) ? $values[$pageurl_key] : '' }}</span>
                 <span name="instructions">{{ isset($instructions[$i]) ? $instructions[$i] : '' }}</span>
+                <span name="include-about-section">Yes</span>
 
                 @if (
                     !empty($sub_page_sections_data['includes']) && 
                     isset($sub_page_sections_data['includes'][$i]) && 
                     $sub_page_sections_data['includes'][$i] !== null)
                 )
-                <div name="the-builder">
-                    @include($sub_page_sections_data['includes'][$i], ['data' => $sub_page_sections_data['data'][$i], 'options' => $sub_page_sections_data['options']])
-                </div>
+                    <div name="the-builder">
+                        @include($sub_page_sections_data['includes'][$i], ['data' => $sub_page_sections_data['data'][$i], 'options' => $sub_page_sections_data['options']])
+                    </div>
                 @endif
             </div>
         @endif

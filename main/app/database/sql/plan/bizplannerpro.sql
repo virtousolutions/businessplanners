@@ -207,10 +207,12 @@ CREATE TABLE IF NOT EXISTS `expenditure_financial_forecast` (
 DROP TABLE IF EXISTS `loan_investment`;
 CREATE TABLE IF NOT EXISTS `loan_investment` (
   `li_id` int(110) NOT NULL AUTO_INCREMENT,
+  `loan_invest_bp_id` int(110) NOT NULL,
   `loan_invest_name` varchar(225) NOT NULL,
   `type_of_funding` varchar(225) NOT NULL,
   `loan_invest_interest_rate` decimal(11,2) NOT NULL,
-  `loan_invest_bp_id` int(110) NOT NULL,
+  `loan_invest_years_to_pay` int(5) NOT NULL,
+  `loan_invest_pays_per_years` int(3) NOT NULL,
   PRIMARY KEY (`li_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 

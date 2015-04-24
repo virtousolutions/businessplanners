@@ -393,6 +393,7 @@ div.each-entry {
 
 div.each-entry-title {
 	padding: 0 5px;
+	margin-bottom: 10px;
 }
 
 p.each-entry-month {

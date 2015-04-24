@@ -11,9 +11,7 @@ var sales = {
 
         $('a.back-to-outline').click(function () {
             // refresh the page
-            var new_location = $(this).attr('href') + "?h-tab=" + SELECTED_TAB;
-            window.location = new_location;
-            return false;
+            return true;
         })
         
         $("#add-sale").click(function() {

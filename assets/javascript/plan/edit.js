@@ -121,6 +121,21 @@ $(document).ready( function () {
                 if ($(self).attr('name') == 'save_continue') {
                     var key = values['sub_section'];
                     var data_container = $("div.chapter-section-data-" + key);
+                    
+                    // check sub sections
+                    if (data_container.find('div.chapter-sub-section-data').length > 0)  {
+                        var sub_section = data_container.find("div.chapter-sub-section-data-" + values['section_id']);
+                        var sub_section_next = sub_section.next();
+
+                        if (sub_section_next.length > 0) {
+                            var new_section_id = sub_section_next.find("span[name='section_id']").html();
+                            data_container.data('section_id', new_section_id);
+                            editSection(data_container);
+
+                            return false;
+                        }
+                    }
+
                     var next = data_container.next();
 
                     if (next.length > 0) {
@@ -138,6 +153,23 @@ $(document).ready( function () {
     $("a.back-edit-section").click(function() {
         var key = $("#form-edit-section-content").find("input[name='sub_section']").val();
         var data_container = $("div.chapter-section-data-" + key);
+
+        // check sub sections
+        if (data_container.find('div.chapter-sub-section-data').length > 0)  {
+            var section_id = $("#form-edit-section-content").find("input[name='section_id']").val();
+            // get the subpage
+            var sub_section = data_container.find("div.chapter-sub-section-data-" + section_id);
+            var sub_section_prev = sub_section.prev();
+
+            if (sub_section_prev.length > 0) {
+                var new_section_id = sub_section_prev.find("span[name='section_id']").html();
+                data_container.data('section_id', new_section_id);
+                editSection(data_container);
+
+                return false;
+            }
+        }
+        
         var prev = data_container.prev();
 
         if (prev.length > 0) {
@@ -176,25 +208,32 @@ function editSection(data_container) {
     $('#sub-page-sub-sections-1').html("");
     $('#sub-page-sub-sections-2').html("");
 
-    if (data_container.find('div.chapter-sub-section-data').length > 0)  {
-        var data2 = data_container.data();
-        var section_id = !data2['section_id'] ? 0 : data2['section_id'];
-        
-        // add the sections
-        addSubpageSections(data_container);
+    var parent_data_container = data_container;
 
-        data_container = data_container.find('div.chapter-sub-section-data-' + section_id);
+    $("#edit-info-container").hide();
+    $("#builder-info-container").hide();
+    $('#sub-page-sub-sections-1').hide();
+    $('#sub-page-sub-sections-2').hide();
+    $("#form-edit-section-content").show();
+
+    if (data_container.find('div.chapter-sub-section-data').length > 0)  {
+        // add the page sections
+        var result = addSubpageSections(data_container);
+        
+        data_container = result.data_container;
+        var section_id = result.section_id;
+        var builder = result.builder;
+        var builder_instructions = result.builder_instructions;
+        var builder_section_id = result.builder_section_id;
 
         $('#sub-page-sub-sections-1').show();
         $('#sub-page-sub-sections-2').show();
-
-        var section_id = data_container.find("span[name='section_id']").html();
     }
     else {
-        $('#sub-page-sub-sections-1').hide();
-        $('#sub-page-sub-sections-2').hide();
-
         var section_id = 0;
+        var builder = data_container.find("div[name='the-builder']");
+        var builder_instructions = data_container.find("span[name='instructions']").html();
+        var builder_section_id = 0;
     }
 
     var title = data_container.find("span[name='title']").html();
@@ -202,43 +241,49 @@ function editSection(data_container) {
     var id = data_container.find("span[name='id']").html();
     var value = data_container.find("span[name='value']").html();
     var instructions = data_container.find("span[name='instructions']").html();
-    var builder = data_container.find("div[name='the-builder']");
+    
+    if (builder != null && builder.length > 0) {
+        $("#sub-page-builder-container").html(builder.html());
 
+        var include_about = data_container.find("span[name='include-about-section']").html();
+        
+        if (include_about == 'Yes') {
+            var template = $("#edit-sub-page-section-current-template");
+            var clone = template.clone();
+            
+            clone.attr('id', '');
+            clone.find('h4').html("About " + title);
+            clone.css('margin-top', '20px');
+            clone.show();
+
+            $("#sub-page-builder-container").append(clone);
+        }
+        
+        $("#sub-page-builder-container").show();
+
+        if (builder_instructions != "") {
+            $("#builder-info-container").show();
+            $("#builder-info-container").find("div.widget-content p").html(builder_instructions);
+        }
+
+        if (builder_section_id == section_id) {
+            instructions = "";
+
+            if (include_about != 'Yes') {
+                $("#form-edit-section-content").hide();
+            }
+        }
+    }
+    
     if (section_id * 1 == 0) {
         $("div.chapter-edit-section").find("legend").html(title);
     }
+
+    if (instructions != "") {
+        $("#edit-info-container").show();
+        $("#edit-info-container").find("div.widget-content p").html(instructions);
+    }
     
-    if (instructions == "") {
-        $(".chapter-edit-section a.intro-block-toggle").hide();
-        $(".chapter-edit-section div.intro-block").hide();
-    }
-    else {
-        $(".chapter-edit-section a.intro-block-toggle").show();
-        $(".chapter-edit-section div.intro-block").show();
-    }
-
-    if (builder.length > 0) {
-        $("#sub-page-builder-container").html(builder.html());
-
-        var template = $("#edit-sub-page-section-current-template");
-        var clone = template.clone();
-        
-        clone.attr('id', '');
-        clone.find('h4').html("About " + title);
-        clone.css('margin-top', '20px');
-        clone.show();
-
-        $("#sub-page-builder-container").append(clone);
-
-        $("#sub-page-builder-container").show();
-    }
-    else {
-        $("#sub-page-builder-container").html('');
-        $("#sub-page-builder-container").hide();
-    }
-
-    $("div.chapter-edit-section").find("div.widget-content p").html(instructions);
-
     if (tinyMCE.activeEditor) {
         tinyMCE.activeEditor.setContent(value);
     }
@@ -253,9 +298,10 @@ function editSection(data_container) {
     $("div.chapter-main").hide();
     $("div.chapter-edit-section").show();
 
+    var parent_next = parent_data_container.next();
     var next = data_container.next();
 
-    if (next.length > 0) {
+    if (next.length > 0 || parent_next.length > 0) {
         $("#form-edit-section-content").find("button[name='save_continue']").show();
     }
     else {
@@ -266,13 +312,13 @@ function editSection(data_container) {
     $("a.link-edit-section-content-" + url).addClass('selected');
 
     // focus on the textbox
-    var element = $("div.rich_textarea");
-    var offset = element.offset().top - $(window).scrollTop();
+    //var element = $("div.rich_textarea");
+    //var offset = element.offset().top - $(window).scrollTop();
 
-    if(offset > window.innerHeight){
+    //if(offset > window.innerHeight){
         // Not in view so scroll to it
-        $('html,body').animate({scrollTop: offset}, 1000);
-    }
+        //$('html,body').animate({scrollTop: offset}, 1000);
+    //}
 }
 
 function addSubpageSections(div)
@@ -280,7 +326,11 @@ function addSubpageSections(div)
     var data = div.data();
     var section_id = !data['section_id'] ? 0 : data['section_id'];
     var container = $('#sub-page-sub-sections-1');
-    
+    var data_container = div.find('div.chapter-sub-section-data-' + section_id);
+    var builder = null;
+    var builder_instructions = "";
+    var builder_section_id = 0;
+
     $.each(div.children(), function(i, sub_div) {
         sub_div = $(sub_div);
         var title = sub_div.find("span[name='title']").html();
@@ -288,27 +338,27 @@ function addSubpageSections(div)
         var id = sub_div.find("span[name='id']").html();
         var s_id = sub_div.find("span[name='section_id']").html();
         var value = sub_div.find("span[name='value']").html();
+        var this_builder = sub_div.find("div[name='the-builder']");
+        
+        // we do not need to add the builder
+        if (this_builder.length > 0)
+        {
+            builder_instructions = sub_div.find("span[name='instructions']").html();
+            builder_section_id = s_id;
+            builder = this_builder;
+            return true;
+        }
         
         if (s_id == section_id) {
-            var template = $("#edit-sub-page-section-current-template");
+            var clone = $("#edit-sub-page-section-current-template").clone();
+            container.append(clone);
+            container = $('#sub-page-sub-sections-2');
         }
         else {
-            if (value == '') {
-                var template = $("#edit-sub-page-section-empty-template");
-            }
-            else {
-                var template = $("#edit-sub-page-section-with-value-template");
-            }
-        }
-
-        var clone = template.clone();
-        clone.attr('id', '');
-        clone.find('h4').html(title);
-
-        if (s_id == section_id) {
+            var clone = value == '' ? $("#edit-sub-page-section-empty-template").clone() : $("#edit-sub-page-section-with-value-template").clone();
             
-        }
-        else {
+            container.append(clone);
+
             clone.attr('data-pageurl', url);
             clone.attr('data-pageid', id);
             clone.attr('data-sectionid', s_id);
@@ -329,12 +379,16 @@ function addSubpageSections(div)
             a_elem.attr('onclick', 'javascript:return editSubpageSection(this);');
         }
 
-        container.append(clone);
+        clone.attr('id', '');
+        clone.find('h4').html(title);
         clone.show();
-
-        if (s_id == section_id)
-        {
-            container = $('#sub-page-sub-sections-2');
-        }
     })
+
+    return { 
+        data_container : data_container, 
+        section_id : section_id, 
+        builder : builder, 
+        builder_instructions : builder_instructions,
+        builder_section_id : builder_section_id
+    };
 }

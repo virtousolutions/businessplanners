@@ -22,7 +22,9 @@ extends PlanCalculatorService
 
     protected function calculate()
     {
-        $this->calculateList(SalesForecast::getAll($this->business_plan->id), 'sales');
+        $this->money_sales_monthly_totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $this->money_cost_monthly_totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $this->calculateList(SalesForecast::getAll($this->business_plan->id), 'sales', null, 'calculateMonthlySales');
 
         $this->money_sales_yearly_totals = [0, 0, 0];
         $this->money_cost_yearly_totals = [0, 0, 0];
@@ -65,21 +67,27 @@ extends PlanCalculatorService
         else {
             $this->gross_margin_yearly_percent[2] = 0;
         }
+    }
 
-        /*echo '<pre>';
-        var_dump($this->sales);
-        var_dump($this->sales_monthly_totals);
-        var_dump($this->sales_yearly_totals);
-        var_dump($this->money_sales_yearly_totals);
-        var_dump($this->money_cost_yearly_totals);
-        var_dump($this->gross_margin_yearly_totals);
-        var_dump($this->gross_margin_yearly_percent);
-        die;*/
+    protected function calculateMonthlySales($row, $key, $i)
+    {
+        $this->money_sales_monthly_totals[$i] += $row->$key * $row->price;
+        $this->money_cost_monthly_totals[$i] += $row->$key * $row->cost;
     }
 
     public function getSales()
     {
         return $this->sales;
+    }
+
+    public function getMonthlyTotalSales()
+    {
+        return $this->money_sales_monthly_totals;
+    }
+
+    public function getMonthlyTotalCosts()
+    {
+        return $this->money_cost_monthly_totals;
     }
 
     public function getYearlyTotalSales()
@@ -95,6 +103,11 @@ extends PlanCalculatorService
     public function getYearlyGrossMargin()
     {
         return $this->gross_margin_yearly_totals;
+    }
+
+    public function getMonthlyGrossMargin()
+    {
+        return $this->gross_margin_monthly_totals;
     }
 
     public function getYearlyGrossMarginPercent()

@@ -58,6 +58,25 @@ extends Eloquent
         return $id ? BudgetExpenditure::find($id) : null;
     }
 
+    public function CashFlowProjections()
+    {
+        $data = DB::table('cash_flow_projection')
+            ->select(
+                'percentage_sale as incoming_percentage', 
+                'days_collect_payments as incoming_collection', 
+                'percentage_purchase as outgoing_percentage', 
+                'days_make_payments as outgoing_collection'
+            )
+            ->where('cash_fp_bpid', $this->id)
+            ->get();
+
+        if ($data) {
+            $data = $data[0];
+        }
+
+        return $data;
+    }
+
     public function getStartYear()
     {
         if (! $this->start_year) {

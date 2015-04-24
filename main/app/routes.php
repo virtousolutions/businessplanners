@@ -62,6 +62,10 @@ Route::get("plan/financial-plan-sales-forecast/{id}", 'PlanController@editFinanc
 Route::post("plan/financial-plan-sales-forecast", 'PlanController@saveFinancialPlanSalesForecast');
 Route::get("plan/financial-plan-sales-forecast-delete/{id}", 'PlanController@deleteFinancialPlanSalesForecast');
 
+Route::get("plan/financial-plan-loans-and-investments/{id}", 'PlanController@editFinancialPlanLoans');
+Route::post("plan/financial-plan-loans-and-investments", 'PlanController@saveFinancialPlanLoans');
+Route::get("plan/financial-plan-loans-and-investments-delete/{id}", 'PlanController@deleteFinancialPlanLoans');
+
 Route::post("plan/details/{id}", 'PlanController@submitDetails');
 Route::post("plan/save_page", 'PlanController@savePage');
 Route::post("plan/save_section", 'PlanController@saveSection');

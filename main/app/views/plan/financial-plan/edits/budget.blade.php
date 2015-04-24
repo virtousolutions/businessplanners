@@ -1,5 +1,6 @@
 <?php
 $selected_tab = isset($options['selected_tab']) ? $options['selected_tab'] : 'expenses';
+$start_year = $business_plan->getStartYear();
 ?>
 @section('content')
 <div id="notification" class="col-xs-12" style="margin-bottom: 20px; padding: 0px;">
@@ -201,7 +202,7 @@ $selected_tab = isset($options['selected_tab']) ? $options['selected_tab'] : 'ex
                                     </div>
                                     <div class="col-xs-12" style="padding: 0px;">
                                         <div class="col-xs-2" style="padding: 0 5px;">
-                                            <p class="each-entry-month">{{ $row->mp_date }}</p>
+                                            <p class="each-entry-month">{{ (strpos($row->mp_date,'Year 2') !== false) ? ('FY' . ($start_year + 1)) : ((strpos($row->mp_date,'Year 3') !== false) ? ('FY' . ($start_year + 2)) : $row->mp_date) }}</p>
                                             <p class="each-entry-value">&pound;{{ number_format($row->mp_price, 2) }}</p>
                                         </div>
                                     </div>
@@ -244,10 +245,17 @@ $selected_tab = isset($options['selected_tab']) ? $options['selected_tab'] : 'ex
                                             <div class="num"> 3</div>
                                             <h4 class="label">When will you make this purchase?</h4>
                                             <div class="step-inner form-group">
-                                                <select name="mp_date" class="entry-period form-control" size="1" style="float: left; width: 200px;"  data-default_value="{{ $data['default_month_year'] }}">	
+                                                <select name="mp_date" class="entry-period form-control" size="1" style="float: left; width: 240px;"  data-default_value="{{ $data['default_month_year'] }}">	
                                                     @foreach ($data['months'] as $key => $value)    
                                                     <option value="{{ $value }}">{{ $value }}</option>
                                                     @endforeach
+                                                    <!-- add option for second year and third year --> 
+                                                    <?php
+                                                    $year_2 = sprintf('%s - %s (Year 2)', date('F Y', strtotime($data['months'][0] . " + 1 year")), date('F Y', strtotime($data['months'][0] . " + 23 months")));
+                                                    $year_3 = sprintf('%s - %s (Year 3)', date('F Y', strtotime($data['months'][0] . " + 2 years")), date('F Y', strtotime($data['months'][0] . " + 35 months")));
+                                                    ?>
+                                                    <option value="{{ $year_2 }}">{{ $year_2 }}</option>
+                                                    <option value="{{ $year_3 }}">{{ $year_3 }}</option>
                                                 </select>
                                             </div>
                                         </div>

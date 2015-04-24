@@ -519,17 +519,17 @@ Two exit strategies are common;</p>
     {
         $business_plan = BusinessPlan::find($id);
 
-        Asset::container('header')->add("financial-pla-css", "assets/css/plan/financial_plan.css");
-        Asset::container('header')->add("create-css", "assets/css/plan/widget_pages.css");
+        Asset::container('header')->add("financial-plan-css", "assets/css/plan/financial_plan.css");
+        Asset::container('header')->add("widget-css", "assets/css/plan/widget_pages.css");
         Asset::container('footer')->add('bootstrap-validator-js', 'assets/plugins/bootstrap_validator/js/bootstrapValidator.js');
         Asset::container('footer')->add("financial-plan-js", "assets/javascript/plan/financial_plan.js");
 
         $images = [
-            '',
-            '',
-            '',
-            '',
-            ''
+            'Sale_forec.gif',
+            'Pers_pan.gif',
+            'Budget.gif',
+            'chart_line.png',
+            'bookmark.png'
         ];
 
         $instructions = [
@@ -543,23 +543,11 @@ Two exit strategies are common;</p>
             '<p>Sometimes regular sales are not enough to fund growth, especially for startups. Will your business need additional funding to balance your budget, finance major purchases, or meet other objectives? This section makes it easy to determine your funding needs and to build loans, investments, credit lines, credit cards, or less-specific funding sources into your plan.</p>'
         ];
 
-        $cash_flow_data = DB::table('cash_flow_projection')
-                            ->select(
-                                'percentage_sale as incoming_percentage', 
-                                'days_collect_payments as incoming_collection', 
-                                'percentage_purchase as outgoing_percentage', 
-                                'days_make_payments as outgoing_collection'
-                            )
-                            ->where('cash_fp_bpid', $business_plan->id)
-                            ->get();
-
-        if ($cash_flow_data) {
-            $cash_flow_data = $cash_flow_data[0];
-        }
-        
+        $cash_flow_data = $business_plan->CashFlowProjections();
         $sales_calculator = new PlanSalesCalculatorService($business_plan);
         $personnel_calculator = new PlanPersonnelCalculatorService($business_plan);
-        $budget_calculator = new PlanBudgetCalculatorService($business_plan);
+        $budget_calculator = new PlanBudgetCalculatorService($business_plan, $personnel_calculator);
+        $loans_calculator = new PlanLoansCalculatorService($business_plan);
 
         $options = Input::get();
         
@@ -575,14 +563,15 @@ Two exit strategies are common;</p>
                 'plan.financial-plan.sales-forecast',
                 'plan.financial-plan.human-resources',
                 'plan.financial-plan.budget',
-                'plan.financial-plan.cash-flow-projections'
+                'plan.financial-plan.cash-flow-projections',
+                'plan.financial-plan.loans-and-investments',
             ],
             'data' => [
                 ['calculator' => $sales_calculator],
                 ['calculator' => $personnel_calculator],
                 ['calculator' => $budget_calculator],
                 $cash_flow_data,
-                null,
+                ['calculator' => $loans_calculator],
             ],
             'options' => $options
         ];
@@ -592,38 +581,55 @@ Two exit strategies are common;</p>
 
     public function financialStatements($section, $id)
     {
+        Asset::container('header')->add("financial-plan-css", "assets/css/plan/financial_plan.css");
+        Asset::container('header')->add("widget-css", "assets/css/plan/widget_pages.css");
+
+        $business_plan = BusinessPlan::find($id);
+        $sales_calculator = new PlanSalesCalculatorService($business_plan);
+        $personnel_calculator = new PlanPersonnelCalculatorService($business_plan);
+        $budget_calculator = new PlanBudgetCalculatorService($business_plan, $personnel_calculator);
+        $loans_calculator = new PlanLoansCalculatorService($business_plan);
+        $fs_calculator = new PlanFinancialStatementsCalculatorService($business_plan, $sales_calculator, $personnel_calculator, $budget_calculator, $loans_calculator);
+
         $images = [
-            '',
-            '',
-            '',
-            '',
-            ''
+            'pie_chart.png',
+            'balance_icon.png',
+            'coins_icon.png',
         ];
 
         $instructions = [
-            '',
-            '',
-            '',
-            '',
+            '<p>The profit and loss statement (also known as the "income statement") is the most common of the standard financial reports that bankers and investors will expect to see in your business plan. It shows your revenues, your expenses, and the difference between the two - that is, your net profit or "bottom line." Is your company going to make more money that it spends?</p>
+            <p>Note that the Profit and Loss Statement here is not directly editable. It is a read-only display of information from other sources. To change the P&L, go to the more detailed tables in the Financial Plan sections, and make your changes there. The P&L will update automatically.</p>',
+            '<p>The balance sheet is one of the three standard financial statements. Unlike the profit and loss statement, which measures activities and their effect on profitability during a given period, the balance sheet is a snapshot of the company\'s financial position as of the last day of the period.</p>
+            <p>How much cash is on hand? What additional value do you have available in major purchases ("assets"), outstanding payments due in from customers, and unsold inventory? How much do you owe for unpaid bills, loan and credit-line payments, and so on? Is the company producing long-term value for its owners or stockholders? Lenders and investors will review the balance sheet carefully to better understand the company\'s strengths and prospects.</p>
+            <p>Note that the Balance Sheet shown here is not directly editable. It is a read-only display of information from other sources. To change the balance sheet, go to the more detailed tables in the Financial Plan sections, and make changes there. The balance sheet statement will update automatically.</p>',
             ''
         ];
 
-        $sub_page_details = [
-            ['Profit and Loss Statement', 'Net Profit (or Loss) by Year', 'Gross Margin by Year', 'About the Profit and Loss Statement'],
-            ['Balance Sheet', 'About Balance Sheet'],
-            ['Cash Flow Statement', 'About Cash Flow Statement'],
-        ];
-
-        $sub_page_add_sections = [
-            'views.plan.financial-plan.cash-flow',
-            '',
-            '',
-            '',
-            ''
+        $sub_page_sections_data = [
+            'details' => [
+                ['Profit and Loss Statement', 'Net Profit (or Loss) by Year', 'Gross Margin by Year', 'About the Profit and Loss Statement'],
+                ['Balance Sheet', 'About Balance Sheet'],
+                ['Cash Flow Statement', 'About Cash Flow Statement'],
+            ],
+            'includes' => [
+                'plan.financial-statements.profit-and-loss',
+                'plan.financial-statements.balance-sheet'
+            ],
+            'data' => [
+                [
+                    'sales_calculator' => $sales_calculator, 
+                    'personnel_calculator' => $personnel_calculator, 
+                    'budget_calculator' => $budget_calculator,
+                    'fs_calculator' => $fs_calculator
+                ],
+                ['calculator' => $fs_calculator],
+                ['calculator' => $budget_calculator],
+            ],
+            'options' => []
         ];
         
-        $business_plan = BusinessPlan::find($id);
-        $this->displayPage($business_plan, $images, $instructions, $section);
+        $this->displayPage($business_plan, $images, $instructions, $section, $sub_page_sections_data);
     }
 
     public function savePage()
@@ -982,5 +988,60 @@ Two exit strategies are common;</p>
         $obj = SalesForecast::find($id);
         $obj->delete();
         return Redirect::to('plan/financial-plan-sales-forecast/' . $obj->businessPlan()->id)->withMessage("Successfully deleted a sales forecast");
+    }
+
+    public function editFinancialPlanLoans($id)
+    {
+        $business_plan = BusinessPlan::find($id);
+        View::share('business_plan', $business_plan);
+
+        Asset::container('header')->add("financial-plan-css", "assets/css/plan/financial_plan.css");
+        Asset::container('header')->add("create-css", "assets/css/plan/widget_pages.css");
+        Asset::container('footer')->add('bootstrap-validator-js', 'assets/plugins/bootstrap_validator/js/bootstrapValidator.js');
+        Asset::container('footer')->add("financial-plan-js", "assets/javascript/plan/financial_plan.js");
+        Asset::container('footer')->add("financial-plan-loans-js", "assets/javascript/plan/financial_plan/loans_and_investments.js");
+
+        $loans = Loan::getAll($business_plan->id);
+        
+        $data = [
+            'months' => $business_plan->getStartMonths(),
+            'default_month_year' => $business_plan->bp_financial_start_date,
+            'start_year' => $business_plan->getStartYear(),
+            'loans' => $loans
+        ];
+
+        $this->layout = View::make('layout.plan');
+        $this->layout->content = View::make('plan.financial-plan.edits.loans-and-investments', $data);
+    }
+
+    public function saveFinancialPlanLoans()
+    {
+        $input = Input::get();
+
+        $business_plan = BusinessPlan::find($input['business_plan_id']);
+        $li_id = $input['li_id'];
+        $input['loan_invest_bp_id'] = $input['business_plan_id'];
+        $input['type_of_funding'] = 'Loan';
+
+        unset($input['li_id']);
+
+        if ($li_id) {
+            $obj = Loan::find($li_id);
+            $obj->update($input);
+            $msg = "Successfully saved your changes";
+        }
+        else {
+            $obj = Loan::create($input);
+            $msg = "Successfully added a loan projection";
+        }
+
+        return Redirect::to('plan/financial-plan-loans-and-investments/' . $business_plan->id)->withMessage($msg);
+    }
+
+    public function deleteFinancialPlanLoans($id)
+    {
+        $obj = Loan::find($id);
+        $obj->delete();
+        return Redirect::to('plan/financial-plan-loans-and-investments/' . $obj->businessPlan()->id)->withMessage("Successfully deleted a loan projection");
     }
 }
