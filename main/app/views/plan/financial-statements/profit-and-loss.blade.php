@@ -184,7 +184,7 @@
 </div>
 
 <?php if($net_profit[0] >= 100000) : ?>
-<div class="col-xs-12" style="margin-top: 30px;">
+<div class="col-xs-12 alert alert-success" style="margin-top: 30px;">
     <p>
         Did you know...
     </p>
@@ -198,6 +198,30 @@
     </p>
 </div>
 <?php endif; ?>
+
+<div class="col-xs-12" style="padding: 0px; margin-top: 20px;">
+    @if (!empty($data_sales))
+    <div style="width: 100%; margin-top: 15px;">
+    {{ $data['sales_graph']['monthly_sales']['name'] }}
+    </div>
+    <img src="{{ asset($data['sales_graph']['monthly_sales']['path']) }}" style="width: 100%;"/>
+    <div style="width: 100%; margin-top: 15px;">
+    {{ $data['sales_graph']['monthly_gross_margin']['name'] }}
+    </div>
+    <img src="{{ asset($data['sales_graph']['monthly_gross_margin']['path']) }}" style="width: 100%;"/>
+    @endif
+    @if (!empty($expenses))
+    <div style="width: 100%; margin-top: 15px;">
+    {{ $data['budget_graph']['monthly_expenses']['name'] }}
+    </div>
+    <img src="{{ asset($data['budget_graph']['monthly_expenses']['path']) }}" style="width: 100%;"/>
+    @endif
+    <div style="width: 100%; margin-top: 15px;">
+    {{ $data['pl_graph']['yearly_net_profit']['name'] }}
+    </div>
+    <img src="{{ asset($data['pl_graph']['yearly_net_profit']['path']) }}" style="width: 100%;"/>
+</div>
+
 
 <div class="col-xs-12" style="margin-bottom: 50px;">
 </div>

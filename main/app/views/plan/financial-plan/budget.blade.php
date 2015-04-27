@@ -1,5 +1,6 @@
 <?php
     $budget_calculator = $data['calculator'];
+    $graphs = $data['graphs'];
     $expenses = $budget_calculator->getExpenses();
     $total_expenses = $budget_calculator->getExpensesYearlyTotals();
     $purchases = $budget_calculator->getPurchases();
@@ -108,6 +109,16 @@
             <div class="col-xs-4" style="padding-right: 0px;">&pound;{{ number_format($total_purchases[2], 2) }}</div>
         </div>
     </div>
+</div>
+<div class="col-xs-12" style="padding: 0px; margin-top: 20px;">
+    @foreach ($graphs as $graph)
+    <div style="width: 100%; margin-top: 15px;">
+    {{ $graph['name'] }}
+    </div>
+    <img src="{{ asset($graph['path']) }}" style="width: 100%;"/>
+    @endforeach
+</div>
+<div class="col-xs-12" style="padding: 0px; margin-top: 20px;">
 </div>
 @else
 <div class="col-xs-12" style="padding: 0px; margin-top: 20px;">

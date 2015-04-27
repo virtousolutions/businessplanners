@@ -550,7 +550,13 @@ Two exit strategies are common;</p>
         $loans_calculator = new PlanLoansCalculatorService($business_plan);
 
         $options = Input::get();
-        
+
+        $sales_graph = new SalesGraphService($business_plan, $sales_calculator);
+        $sales_graph_images = $sales_graph->getGraphs();
+
+        $budget_graph = new BudgetGraphService($business_plan, $budget_calculator);
+        $budget_graph_images = $budget_graph->getGraphs();
+
         $sub_page_sections_data = [
             'details' => [
                 ['Sales Forecast Table', 'Gross Margin by Year', 'About Sales Forecast'],
@@ -567,9 +573,9 @@ Two exit strategies are common;</p>
                 'plan.financial-plan.loans-and-investments',
             ],
             'data' => [
-                ['calculator' => $sales_calculator],
+                ['calculator' => $sales_calculator, 'graphs' => $sales_graph_images],
                 ['calculator' => $personnel_calculator],
-                ['calculator' => $budget_calculator],
+                ['calculator' => $budget_calculator, 'graphs' => $budget_graph_images],
                 $cash_flow_data,
                 ['calculator' => $loans_calculator],
             ],
@@ -585,11 +591,28 @@ Two exit strategies are common;</p>
         Asset::container('header')->add("widget-css", "assets/css/plan/widget_pages.css");
 
         $business_plan = BusinessPlan::find($id);
+        $cash_flow_data = $business_plan->CashFlowProjections();
+        
+        if (empty($cash_flow_data)) {
+            return $this->displayPage($business_plan, [], [], $section, ['layout_page' => "plan.cannot-access"]);
+        }
+
         $sales_calculator = new PlanSalesCalculatorService($business_plan);
         $personnel_calculator = new PlanPersonnelCalculatorService($business_plan);
         $budget_calculator = new PlanBudgetCalculatorService($business_plan, $personnel_calculator);
         $loans_calculator = new PlanLoansCalculatorService($business_plan);
         $fs_calculator = new PlanFinancialStatementsCalculatorService($business_plan, $sales_calculator, $personnel_calculator, $budget_calculator, $loans_calculator);
+
+        $sales_graph = new SalesGraphService($business_plan, $sales_calculator);
+        $sales_graph_images = $sales_graph->getGraphs();
+
+        $budget_graph = new BudgetGraphService($business_plan, $budget_calculator);
+        $budget_graph_images = $budget_graph->getGraphs();
+
+        $pl_graph = new ProfitAndLossGraphService($business_plan, $fs_calculator);
+        $pl_graph_images = $pl_graph->getGraphs();
+
+        
 
         $images = [
             'pie_chart.png',
@@ -624,7 +647,10 @@ Two exit strategies are common;</p>
                     'sales_calculator' => $sales_calculator, 
                     'personnel_calculator' => $personnel_calculator, 
                     'budget_calculator' => $budget_calculator,
-                    'fs_calculator' => $fs_calculator
+                    'fs_calculator' => $fs_calculator,
+                    'sales_graph' => $sales_graph_images,
+                    'budget_graph' => $budget_graph_images,
+                    'pl_graph' => $pl_graph_images
                 ],
                 ['calculator' => $fs_calculator],
                 ['calculator' => $fs_calculator],

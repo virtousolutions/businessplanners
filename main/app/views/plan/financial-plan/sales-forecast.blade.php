@@ -1,11 +1,12 @@
 <?php
     $calculator = $data['calculator'];
+    $graphs = $data['graphs'];
     $data_sales = $calculator->getSales();
     $start_year = $business_plan->getStartYear();
 ?>
 
 @if (!empty($data_sales))
-<div class="col-xs-12" style="padding: 0px; margin-bottom: 50px; margin-top: 50px;">
+<div class="col-xs-12" style="padding: 0px; margin-bottom: 20px; margin-top: 50px;">
     <h4>Sales Forecast Table</h4>
     <div class="click-to-edit" style="margin-right: -10px;  margin-top: -30px;">
         <div class="tuck">
@@ -161,6 +162,16 @@
             <div class="col-xs-4" style="padding-right: 0px;">{{ number_format($gross_margin_percent[2], 2) }}%</div>
         </div>
     </div>
+</div>
+<div class="col-xs-12" style="padding: 0px; margin-top: 20px;">
+    @foreach ($graphs as $graph)
+    <div style="width: 100%; margin-top: 15px;">
+    {{ $graph['name'] }}
+    </div>
+    <img src="{{ asset($graph['path']) }}" style="width: 100%;"/>
+    @endforeach
+</div>
+<div class="col-xs-12" style="padding: 0px; margin-top: 20px;">
 </div>
 @else
 <div class="col-xs-12" style="padding: 0px; margin-top: 20px;">

@@ -13,6 +13,7 @@ extends PlanCalculatorService
     protected $gross_margin_yearly_totals;
     protected $gross_margin_yearly_percent;
     protected $gross_margin_monthly_totals;
+    protected $gross_margin_monthly_percent;
     
     public function __construct(BusinessPlan $bp)
     {
@@ -22,28 +23,16 @@ extends PlanCalculatorService
 
     protected function calculate()
     {
-        $this->money_sales_monthly_totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        $this->money_cost_monthly_totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        $this->calculateList(SalesForecast::getAll($this->business_plan->id), 'sales', null, 'calculateMonthlySales');
-
         $this->money_sales_yearly_totals = [0, 0, 0];
         $this->money_cost_yearly_totals = [0, 0, 0];
         $this->gross_margin_yearly_totals = [0, 0, 0];
         $this->gross_margin_yearly_percent = [0, 0, 0];
+        $this->money_sales_monthly_totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $this->money_cost_monthly_totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $this->gross_margin_monthly_totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $this->gross_margin_monthly_percent = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-        foreach ($this->sales as $index => $sale) {
-            $sale->total_sales = [$sale->totals[0] * $sale->price, $sale->totals[1] * $sale->price, $sale->totals[2] * $sale->price];
-
-            $this->money_sales_yearly_totals[0] += $sale->total_sales[0];
-            $this->money_sales_yearly_totals[1] += $sale->total_sales[1];
-            $this->money_sales_yearly_totals[2] += $sale->total_sales[2];
-
-            $sale->total_costs = [$sale->totals[0] * $sale->cost, $sale->totals[1] * $sale->cost, $sale->totals[2] * $sale->cost];
-
-            $this->money_cost_yearly_totals[0] += $sale->total_costs[0];
-            $this->money_cost_yearly_totals[1] += $sale->total_costs[1];
-            $this->money_cost_yearly_totals[2] += $sale->total_costs[2];
-        }
+        $this->calculateList(SalesForecast::getAll($this->business_plan->id), 'sales', null, 'calculateMonthlySales', 'calculateYearlylySales');
 
         $this->gross_margin_yearly_totals[0] = ($this->money_sales_yearly_totals[0] - $this->money_cost_yearly_totals[0]);
         $this->gross_margin_yearly_totals[1] = ($this->money_sales_yearly_totals[1] - $this->money_cost_yearly_totals[1]);
@@ -69,10 +58,27 @@ extends PlanCalculatorService
         }
     }
 
+    protected function calculateYearlylySales(&$row)
+    {
+        $row->total_sales = [$row->totals[0] * $row->price, $row->totals[1] * $row->price, $row->totals[2] * $row->price];
+
+        $this->money_sales_yearly_totals[0] += $row->total_sales[0];
+        $this->money_sales_yearly_totals[1] += $row->total_sales[1];
+        $this->money_sales_yearly_totals[2] += $row->total_sales[2];
+
+        $row->total_costs = [$row->totals[0] * $row->cost, $row->totals[1] * $row->cost, $row->totals[2] * $row->cost];
+
+        $this->money_cost_yearly_totals[0] += $row->total_costs[0];
+        $this->money_cost_yearly_totals[1] += $row->total_costs[1];
+        $this->money_cost_yearly_totals[2] += $row->total_costs[2];
+    }
+
     protected function calculateMonthlySales($row, $key, $i)
     {
         $this->money_sales_monthly_totals[$i] += $row->$key * $row->price;
         $this->money_cost_monthly_totals[$i] += $row->$key * $row->cost;
+        $this->gross_margin_monthly_totals[$i] = $this->money_sales_monthly_totals[$i] - $this->money_cost_monthly_totals[$i];
+        $this->gross_margin_monthly_percent[$i] = $this->money_sales_monthly_totals[$i] > 0 ? (($this->gross_margin_monthly_totals[$i] / $this->money_sales_monthly_totals[$i]) * 100) : 0;
     }
 
     public function getSales()
@@ -113,5 +119,10 @@ extends PlanCalculatorService
     public function getYearlyGrossMarginPercent()
     {
         return $this->gross_margin_yearly_percent;
+    }
+
+    public function getMonthlyGrossMarginPercent()
+    {
+        return $this->gross_margin_monthly_percent;
     }
 }

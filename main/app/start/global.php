@@ -18,6 +18,7 @@ ClassLoader::addDirectories(array(
 	app_path().'/models',
 	app_path().'/services',
     app_path().'/services/plan',
+    app_path().'/services/graph',
 	app_path().'/lib',
 	app_path().'/database/seeds',
 

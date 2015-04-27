@@ -49,7 +49,7 @@ class PlanCalculatorService
         $this->$name_monthly_totals = $monthly_totals;
     }
 
-    public function formatNumberDisplay($num, $decimal_places = 2, $prefix = "&pound;", $suffix = "")
+    public static function formatNumberDisplay($num, $decimal_places = 2, $prefix = "&pound;", $suffix = "")
     {
         $pattern = $num < 0 ? "(%s%s%s)" : "%s%s%s";
         $num     = number_format(abs($num), $decimal_places);
