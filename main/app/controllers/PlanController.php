@@ -603,7 +603,9 @@ Two exit strategies are common;</p>
             '<p>The balance sheet is one of the three standard financial statements. Unlike the profit and loss statement, which measures activities and their effect on profitability during a given period, the balance sheet is a snapshot of the company\'s financial position as of the last day of the period.</p>
             <p>How much cash is on hand? What additional value do you have available in major purchases ("assets"), outstanding payments due in from customers, and unsold inventory? How much do you owe for unpaid bills, loan and credit-line payments, and so on? Is the company producing long-term value for its owners or stockholders? Lenders and investors will review the balance sheet carefully to better understand the company\'s strengths and prospects.</p>
             <p>Note that the Balance Sheet shown here is not directly editable. It is a read-only display of information from other sources. To change the balance sheet, go to the more detailed tables in the Financial Plan sections, and make changes there. The balance sheet statement will update automatically.</p>',
-            ''
+            '<p>Cash flow is the most important aspect of your business - period. Profitability is important in the long term, but as many entrepreneurs have learned the hard way, it is quite possible to be profitable on paper up until the moment your business fails. There is a big difference between money due in soon and cash on hand today, especially when it comes time to place orders or pay bills.</p>
+            <p>The cash flow statement - the third of the three most common financial statements - is a valuable tool for understanding and planning your cash flow. The cash flow statement is not a snapshot like the balance sheet. Instead, it measures the change in cash during a period. How much money did you start and end with? What changed in between to make it go up or down? This view of future cash is one of the most important things about business planning. It enables you to see whether your plans, if executed well, will produce and maintain a sustainable business.</p>
+            <p>Note that the Cash Flow Statement shown here is not directly editable. It is a read-only display of information from other sources. To change the cash flow, go to the more detailed tables in the Financial Plan sections, and make changes there. The cash flow statement will update automatically.</p>'
         ];
 
         $sub_page_sections_data = [
@@ -614,7 +616,8 @@ Two exit strategies are common;</p>
             ],
             'includes' => [
                 'plan.financial-statements.profit-and-loss',
-                'plan.financial-statements.balance-sheet'
+                'plan.financial-statements.balance-sheet',
+                'plan.financial-statements.cash-flow'
             ],
             'data' => [
                 [
@@ -624,7 +627,7 @@ Two exit strategies are common;</p>
                     'fs_calculator' => $fs_calculator
                 ],
                 ['calculator' => $fs_calculator],
-                ['calculator' => $budget_calculator],
+                ['calculator' => $fs_calculator],
             ],
             'options' => []
         ];
@@ -1001,13 +1004,13 @@ Two exit strategies are common;</p>
         Asset::container('footer')->add("financial-plan-js", "assets/javascript/plan/financial_plan.js");
         Asset::container('footer')->add("financial-plan-loans-js", "assets/javascript/plan/financial_plan/loans_and_investments.js");
 
-        $loans = Loan::getAll($business_plan->id);
+        $fundings = Fund::getAll($business_plan->id);
         
         $data = [
             'months' => $business_plan->getStartMonths(),
             'default_month_year' => $business_plan->bp_financial_start_date,
             'start_year' => $business_plan->getStartYear(),
-            'loans' => $loans
+            'fundings' => $fundings
         ];
 
         $this->layout = View::make('layout.plan');
@@ -1021,17 +1024,16 @@ Two exit strategies are common;</p>
         $business_plan = BusinessPlan::find($input['business_plan_id']);
         $li_id = $input['li_id'];
         $input['loan_invest_bp_id'] = $input['business_plan_id'];
-        $input['type_of_funding'] = 'Loan';
-
+        
         unset($input['li_id']);
 
         if ($li_id) {
-            $obj = Loan::find($li_id);
+            $obj = Fund::find($li_id);
             $obj->update($input);
             $msg = "Successfully saved your changes";
         }
         else {
-            $obj = Loan::create($input);
+            $obj = Fund::create($input);
             $msg = "Successfully added a loan projection";
         }
 
@@ -1040,7 +1042,7 @@ Two exit strategies are common;</p>
 
     public function deleteFinancialPlanLoans($id)
     {
-        $obj = Loan::find($id);
+        $obj = Fund::find($id);
         $obj->delete();
         return Redirect::to('plan/financial-plan-loans-and-investments/' . $obj->businessPlan()->id)->withMessage("Successfully deleted a loan projection");
     }

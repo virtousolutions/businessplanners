@@ -35,33 +35,33 @@
     <div class="data-title">
         <div class="col-xs-5" style="padding-left: 0px; font-weight: bold;">Revenue</div>
         <div class="col-xs-7" style="padding: 0px; font-weight: bold; text-align: right;">
-            <div class="col-xs-4">&pound;{{ number_format($total_sales[0], 2) }}</div>
-            <div class="col-xs-4">&pound;{{ number_format($total_sales[1], 2) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">&pound;{{ number_format($total_sales[2], 2) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($total_sales[0]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($total_sales[1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($total_sales[2]) }}</div>
         </div>
     </div>
     <div class="data-title">
         <div class="col-xs-5" style="padding-left: 0px; font-weight: bold;">Direct Cost</div>
         <div class="col-xs-7" style="padding: 0px; font-weight: bold; text-align: right;">
-            <div class="col-xs-4">&pound;{{ number_format($total_costs[0], 2) }}</div>
-            <div class="col-xs-4">&pound;{{ number_format($total_costs[1], 2) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">&pound;{{ number_format($total_costs[2], 2) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($total_costs[0]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($total_costs[1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($total_costs[2]) }}</div>
         </div>
     </div>
     <div class="data-row" style="margin-top: 15px;">
         <div class="col-xs-5" style="padding-left: 0px;">Gross Margin</div>
         <div class="col-xs-7" style="padding: 0px; text-align: right;">
-            <div class="col-xs-4">&pound;{{ number_format($gross_margin[0], 2) }}</div>
-            <div class="col-xs-4">&pound;{{ number_format($gross_margin[1], 2) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">&pound;{{ number_format($gross_margin[2], 2) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($gross_margin[0]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($gross_margin[1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($gross_margin[2]) }}</div>
         </div>
     </div>
     <div class="data-title" style="margin-top: 0px;">
         <div class="col-xs-5" style="padding-left: 0px; font-weight: bold;">Gross Margin %</div>
         <div class="col-xs-7" style="padding: 0px; font-weight: bold; text-align: right;">
-            <div class="col-xs-4">{{ number_format($gross_margin_percent[0], 2) }}</div>
-            <div class="col-xs-4">{{ number_format($gross_margin_percent[1], 2) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">{{ number_format($gross_margin_percent[2], 2) }}</div>
+            <div class="col-xs-4">{{ number_format($gross_margin_percent[0]) }}%</div>
+            <div class="col-xs-4">{{ number_format($gross_margin_percent[1]) }}%</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ number_format($gross_margin_percent[2]) }}%</div>
         </div>
     </div>
 </div>
@@ -84,9 +84,9 @@
             Salary
         </div>
         <div class="col-xs-7" style="padding: 0px; text-align: right;">
-            <div class="col-xs-4">&pound;{{ number_format($personnels[0], 2) }}</div>
-            <div class="col-xs-4">&pound;{{ number_format($personnels[1], 2) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">&pound;{{ number_format($personnels[2], 2) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($personnels[0]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($personnels[1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($personnels[2]) }}</div>
         </div>
     </div>
     <div class="data-row">
@@ -94,9 +94,9 @@
             Employee Related Expenses
         </div>
         <div class="col-xs-7" style="padding: 0px; text-align: right;">
-            <div class="col-xs-4">&pound;{{ number_format($yearly_totals[0], 2) }}</div>
-            <div class="col-xs-4">&pound;{{ number_format($yearly_totals[1], 2) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">&pound;{{ number_format($yearly_totals[2], 2) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($yearly_totals[0]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($yearly_totals[1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($yearly_totals[2]) }}</div>
         </div>
     </div>
     @foreach ($expenses as $row)
@@ -105,9 +105,9 @@
                 {{ $row->expenditure_name}}
             </div>
             <div class="col-xs-7" style="padding: 0px; text-align: right;">
-                <div class="col-xs-4">&pound;{{ number_format($row->totals[0], 2) }}</div>
-                <div class="col-xs-4">&pound;{{ number_format($row->totals[1], 2) }}</div>
-                <div class="col-xs-4" style="padding-right: 0px;">&pound;{{ number_format($row->totals[2], 2) }}</div>
+                <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($row->totals[0]) }}</div>
+                <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($row->totals[1]) }}</div>
+                <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($row->totals[2]) }}</div>
             </div>
         </div>
     @endforeach
@@ -117,9 +117,9 @@
             Total Expenses
         </div>
         <div class="col-xs-7" style="padding: 0px; font-weight: bold; text-align: right;">
-            <div class="col-xs-4">&pound;{{ number_format($total_expenses[0], 2) }}</div>
-            <div class="col-xs-4">&pound;{{ number_format($total_expenses[1], 2) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">&pound;{{ number_format($total_expenses[2], 2) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($total_expenses[0]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($total_expenses[1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($total_expenses[2]) }}</div>
         </div>
     </div>
 </div>
@@ -132,9 +132,9 @@
             Operating Income
         </div>
         <div class="col-xs-7" style="padding: 0px; font-weight: bold; text-align: right;">
-            <div class="col-xs-4">&pound;{{ number_format($operating_income[0], 2) }}</div>
-            <div class="col-xs-4">&pound;{{ number_format($operating_income[0], 2) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">&pound;{{ number_format($operating_income[0], 2) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($operating_income[0]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($operating_income[1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($operating_income[2]) }}</div>
         </div>
     </div>
 </div>
@@ -144,41 +144,41 @@
     <div class="data-row">
         <div class="col-xs-5" style="padding-left: 0px;">Interest Incurred</div>
         <div class="col-xs-7" style="padding: 0px; text-align: right;">
-            <div class="col-xs-4">&pound;{{ number_format($interests[0], 2) }}</div>
-            <div class="col-xs-4">&pound;{{ number_format($interests[1], 2) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">&pound;{{ number_format($interests[2], 2) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($interests[0]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($interests[1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($interests[2]) }}</div>
         </div>
     </div>
     <div class="data-row">
         <div class="col-xs-5" style="padding-left: 0px;">Depreciation and Amortization</div>
         <div class="col-xs-7" style="padding: 0px; text-align: right;">
-            <div class="col-xs-4">&pound;{{ number_format($depreciation[0], 2) }}</div>
-            <div class="col-xs-4">&pound;{{ number_format($depreciation[1], 2) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">&pound;{{ number_format($depreciation[2], 2) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($depreciation[0]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($depreciation[1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($depreciation[2]) }}</div>
         </div>
     </div>
     <div class="data-row">
         <div class="col-xs-5" style="padding-left: 0px;">Income Taxes</div>
         <div class="col-xs-7" style="padding: 0px; text-align: right;">
-            <div class="col-xs-4">&pound;{{ number_format($tax[0], 2) }}</div>
-            <div class="col-xs-4">&pound;{{ number_format($tax[1], 2) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">&pound;{{ number_format($tax[2], 2) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($tax[0]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($tax[1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($tax[2]) }}</div>
         </div>
     </div>
     <div class="data-row" style="font-weight: bold;">
         <div class="col-xs-5" style="padding-left: 0px;">Net Profit</div>
         <div class="col-xs-7" style="padding: 0px; text-align: right;">
-            <div class="col-xs-4">&pound;{{ number_format($net_profit[0], 2) }}</div>
-            <div class="col-xs-4">&pound;{{ number_format($net_profit[1], 2) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">&pound;{{ number_format($net_profit[2], 2) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($net_profit[0]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($net_profit[1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($net_profit[2]) }}</div>
         </div>
     </div>
     <div class="data-title" style="margin-top: 0px;">
         <div class="col-xs-5" style="padding-left: 0px;">Net Profit / Sales</div>
         <div class="col-xs-7" style="padding: 0px; text-align: right;">
-            <div class="col-xs-4">{{ number_format(($net_profit[0] / $total_sales[0]) * 100, 2) }}%</div>
-            <div class="col-xs-4">{{ number_format(($net_profit[1] / $total_sales[1]) * 100, 2) }}%</div>
-            <div class="col-xs-4" style="padding-right: 0px;">{{ number_format(($net_profit[2] / $total_sales[2]) * 100, 2) }}%</div>
+            <div class="col-xs-4">{{ number_format(($net_profit[0] / $total_sales[0]) * 100) }}%</div>
+            <div class="col-xs-4">{{ number_format(($net_profit[1] / $total_sales[1]) * 100) }}%</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ number_format(($net_profit[2] / $total_sales[2]) * 100) }}%</div>
         </div>
     </div>
 </div>

@@ -18,6 +18,7 @@ var loans = {
             var values = {
                 'li_id' : '0', 
                 'loan_invest_name' : '', 
+                'type_of_funding' : 'Loan',
                 'loan_invest_interest_rate' : 0,
                 'loan_invest_years_to_pay' : 1,
                 'loan_invest_pays_per_years' : 1,
@@ -40,6 +41,7 @@ var loans = {
             var values = {
                 'li_id' : data.li_id, 
                 'loan_invest_name' : data.loan_invest_name, 
+                'type_of_funding' : data.type_of_funding,
                 'loan_invest_interest_rate' : data.loan_invest_interest_rate,
                 'loan_invest_years_to_pay' : data.loan_invest_years_to_pay,
                 'loan_invest_pays_per_years' : data.loan_invest_pays_per_years,
@@ -74,6 +76,10 @@ var loans = {
             else {
                 return false;
             }
+        });
+
+        $("select[name='type_of_funding']").change(function () {
+            self.toggleLoanFundingFields();
         });
 
         $('#loan-form').bootstrapValidator({
@@ -297,6 +303,7 @@ var loans = {
 
         $("input[name='li_id']").val(values['li_id']);
         $("input[name='loan_invest_name']").val(values['loan_invest_name']);
+        $("select[name='type_of_funding']").val(values['type_of_funding']);
         $("input[name='loan_invest_interest_rate']").val(values['loan_invest_interest_rate']);
         $("input[name='loan_invest_years_to_pay']").val(values['loan_invest_years_to_pay']);
         $("input[name='loan_invest_pays_per_years']").val(values['loan_invest_pays_per_years']);
@@ -315,5 +322,16 @@ var loans = {
         else {
             $("#delete-loan").show();
         }
+
+        this.toggleLoanFundingFields();
     },
+
+    toggleLoanFundingFields : function() {
+        if ($("select[name='type_of_funding']").val() == 'Loan') {
+            $("#loan_funding_fields").show();
+        }
+        else {
+            $("#loan_funding_fields").hide();
+        }
+    }
 }

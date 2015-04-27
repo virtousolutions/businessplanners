@@ -1,6 +1,6 @@
 <?php
 
-class Loan
+class Fund
 extends Eloquent
 {
     protected $table = "loan_investment";
@@ -118,7 +118,6 @@ extends Eloquent
                 )
                 ->join('loan_investment_12m_received', 'loan_investment.li_id', '=', 'loan_investment_12m_received.limr_loan_investment_id')
                 ->where('loan_invest_bp_id', $id)
-                ->where('type_of_funding', 'Loan')
                 ->get();
 
          return $data ? $data : [];

@@ -156,9 +156,9 @@
     <div class="data-title" style="margin-top: 0px;">
         <div class="col-xs-5" style="padding-left: 0px; font-weight: bold;">Gross Margin %</div>
         <div class="col-xs-7" style="padding: 0px; font-weight: bold; text-align: right;">
-            <div class="col-xs-4">{{ number_format($gross_margin_percent[0], 2) }}</div>
-            <div class="col-xs-4">{{ number_format($gross_margin_percent[1], 2) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">{{ number_format($gross_margin_percent[2], 2) }}</div>
+            <div class="col-xs-4">{{ number_format($gross_margin_percent[0], 2) }}%</div>
+            <div class="col-xs-4">{{ number_format($gross_margin_percent[1], 2) }}%</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ number_format($gross_margin_percent[2], 2) }}%</div>
         </div>
     </div>
 </div>

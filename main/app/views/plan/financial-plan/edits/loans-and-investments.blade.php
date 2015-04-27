@@ -26,9 +26,13 @@
                             </div>
                         </div>
                         <div class="col-xs-12" style="padding: 0px;" id="loans-list">
-                            @foreach ($loans as $row)
+                            @foreach ($fundings as $row)
                                 <div class="each-entry col-xs-12">
-                                    <div class="each-entry-title col-xs-12">{{ $row->loan_invest_name}}<span style="font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Loan at {{ number_format($row->loan_invest_interest_rate, 2) }}% Interest</span></div>
+                                    <div class="each-entry-title col-xs-12">{{ $row->loan_invest_name}}<span style="font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ $row->type_of_funding }}
+                                    @if ($row->type_of_funding == 'Loan')
+                                    at {{ number_format($row->loan_invest_interest_rate, 2) }}% Interest
+                                    @endif
+                                    </span></div>
                                     
                                     <?php 
                                     $months_data_html = "";
@@ -60,7 +64,7 @@
 
                                     <div class="click-to-edit" style="margin-right: -15px;  margin-top: -34px;">
                                         <div class="tuck">
-                                            <a href="{{ url('plan/financial-plan-loans-and-investments/edit/' . $row->li_id) }}" class="edit-loan" data-li_id="{{ $row->li_id }}" data-loan_invest_name="{{ $row->loan_invest_name }}" data-loan_invest_interest_rate="{{ $row->loan_invest_interest_rate }}" data-loan_invest_years_to_pay="{{ $row->loan_invest_years_to_pay }}" data-loan_invest_pays_per_years="{{ $row->loan_invest_pays_per_years }}" data-months='{ {{ $months_data_html }} }' data-years='{ {{ $years_data_html }} }'>
+                                            <a href="{{ url('plan/financial-plan-loans-and-investments/edit/' . $row->li_id) }}" class="edit-loan" data-li_id="{{ $row->li_id }}" data-loan_invest_name="{{ $row->loan_invest_name }}" data-type_of_funding="{{ $row->type_of_funding }}" data-loan_invest_interest_rate="{{ $row->loan_invest_interest_rate }}" data-loan_invest_years_to_pay="{{ $row->loan_invest_years_to_pay }}" data-loan_invest_pays_per_years="{{ $row->loan_invest_pays_per_years }}" data-months='{ {{ $months_data_html }} }' data-years='{ {{ $years_data_html }} }'>
                                                 <div class="flag">
                                                     <span class="click-to-edit-text" id="ext-gen6"> &nbsp;</span> 
                                                 </div>
@@ -76,7 +80,7 @@
                                 </div>
                             @endforeach
                             <div class="col-xs-12" style="padding: 0px; text-align: right;">
-                                <a href="#" class="btn btn-primary" id="add-loan">Add a Loan Projection</a>
+                                <a href="#" class="btn btn-primary" id="add-loan">Add a Funding Source</a>
                             </div>
                         </div>
                         <div class="col-xs-12" id="edit-loan" style="padding: 0px; display: none;">
@@ -102,7 +106,10 @@
                                             <div class="num"> 2</div>
                                             <h4 class="label">What type of funding is this?</h4>
                                             <div class="step-inner form-group">
-                                                Loan
+                                                <select name="type_of_funding" class="entry-period form-control" size="1" style="float: left; width: 200px;">	
+                                                    <option value="Loan">Loan</option>
+                                                    <option value="Investment">Investment</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -133,30 +140,32 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="expense-budget-entryMethod">
-                                        <div class="step expense-name">
-                                            <div class="num"> 4</div>
-                                            <h4 class="label">What interest rate do you expect to pay for this funding?</h4>
-                                            <div class="step-inner form-group">
-                                                <input type="text" name="loan_invest_interest_rate" value="" maxlength="11" class="form-control">
+                                    <div style="width: 100%; float: left;" id="loan_funding_fields">
+                                        <div class="expense-budget-entryMethod">
+                                            <div class="step expense-name">
+                                                <div class="num"> 4</div>
+                                                <h4 class="label">What interest rate do you expect to pay for this funding?</h4>
+                                                <div class="step-inner form-group">
+                                                    <input type="text" name="loan_invest_interest_rate" value="" maxlength="11" class="form-control">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="expense-budget-entryMethod">
-                                        <div class="step expense-name">
-                                            <div class="num"> 5</div>
-                                            <h4 class="label">How many years do you expect to pay for this funding?</h4>
-                                            <div class="step-inner form-group">
-                                                <input type="text" name="loan_invest_years_to_pay" value="" maxlength="11" class="form-control">
+                                        <div class="expense-budget-entryMethod">
+                                            <div class="step expense-name">
+                                                <div class="num"> 5</div>
+                                                <h4 class="label">How many years do you expect to pay for this funding?</h4>
+                                                <div class="step-inner form-group">
+                                                    <input type="text" name="loan_invest_years_to_pay" value="" maxlength="11" class="form-control">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="expense-budget-entryMethod">
-                                        <div class="step expense-name">
-                                            <div class="num"> 6</div>
-                                            <h4 class="label">How many payments do you expect to do in a year?</h4>
-                                            <div class="step-inner form-group">
-                                                <input type="text" name="loan_invest_pays_per_years" value="" maxlength="11" class="form-control">
+                                        <div class="expense-budget-entryMethod">
+                                            <div class="step expense-name">
+                                                <div class="num"> 6</div>
+                                                <h4 class="label">How many payments do you expect to do in a year?</h4>
+                                                <div class="step-inner form-group">
+                                                    <input type="text" name="loan_invest_pays_per_years" value="" maxlength="11" class="form-control">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
