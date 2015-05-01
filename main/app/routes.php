@@ -11,7 +11,9 @@
 |
 */
 
+
 Route::get("/", "HomeController@index");
+Route::post("contactus", array('uses' => 'HomeController@contactus'));
 
 Route::post("contact_us", array(
 	'as' => 'contact_us',

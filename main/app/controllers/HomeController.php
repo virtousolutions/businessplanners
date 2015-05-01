@@ -17,12 +17,14 @@ class HomeController extends BaseController {
 
     public function index()
     {
-        $this->layout = View::make('layout.index');
+        // $this->layout = View::make('layout.index');
         
-        Asset::container('footer')->add('bootstrap-validator-js', 'assets/plugins/bootstrap_validator/js/bootstrapValidator.js');
-        Asset::container('footer')->add("index-js", "assets/javascript/index.js");
+        // Asset::container('footer')->add('bootstrap-validator-js', 'assets/plugins/bootstrap_validator/js/bootstrapValidator.js');
+        // Asset::container('footer')->add("index-js", "assets/javascript/index.js");
 
-        $this->layout->content = View::make("home.index", ['features' => $this->getFeatures(), 'packages' => $this->getPackage()]);
+        // $this->layout->content = View::make("home.index", ['features' => $this->getFeatures(), 'packages' => $this->getPackage()]);
+        
+        return View::make('home.home');
     }
 
 	public function sendContactUs() 
@@ -43,6 +45,28 @@ class HomeController extends BaseController {
 
         echo json_encode(['type' => 'success', 'text' => "Thank you for contacting us. We'll be in touch shortly."]);
         exit;
+    }
+
+    public function contactus()
+    {
+        $input = Input::get();
+        
+        $input['the_message'] = $input['message'];
+        #print_r($input);
+
+       Mail::send('emails.contact_us', (array)$input, function($message) use ($input)
+        {
+            $to = Config::get('mail.contact_us');
+
+            $message->from($input['email'], $input['name']);
+            $message->to($to['address']);
+            $message->bcc('markjoymacaso@gmail.com');
+            $message->subject('Yours Slenderly Concern');
+        });
+
+       echo json_encode(['type' => 'success', 'text' => "Thank you for contacting us. We'll be in touch shortly."]);
+
+        exit();
     }
 
     public function terms()
