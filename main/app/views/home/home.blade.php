@@ -14,7 +14,7 @@
 				</ul>
 			</div><!-- #bulleted -->
 			<div id="banner-branding" class="col-md-7 col-sm-12">
-				<img src="{{url('images/banner-logo.png')}}">
+				<img src="{{url('assets/img/banner-logo.png')}}">
 				<h2>Call us to find out more 0345 052 2742</h2>
 			</div><!-- #banner-branding -->
 		</div><!-- #inside-banner -->
@@ -28,7 +28,7 @@
 
 			<div class="cols col-md-6">
 				<div class="imgs col-md-3">
-					<img src="{{ url('images/hand-shake.png') }}">
+					<img src="{{ url('assets/img/hand-shake.png') }}">
 				</div><!-- .imgs -->
 				<div class="txt col-md-9">
 					<h2>Collaborate with your team</h2>
@@ -39,7 +39,7 @@ This enables you to easily create and manage your forecasts and budgets giving y
 
 			<div class="cols col-md-6">
 				<div class="imgs col-md-3">
-					<img src="{{ url('images/bar-charts.png') }}">
+					<img src="{{ url('assets/img/bar-charts.png') }}">
 				</div><!-- .imgs -->
 				<div class="txt col-md-9">
 					<h2>Track your progress</h2>
@@ -53,7 +53,7 @@ This enables you to easily create and manage your forecasts and budgets giving y
 
 			<div class="cols col-md-6">
 				<div class="imgs col-md-3">
-					<img src="{{ url('images/group.png') }}">
+					<img src="{{ url('assets/img/group.png') }}">
 				</div><!-- .imgs -->
 				<div class="txt col-md-9">
 					<h2>Dedicated Professionals at your service</h2>
@@ -63,7 +63,7 @@ This enables you to easily create and manage your forecasts and budgets giving y
 
 			<div class="cols col-md-6">
 				<div class="imgs col-md-3">
-					<img src="{{ url('images/micman.png') }}">
+					<img src="{{ url('assets/img/micman.png') }}">
 				</div><!-- .imgs -->
 				<div class="txt col-md-9">
 					<h2>Pitch for funding</h2>
@@ -85,7 +85,7 @@ This enables you to easily create and manage your forecasts and budgets giving y
 <p>We recommend <strong>every business</strong>, large or small, to invest time in creating a thorough business plan to help both internally and externally.</p>
 	
 	<div id="iMac">
-		<img src="{{ url('images/iMac.png') }}">
+		<img src="{{ url('assets/img/iMac.png') }}">
 	</div><!-- #iMac -->
 
 	</div><!-- .body_container -->
@@ -98,22 +98,22 @@ This enables you to easily create and manage your forecasts and budgets giving y
 
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
 				<h2>Recommended</h2>
-				<img src="{{ url('images/recommend-icon.png') }}">
+				<img src="{{ url('assets/img/recommend-icon.png') }}">
 				<p>We are proud to say that we are recommended by nearly every major investment platform</p>
 			</div><!-- .boxes -->
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
 				<h2>Review</h2>
-				<img src="{{ url('images/calc-icon.png') }}">
+				<img src="{{ url('assets/img/calc-icon.png') }}">
 				<p>All of your financials will be reviewed by our in-house accountant</p>
 			</div><!-- .boxes -->
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
 				<h2>Bespoke</h2>
-				<img src="{{ url('images/bust-icon.png') }}">
+				<img src="{{ url('assets/img/bust-icon.png') }}">
 				<p>All of our bespoke packages are tailored to you and your needs, to suit you perfectly</p>
 			</div><!-- .boxes -->
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
 				<h2>12 month access</h2>
-				<img src="{{ url('images/12monthsaccess-icon.png') }}">
+				<img src="{{ url('assets/img/12monthsaccess-icon.png') }}">
 				<p>You and your accountant will have 12 month access to update/amend your plan</p>
 			</div><!-- .boxes -->
 
@@ -153,7 +153,7 @@ This enables you to easily create and manage your forecasts and budgets giving y
             </tr>
             <tr>
 	            <td class="tblval">Online Business Planning Software</td>    
-	            <td><img src="{{ url('images/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td></td>
 	            <td></td>
 	            <td></td>
@@ -161,27 +161,27 @@ This enables you to easily create and manage your forecasts and budgets giving y
             </tr>
             <tr>
 	            <td class="tblval">MBA Graduate review</td>    
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
 	            <td class="tblval">Dedicated Business Account Manager</td>    
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
 	            <td class="tblval">Professionally written Business plan written by Professional Business Planner</td>    
 	            <td></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
 	            <td class="tblval">Financial forecasting with qualified Financial Accountant</td>    
@@ -231,59 +231,59 @@ Collaborate with your team
             </tr>
             <tr>
 	            <td class="tblval">New Business Start up Guide</td>    
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
 	            <td class="tblval">Importance of Trademarks Guide </td>    
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
 	            <td class="tblval">Guide to Why a Business Valuation is important </td>    
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
 	            <td class="tblval">The Secrets of how big companies remunerate themselves in a tax efficient manner (the things your accountant doesn’t know) </td>    
 	            <td></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
 	            <td class="tblval">How to reduce your IHT liability and what to do</td>    
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
 	            <td class="tblval">A Guide to The importance of having a Company Will </td>    
 	            <td></td>
 	            <td></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
 	            <td class="tblval">How to make more profit – Mini Guide for Small Businesses</td>    
 	            <td></td>
 	            <td></td>
 	            <td></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
 	            <td class="tblval">How to pay less Tax, Avoid and Deal with Tax investigations – the complete guide for all small businesses</td>    
@@ -291,7 +291,7 @@ Collaborate with your team
 	            <td></td>
 	            <td></td>
 	            <td></td>
-	            <td><img src="{{ url('images/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
 	            <td class="tblval"><b>Additional Services</b></td>    
@@ -335,11 +335,11 @@ Collaborate with your team
             </tr>
             <tr>
 	            <td class="nostyle"></td>    
-	            <td class="nostyle"><a href="#"><img class="col-md-12 buynow-btn" src="{{ url('images/buynow.png') }}"></a></td>
-	            <td class="nostyle"><a href="#"><img class="col-md-12 buynow-btn" src="{{ url('images/buynow.png') }}"></a></td>
-	            <td class="nostyle"><a href="#"><img class="col-md-12 buynow-btn" src="{{ url('images/buynow.png') }}"></a></td>
-	            <td class="nostyle"><a href="#"><img class="col-md-12 buynow-btn" src="{{ url('images/buynow.png') }}"></a></td>
-	            <td class="nostyle"><a href="#"><img class="col-md-12 buynow-btn" src="{{ url('images/buynow.png') }}"></a></td>
+	            <td class="nostyle"><a href="#"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
+	            <td class="nostyle"><a href="#"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
+	            <td class="nostyle"><a href="#"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
+	            <td class="nostyle"><a href="#"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
+	            <td class="nostyle"><a href="#"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
             </tr>
             </table>
          
@@ -357,19 +357,19 @@ Collaborate with your team
 		<div class="box-container">
 
 			<div class="testi-box col-md-5 col-sm-10">
-				<div class="img"><img src="{{ url('images/stock-photo-44871128-we-re-all-special-in-our-own-way_03.png') }}"></div><!-- .img -->
+				<div class="img"><img src="{{ url('assets/img/stock-photo-44871128-we-re-all-special-in-our-own-way_03.png') }}"></div><!-- .img -->
 				<p>"The team at Contractors Pro are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
 			</div>
 
 			<div class="testi-box col-md-5 col-sm-10">
-				<div class="img"><img src="{{ url('images/stock-photo-44871128-we-re-all-special-in-our-own-way2_03.png') }}"></div><!-- .img -->
+				<div class="img"><img src="{{ url('assets/img/stock-photo-44871128-we-re-all-special-in-our-own-way2_03.png') }}"></div><!-- .img -->
 				<p>"The team at Contractors Pro are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
 			</div>
 
 		</div>
 
 		<div class="testi-boxx col-md-5 col-sm-10 col-md-offset-4">
-			<div class="img"><img src="{{ url('images/stock-photo-44871128-we-re-all-special-in-our-own-way3_03.png') }}"></div><!-- .img -->
+			<div class="img"><img src="{{ url('assets/img/stock-photo-44871128-we-re-all-special-in-our-own-way3_03.png') }}"></div><!-- .img -->
 			<p>"The team at Contractors Pro are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
 		</div>
 

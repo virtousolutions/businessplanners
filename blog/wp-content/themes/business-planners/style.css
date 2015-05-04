@@ -929,7 +929,7 @@ Head
 }
 #top-menu li:after{
 	content: "";
-	background-image: url(images/menu-border.png);
+	background-image: url(assets/img/menu-border.png);
 	display: inline-block;
 	width: 3px;
 	height: 24px;
@@ -949,7 +949,7 @@ Head
 Home Page
 --------------------------------------------------------------*/
 #banner{
-	background-image: url(images/banner.png);
+	background-image: url(assets/img/banner.png);
 	background-size: cover;
 	clear: both;
 	width: 100%;
@@ -978,7 +978,7 @@ Home Page
 	color: #FFF;
 	font-size: 20px;
 	padding: 0.5em 0 0.5em 2em;
-	background-image: url(images/check.png);
+	background-image: url(assets/img/check.png);
 	background-position: left 0.7em;
 	background-repeat: no-repeat;
 }
@@ -1007,7 +1007,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 }
 #info-home .line{
 	padding: 2em 0 0 0;
-	background-image: url(images/row-divider.png);
+	background-image: url(assets/img/row-divider.png);
 	background-repeat: no-repeat;
 	background-position: 0 bottom;
 	padding: 2em 0 1.5em 0;
@@ -1017,7 +1017,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
  	margin: 0;
 }
 #info-home .line .cols:first-child{
-	background-image: url(images/col-divider.png);
+	background-image: url(assets/img/col-divider.png);
 	background-repeat: no-repeat;
 	background-position: 96% center;
 }
@@ -1356,7 +1356,7 @@ Miscellaneous
 	overflow: hidden;
 	text-indent: 100%;
 	white-space: nowrap;
-	background: rgba(232, 98, 86, 0.8) url(images/cd-top-arrow.svg) no-repeat center 50%;
+	background: rgba(232, 98, 86, 0.8) url(assets/img/cd-top-arrow.svg) no-repeat center 50%;
 	display: none;
 	z-index: 9999;
 }
