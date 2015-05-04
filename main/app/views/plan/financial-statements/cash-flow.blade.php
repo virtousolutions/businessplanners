@@ -72,6 +72,14 @@
         </div>
     </div>
     <div class="data-row">
+        <div class="col-xs-5" style="padding-left: 0px;">Investments Received</div>
+        <div class="col-xs-7" style="padding: 0px; text-align: right;">
+            <div class="col-xs-4">{{ $calculator->formatNumberDisplay($data['investments_received'][0]) }}</div>
+            <div class="col-xs-4">{{ $calculator->formatNumberDisplay($data['investments_received'][1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $calculator->formatNumberDisplay($data['investments_received'][2]) }}</div>
+        </div>
+    </div>
+    <div class="data-row">
         <div class="col-xs-5" style="padding-left: 0px;">Change in Long-Term Debt</div>
         <div class="col-xs-7" style="padding: 0px; text-align: right;">
             <div class="col-xs-4">{{ $calculator->formatNumberDisplay($data['change_in_long_term_debt'][0]) }}</div>

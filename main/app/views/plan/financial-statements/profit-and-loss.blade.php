@@ -176,9 +176,9 @@
     <div class="data-title" style="margin-top: 0px;">
         <div class="col-xs-5" style="padding-left: 0px;">Net Profit / Sales</div>
         <div class="col-xs-7" style="padding: 0px; text-align: right;">
-            <div class="col-xs-4">{{ number_format(($net_profit[0] / $total_sales[0]) * 100) }}%</div>
-            <div class="col-xs-4">{{ number_format(($net_profit[1] / $total_sales[1]) * 100) }}%</div>
-            <div class="col-xs-4" style="padding-right: 0px;">{{ number_format(($net_profit[2] / $total_sales[2]) * 100) }}%</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay(($net_profit[0] / $total_sales[0]) * 100, 2, '', '%') }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay(($net_profit[1] / $total_sales[1]) * 100, 2, '', '%') }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay(($net_profit[2] / $total_sales[2]) * 100, 2, '', '%') }}</div>
         </div>
     </div>
 </div>

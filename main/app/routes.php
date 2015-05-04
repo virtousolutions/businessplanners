@@ -69,3 +69,5 @@ Route::get("plan/financial-plan-loans-and-investments-delete/{id}", 'PlanControl
 Route::post("plan/details/{id}", 'PlanController@submitDetails');
 Route::post("plan/save_page", 'PlanController@savePage');
 Route::post("plan/save_section", 'PlanController@saveSection');
+
+Route::get("plan/print/{id}", 'PlanController@printDoc');

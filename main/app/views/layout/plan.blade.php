@@ -35,13 +35,13 @@
     @yield('ecommerce')
 
     <!-- Google Tag Manager -->
-    <!--noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WHWNCX"
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WHWNCX"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WHWNCX');</script-->
+    })(window,document,'script','dataLayer','GTM-WHWNCX');</script>
     <!-- End Google Tag Manager -->
 
     <div class="col-xs-12" style="padding: 0; background-color: #ffffff;">
@@ -59,21 +59,17 @@
             </div>
         </div>
     </div>
-    <div class="header" style="padding: 10px 0 30px;">
+    <div class="header" style="padding: 10px 0 {{ isset($business_plan) ? '0' : '30px' }};">
         <header class="clearfix">
             <div class="wrapper clearfix">
-                <div class="col-xs-6">
+                <div class="col-xs-6" style="padding-left: 0px;">
                     @if (isset($business_plan))
                     <h3 style="color: #ffffff;">{{ $business_plan->bp_name }}</h3>
-                    <div class="breadcrumbs" style="color: #ffffff; font-size: 13px;">
-                        <a href="{{ url('plan') }}" style="color: #ffffff; font-size: 13px;">Plan</a> &#8594; 
-                        <span class="current_crumb">{{ $business_plan->bp_name }}</span>
-                    </div>
                     @else
                     <h3 style="color: #ffffff; margin-top: 20px;">Start a New Plan</h3>
                     @endif
                 </div>
-                <div class="support_nav col-xs-6">
+                <div class="support_nav col-xs-6" style="padding-right: 0px;">
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">
                           <div class="navbar-header">
@@ -102,6 +98,16 @@
                         </div><!--/.container-fluid -->
                       </nav>
                 </div>
+                @if (isset($business_plan))
+                <div class="col-xs-12" style="padding: 0px;">
+                    <ul id="plan-secondary-links">
+                        <li class="edit-context-state"><a href="{{ url('plan/print/' . $business_plan->id) }}"><span>Print</span></a>
+                        </li>
+                        <li class="edit-context-state active"><a href="#"><span>Plan</span></a>
+                        </li>
+                    </ul>
+                </div>
+                @endif
             </div>
         </header>
     </div>
@@ -119,7 +125,6 @@
     {{ Asset::container('footer')->scripts() }}
 
     <!--Start of Zopim Live Chat Script-->
-    <!--
     <script type="text/javascript">
     window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
     d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.

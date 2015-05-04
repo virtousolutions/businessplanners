@@ -72,6 +72,46 @@ extends PlanCalculatorService
         $this->calculateAccountsPayable();
         $this->calculateBalanceSheet();
         $this->calculateCashFlow();
+
+        $yearly_total_sales = $this->sales_calc->getYearlyTotalSales();
+
+        $net_profit_percent = [
+            ($this->yearly_net_profit[0] / $yearly_total_sales[0]) * 100,
+            ($this->yearly_net_profit[1] / $yearly_total_sales[1]) * 100,
+            ($this->yearly_net_profit[2] / $yearly_total_sales[2]) * 100
+        ];
+
+        $this->profit_and_loss_data = [
+            'gross_margin' => $this->sales_calc->getYearlyGrossMargin(),
+            'operating_expenses' => $this->budget_calc->getExpensesYearlyTotals(),
+            'operating_income' => $this->yearly_operating_income,
+            'interest_incurred' => $this->yearly_total_interests,
+            'depreciation' => $this->yearly_depreciation,
+            'income_taxes' => $this->yearly_income_tax,
+            'net_profit' => $this->yearly_net_profit,
+            'net_profit_percent' => $net_profit_percent,
+        ];
+
+        $this->profit_and_loss_labels = [
+            'gross_margin' => 'Gross Margin',
+            'operating_expenses' => 'Operating Expenses',
+            'operating_income' => 'Operating Income',
+            'interest_incurred' => 'Interest Incurred',
+            'depreciation' => 'Depreciation and Amortization',
+            'income_taxes' => 'Income Taxes',
+            'net_profit' => 'Net Profit',
+            'net_profit_percent' => 'Net Profit / Sales',
+        ];
+
+        // monthly data
+        $this->monthly_totals = [
+            'operating_income' => $this->monthly_operating_income,
+            'interest_incurred' => $this->monthly_total_interest,
+            'depreciation' => $this->monthly_accumulated_depreciation,
+            'income_tax' => $this->monthly_income_tax,
+            'net_profit' => $this->monthly_net_profit,
+            'net_profit_percent' => $this->monthly_net_profit_percent,
+        ];
 	}
 
     protected function calculateOperatingIncome()
@@ -79,12 +119,11 @@ extends PlanCalculatorService
         /*** Calculate the operating income **/
         $total_sales = $this->sales_calc->getMonthlyTotalSales();
         $total_costs = $this->sales_calc->getMonthlyTotalCosts();
+        $monthly_gross_margin = $this->sales_calc->getMonthlyGrossMargin();
         $monthly_expenses = $this->budget_calc->getExpensesMonthlyTotals();
-        $monthly_gross_margin = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         $this->monthly_operating_income = [];
 
         for ($x = 0; $x < 12; $x++) {
-            $monthly_gross_margin[$x] = $total_sales[$x] - $total_costs[$x];
             $this->monthly_operating_income[$x] = $monthly_gross_margin[$x] - $monthly_expenses[$x];
         }
 
@@ -169,10 +208,13 @@ extends PlanCalculatorService
         $monthly_total_interest = $this->monthly_total_interest;
 
         /*** Calculate depreciation **/
+        $total_sales = $this->sales_calc->getMonthlyTotalSales();
         $purchases = $this->budget_calc->getPurchases();
         $monthly_depreciation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         $monthly_accumulated_depreciation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         $monthly_income_tax = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_net_profit = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_net_profit_percent = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         $start_months = $this->business_plan->getStartMonths();
         
         foreach ($purchases as $purchase) {
@@ -189,6 +231,8 @@ extends PlanCalculatorService
             $monthly_accumulated_depreciation[$i] = ($i == 0? 0 : $monthly_accumulated_depreciation[$i - 1]) + $monthly_depreciation[$i];
             $pre_tax_profit = $this->monthly_operating_income[$i] - $monthly_total_interest[$i] - $monthly_accumulated_depreciation[$i];
             $monthly_income_tax[$i] = $pre_tax_profit * ($this->business_plan->bp_income_tax_in_percentage / 100);
+            $monthly_net_profit[$i] = $pre_tax_profit - $monthly_income_tax[$i];
+            $monthly_net_profit_percent[$i] = $total_sales[$i] > 0 ? (($monthly_net_profit[$i] / $total_sales[$i]) * 100) : 0;
         }
 
         $yearly_purchases = $this->budget_calc->getPurchasesYearlyTotals();
@@ -201,6 +245,8 @@ extends PlanCalculatorService
 
         $this->monthly_accumulated_depreciation = $monthly_accumulated_depreciation;
         $this->monthly_income_tax = $monthly_income_tax;
+        $this->monthly_net_profit = $monthly_net_profit;
+        $this->monthly_net_profit_percent = $monthly_net_profit_percent;
     }
 
     protected function calculateAccountsReceivable()
@@ -278,6 +324,16 @@ extends PlanCalculatorService
         $monthly_investments = $this->loans_calc->getInvestmentsMonthlyTotals();
         $starting_cash = 0;
         $monthly_cash = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_total_current_assets = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_long_term_assets =  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_accumulated_depreciation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_total_long_term_assets = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_total_assets = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_current_total_liabilities = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_total_liabilities = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_paid_in_capital = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_retained_earnings = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_total_owner_equity = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
         for ($i = 0; $i < 12; $i++) {
             $monthly_cash[$i] = ($i == 0 ? $starting_cash : $monthly_cash[$i - 1]) 
@@ -290,6 +346,18 @@ extends PlanCalculatorService
                 - $monthly_related_expenses[$i]
                 - $this->monthly_income_tax[$i] 
                 + ($monthly_purchases[$i] * -1);
+
+            $monthly_total_current_assets[$i] = $monthly_cash[$i] + $this->monthly_accounts_receivable[$i];
+            $monthly_long_term_assets[$i] = ($i == 0 ? 0 : $monthly_long_term_assets[$i - 1]) + $monthly_purchases[$i];
+            $monthly_accumulated_depreciation[$i] = ($i == 0 ? 0 : $monthly_accumulated_depreciation[$i - 1]) - $this->monthly_accumulated_depreciation[$i];
+            $monthly_total_long_term_assets[$i] = $monthly_long_term_assets[$i] + $monthly_accumulated_depreciation[$i];
+            $monthly_total_assets[$i] = $monthly_total_current_assets[$i] + $monthly_total_long_term_assets[$i];
+            $monthly_current_total_liabilities[$i] = $this->monthly_accounts_payable[$i];
+            $monthly_total_liabilities[$i] = $monthly_current_total_liabilities[$i] + $this->monthly_total_balance[$i];
+            $monthly_paid_in_capital[$i] = ($i == 0 ? 0 : $monthly_paid_in_capital[$i - 1]) + ($monthly_investments[$i]);
+            $monthly_retained_earnings[$i] = $i == 0 ? 0 : ($monthly_retained_earnings[$i - 1] + $this->monthly_net_profit[$i - 1]);
+            $monthly_total_owner_equity[$i] = $monthly_paid_in_capital[$i] + $monthly_retained_earnings[$i] + $this->monthly_net_profit[$i];
+            $monthly_total_liabilities_equity[$i] = $monthly_total_liabilities[$i] + $monthly_total_owner_equity[$i];
         }
         
         $yearly_total_sales     = $this->sales_calc->getYearlyTotalSales();
@@ -400,10 +468,50 @@ extends PlanCalculatorService
             'total_liabilities_equity' => $this->yearly_total_liabilities_equity
         ];
         
+        $this->balance_sheet_monthly_data = [
+            'cash' => $monthly_cash,
+            'accounts_receivable' => $this->monthly_accounts_receivable,
+            'total_current_assets' => $monthly_total_current_assets,
+            'long_term_assets' => $monthly_long_term_assets,
+            'accumulated_depreciation' => $monthly_accumulated_depreciation,
+            'total_long_term_assets' => $monthly_total_long_term_assets,
+            'total_assets' => $monthly_total_assets,
+            'accounts_payable' => $this->monthly_accounts_payable,
+            'current_liabilities' => $monthly_current_total_liabilities,
+            'long_term_debt' => $this->monthly_total_balance,
+            'total_liabilities' => $monthly_total_liabilities,
+            'paid_in_capital' => $monthly_paid_in_capital,
+            'retained_earnings' => $monthly_retained_earnings,
+            'earnings' => $this->monthly_net_profit,
+            'total_owner_equity' => $monthly_total_owner_equity,
+            'total_liabilities_equity' => $monthly_total_liabilities_equity
+        ];
     }
 
     public function calculateCashFlow()
     {
+        $monthly_change_in_accounts_recievable = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_change_in_accounts_payable = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_net_cash_flow_from_operations = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_purchases = $this->budget_calc->getPurchasesMonthlyTotals();
+        $monthly_change_in_long_term_debt = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_net_cash_flow_from_investing_financing = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_cash_at_beginning = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_net_change_in_cash = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_cash_at_end = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_investments = $this->loans_calc->getInvestmentsMonthlyTotals();
+        
+        for ($x = 0; $x < 12; $x++) {
+            $monthly_change_in_accounts_recievable[$x] = ($x == 0 ? 0 : $this->monthly_accounts_receivable[$x - 1]) - $this->monthly_accounts_receivable[$x];
+            $monthly_change_in_accounts_payable[$x] = $this->monthly_accounts_payable[$x] - ($x == 0 ? 0 : $this->monthly_accounts_payable[$x - 1]);
+            $monthly_net_cash_flow_from_operations[$x] = $this->monthly_net_profit[$x] + $this->monthly_accumulated_depreciation[$x] + $monthly_change_in_accounts_recievable[$x] + $monthly_change_in_accounts_payable[$x];
+            $monthly_change_in_long_term_debt[$x] = $x == 0 ? $this->monthly_total_balance[$x] : ($this->monthly_total_balance[$x] - $this->monthly_total_balance[$x - 1]);
+            $monthly_net_cash_flow_from_investing_financing[$x] = ($monthly_purchases[$x] * -1) + $monthly_investments[$x] + $monthly_change_in_long_term_debt[$x];
+            $monthly_cash_at_beginning[$x] = $x == 0 ? 0 : ($monthly_cash_at_end[$x - 1]);
+            $monthly_net_change_in_cash[$x] = $monthly_net_cash_flow_from_operations[$x] + $monthly_net_cash_flow_from_investing_financing[$x];
+            $monthly_cash_at_end[$x] = $monthly_cash_at_beginning[$x] + $monthly_net_change_in_cash[$x];
+        }
+
         $change_in_accounts_recievable[0] = 0 - $this->yearly_accounts_receivable[0];
         $change_in_accounts_recievable[1] = $this->yearly_accounts_receivable[0] - $this->yearly_accounts_receivable[1];
         $change_in_accounts_recievable[2] = $this->yearly_accounts_receivable[1] - $this->yearly_accounts_receivable[2];
@@ -452,11 +560,27 @@ extends PlanCalculatorService
             'change_in_accounts_payable' => $change_in_accounts_payable,
             'net_cash_flow_from_operations' => $net_cash_flow_from_operations,
             'assets_purchased_or_sold' => $purchases,
+            'investments_received' => $this->loans_calc->getInvestmentsYearlyTotals(),
             'change_in_long_term_debt' => $change_in_long_term_debt,
             'net_cash_flow_from_investing_financing' => $net_cash_flow_from_investing_financing,
-            'net_change_in_cash' => $net_change_in_cash,
             'cash_at_beginning' => $cash_at_beginning,
+            'net_change_in_cash' => $net_change_in_cash,
             'cash_at_end' => $cash_at_end
+        ];
+
+        $this->cash_flow_monthly_data = [
+            'net_profit' => $this->monthly_net_profit,
+            'depreciation' => $this->monthly_accumulated_depreciation,
+            'change_in_accounts_recievable' => $monthly_change_in_accounts_recievable,
+            'change_in_accounts_payable' => $monthly_change_in_accounts_payable,
+            'net_cash_flow_from_operations' => $monthly_net_cash_flow_from_operations,
+            'assets_purchased_or_sold' => $monthly_purchases,
+            'investments_received' => $monthly_investments,
+            'change_in_long_term_debt' => $monthly_change_in_long_term_debt,
+            'net_cash_flow_from_investing_financing' => $monthly_net_cash_flow_from_investing_financing,
+            'cash_at_beginning' => $monthly_cash_at_beginning,
+            'net_change_in_cash' => $monthly_net_change_in_cash,
+            'cash_at_end' => $monthly_cash_at_end
         ];
     }
 
@@ -490,14 +614,39 @@ extends PlanCalculatorService
         return $this->yearly_net_profit;
     }
 
+    public function getProfitAndLossData()
+    {
+        return $this->profit_and_loss_data;
+    }
+
+    public function getProfitAndLossLabels()
+    {
+        return $this->profit_and_loss_labels;
+    }
+
     public function getBalanceSheetData()
     {
         return $this->balance_sheet_data ;
+    }
+
+    public function getBalanceSheetMonthlyData()
+    {
+        return $this->balance_sheet_monthly_data ;
     }
     
     public function getCashFlowData()
     {
         return $this->cash_flow_data;
+    }
+
+    public function getCashFlowMonthlyData()
+    {
+        return $this->cash_flow_monthly_data;
+    }
+
+    public function getMonthlyTotals()
+    {
+        return $this->monthly_totals;
     }
 
     private static function _interestAndPrincipal($rate=0, $per=0, $nper=0, $pv=0, $fv=0, $type=0) {

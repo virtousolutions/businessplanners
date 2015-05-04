@@ -1072,4 +1072,119 @@ Two exit strategies are common;</p>
         $obj->delete();
         return Redirect::to('plan/financial-plan-loans-and-investments/' . $obj->businessPlan()->id)->withMessage("Successfully deleted a loan projection");
     }
+
+    public function printDoc($id)
+    {
+        $business_plan = BusinessPlan::find($id);
+        $user = new User();
+        $user->fill([
+            'first_name' => 'Mark',
+            'last_name' => 'Macaso',
+            'email' => 'mark@email.com',
+            'contact_number' => '11111',
+            'address_1' => '1 Main St',
+            'city' => 'Cebu',
+            'state' => 'Cebu',
+            'country' => 'Philippines',
+            'zip' => '6000'
+
+        ]);
+
+        $data_pages = DB::table('pages')
+            ->where('parentid', '>', '0')
+            ->orderBy('parentid', 'ASC')
+            ->orderBy('pageorder', 'ASC')
+            ->get();
+
+        $data_page_sections = DB::table('page_sections')->orderBy('s_pageid', 'ASC')->orderBy('section_order', 'ASC')->get();
+
+        $page_contents = DB::table('bp_pages')->where('bp_id', $business_plan->id)->lists('page_content', 'pageid');
+        $es_contents = $business_plan->executiveSummary();
+        $es_contents = $es_contents ? $es_contents->getAttributes() : [];
+        $section_contents = DB::table('bp_page_sections')
+            ->where('bp_id', $business_plan->id)
+            ->lists('section_content', 'section_id');
+        
+        $main_pages = [];
+        $sub_pages  = [];
+        $page_sections = [];
+        $pdf_entries = [];
+
+        foreach ($data_page_sections as $row) {
+            if (!isset($page_sections[$row->s_pageid])) {
+                $page_sections[$row->s_pageid] = [];
+            }
+
+            $page_sections[$row->s_pageid][$row->section_id] = $row;
+        }
+
+        $page_num = 0;
+        
+        foreach ($data_pages as $page) {
+            if (array_key_exists($page->parentid, $main_pages)) {
+                $has_content = false;
+                // this is a subpage
+                $sub_pages[$page->parentid][$page->pageid]  = $page;
+
+                if ($main_pages[$page->parentid]->pageurl == 'executive-summary') {
+                    $key = str_replace('-', '_', trim($page->pageurl));
+                    $content = isset($es_contents[$key]) ? $es_contents[$key] : "";
+                }
+                else {
+                    $content = isset($page_contents[$page->pageid]) ? $page_contents[$page->pageid] : '';
+                }
+
+                if (isset($page_sections[$page->pageid])) {
+                    foreach ($page_sections[$page->pageid] as $section) {
+                        if (isset($section_contents[$section->section_id]) && !empty($section_contents[$section->section_id])) {
+                            $content .= "<p><b>" . $section->section_title . "</b></p>";
+                            $content .= $section_contents[$section->section_id];
+                        }
+                    }
+                }
+
+                if (!empty($content)) {
+                    if (!isset($pdf_entries[$page->parentid])) {
+                        $page_num++;
+
+                        $pdf_entries[$page->parentid] = [
+                            'title' => $main_pages[$page->parentid]->pagetitle,
+                            'page_num' => $page_num,
+                            'sub_pages' => []
+                        ];
+                    }
+
+                    if (count($pdf_entries[$page->parentid]['sub_pages']) == 5) {
+                        $page_num++;
+                    }
+
+                    $pdf_entries[$page->parentid]['sub_pages'][$page->pageid] = [
+                        'title' => $page->pagetitle,
+                        'page_num' => $page_num,
+                        'content' => $content
+                    ];
+                }
+            }
+            else {
+                if (in_array($page->pageurl, ['financial-plan', 'financial-statements'])) {
+                    // do not include financial plan and financial statements
+                    continue;
+                }
+
+                $main_pages[$page->pageid] = $page;
+                $sub_pages[$page->pageid]  = [];
+            }
+        }
+        
+        /*echo '<pre>';
+        var_dump($pdf_entries);
+        var_dump($es_contents);
+        //var_dump($section_contents);
+        echo '</pre>';
+        die;*/
+
+        $report = new PlanReport($business_plan, $user, $pdf_entries);
+
+        $report->toPdf();
+    }
 }

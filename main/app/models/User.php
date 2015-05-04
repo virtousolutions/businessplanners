@@ -14,7 +14,8 @@ class User extends Eloquent {
 		'contact_number',
 		'email',
         'password',
-        'package_id'
+        'package_id',
+        'website'
 	];
 
 	public static $rules = [
