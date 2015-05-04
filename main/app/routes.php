@@ -11,7 +11,9 @@
 |
 */
 
+
 Route::get("/", "HomeController@index");
+Route::post("contactus", array('uses' => 'HomeController@contactus'));
 
 Route::post("contact_us", array(
 	'as' => 'contact_us',
@@ -28,3 +30,7 @@ Route::get('paymentcomplete', 'HomeController@paymentComplete');
 Route::get('start_payment', 'PaypalPaymentController@startPayment');
 Route::get('cancel_payment/{timestamp}', 'PaypalPaymentController@cancelPayment');
 Route::get('complete_payment/{timestamp}', 'PaypalPaymentController@completePayment');
+
+// Route::get('payment', function($alias) {
+//   return Redirect::to('p' . $alias);
+// });

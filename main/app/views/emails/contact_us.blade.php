@@ -5,14 +5,15 @@
     <br>
     <br>
     <p>
-        {{ $the_message }}
+        {{ $the_message}}
     </p>
     <br>
     <br>
     <br>
     <p>
-        Best wishes
+        Best wishes,
+        {{$name}}
         <br>
-        {{ $name }}
+       
     </p>
 </body>
