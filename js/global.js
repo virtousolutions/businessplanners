@@ -50,6 +50,11 @@ jQuery(function($){
 							// console.log(d);
 							if(d.type == 'success'){
 								$("<div class='mail-success col-md-7 col-md-offset-3'>"+d.text+"</div>").insertAfter('#contacttbl');
+								$("#name").val("");
+								$("#contactnum").val("");
+								$("#email").val("");
+								$("#headaboutus").val("");
+								$("#message").val("");
 								setTimeout(function(){
 									$(".mail-success").remove();
 								}, 4000)
@@ -63,6 +68,7 @@ jQuery(function($){
 		menuscroll : function(){
 			$("#top-menu li a").on('click', function(){
 				var id = $(this).attr('id');
+				$("#banner").removeClass('forbanner');
 				if(id == $.trim('forfeature')){
 					var $feature = $(".thefeature").offset();
 					$("html, body").animate({
@@ -85,6 +91,27 @@ jQuery(function($){
 				}
 			});
 		},
+		scrolltotop: function(){
+			$(window).scroll(function(){
+				if( $(this).scrollTop() > 100 ){
+					$("#scrollcon").addClass('scrolltop');
+					$(".scrolltop").fadeIn();
+				}else if($(this).scrollTop() == 100){
+					$("#scrollcon").removeClass('scrolltop');
+					$(".scrolltop").fadeOut();
+				}
+				else{
+					$("#scrollcon").removeClass('scrolltop');
+					$(".scrolltop").fadeOut();
+				}
+			});
+
+			$(".scrolltop").click(function(){
+				$("html, body").animate({
+					scrollTop : '0'
+				}, 700);
+			});
+		},
 		executecode_here : function(){
 			// For the responsive menu
 			this.respMenu();
@@ -94,6 +121,9 @@ jQuery(function($){
 
 			// Menu Scroll
 			this.menuscroll();
+
+			// Scroll to top
+			this.scrolltotop();
 		}
 	}
 

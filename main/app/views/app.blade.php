@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/screen.css') }}">
 
 	<meta name="_token" content="{{ csrf_token() }}" />
 	<meta name="description" content="We create professionally written business plan that will help you to succeed, we'll find out everything we need to know about a business in order to create a professional business plan">
@@ -42,10 +43,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<div id="top-menu" class="col-md-6">
 				<div id="btn-resp"></div>
 				<ul>
-					<li><a href="javascript:void(0)" id="forhome">Home</a></li>
-					<li><a href="javascript:void(0)" id="forfeature">Features</a></li>
-					<li><a href="javascript:void(0)" id="forblog">Blog</a></li>
-					<li><a href="javascript:void(0)" id="forcontactus">Contact Us</a></li>
+					<li><a href="#" id="forhome">Home</a></li>
+					<li><a href="#" id="forfeature">Features</a></li>
+					<li><a href="{{url('blog')}}">Blog</a></li>
+					<li><a href="#" id="forcontactus">Contact Us</a></li>
 				</ul>
 			</div><!-- #top-menu -->
 			<div id="info-head" class="col-md-3">0345 052 2742</div>
@@ -54,6 +55,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 	@yield('content')
 
+<a href="#" id="scrollcon" class="scrolltop">Top</a>
 	<footer>
 		<div class="container">
 			<div id="footer-menu" class="col-md-7">
@@ -82,6 +84,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script src="{{asset('js/jquery.validate.js')}}"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.js"></script>
+
 	<script>
     var url = {
         "current_url": "{{Request::url()}}",

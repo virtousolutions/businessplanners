@@ -21,7 +21,7 @@
 	</div><!-- .container -->
 </div><!-- #banner -->
 
-<div class="thefeature" id="info-home">
+<div name="forfeature" class="thefeature" id="info-home">
 	<div class="container">
 
 		<div class="line col-md-12 col-sm-12">
@@ -381,29 +381,31 @@ Collaborate with your team
 	<h2>Contact <strong>Us</strong></h2>
 
 	<div id="contacttbl" class="col-md-offset-1">
+	{{ Form::open(array('id' => 'contactusform', 'method' => 'get', 'class' => 'cmxform')) }}
 		<div class="form-group">
-			<label class="col-md-3" for="disabledTextInput">Name</label>
-			<input type="text" name="name" id="name" class="required-field col-md-8 form-control" data-bv-field="name">
+			<label class="col-md-3" for="Name">Name</label>
+			<input type="text" name="name" id="name" required aria-required="true" class="required-field col-md-8 form-control" data-bv-field="name">
 		</div>
 		<div class="form-group">
-			<label class="col-md-3" for="disabledTextInput">Contact Number</label>
-			<input type="text" id="contactnum" class="required-field col-md-8 form-control" placeholder="">
+			<label class="col-md-3" for="contactnum">Contact Number</label>
+			<input type="number" name="contactnum" required aria-required="true" id="contactnum" class="required-field col-md-8 form-control" placeholder="">
 		</div>
 		<div class="form-group">
-			<label class="col-md-3" for="disabledTextInput">Your Email Address</label>
-			<input type="text" id="email" name="email" class="required-field col-md-8 form-control" placeholder="">
+			<label class="col-md-3" for="email">Your Email Address</label>
+			<input type="email" id="email" name="email" required aria-required="true" class="required-field col-md-8 form-control" placeholder="">
 		</div>
 		<div class="form-group">
-			<label class="col-md-3" for="disabledTextInput">Where did you hear about us from?</label>
-			<input type="text" id="headaboutus" class="required-field col-md-8 form-control" placeholder="">
+			<label class="col-md-3" for="headaboutus">Where did you hear about us from?</label>
+			<input type="text" name="headaboutus" required aria-required="true" id="headaboutus" class="required-field col-md-8 form-control" placeholder="">
 		</div>
 		<div class="form-group">
-			<label class="col-md-3" for="disabledTextInput">Message</label>
-			<textarea id="message" name="message" class="required-field col-md-8 form-control"></textarea>
+			<label class="col-md-3" for="message">Message</label>
+			<textarea id="message" name="message" required aria-required="true" class="required-field col-md-8 form-control"></textarea>
 		</div>
 		<div id="submit-btn-con" class="col-md-2 col-md-offset-3">
 			<button type="button" id="contactussubmit-btn" class="btn btn-default">Submit</button>
 		</div>
+		{{ Form::close() }}
 	</div><!-- #contacttbl -->
 	</div><!-- .container -->
 </div><!-- #contactus -->
@@ -413,10 +415,50 @@ Collaborate with your team
 @section('js')
 <script>
 jQuery(function($){
+	$.validator.setDefaults({
+		submitHandler: function() {
+			alert("submitted!");
+		}
+	});
 
 	var HOME = {
+		formValifator : function(){
+			$("#contactusform").validate({
+				rules : {
+					name: "required",
+					contactnum: "required",
+					email: {
+						required : true,
+						email: true
+					},
+					headaboutus: {
+						minlength: 5,
+						required: true
+					},
+					message: {
+						minlength: 15,
+						required: true
+					}
+				},
+				messages:{
+					name :{
+						required : "Please ener your name"
+					},
+					contactnum: {
+						required: "Please enter your valid contact number"
+					},
+					email:{
+						required : "Please enter your valid email address"
+					},
+					message: {
+						required: "Message field must not be empty",
+						minlength: "Enter atleast 15 character"
+					}
+				}
+			});
+		},
 		executecode : function(){
-
+			this.formValifator();
 		}
 	}
 	HOME.executecode();
