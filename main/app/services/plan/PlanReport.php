@@ -150,14 +150,14 @@ understanding that you will not share its contents or ideas with third parties w
         return $res; 
     }
 
-    public function toPdf()
+    public function toPdf($output)
     {
         $this->buildCoverPage();
         $this->buildPages();
         $this->buildAppendix();
         $this->buildTOC();
         
-        $this->Output("report.pdf", 'I');
+        $this->Output("report.pdf", $output);
     }
 
     public function buildCoverPage()
