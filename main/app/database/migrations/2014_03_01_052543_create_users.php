@@ -24,6 +24,7 @@ class CreateUsers extends Migration {
 			$table->string('state')->nullable();
 			$table->integer('country');
 			$table->string('zip', 20);
+            $table->string('website', 100);
 			$table->string('contact_number', 50);
             $table->tinyInteger('package_id');
 			$table->timestamps();
