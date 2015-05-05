@@ -11,7 +11,9 @@
 |
 */
 
+
 Route::get("/", "HomeController@index");
+Route::post("contactus", array('uses' => 'HomeController@contactus'));
 
 Route::post("contact_us", array(
 	'as' => 'contact_us',
@@ -71,3 +73,8 @@ Route::post("plan/save_page", 'PlanController@savePage');
 Route::post("plan/save_section", 'PlanController@saveSection');
 
 Route::get("plan/print/{id}", 'PlanController@printDoc');
+
+// Route::get('payment', function($alias) {
+//   return Redirect::to('p' . $alias);
+// });
+
