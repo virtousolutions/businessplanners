@@ -152,7 +152,7 @@ extends BaseController
         $values = [];
         $section_values = [];
         
-        if ($selected_main != 'details') {
+        if (!in_array($selected_main, ['details', 'print'])) {
             $page_sections = DB::table('page_sections')->whereIn('s_pageid', array_keys($subpages[$selected_main_id]))->orderBy('section_order', 'ASC')->get();
 
             foreach ($page_sections as $row) {
@@ -590,29 +590,28 @@ Two exit strategies are common;</p>
         Asset::container('header')->add("financial-plan-css", "assets/css/plan/financial_plan.css");
         Asset::container('header')->add("widget-css", "assets/css/plan/widget_pages.css");
 
-        $business_plan = BusinessPlan::find($id);
-        $cash_flow_data = $business_plan->CashFlowProjections();
-        
-        if (empty($cash_flow_data)) {
-            return $this->displayPage($business_plan, [], [], $section, ['layout_page' => "plan.cannot-access"]);
+        try {
+            $business_plan = BusinessPlan::find($id);
+            $cash_flow_data = $business_plan->CashFlowProjections();
+            
+            $sales_calculator = new PlanSalesCalculatorService($business_plan);
+            $personnel_calculator = new PlanPersonnelCalculatorService($business_plan);
+            $budget_calculator = new PlanBudgetCalculatorService($business_plan, $personnel_calculator);
+            $loans_calculator = new PlanLoansCalculatorService($business_plan);
+            $fs_calculator = new PlanFinancialStatementsCalculatorService($business_plan, $sales_calculator, $personnel_calculator, $budget_calculator, $loans_calculator);
+
+            $sales_graph = new SalesGraphService($business_plan, $sales_calculator);
+            $sales_graph_images = $sales_graph->getGraphs();
+
+            $budget_graph = new BudgetGraphService($business_plan, $budget_calculator);
+            $budget_graph_images = $budget_graph->getGraphs();
+
+            $pl_graph = new ProfitAndLossGraphService($business_plan, $fs_calculator);
+            $pl_graph_images = $pl_graph->getGraphs();
         }
-
-        $sales_calculator = new PlanSalesCalculatorService($business_plan);
-        $personnel_calculator = new PlanPersonnelCalculatorService($business_plan);
-        $budget_calculator = new PlanBudgetCalculatorService($business_plan, $personnel_calculator);
-        $loans_calculator = new PlanLoansCalculatorService($business_plan);
-        $fs_calculator = new PlanFinancialStatementsCalculatorService($business_plan, $sales_calculator, $personnel_calculator, $budget_calculator, $loans_calculator);
-
-        $sales_graph = new SalesGraphService($business_plan, $sales_calculator);
-        $sales_graph_images = $sales_graph->getGraphs();
-
-        $budget_graph = new BudgetGraphService($business_plan, $budget_calculator);
-        $budget_graph_images = $budget_graph->getGraphs();
-
-        $pl_graph = new ProfitAndLossGraphService($business_plan, $fs_calculator);
-        $pl_graph_images = $pl_graph->getGraphs();
-
-        
+        catch (Exception $e) {
+            return $this->displayPage($business_plan, [], [], $section, ['layout_page' => "plan.financial-statements.cannot-access"]);
+        }
 
         $images = [
             'pie_chart.png',
@@ -1182,9 +1181,13 @@ Two exit strategies are common;</p>
         //var_dump($section_contents);
         echo '</pre>';
         die;*/
-
-        $report = new PlanReport($business_plan, $user, $pdf_entries);
-
-        $report->toPdf();
+        
+        try {
+            $report = new PlanReport($business_plan, $user, $pdf_entries);
+            $report->toPdf('D');
+        }
+        catch (Exception $e) {
+            return $this->displayPage($business_plan, [], [], $section, ['layout_page' => "plan.cannot-print"]);
+        }
     }
 }

@@ -103,7 +103,7 @@
                     <ul id="plan-secondary-links">
                         <li class="edit-context-state"><a href="{{ url('plan/print/' . $business_plan->id) }}"><span>Print</span></a>
                         </li>
-                        <li class="edit-context-state active"><a href="#"><span>Plan</span></a>
+                        <li class="edit-context-state active"><a href="{{ url('plan/executive-summary/index/' . $business_plan->id) }}"><span>Plan</span></a>
                         </li>
                     </ul>
                 </div>
