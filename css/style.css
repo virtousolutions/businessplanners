@@ -123,6 +123,7 @@ background: linear-gradient(to bottom,  #3b8ebf 0%,#62b5e6 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', endColorstr='#62b5e6',GradientType=0 ); /* IE6-9 */
 	min-height: 521px;
 	width: 100%;
+	padding-bottom: 3em;
 }
 #info-home .line:first-child{
 	padding: 2em 0 0 0;

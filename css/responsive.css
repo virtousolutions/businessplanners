@@ -175,4 +175,7 @@ img{
 	.form-control{
 		width: 50%;
 	}
+	#info-head{
+		float: right;
+	}
 }

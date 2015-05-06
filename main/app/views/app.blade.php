@@ -49,7 +49,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<li><a href="#" id="forcontactus">Contact Us</a></li>
 				</ul>
 			</div><!-- #top-menu -->
-			<div id="info-head" class="col-md-3">0345 052 2742</div>
+			<div id="info-head" class="col-md-2 col-md-offset-1">0345 052 2742</div>
 		</div><!-- .body_container -->
 	</div>
 
