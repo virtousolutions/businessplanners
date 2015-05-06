@@ -14,7 +14,7 @@
 				</ul>
 			</div><!-- #bulleted -->
 			<div id="banner-branding" class="col-md-7 col-sm-12">
-				<img src="{{url('assets/img/banner-logo.png')}}">
+				<!-- <img src="{{url('assets/img/banner-logo.png')}}">-->
 				<h2>Call us to find out more 0345 052 2742</h2>
 			</div><!-- #banner-branding -->
 		</div><!-- #inside-banner -->
@@ -84,8 +84,11 @@ This enables you to easily create and manage your forecasts and budgets giving y
 
 <p>We recommend <strong>every business</strong>, large or small, to invest time in creating a thorough business plan to help both internally and externally.</p>
 	
-	<div id="iMac">
-		<img src="{{ url('assets/img/iMac.png') }}">
+	<div id="iMac" class="col-md-12 col-md-offset-2">
+		<!-- <img src="{{ url('assets/img/iMac.png') }}"> -->
+		<div id="logo-cover" class="col-md-12">
+			<img src="{{url('assets/img/banner-logo.png')}}">
+		</div>
 	</div><!-- #iMac -->
 
 	</div><!-- .body_container -->
@@ -409,6 +412,7 @@ Collaborate with your team
 	</div><!-- #contacttbl -->
 	</div><!-- .container -->
 </div><!-- #contactus -->
+
 @endsection
 
 

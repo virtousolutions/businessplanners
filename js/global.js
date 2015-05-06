@@ -1,6 +1,6 @@
 jQuery(function($){
 	var _token = $("meta[name='token']").attr('content');
-
+	// console.log(window.location.hash.substring(1))
 	var GLOBAL = {
 		respMenu : function(){
 			$("#top-menu #btn-resp").click(function(){
@@ -66,6 +66,12 @@ jQuery(function($){
 			});
 		},
 		menuscroll : function(){
+			$("#footer-menu li a").on('click', function(){
+				var $contactus = $(".thecontactus").offset();
+				$("html, body").animate({
+					scrollTop : $contactus.top
+				}, 'slow');
+			});
 			$("#top-menu li a").on('click', function(){
 				var id = $(this).attr('id');
 				$("#banner").removeClass('forbanner');
@@ -112,6 +118,21 @@ jQuery(function($){
 				}, 700);
 			});
 		},
+		checknametag : function(){
+			if(window.location.hash.substring(1) == 'forfeature'){
+				console.log(window.location.hash.substring(1));
+				var $feature = $(".thefeature").offset();
+				$("html, body").animate({
+					scrollTop : $feature.top
+				}, 'slow');
+			}
+			if(window.location.hash.substring(1) == 'forcontactus'){
+				var $contactus = $(".thecontactus").offset();
+				$("html, body").animate({
+					scrollTop : $contactus.top
+				}, 'slow');
+			}
+		},
 		executecode_here : function(){
 			// For the responsive menu
 			this.respMenu();
@@ -124,6 +145,8 @@ jQuery(function($){
 
 			// Scroll to top
 			this.scrolltotop();
+
+			this.checknametag();
 		}
 	}
 

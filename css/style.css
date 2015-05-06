@@ -12,12 +12,16 @@ Body
 body{
 	font-family: 'Open Sans', sans-serif;
 }
+h1, h2, h3, h4, h5, h6, p{
+	font-weight: 400;
+}
 /*--------------------------------------------------------------
 Head
 --------------------------------------------------------------*/
 #head-bg{
-	min-height: 56px;
-	width: 100%;
+	min-height: 70px;
+  	width: 100%;
+  	padding-top: 0.5em;
 }
 #logo{
 
@@ -103,7 +107,7 @@ Home Page
 #inside-banner #banner-branding h2{
 	clear: both;
 	font-family: 'Open Sans', sans-serif;
-	font-size: 31px;
+	font-size: 29px;
 	color: #FFF;
 	line-height: 1.7em;
 }
@@ -119,8 +123,9 @@ background: linear-gradient(to bottom,  #3b8ebf 0%,#62b5e6 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', endColorstr='#62b5e6',GradientType=0 ); /* IE6-9 */
 	min-height: 521px;
 	width: 100%;
+	padding-bottom: 3em;
 }
-#info-home .line{
+#info-home .line:first-child{
 	padding: 2em 0 0 0;
 	background-image: url(../images/row-divider.png);
 	background-repeat: no-repeat;
@@ -163,24 +168,36 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 	font-size: 45px;
 	color: #4c4c4c;
 	padding-bottom: 0.4em;
+	padding-top: 0.4em;
 }
 #business-plan h2 strong{
 	color: #63b6e7;
 	font-family: 'Open Sans', sans-serif;
-	font-weight: 600;
+	font-weight: 400;
 }
 #business-plan p{
 	font-size: 18px;
 	color: #4c4c4c;
+	padding-top: 1em;
 }
 #business-plan p strong{
 	font-family: 'Open Sans', sans-serif;
-	font-weight: 600;
+	font-weight: 400;
 }
 #business-plan #iMac{
 	z-index: 9999;
   	position: relative;
   	top: 5em;
+  	background-image: url(../images/iMac.png);
+  	background-repeat: no-repeat;
+  	max-width: 710px;
+  	height: 579px;
+  	-webkit-background-size: 100% 100%;
+  	background-size: 100% 100%;
+}
+#logo-cover{
+	padding: 9em 3em;
+  	float: none;
 }
 #business-planners-review{
 	clear: both;
@@ -263,7 +280,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 }
 #testimonial p strong{
 	font-family: 'Open Sans', sans-serif;
-	font-weight: 700;
+	font-weight: 400;
 }
 #testimonial .testi-box{
 	background-color: #fff;
@@ -337,7 +354,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 .form-group{
 	clear: both;
 }
-#contacttbl input[type="text"]{
+#contacttbl input[type="text"], #contacttbl input[type="number"], #contacttbl input[type="email"]{
 	border-radius: 15px;
 	background-color: #F5F5F5;
 }
@@ -356,7 +373,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 	font-size: 22px;
 	color: #FFF;
 	padding: 10px 50px;
-	font-weight: 600;
+	font-weight: 400;
 	border: 0;
 	margin: 1em 0 1em 0;
 }
@@ -377,6 +394,8 @@ footer{
 }
 footer #footer-menu{
 	padding: 5em 0 0 0;
+	position: relative;
+  	z-index: 9999;
 }
 footer #footer-menu ul{
 	list-style: none;
@@ -400,14 +419,14 @@ footer p{
 	font-size: 17px;
 	font-weight: 300;
 }
-footer #social-icons{
+#social-icons{
 	position: relative;
   	z-index: 9999;
 }
-footer #social-icons ul{
+#social-icons ul{
 	list-style: none;
 }
-footer #social-icons li{
+#social-icons li{
 	display: inline;
 	float: left;
 }
@@ -422,16 +441,17 @@ Table Plans
 #comparetable th {padding: 20px; text-align: center;}
 #comparetable td.rowTitle {text-align: left;}
 .blank {background: none!important; border: none!important;}
- .blueshine th {background-color: #f0f1f1; font-size: 30px; color: #63b6e7; text-align: center; font-weight: 600; text-shadow: 0 1px 0 #e0ecf7; border: 1px solid #9fb6c8; font-weight: 400;}
- .blueshine td {background-color: #f0f1f1; border: 1px solid #c8d6e2;} 
+ .blueshine th {background-color: #F2F2F2; font-size: 2.5rem; color: #63b6e7; text-align: center; font-weight: 400; text-shadow: 0 1px 0 #e0ecf7; border: 1px solid #9fb6c8; font-weight: 400;}
+ .blueshine td {background-color: #F2F2F2; border: 1px solid #c8d6e2;} 
  .blueshine td.rowTitle {border-left: 4px solid #333}
+ 
  #comparetable td.nostyle{
  	background:none;
  	border: 0;
  	padding:0.7em 0 0 0;
  }
  #comparetable td.highlight{
- 	font-weight: 600;
+ 	font-weight: 400;
  	font-size: 37px;
  }
 /* END COMPARISON TABLE STYLES */

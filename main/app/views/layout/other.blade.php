@@ -26,6 +26,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/other.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/header.css') }}" />
 
+
+
     {{ Asset::container('header')->styles() }}
   </head>
 
