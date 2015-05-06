@@ -30,3 +30,4 @@
 		<div id="info-head" class="col-md-3">0345 052 2742</div>
 	</div><!-- .body_container -->
 </div>
+<div class="head-div"></div>

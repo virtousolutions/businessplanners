@@ -83,6 +83,7 @@ class HomeController extends BaseController {
 
         $this->layout = View::make('layout.other');
         $this->layout->content = View::make("home.privacy");
+       
     }
 
     public function license()

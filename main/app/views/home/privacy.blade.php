@@ -1,3 +1,5 @@
+@extends('app')
+
 @section('content')
 <div class="col-xs-12 tac-contents">
     <div class="col-xs-12 tac-title">
