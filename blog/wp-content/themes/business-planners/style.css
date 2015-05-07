@@ -905,10 +905,10 @@ Head
 	width: 100%;
 }
 #logo{
-
+	padding: 10px 10px;
 }
 #top-menu{
-
+	padding: 1em 0 0 0;
 }
 #top-menu #btn-resp{
 	display: none;
@@ -944,6 +944,7 @@ Head
 	font-size: 23px;
   	line-height: 2.4em;
   	font-family: 'Open Sans', sans-serif;
+  	padding: 0.5em 0 0 0;
 }
 /*--------------------------------------------------------------
 Home Page
@@ -1256,6 +1257,9 @@ Blog
 #primary{
 	padding: 2em 0 0 0;
 }
+#secondary{
+	padding: 4em 0 0 0;
+}
 .box{
 	border-radius: 10px;
 	border: 3px solid #62B6E7;
@@ -1359,4 +1363,23 @@ Miscellaneous
 	background: rgba(232, 98, 86, 0.8) url(assets/img/cd-top-arrow.svg) no-repeat center 50%;
 	display: none;
 	z-index: 9999;
+}
+.head-div{
+	background-color: #62B6E7;
+	height: 3px;
+	width: 100%;
+	margin: 12px 0 0 0;
+	clear: both;
+}
+.widget_listcategorypostswidget{
+	
+}
+.widget_listcategorypostswidget ul{
+	list-style: none;
+	margin: 0;
+}
+.widget_listcategorypostswidget li{
+	display: inline-block;
+	float: left;
+	clear: both;
 }

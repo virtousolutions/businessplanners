@@ -147,6 +147,11 @@ img{
 		padding: 0em !important;
 	}
 }
+@media only screen and (max-width: 370px){
+	#business-plan h2{
+		font-size: 40px;
+	}
+}
 @media only screen and (max-width: 350px){
 	.blueshine th{
 		font-size: 5px;
@@ -169,5 +174,8 @@ img{
 @media only screen and (min-width: 1000px){
 	.form-control{
 		width: 50%;
+	}
+	#info-head{
+		float: right;
 	}
 }

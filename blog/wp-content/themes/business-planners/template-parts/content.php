@@ -3,7 +3,6 @@
  * @package businessplanners
  */
 ?>
-<div class="box col-md-3">
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
@@ -39,4 +38,3 @@
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
 
-</div>

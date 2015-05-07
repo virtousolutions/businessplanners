@@ -119,3 +119,53 @@ header a{
     overflow: hidden;
 }
 
+/*--------------------------------------------------------------
+Footer
+--------------------------------------------------------------*/
+footer{
+	min-height: 203px;
+	width: 100%;
+	background-color: #63B6E7;
+	clear: both;
+}
+footer #footer-menu{
+	padding: 5em 0 0 0;
+	position: relative;
+  	z-index: 9999;
+}
+footer #footer-menu ul{
+	list-style: none;
+	margin: 0;
+  	padding: 0;
+}
+footer #footer-menu li{
+	display: inline;
+	float: left;
+}
+footer #footer-menu li a{
+	color: #FFF;
+	padding: 0 0.3em 0 0.3em;
+	font-size: 17px;
+}
+footer{
+	padding: 0;
+	margin: 0;
+}
+footer p{
+	color: #FFF;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 17px;
+	font-weight: 300;
+}
+#social-icons{
+	position: relative;
+  	z-index: 9999;
+}
+#social-icons ul{
+	list-style: none;
+	padding:0;
+}
+#social-icons li{
+	display: inline;
+	float: left;
+}
