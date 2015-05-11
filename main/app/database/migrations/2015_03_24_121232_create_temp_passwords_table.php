@@ -16,7 +16,7 @@ class CreateTempPasswordsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('user_id')->unsigned(); 
-			$table->string('password', 15)->nullable();
+			$table->string('password', 255)->nullable();
 			$table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

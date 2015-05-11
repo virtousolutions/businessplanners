@@ -13,8 +13,10 @@ class UserService {
         $password = $this->generateRandomString();
         
         DB::table('temp_passwords')->insert(
-            array('user_id' => $this->user->id, 'password' => $password)
+            array('user_id' => $this->user->id, 'password' => Hash::make($password))
         );
+
+        return $password;
     }
 
     public function getNewExpirationDate()
