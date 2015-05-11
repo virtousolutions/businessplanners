@@ -93,6 +93,7 @@ $selected_tab = isset($options['selected_tab']) ? $options['selected_tab'] : 'pe
                         </div>
                         <div class="col-xs-12" id="edit-personnel" style="padding: 0px; display: none;">
                             <form id="human-resources-personnel-form" action="{{ asset('plan/financial-plan-human-resources-personnel') }}" method="POST">
+                                <input name="_token" value="{{ csrf_token() }}" type="hidden"/>
                                 <input name="business_plan_id" value="{{ $business_plan->id }}" type="hidden"/>
                                 <input name="employee_id" value="" type="hidden"/>
                                 
@@ -182,6 +183,7 @@ $selected_tab = isset($options['selected_tab']) ? $options['selected_tab'] : 'pe
                         </div>
                         <div class="col-xs-12" style="padding: 0px;">
                             <form id="human-resources-expenses-form" action="{{ asset('plan/financial-plan-human-resources-expenses') }}" method="POST">
+                                <input name="_token" value="{{ csrf_token() }}" type="hidden"/>
                                 <input name="business_plan_id" value="{{ $business_plan->id }}" type="hidden"/>
                                 <div class="selected-expense">
                                     <div class="item-header">

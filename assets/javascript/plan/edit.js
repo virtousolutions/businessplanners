@@ -97,6 +97,8 @@ $(document).ready( function () {
         form.find('.btn').addClass('disabled');
         $("#save-section-message").show();
 
+        values['_token'] = $('meta[name="_token"]').attr('content');
+
         $.ajax({
             method: "post",
             url: action_url, 

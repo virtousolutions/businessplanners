@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#package-form').bootstrapValidator({
+    $('#profile-form').bootstrapValidator({
         fields: {
             first_name: {
                 validators: {
@@ -82,13 +82,6 @@ $(document).ready(function () {
                     },
                     emailAddress: {
                         message: 'Email address is not valid.'
-                    }
-                }
-            },
-            terms_and_conditions : {
-                validators: {
-                    notEmpty: {
-                        message: 'Kindly read and accept the terms and conditions.'
                     }
                 }
             }

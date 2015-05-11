@@ -102,6 +102,7 @@ $start_year = $business_plan->getStartYear();
                         </div>
                         <div class="col-xs-12" id="edit-expenditure" style="padding: 0px; display: none;">
                             <form id="budget-expenditure-form" action="{{ asset('plan/financial-plan-budget-expenditure') }}" method="POST">
+                                <input name="_token" value="{{ csrf_token() }}" type="hidden"/>
                                 <input name="business_plan_id" value="{{ $business_plan->id }}" type="hidden"/>
                                 <input name="expenditure_id" value="" type="hidden"/>
                                 
@@ -214,6 +215,7 @@ $start_year = $business_plan->getStartYear();
                         </div>
                         <div class="col-xs-12" id="edit-purchase" style="padding: 0px; display: none;">
                             <form id="budget-purchase-form" action="{{ asset('plan/financial-plan-budget-purchase') }}" method="POST">
+                                <input name="_token" value="{{ csrf_token() }}" type="hidden"/>
                                 <input name="business_plan_id" value="{{ $business_plan->id }}" type="hidden"/>
                                 <input name="mp_id" value="" type="hidden"/>
                                 
@@ -301,6 +303,7 @@ $start_year = $business_plan->getStartYear();
                         </div>
                         <div class="col-xs-12" style="padding: 0px;">
                             <form id="budget-tax-form" action="{{ asset('plan/financial-plan-budget-tax') }}" method="POST">
+                                <input name="_token" value="{{ csrf_token() }}" type="hidden"/>
                                 <input name="business_plan_id" value="{{ $business_plan->id }}" type="hidden"/>
                                 <div class="selected-expense">
                                     <div class="item-header">

@@ -13,6 +13,7 @@ $payment_type = (isset($options['payment_type']) && $options['payment_type'] == 
 ?>
 
 <form name="cash-flow-projection" action="{{ asset('plan/financial-plan-cash-flow-projections') }}" method="POST">
+    <input name="_token" value="{{ csrf_token() }}" type="hidden"/>
     <input name="business_plan_id" value="{{ $business_plan->id }}" type="hidden"/>
     <input name="cash-flow-payment-type" value="{{ $payment_type }}" type="hidden"/>
     <div class="col-xs-12 financial-plan-editor">

@@ -65,6 +65,8 @@
                 <div class="col-xs-6" style="padding-left: 0px;">
                     @if (isset($business_plan))
                     <h3 style="color: #ffffff;">{{ $business_plan->bp_name }}</h3>
+                    @elseif (isset($subheader_description))
+                    <h3 style="color: #ffffff;">{{ $subheader_description }}</h3>
                     @else
                     <h3 style="color: #ffffff; margin-top: 20px;">Start a New Plan</h3>
                     @endif
@@ -84,13 +86,14 @@
                           <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">
                               <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Plans <span class="caret"></span></a>
+                                <a href="{{ url('plan') }}" aria-expanded="false">My Plan </a>
+                              </li>
+                              <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    @foreach ($business_plans as $id => $name)
-                                        <li><a href="{{ url('plan/executive-summary/index/' . $id) }}">{{ $name }}</a></li>
-                                    @endforeach
+                                    <li><a href="{{ url('profile') }}">Profile</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="{{ url('plan') }}">New Plan</a></li>
+                                    <li><a href="{{ url('logout') }}">Logout</a></li>
                                 </ul>
                               </li>
                             </ul>
@@ -112,6 +115,14 @@
         </header>
     </div>
     <div class="col-xs-12" style="padding: 20px 0; background: #FFF url({{ asset('assets/css/plan/shortcodes_files/images/bg-ui-gradient.png') }}) left top repeat-x;">
+        <div id="notification" class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+            @if( ! $errors->has() && Session::get('the-message'))
+                <div class="alert alert-dismissable alert-success">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    <b>{{ Session::get('the-message') }}</b>
+                </div>
+            @endif
+        </div>
         <div class="wrapper">
             @yield('content')
         </div>	

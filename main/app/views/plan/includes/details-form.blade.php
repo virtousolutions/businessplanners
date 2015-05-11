@@ -1,4 +1,5 @@
 <form id="plan-details-form" name="plan-details-form" method="post" class="no-enter" action="" target="">
+{{ Form::open(array('id' => 'plan-details-form', 'name' => 'plan-details-form', 'method' => 'POST', 'class' => 'no-enter')) }}
     <h3>Plan Name</h3>
     <p>This name will appear on each page of your business plan. It also helps identify the plan on the list of plans created on your account.</p>
     <div class="col-xs-12" style="padding: 0px;">
