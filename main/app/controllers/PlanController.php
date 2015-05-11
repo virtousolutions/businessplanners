@@ -6,12 +6,82 @@ extends BaseController
     protected $main_pages = null;
     protected $sub_pages = null;
     protected $current_main_page_id = null;
+    protected $business_plan = null;
+
+    protected $has_financial_statement = ['standard', 'professional', 'premium'];
 
     public function __construct()
     {
         parent::__construct();
         
-        View::share('business_plans', DB::table('business_plans')->orderBy('bp_name')->lists('bp_name', 'id'));
+        $user = Auth::getUser();
+        $id = DB::table('business_plans')->where('user_id', $user->id)->pluck('id');
+
+        if ($id) {
+            $this->business_plan = BusinessPlan::find($id);
+        }
+    }
+
+    protected function checkAccess()
+    {
+        $segment_1 = Request::segment(1);
+
+        if ($segment_1 == 'create') {
+            if ($this->business_plan) {
+                return Redirect::to('plan/executive-summary/index/' . $this->business_plan->id);
+            }
+        }
+        else if ($segment_1 == 'plan') {
+            if (!$this->business_plan) {
+                return Redirect::to('create');
+            }
+             
+            $segment_2 = Request::segment(2);
+
+            if ($segment_2 == 'financial-statements' && !in_array(Auth::getUser()->package, $this->has_financial_statement)) {
+                return Redirect::to('plan/executive-summary/index/' . $this->business_plan->id);
+            }
+        }
+    }
+
+    public function index()
+    {
+        if ($this->business_plan) {
+            return Redirect::to('plan/executive-summary/index/' . $this->business_plan->id);
+        }
+        else {
+            return Redirect::to('create');
+        }
+    }
+
+    public function profile()
+    {
+        $this->layout = View::make('layout.plan');
+        
+        Asset::container('header')->add("profile-css", "assets/css/plan/profile.css");
+
+        Asset::container('footer')->add('bootstrap-validator-js', 'assets/plugins/bootstrap_validator/js/bootstrapValidator.js');
+        Asset::container('footer')->add("profile-js", "assets/javascript/plan/profile.js");
+
+        $countries = DB::table('countries')->orderBy('country_name')->lists('country_name', 'id');
+        $countries = ['' => 'Select'] + $countries;
+        
+        View::share('subheader_description', 'Edit Profile');
+
+        $this->layout->content = View::make("plan.profile", [
+            'user' => Auth::getUser(),
+            'countries' => $countries
+        ]);
+    }
+
+    public function profileSubmit()
+    {
+        $input = Input::all();
+        
+        Auth::getUser()->fill($input);
+        Auth::getUser()->save();
+
+        return Redirect::to('profile')->with('the-message', 'Successfully saved your changes');
     }
 
 	public function create()
@@ -32,10 +102,12 @@ extends BaseController
             'dummy_bp_name' => '', 
             'months' => $defaultMonthist,
             'plan_year' => $currentYear,
-            'bp_user_id' => 1,
+            'bp_user_id' => Auth::getUser()->id,
             'bp_id' => 0,
             'plan_details_form_button_text' => 'Create New Plan'
         ]);
+
+        return $this->checkAccess();
     }
 
     public function createSubmit()
@@ -79,6 +151,8 @@ extends BaseController
             null,
             ['layout_page' => "plan.details"]
         );
+
+        return $this->checkAccess();
     }
 
     public function submitDetails($id)
@@ -127,7 +201,8 @@ extends BaseController
         $selected_main_id = null;
         $mainpages        = [];
         $subpages         = [];
-        
+        $fs_index         = 0;
+
         foreach ($pages as $page) {
             if (array_key_exists($page->parentid, $mainpages)) {
                 // this is a subpage
@@ -140,9 +215,17 @@ extends BaseController
                 if ($selected_main == $page->pageurl) {
                     $selected_main_id = $page->pageid;        
                 }
+
+                if ($page->pageurl == 'financial-statements') {
+                    $fs_index = $page->pageid;
+                }
             }
         }
 
+       if (!in_array(Auth::getUser()->package, $this->has_financial_statement)) {
+            unset($mainpages[$fs_index]);
+        }
+        
         $this->main_pages = $mainpages;
         $this->sub_pages = $subpages;
         $this->current_main_page_id = $selected_main_id;
@@ -201,6 +284,8 @@ extends BaseController
                 'sub_page_sections_data' => $sub_page_sections_data
             ]
         );
+
+        return $this->checkAccess();
     }
 
     public function executiveSummary($section, $id)
@@ -1075,19 +1160,7 @@ Two exit strategies are common;</p>
     public function printDoc($id)
     {
         $business_plan = BusinessPlan::find($id);
-        $user = new User();
-        $user->fill([
-            'first_name' => 'Mark',
-            'last_name' => 'Macaso',
-            'email' => 'mark@email.com',
-            'contact_number' => '11111',
-            'address_1' => '1 Main St',
-            'city' => 'Cebu',
-            'state' => 'Cebu',
-            'country' => 'Philippines',
-            'zip' => '6000'
-
-        ]);
+        $user = Auth::getUser();
 
         $data_pages = DB::table('pages')
             ->where('parentid', '>', '0')
@@ -1183,7 +1256,7 @@ Two exit strategies are common;</p>
         die;*/
         
         try {
-            $report = new PlanReport($business_plan, $user, $pdf_entries);
+            $report = new PlanReport($business_plan, $user, $pdf_entries, (in_array(Auth::getUser()->package, $this->has_financial_statement)));
             $report->toPdf('D');
         }
         catch (Exception $e) {

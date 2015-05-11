@@ -1,91 +1,86 @@
+@extends('app')
+
+@section('title')
+Order Package
+@stop
+
 @section('content')
-    <div class="col-xs-12" style="margin-top: 20px; margin-bottom: 20px;">
-        @if ($package['id'] == 1)
-            <div id="packages" class="col-sm-4" style="padding: 0px; margin-bottom: 20px; margin-top: 20px;">
-                <div class="price-box col-xs-12">
-                    <div class="header">
-                        <div class="price">{{ $package['name'] }}</div>
-                        <div class="price">&pound;{{ number_format($package['price']) }}</div>
-                    </div>
-                    <div class="diy-content">
-                        With our DIY business plan, you can go and create your business plan yourself. (Please note that this service does not include a financial review). Make sure to also check out our three business plan packages
-                    </div>
-                </div>
+    <div class="container" style="margin-top: 30px; margin-bottom: 30px;">
+        <div class="col-sm-8 col-xs-12 col-sm-offset-2" style="background-color: #5BA4D2; padding: 20px; color: #ffffff;">
+            <legend style="color: #ffffff;">Please enter your personal details</legend>
+            @if($errors->any())
+            <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <ul style="list-style-type: none; padding: 0px; margin: 0px;">
+                {{ implode('', $errors->all('<li class="error">:message</li>')) }}
+                </ul>
             </div>
-        @else
-            <div id="packages" class="col-sm-4" style="padding: 0px; margin-bottom: 20px;">
-                @include('package.package')
-            </div>
-        @endif
-        <div class="col-sm-7 col-sm-offset-1 col-xs-12">
-            <h2>Secure Payment Form</h2>
-            <p>&nbsp;</p>
-            <legend>Personal Details</legend>
+            @endif
             {{ Form::open(array('method' => 'post', 'class' => 'form-horizontal', 'id' => 'package-form')) }}
                 <div class="form-group">
                     <label class="col-sm-4 control-label">First Name</label>
                     <div class="col-sm-8">
-                        {{ Form::text('first_name', (isset($first_name) ? $first_name : null), array('class' => 'form-control')) }}
+                        {{ Form::text('first_name', (isset($first_name) ? $first_name : null), array('class' => 'form-control', 'style' => 'width: 80%;')) }}
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Last Name</label>
                     <div class="col-sm-8">
-                        {{ Form::text('last_name', (isset($last_name) ? $last_name : null), array('class' => 'form-control')) }}
+                        {{ Form::text('last_name', (isset($last_name) ? $last_name : null), array('class' => 'form-control', 'style' => 'width: 80%;')) }}
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Address 1</label>
                     <div class="col-sm-8">
-                        {{ Form::text('address_1', (isset($address_1) ? $address_1 : null), array('class' => 'form-control')) }}
+                        {{ Form::text('address_1', (isset($address_1) ? $address_1 : null), array('class' => 'form-control', 'style' => 'width: 80%;')) }}
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Address 2</label>
                     <div class="col-sm-8">
-                        {{ Form::text('address_2', (isset($address_2) ? $address_2 : null), array('class' => 'form-control')) }}
+                        {{ Form::text('address_2', (isset($address_2) ? $address_2 : null), array('class' => 'form-control', 'style' => 'width: 80%;')) }}
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Town/City</label>
                     <div class="col-sm-8">
-                        {{ Form::text('city', (isset($city) ? $city : null), array('class' => 'form-control')) }}
+                        {{ Form::text('city', (isset($city) ? $city : null), array('class' => 'form-control', 'style' => 'width: 80%;')) }}
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 control-label">State</label>
                     <div class="col-sm-8">
-                        {{ Form::text('county', (isset($county) ? $county : null), array('class' => 'form-control')) }}
+                        {{ Form::text('state', (isset($county) ? $county : null), array('class' => 'form-control', 'style' => 'width: 80%;')) }}
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Country:</label>
                     <div class="col-sm-8">
-                    {{ Form::select('country', $countries, (isset($country) ? $country : null), array('class' => 'form-control')) }}
+                    {{ Form::select('country', $countries, (isset($country) ? $country : null), array('class' => 'form-control', 'style' => 'width: 80%;')) }}
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Post Code</label>
                     <div class="col-sm-8">
-                        {{ Form::text('post_code', (isset($post_code) ? $post_code : null), array('class' => 'form-control')) }}
+                        {{ Form::text('post_code', (isset($post_code) ? $post_code : null), array('class' => 'form-control', 'style' => 'width: 80%;')) }}
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">Email Address</label>
+                    <label class="col-sm-4 control-label">Email </label>
                     <div class="col-sm-8">
-                        {{ Form::text('email_address', (isset($email_address) ? $email_address : null), array('class' => 'form-control')) }}
+                        {{ Form::text('email', (isset($email) ? $email : null), array('class' => 'form-control', 'style' => 'width: 80%;')) }}
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Telephone</label>
                     <div class="col-sm-8">
-                        {{ Form::text('telephone', (isset($telephone) ? $telephone : null), array('class' => 'form-control')) }}
+                        {{ Form::text('telephone', (isset($telephone) ? $telephone : null), array('class' => 'form-control', 'style' => 'width: 80%;')) }}
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Mobile</label>
                     <div class="col-sm-8">
-                        {{ Form::text('mobile', (isset($mobile) ? $mobile : null), array('class' => 'form-control')) }}
+                        {{ Form::text('mobile', (isset($mobile) ? $mobile : null), array('class' => 'form-control', 'style' => 'width: 80%;')) }}
                     </div>
                 </div>
                 <div class="form-group">

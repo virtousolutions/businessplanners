@@ -73,16 +73,14 @@ class HomeController extends BaseController {
     {
         Asset::container('header')->add('terms-and-conditions-css', 'assets/css/terms_and_conditions.css');
 
-        $this->layout = View::make('layout.other');
-        $this->layout->content = View::make("home.terms");
+        return View::make("home.terms");
     }
 
     public function privacy()
     {
         Asset::container('header')->add('terms-and-conditions-css', 'assets/css/terms_and_conditions.css');
 
-        $this->layout = View::make('layout.other');
-        $this->layout->content = View::make("home.privacy");
+        return View::make("home.privacy");
        
     }
 
@@ -90,47 +88,63 @@ class HomeController extends BaseController {
     {
         Asset::container('header')->add('terms-and-conditions-css', 'assets/css/terms_and_conditions.css');
 
-        $this->layout = View::make('layout.other');
-        $this->layout->content = View::make("home.license");
+        return View::make("home.license");
     }
 
-    public function order($number)
+    public function order($package)
     {
         $data = Input::old();
         $countries = DB::table('countries')->orderBy('country_name')->lists('country_name', 'id');
         $data['countries'] = ['' => 'Select'] + $countries;
 
-        $package = $this->getPackage($number);
-
-        $data['package'] = $package;
-        $data['features'] = $this->getFeatures();
-        $data['show_button'] = false;
-
-        Asset::container('header')->add('package-css', 'assets/css/package.css');
-
         Asset::container('footer')->add('bootstrap-validator-js', 'assets/plugins/bootstrap_validator/js/bootstrapValidator.js');
         Asset::container('footer')->add('wills-js', 'assets/javascript/package.js');
-
-        $this->layout = View::make('layout.other');
-        $this->layout->content = View::make("home.order", $data);
+        
+        return View::make("home.order", $data);
     }
 
-    public function orderSubmit($number)
+    public function orderSubmit($package)
     {
-        $package        = $this->getPackage($number);
         $data           = Input::get();
-        $amount         = $package['price'];
-        $cancel_route   = 'order/' . $number;
-        $complete_route = '';
-
         unset($data['_token']);
+        unset($data['terms_and_conditions']);
+
+        // check if email already exist.
+        $user_id = DB::table('users')->where('email', $data['email'])->pluck('id');
         
-        $data['package_number'] = $number;
-        $data['product_id'] = $number;
-        $data['description']    = 'Payment for ' . $package['name'] . ' package';
-        $data['amount']         = $amount;
-        $data['cancel_route']   = $cancel_route;
-        $data['complete_route'] = $complete_route;
+        if ($user_id) {
+            $this->message_bag->add('email', 'An account associated to the email address already exist');
+        	return Redirect::to('order/' . $package)->withInput()->withErrors($this->message_bag);
+        }
+
+        /*echo '<pre>';
+        var_dump($data);
+        die;
+        echo '</pre>';
+
+        die;*/
+        
+        Session::put('order_data', base64_encode(http_build_query($data)));
+        
+        // TODO: redirect to the order form
+        // For now, redirect to the payment complete first
+        return Redirect::to('order-complete/' . $package);
+    }
+
+    public function orderComplete($package)
+    {
+        $str = base64_decode(Session::get('order_data'));
+        
+        if (! $str) {
+            return Redirect::to('/');
+        }
+
+        // forget data so that it will not be reused
+        Session::forget('order_data');
+
+        parse_str($str, $data);
+
+        $data['package'] = $package;
 
         /*echo '<pre>';
         var_dump($data);
@@ -139,26 +153,45 @@ class HomeController extends BaseController {
 
         die;*/
 
-        return Redirect::to('start_payment')->withInput($data);
-    }
+        $user = new User();
+        $user = $user->create($data);
 
-    public function paymentComplete()
-    {
-        Asset::container('footer')->add("order-complete-js", "assets/javascript/order-complete.js");
+        $service = new UserService($user);
 
-        $old_data = Input::old();
+        // create temporary password
+        $service->setTemporaryPassword();
+        // set expiration
+        $user->expires_at = $service->getNewExpirationDate();
 
-        $package = $this->getPackage(isset($old_data['package_number']) ? $old_data['package_number'] : 1);
+        $user->save();
 
-        $old_data['affiliation'] = 'The Business Planners';
-        $old_data['product_name'] = $package['name'];
-        $old_data['product_price'] = $package['price'];
-        $old_data['product_brand'] = 'The Business Planners';
-        $old_data['product_category'] = 'Service';
-        $old_data['product_variant'] = $package['name'];
-        $old_data['product_quantity'] = 1;
+        $email_data = $user->getAttributes();
+        $email_data['valid_password'] = $user->getValidPassword();
 
-        $this->layout = View::make('layout.other');
-        $this->layout->content = View::make("home.payment-complete", ['old_data' => $old_data]);
+        // send an email to admin
+        Mail::send('emails.notify_admin', $email_data, function($message) use ($user)
+        {
+            $from = Config::get('mail.from');
+            $to   = Config::get('mail.purchase_info');
+
+            $message->from($from['address'], $from['name']);
+            $message->to($to['address']);
+            $message->bcc('markjoymacaso@gmail.com');
+            $message->subject('The Busines Planners Package Purhase');
+        });
+
+        // send an email to the user
+        Mail::send('emails.notify_user', (array)$email_data, function($message) use ($user)
+        {
+            $from = Config::get('mail.from');
+            
+            $message->from($from['address'], $from['name']);
+            $message->to($user->email);
+            $message->bcc('markjoymacaso@gmail.com');
+            $message->subject('The Business Planners Package Purhase');
+        });
+
+        // create user and sent credentials to user
+        return View::make("home.order-complete", $email_data);
     }
 }

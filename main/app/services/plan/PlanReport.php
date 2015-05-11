@@ -5,10 +5,11 @@ class PlanReport extends TCPDF {
     protected $business_plan;
     protected $user;
     protected $contents;
+    protected $add_financial_statements;
 
     protected $img_path = 'img/pdf';
 
-    public function __construct(BusinessPlan $business_plan, User $user, $contents)
+    public function __construct(BusinessPlan $business_plan, User $user, $contents, $add_financial_statements)
     {
         parent::__construct(PDF_PAGE_ORIENTATION, PDF_UNIT, array(215.9,279.4), true, 'UTF-8', false);
 
@@ -54,6 +55,7 @@ class PlanReport extends TCPDF {
         $this->business_plan = $business_plan;
         $this->user = $user;
         $this->contents = $contents;
+        $this->add_financial_statements = $add_financial_statements;
     }
 
     public function Header() {
@@ -286,12 +288,15 @@ understanding that you will not share its contents or ideas with third parties w
         $this->renderBudget($budget_calculator, $personnel_calculator);
         $this->addPage('L');
         $this->renderFundings($fund_calculator);
-        $this->addPage('L');
-        $this->renderProfitAndLoss($fs_calculator, $sales_calculator, $budget_calculator);
-        $this->addPage('L');
-        $this->renderBalanceSheet($fs_calculator);
-        $this->addPage('L');
-        $this->renderCashFlow($fs_calculator);
+
+        if ($this->add_financial_statements === true) {
+            $this->addPage('L');
+            $this->renderProfitAndLoss($fs_calculator, $sales_calculator, $budget_calculator);
+            $this->addPage('L');
+            $this->renderBalanceSheet($fs_calculator);
+            $this->addPage('L');
+            $this->renderCashFlow($fs_calculator);
+        }
     }
 
     protected function renderSalesForecast($sales_calculator)

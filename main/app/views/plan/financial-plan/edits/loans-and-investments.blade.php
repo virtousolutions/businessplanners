@@ -85,6 +85,7 @@
                         </div>
                         <div class="col-xs-12" id="edit-loan" style="padding: 0px; display: none;">
                             <form id="loan-form" action="{{ asset('plan/financial-plan-loans-and-investments') }}" method="POST">
+                                <input name="_token" value="{{ csrf_token() }}" type="hidden"/>
                                 <input name="business_plan_id" value="{{ $business_plan->id }}" type="hidden"/>
                                 <input name="li_id" value="" type="hidden"/>
                                 

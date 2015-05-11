@@ -1,5 +1,12 @@
+@extends('app')
+
+@section('title')
+License
+@stop
+
 @section('content')
-     <div class="col-xs-12 tac-contents">
+<div class="container">
+    <div class="col-md-10 col-md-offset-1 col-xs-12 tac-contents">
         <div class="col-xs-12 tac-title">
             SOFTWARE LICENCE
         </div>
@@ -166,5 +173,5 @@
             </div>
         </div>
     </div>
-
-  @stop
+</div>
+@stop

@@ -33,8 +33,59 @@ App::after(function($request, $response)
 |
 */
 
+Route::filter('not_temp_password', function()
+{
+	$user = Auth::getUser();
+    
+    if (!$user->password) {
+        return Redirect::to('change-temp-password');
+    }
+
+});
+
+Route::filter('not_expired', function()
+{
+	$user = Auth::getUser();
+    
+    // check expiration
+    $today = date('Y-m-d');
+    $expires = date('Y-m-d', strtotime($user->expires_at));
+
+    if ($today > $expires) {
+        return Redirect::to('account-expired');
+    }
+});
+
+
 Route::filter('auth', function()
 {
+    if (Auth::guest())
+	{
+		if (Request::ajax())
+		{
+			return Response::make('Unauthorized', 401);
+		}
+		else
+		{
+			return Redirect::guest('login');
+		}
+	}
+});
+
+/*
+|--------------------------------------------------------------------------
+| Guest Filter
+|--------------------------------------------------------------------------
+|
+| The "guest" filter is the counterpart of the authentication filters as
+| it simply checks that the current user is not logged in. A redirect
+| response will be issued if they are, which you may freely change.
+|
+*/
+
+Route::filter('guest', function()
+{
+	if (Auth::check()) return Redirect::to('/');
 });
 
 /*
@@ -50,8 +101,8 @@ Route::filter('auth', function()
 
 Route::filter('csrf', function()
 {
-	//if (Session::token() != Input::get('_token'))
-	//{
-	//	throw new Illuminate\Session\TokenMismatchException;
-	//}
+	if (Session::token() != Input::get('_token'))
+	{
+		throw new Illuminate\Session\TokenMismatchException;
+	}
 });

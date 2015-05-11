@@ -338,11 +338,11 @@ Collaborate with your team
             </tr>
             <tr>
 	            <td class="nostyle"></td>    
-	            <td class="nostyle"><a href="#"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
-	            <td class="nostyle"><a href="#"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
-	            <td class="nostyle"><a href="#"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
-	            <td class="nostyle"><a href="#"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
-	            <td class="nostyle"><a href="#"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
+	            <td class="nostyle"><a href="{{ url('order/diy') }}"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
+	            <td class="nostyle"><a href="{{ url('order/value') }}"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
+	            <td class="nostyle"><a href="{{ url('order/standard') }}"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
+	            <td class="nostyle"><a href="{{ url('order/professional') }}"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
+	            <td class="nostyle"><a href="{{ url('order/premium') }}"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
             </tr>
             </table>
          

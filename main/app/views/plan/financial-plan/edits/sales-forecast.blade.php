@@ -94,7 +94,8 @@
                                     <p>Even service businesses may have direct costs. For example, a law firm could track its lawyers' billable hour salaries as direct costs; they vary in direct relation to how much the same lawyer bills the clients.</p>
                                 </div>
                             </div>
-                            <form id="sale-form" action="{{ asset('plan/financial-plan-sales-forecast') }}" method="POST">
+                            <form id="sale-form" action="{{ url('plan/financial-plan-sales-forecast') }}" method="POST">
+                                <input name="_token" value="{{ csrf_token() }}" type="hidden"/>
                                 <input name="business_plan_id" value="{{ $business_plan->id }}" type="hidden"/>
                                 <input name="sf_id" value="" type="hidden"/>
                                 

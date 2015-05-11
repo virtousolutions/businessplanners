@@ -23,10 +23,13 @@ class CreateUsers extends Migration {
 			$table->string('city', 100);
 			$table->string('state')->nullable();
 			$table->integer('country');
-			$table->string('zip', 20);
+			$table->string('post_code', 20);
             $table->string('website', 100);
-			$table->string('contact_number', 50);
-            $table->tinyInteger('package_id');
+			$table->string('telephone', 50);
+            $table->string('mobile', 50);
+            $table->string('package', '15');
+            $table->string('remember_token', 200);
+            $table->timestamp('expires_at');
 			$table->timestamps();
 		});
 	}

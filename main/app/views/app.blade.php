@@ -4,9 +4,16 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Business Planners</title>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- biz planner fav icon -->
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon-bizplanner.png') }}">
+
+	<title>Business Planners @yield('title')</title>
+
+	<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lib/bootstrap.min.css') }}"/>
+    <!-- font awesome icon -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lib/font-awesome.min.css') }}" />
 	<link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/screen.css') }}">
@@ -23,6 +30,8 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+
+    {{ Asset::container('header')->styles() }}
 </head>
 <body>
 <!-- Google Tag Manager -->
@@ -37,19 +46,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 	<div id="head-bg">
 		<div class="container">
-			<div id="logo" class="col-md-3">
+			<div id="logo" class="col-md-2">
 				<img src="{{ url('assets/img/logo.png') }}">
 			</div><!-- #logo -->
-			<div id="top-menu" class="col-md-6">
-				<div id="btn-resp"></div>
-				<ul>
-					<li><a href="#" id="forhome">Home</a></li>
-					<li><a href="#" id="forfeature">Features</a></li>
-					<li><a href="{{url('blog')}}">Blog</a></li>
-					<li><a href="#" id="forcontactus">Contact Us</a></li>
-				</ul>
+			<div id="top-menu" class="col-md-8">
+                <div class="col-md-10 col-md-offset-1">
+                    <div id="btn-resp"></div>
+                    <ul>
+                        <li><a href="{{ url('/') }}" id="forhome">Home</a></li>
+                        <li><a href="{{ url('/#info-home') }}" id="forfeature">Features</a></li>
+                        <li><a href="{{url('blog')}}">Blog</a></li>
+                        <li><a href="{{ url('/#contactus') }}" id="forcontactus">Contact Us</a></li>
+                        @if (Auth::check())
+                            <li><a href="{{ url('plan') }}">My Plan</a></li>
+                            <li><a href="{{ url('logout') }}">Logout</a></li>
+                        @else
+                            <li><a href="{{ url('login') }}">Login</a></li>
+                        @endif
+                    </ul>
+                </div>
 			</div><!-- #top-menu -->
-			<div id="info-head" class="col-md-2 col-md-offset-1">0345 052 2742</div>
+			<div id="info-head" class="col-md-2">0345 052 2742</div>
 		</div><!-- .body_container -->
 	</div>
 
@@ -82,8 +99,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	</footer>
 
 	<!-- Scripts -->
+    <!--
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    -->
+    {{ HTML::script('assets/plugins/jquery-1.11.1.min.js') }}
+    {{ HTML::script('assets/plugins/bootstrap-3.3.2-dist/js/bootstrap.min.js') }}
 	<script src="{{asset('js/jquery.validate.js')}}"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.js"></script>
 

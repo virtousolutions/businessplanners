@@ -1,5 +1,8 @@
+@extends('app')
+
 @section('content')
-     <div class="col-xs-12 tac-contents">
+<div class="container">
+     <div class="col-md-10 col-md-offset-1 col-xs-12 tac-contents">
         <div class="col-xs-12 tac-title">
             WEBSITE TERMS AND CONDITIONS OF SUPPLY
         </div>
@@ -20,7 +23,7 @@
             <div class="section-content">
                 <ul class="sub-sections-in-content"> 
                     <li><span>1.1</span><p>We operate the website www.thebusinessplanners.co.uk. We are Gtwo Limited, whose registered office is 24 Seale Street, St Helier, Jersey JE2 3QG (<b>we, us or ours</b>).</p></li>
-                    <li><span>1.2</span><p>To contact us, please see our <a href="{{ url('') . '/#contact_us'}}">Contact Us</a> page.</p></li>
+                    <li><span>1.2</span><p>To contact us, please see our <a href="{{ url('') . '/#contactus'}}">Contact Us</a> page.</p></li>
                 </ul>
             </div>
 
@@ -286,5 +289,5 @@
             </div>
         </div>
     </div>
-
-  @stop
+</div>
+@stop

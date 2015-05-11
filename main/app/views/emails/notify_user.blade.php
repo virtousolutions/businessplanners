@@ -1,23 +1,17 @@
 <body>
     <p>
-        Dear {{ $params['first_name'] . ' ' . $params['last_name'] }},
+        {{ $first_name . ' ' . $last_name }},
     </p>
     <br>
     <br>
     <p>
-        Thank you for your purchase. We will be in touch shortly. Here are the details of your payment:
+        Thank you for for ordering our {{ ucwords($package) }} package. You may now log in to {{ url('login') }} using the following email and password:
     </p>
     <p>
-        Name: {{ $params['first_name'] . ' ' . $params['last_name'] }}
+        Email: {{ $email }}
     </p>
     <p>
-        Transaction ID: {{ $payment_data['transaction_id'] }}
-    </p>
-    <p>
-        Date: {{ date('d-m-Y', strtotime($payment_data['order_time'])) }}
-    </p>
-    <p>
-        Amount: {{ $payment_data['amount'] }}
+        Password: {{ $valid_password }}
     </p>
     <br>
     <p>
