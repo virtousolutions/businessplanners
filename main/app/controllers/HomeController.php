@@ -159,14 +159,16 @@ class HomeController extends BaseController {
         $service = new UserService($user);
 
         // create temporary password
-        $service->setTemporaryPassword();
+        $password = $service->setTemporaryPassword();
         // set expiration
         $user->expires_at = $service->getNewExpirationDate();
 
         $user->save();
 
         $email_data = $user->getAttributes();
-        $email_data['valid_password'] = $user->getValidPassword();
+        $email_data['temporary_password'] = $password;
+
+        Log::info('Temporary password: ' . $password);
 
         // send an email to admin
         Mail::send('emails.notify_admin', $email_data, function($message) use ($user)

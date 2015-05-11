@@ -11,7 +11,11 @@
         Email: {{ $email }}
     </p>
     <p>
-        Password: {{ $valid_password }}
+        Password: {{ $temporary_password }}
+    </p>
+    <br>
+    <p>
+        Please answer the survey so we can write the correct business plan for you. Click on the link to open the survey: {{ url('survey/' . $id) }}
     </p>
     <br>
     <p>
@@ -22,6 +26,6 @@
     <p>
         Best wishes,
         <br>
-        The CREATE MY CV Team
+        The Business Planners Team
     </p>
 </body>

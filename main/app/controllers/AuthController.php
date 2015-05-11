@@ -49,8 +49,8 @@ class AuthController extends BaseController {
 
         $user = User::find($user_id);
         
-		// check password
-        if ($input['password'] != $user->getValidPassword()) {
+        // check password
+        if (! (Hash::check($input['password'], $user->password) || Hash::check($input['password'], $user->getTemporaryPassword()))) {
             $this->message_bag->add('email', 'Incorrect email or password');
         	return Redirect::to('login')->withInput()->withErrors($this->message_bag);
         }
@@ -91,7 +91,7 @@ class AuthController extends BaseController {
         }
 
         $user = Auth::getUser();
-        $user->password = $input['new_password'];
+        $user->password = Hash::make($input['new_password']);
         $user->save();
 
         DB::table('temp_passwords')->where('user_id', $user->id)->delete();

@@ -30,14 +30,9 @@ class User extends Eloquent implements UserInterface {
 		'email'          => 'required|email',
 	];
 
-    public function getValidPassword()
+    public function getTemporaryPassword()
     {
-        if ($this->password) {
-            return $this->password;
-        }
-        else {
-            return DB::table('temp_passwords')->where('user_id', $this->id)->pluck('password');
-        }
+        return DB::table('temp_passwords')->where('user_id', $this->id)->pluck('password');
     }
 
     /**
