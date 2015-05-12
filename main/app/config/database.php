@@ -49,7 +49,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'business_blog',
+			'database'  => 'business_main',
 			'username'  => 'business_u',
 			'password'  => 'Reload2015',
 			'charset'   => 'utf8',

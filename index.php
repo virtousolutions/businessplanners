@@ -18,6 +18,8 @@
 |
 */
 
+ini_set('memory_limit', '64M');
+
 require __DIR__.'/main/bootstrap/autoload.php';
 
 /*
