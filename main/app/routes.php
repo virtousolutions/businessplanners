@@ -27,15 +27,17 @@ Route::group(['before' => 'guest'], function()
     Route::get("order/{package}", "HomeController@order");
     Route::post("order/{package}", "HomeController@orderSubmit");
     Route::get("order-complete/{package}", "HomeController@orderComplete");
+    
+    Route::get('start_payment', 'PaypalPaymentController@startPayment');
+    Route::get('cancel_payment/{timestamp}', 'PaypalPaymentController@cancelPayment');
+    Route::get('complete_payment/{timestamp}', 'PaypalPaymentController@completePayment');
 });
 
 Route::get("terms", 'HomeController@terms');
 Route::get("privacy", 'HomeController@privacy');
 Route::get("license", 'HomeController@license');
-
-Route::get('start_payment', 'PaypalPaymentController@startPayment');
-Route::get('cancel_payment/{timestamp}', 'PaypalPaymentController@cancelPayment');
-Route::get('complete_payment/{timestamp}', 'PaypalPaymentController@completePayment');
+Route::get("survey/{user_id}", 'HomeController@survey');
+Route::post("survey/{user_id}", 'HomeController@surveySubmit');
 
 Route::group(['before' => 'auth'], function()
 {

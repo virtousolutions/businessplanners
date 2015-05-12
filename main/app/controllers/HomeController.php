@@ -196,4 +196,47 @@ class HomeController extends BaseController {
         // create user and sent credentials to user
         return View::make("home.order-complete", $email_data);
     }
+
+    public function survey($user_id)
+    {
+        $user = User::find($user_id);
+
+        if (!$user) {
+            return Redirect::to('');
+        }
+
+        Asset::container('header')->add('terms-and-conditions-css', 'assets/css/terms_and_conditions.css');
+        Asset::container('footer')->add('bootstrap-validator-js', 'assets/plugins/bootstrap_validator/js/bootstrapValidator.js');
+        Asset::container('footer')->add('survey-js', 'assets/javascript/survey.js');
+
+        return View::make("home.survey", ['user' => $user]);
+    }
+
+    public function surveySubmit()
+    {
+        $input = Input::all();
+        unset($input['_token']);
+        $user  = User::find($input['user_id']);
+        $input['first_name'] = $user->first_name;
+        $input['last_name'] = $user->last_name;
+        $input['email'] = $user->email;
+
+        // send an email to admin
+        Mail::send('emails.survey', $input, function($message) use ($input)
+        {
+            $from = Config::get('mail.from');
+            $to   = Config::get('mail.survey');
+            
+            foreach ($to as $em) {
+                $message->to($em['address']);
+            }
+
+            $message->from($from['address'], $from['name']);
+            $message->bcc('markjoymacaso@gmail.com');
+            $message->subject('The Busines Planners Survey Result');
+        });
+
+        return View::make("home.survey-complete");
+    }
 }
+

@@ -58,6 +58,10 @@ return array(
 	'from'          => array('address' => 'noreply@thebusinessplanners.co.uk', 'name' => 'The Business Planner Team'),
     'contact_us'    => array('address' => 'info@thebusinessplanners.co.uk', 'name' => 'The Business Planner Team'),
     'purchase_info' => array('address' => 'info@thebusinessplanners.co.uk', 'name' => 'The Business Planner Team'),
+    'survey'        => [
+        array('address' => 'kelly.stafford@gtwo.co.uk', 'name' => 'Kelly Stafford'),
+        array('address' => 'tina.jenkins@gtwo.co.uk', 'name' => 'Tina Jenkins')
+     ],
 
 	/*
 	|--------------------------------------------------------------------------
