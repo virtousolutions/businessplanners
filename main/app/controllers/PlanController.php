@@ -63,7 +63,7 @@ extends BaseController
         Asset::container('footer')->add('bootstrap-validator-js', 'assets/plugins/bootstrap_validator/js/bootstrapValidator.js');
         Asset::container('footer')->add("profile-js", "assets/javascript/plan/profile.js");
 
-        $countries = DB::table('countries')->orderBy('country_name')->lists('country_name', 'id');
+        $countries = DB::table('countries')->orderBy(DB::raw("country_name='United Kingdom'"), 'desc')->orderBy('country_name')->lists('country_name', 'id');
         $countries = ['' => 'Select'] + $countries;
         
         View::share('subheader_description', 'Edit Profile');

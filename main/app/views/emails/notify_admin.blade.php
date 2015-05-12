@@ -6,6 +6,7 @@
     <p>
         {{ $first_name . ' ' . $last_name }} has purchased a {{ ($package_nice) }} package.
     </p>
+    @if ($package != 'diy')
     <br>
     <p>
         Here are the login details: <br/>
@@ -13,6 +14,7 @@
         Password: {{ $temporary_password }} <br/>
         This is a temporary password, after logging in, you will be asked to change it.
     </p>
+    @endif
     <br>
     <p>
         Best wishes

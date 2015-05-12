@@ -94,7 +94,7 @@ class HomeController extends BaseController {
     public function order($package)
     {
         $data = Input::old();
-        $countries = DB::table('countries')->orderBy('country_name')->lists('country_name', 'id');
+        $countries = DB::table('countries')->orderBy(DB::raw("country_name='United Kingdom'"), 'desc')->orderBy("country_name")->lists('country_name', 'id');
         $data['countries'] = ['' => 'Select'] + $countries;
 
         Asset::container('footer')->add('bootstrap-validator-js', 'assets/plugins/bootstrap_validator/js/bootstrapValidator.js');
