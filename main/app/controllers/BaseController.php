@@ -30,4 +30,12 @@ class BaseController extends Controller {
 			//$this->template = 'layout.home'; 
 		}
 	}
+
+    protected function base64UrlEncode($input) {
+        return strtr(base64_encode($input), '+/=', '-_~');
+    }
+
+    function base64UrlDecode($input) {
+        return base64_decode(strtr($input, '-_~', '+/='));
+    }
 }

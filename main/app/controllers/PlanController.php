@@ -28,7 +28,7 @@ extends BaseController
 
         if ($segment_1 == 'create') {
             if ($this->business_plan) {
-                return Redirect::to('plan/executive-summary/index/' . $this->business_plan->id);
+                return Redirect::to('plan/details/' . $this->business_plan->id);
             }
         }
         else if ($segment_1 == 'plan') {
@@ -39,7 +39,7 @@ extends BaseController
             $segment_2 = Request::segment(2);
 
             if ($segment_2 == 'financial-statements' && !in_array(Auth::getUser()->package, $this->has_financial_statement)) {
-                return Redirect::to('plan/executive-summary/index/' . $this->business_plan->id);
+                return Redirect::to('plan/details/' . $this->business_plan->id);
             }
         }
     }
@@ -47,7 +47,7 @@ extends BaseController
     public function index()
     {
         if ($this->business_plan) {
-            return Redirect::to('plan/executive-summary/index/' . $this->business_plan->id);
+            return Redirect::to('plan/details/' . $this->business_plan->id);
         }
         else {
             return Redirect::to('create');
@@ -116,8 +116,8 @@ extends BaseController
 
         $new_plan = BusinessPlan::create($input);
 
-        // redirect to executive summary
-        return Redirect::to('plan/executive-summary/index/' . $new_plan->id);
+        // redirect to details
+        return Redirect::to('plan/details/' . $new_plan->id);
     }
 
     public function details($id)

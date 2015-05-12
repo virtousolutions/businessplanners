@@ -47,12 +47,12 @@ Order Package
                         {{ Form::text('city', (isset($city) ? $city : null), array('class' => 'form-control', 'style' => 'width: 80%;')) }}
                     </div>
                 </div>
-                <div class="form-group">
+                <!--div class="form-group">
                     <label class="col-sm-4 control-label">State</label>
                     <div class="col-sm-8">
                         {{ Form::text('state', (isset($county) ? $county : null), array('class' => 'form-control', 'style' => 'width: 80%;')) }}
                     </div>
-                </div>
+                </div-->
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Country:</label>
                     <div class="col-sm-8">

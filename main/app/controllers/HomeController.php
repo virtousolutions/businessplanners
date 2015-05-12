@@ -98,7 +98,7 @@ class HomeController extends BaseController {
         $data['countries'] = ['' => 'Select'] + $countries;
 
         Asset::container('footer')->add('bootstrap-validator-js', 'assets/plugins/bootstrap_validator/js/bootstrapValidator.js');
-        Asset::container('footer')->add('wills-js', 'assets/javascript/package.js');
+        Asset::container('footer')->add('order-js', 'assets/javascript/order.js');
         
         return View::make("home.order", $data);
     }
@@ -167,6 +167,10 @@ class HomeController extends BaseController {
 
         $email_data = $user->getAttributes();
         $email_data['temporary_password'] = $password;
+        $email_data['web_url'] = url(sprintf('email/view/%s/%s', $this->base64UrlEncode($user->id), $this->base64UrlEncode($password)));
+        $email_data['survey_url'] = url(sprintf('survey/%s', $user->id));
+        $email_data['login_url'] = url('login');
+        $email_data['package_nice'] = $user->getPackageNice();
 
         Log::info('Temporary password: ' . $password);
 
@@ -182,6 +186,8 @@ class HomeController extends BaseController {
             $message->subject('The Busines Planners Package Purhase');
         });
 
+        Log::info('Email sent to admin');
+
         // send an email to the user
         Mail::send('emails.notify_user', (array)$email_data, function($message) use ($user)
         {
@@ -190,8 +196,11 @@ class HomeController extends BaseController {
             $message->from($from['address'], $from['name']);
             $message->to($user->email);
             $message->bcc('markjoymacaso@gmail.com');
-            $message->subject('The Business Planners Package Purhase');
+            $message->subject('Thank you ' . sprintf('%s %s', $user->first_name, $user->last_name) . ' for your recent purchase with The Business Planners
+');
         });
+
+        Log::info('Email sent to user');
 
         // create user and sent credentials to user
         return View::make("home.order-complete", $email_data);
@@ -209,6 +218,8 @@ class HomeController extends BaseController {
         Asset::container('footer')->add('bootstrap-validator-js', 'assets/plugins/bootstrap_validator/js/bootstrapValidator.js');
         Asset::container('footer')->add('survey-js', 'assets/javascript/survey.js');
 
+        View::share('hide_main_navigation', true);
+
         return View::make("home.survey", ['user' => $user]);
     }
 
@@ -220,6 +231,7 @@ class HomeController extends BaseController {
         $input['first_name'] = $user->first_name;
         $input['last_name'] = $user->last_name;
         $input['email'] = $user->email;
+        $input['telephone'] = $user->telephone;
 
         // send an email to admin
         Mail::send('emails.survey', $input, function($message) use ($input)
@@ -237,6 +249,29 @@ class HomeController extends BaseController {
         });
 
         return View::make("home.survey-complete");
+    }
+
+    public function emailView($enc_user_id, $enc_temp_password)
+    {
+        if ($enc_user_id == 'test') {
+            $user = Auth::check();
+            $user = Auth::getUser();
+            $temp_password = "test";
+        }
+        else {
+            $user = User::find($this->base64UrlDecode($enc_user_id));
+            $temp_password = $this->base64UrlDecode($enc_temp_password);
+        }
+
+        $data = $user->getAttributes();
+        $data['temporary_password'] = $temp_password;
+        $data['web_url'] = url(sprintf('email/view/%s/%s', $this->base64UrlEncode($user->id), $this->base64UrlEncode($temp_password)));
+        $data['survey_url'] = url(sprintf('survey/%s', $user->id));
+        $data['login_url'] = url('login');
+        $data['package_nice'] = $user->getPackageNice();
+
+        $this->layout = View::make('layout.email-view');
+        $this->layout->content = View::make("home.email-view", $data);
     }
 }
 

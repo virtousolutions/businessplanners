@@ -37,13 +37,13 @@ $(document).ready(function () {
                     },
                 }
             },
-	        state: {
+	        /*state: {
                 validators: {
                     notEmpty: {
                         message: 'County/Province is a required field.'
                     },
                 }
-            },
+            },*/
             country: {
                 validators: {
                     notEmpty: {
@@ -68,14 +68,7 @@ $(document).ready(function () {
                     }
                 }
             },
-	        mobile: {
-                validators: {
-                    notEmpty: {
-                        message: 'Mobile number is a required field.'
-                    }
-                }
-            },
-            email_address: {
+	        email: {
                 validators: {
                     notEmpty: {
                         message: 'Email address is a required field.'

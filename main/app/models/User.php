@@ -30,6 +30,11 @@ class User extends Eloquent implements UserInterface {
 		'email'          => 'required|email',
 	];
 
+    public function getPackageNice()
+    {
+        return $this->package == 'diy' ? 'DIY' : ucwords($this->package);
+    }
+
     public function getTemporaryPassword()
     {
         return DB::table('temp_passwords')->where('user_id', $this->id)->pluck('password');
