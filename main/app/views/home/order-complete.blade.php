@@ -14,7 +14,7 @@ Order Package
     
     <div class="container">
         <div class="col-xs-12" style="padding: 50px 25px; min-height: 250px;">
-            <h3 style="line-height: 35px;">Thank you for ordering our {{ ucwords($package) }} package. Kindly check your email for your login details.</h3>
+            <h3 style="line-height: 35px;">Thank you for ordering our {{ ucwords($package) }} package. Kindly check your email for your login details. Check your spam folder if you cannot find the email in your inbox.</h3>
         </div>
     </div>
 </div>

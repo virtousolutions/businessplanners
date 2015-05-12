@@ -13,9 +13,12 @@
     <p>
         Password: {{ $temporary_password }}
     </p>
+    <p>
+    This is a temporary password, so after logging in, you will be asked to change your password.
+    </p>
     <br>
     <p>
-        Please answer the survey so we can write the correct business plan for you. Click on the link to open the survey: {{ url('survey/' . $id) }}
+        But before you get started, please answer the survey so we can write the correct business plan for you. Click on the link to open the survey: {{ url('survey/' . $id) }}
     </p>
     <br>
     <p>

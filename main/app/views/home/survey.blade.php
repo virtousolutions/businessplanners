@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="col-xs-12" style="padding: 0px; margin-top: 20px;">
-            <div class="section-number">3.</div><div class="section-title">Would you be interested in an IHT report? Having worked hard to generate your wealth, why give it to the Government on your death? We’ll show you how the rich and famous protect their assets to mitigate their IHT. </div>
+            <div class="section-number">3.</div><div class="section-title">Would you be interested in an IHT report? Having worked hard to generate your wealth, why give it to the Government on your death? We'll show you how the rich and famous protect their assets to mitigate their IHT. </div>
             <div class="section-content">
                 <div class="form-group">
                     <div class="checkbox col-xs-12">
