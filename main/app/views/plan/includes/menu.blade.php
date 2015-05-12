@@ -1,6 +1,11 @@
 
 <div class="col-md-3 col-sm-4 col-xs-12 sidebar-menu">
     <ul>
+        <li class="{{ $plan_main_page == 'details' ? 'selected-main-page' : 'not-selected' }}">
+            <div class="title not-selected">
+                <a href="{{ url('plan/details/' . $business_plan->id) }}" class="main-menu-link {{ $plan_main_page == 'details' ? 'link-main-page' : '' }}">Plan Details</a>
+            </div>
+        </li>
         @foreach ($plan_main_pages as $main_page)
             @if ($main_page->pageurl == 'appendix')
                 <?php break; ?>
@@ -25,11 +30,5 @@
                 @endif
             </li>
         @endforeach
-
-        <li class="{{ $plan_main_page == 'details' ? 'selected-main-page' : 'not-selected' }}">
-            <div class="title not-selected">
-                <a href="{{ url('plan/details/' . $business_plan->id) }}" class="main-menu-link {{ $plan_main_page == 'details' ? 'link-main-page' : '' }}">Plan Details</a>
-            </div>
-        </li>
     </ul>
 </div>

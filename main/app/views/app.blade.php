@@ -50,6 +50,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<img src="{{ url('assets/img/logo.png') }}">
 			</div><!-- #logo -->
 			<div id="top-menu" class="col-md-8">
+                @if (!isset($hide_main_navigation))
                 <div class="col-md-10 col-md-offset-1">
                     <div id="btn-resp"></div>
                     <ul>
@@ -65,6 +66,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         @endif
                     </ul>
                 </div>
+                @endif
 			</div><!-- #top-menu -->
 			<div id="info-head" class="col-md-2">0345 052 2742</div>
 		</div><!-- .body_container -->
@@ -72,7 +74,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 	@yield('content')
 
-<a href="#" id="scrollcon" class="scrolltop">Top</a>
+    <a href="#" id="scrollcon" class="scrolltop">Top</a>
 	<footer>
 		<div class="container">
 			<div id="footer-menu" class="col-md-7">

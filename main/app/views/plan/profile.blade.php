@@ -17,7 +17,13 @@ Profile
             <div class="form-group">
                 <label class="col-sm-4 control-label">Package</label>
                 <div class="col-sm-8">
-                    {{ ucwords($user->package) }}
+                    {{ ucwords($user->getPackageNice()) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Email</label>
+                <div class="col-sm-8">
+                    {{ $user->email }}
                 </div>
             </div>
             <div class="form-group">
@@ -50,12 +56,12 @@ Profile
                     {{ Form::text('city', $user->city, array('class' => 'form-control', 'style' => 'width: 80%;')) }}
                 </div>
             </div>
-            <div class="form-group">
+            <!--div class="form-group">
                 <label class="col-sm-4 control-label">State</label>
                 <div class="col-sm-8">
                     {{ Form::text('county', $user->state, array('class' => 'form-control', 'style' => 'width: 80%;')) }}
                 </div>
-            </div>
+            </div-->
             <div class="form-group">
                 <label class="col-sm-4 control-label">Country:</label>
                 <div class="col-sm-8">

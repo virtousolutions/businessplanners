@@ -3,8 +3,12 @@
 @section('content')
 <div class="container">
      <div class="col-md-10 col-md-offset-1 col-xs-12 tac-contents">
-        <div class="col-xs-12 tac-title" style="text-align: left;">
+        <div class="col-xs-12 tac-title" style="text-align: left; font-size: 18px;">
+            @if ($user->package == 'diy')
+            It would be great if you could fill in the three questions below for us, so we can find out a bit more about you and your needs
+            @else
             Before we get started, we need you to answer a couple of questions for us so we can write the perfect business plan for you.
+            @endif
         </div>
         {{ Form::open(array('method' => 'post', 'class' => 'form-horizontal', 'id' => 'survey-form')) }}
         {{ Form::hidden('user_id', $user->id) }}

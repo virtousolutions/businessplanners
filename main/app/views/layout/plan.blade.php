@@ -49,7 +49,7 @@
             <div class="wrapper">
                 <div class="col-xs-12 col-sm-7" style="padding: 0px; margin: 20px 0; text-align: left;">
                     <a href="{{ url('') }}">
-                        <img style="width: 250px; margin-left: 0px;" src="{{ url('assets/img/logo.png') }}"/>
+                        <img style="width: 150px; margin-left: 0px;" src="{{ url('assets/img/logo.png') }}"/>
                     </a>
                 </div>
                 <!--div class="col-xs-12 col-sm-5 text-right">
@@ -106,7 +106,7 @@
                     <ul id="plan-secondary-links">
                         <li class="edit-context-state"><a href="{{ url('plan/print/' . $business_plan->id) }}"><span>Print</span></a>
                         </li>
-                        <li class="edit-context-state active"><a href="{{ url('plan/executive-summary/index/' . $business_plan->id) }}"><span>Plan</span></a>
+                        <li class="edit-context-state active"><a href="{{ url('plan/details/' . $business_plan->id) }}"><span>Plan</span></a>
                         </li>
                     </ul>
                 </div>
@@ -115,13 +115,15 @@
         </header>
     </div>
     <div class="col-xs-12" style="padding: 20px 0; background: #FFF url({{ asset('assets/css/plan/shortcodes_files/images/bg-ui-gradient.png') }}) left top repeat-x;">
-        <div id="notification" class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
-            @if( ! $errors->has() && Session::get('the-message'))
-                <div class="alert alert-dismissable alert-success">
-                    <button type="button" class="close" data-dismiss="alert">x</button>
-                    <b>{{ Session::get('the-message') }}</b>
-                </div>
-            @endif
+        <div class="wrapper">
+            <div id="notification" class="col-xs-12">
+                @if( ! $errors->has() && Session::get('the-message'))
+                    <div class="alert alert-dismissable alert-success" style="font-size: 14px;">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        <b>{{ Session::get('the-message') }}</b>
+                    </div>
+                @endif
+            </div>
         </div>
         <div class="wrapper">
             @yield('content')
