@@ -120,7 +120,7 @@
                                                 @foreach ($months as $index => $month)
                                                 <div class="col-xs-2">
                                                     <p>{{ $month }}</p>
-                                                    <p><input style="width: 70px;" type="text" name="months[{{ $index }}]" value="" maxlength="11" class="form-control"></p>
+                                                    <p><input class="sales-months" style="width: 70px;" type="text" name="months[{{ $index }}]" value="" maxlength="11" class="form-control"></p>
                                                 </div>
                                                 @endforeach
                                                 <?php $start_year = $business_plan->getStartYear(); ?>
