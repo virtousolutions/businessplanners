@@ -47,9 +47,9 @@ extends PlanCalculatorService
         ];
         
         $this->yearly_income_tax = [
-            $pre_tax_profit[0] * ($this->business_plan->bp_income_tax_in_percentage / 100),
-            $pre_tax_profit[1] * ($this->business_plan->bp_income_tax_in_percentage / 100),
-            $pre_tax_profit[2] * ($this->business_plan->bp_income_tax_in_percentage / 100)
+            $pre_tax_profit[0] < 0 ? 0 : $pre_tax_profit[0] * ($this->business_plan->bp_income_tax_in_percentage / 100),
+            $pre_tax_profit[1] < 0 ? 0 : $pre_tax_profit[1] * ($this->business_plan->bp_income_tax_in_percentage / 100),
+            $pre_tax_profit[2] < 0 ? 0 : $pre_tax_profit[2] * ($this->business_plan->bp_income_tax_in_percentage / 100)
         ];
         
         $this->yearly_net_profit = [
@@ -141,10 +141,13 @@ extends PlanCalculatorService
     protected function calculateInterestRate()
     {
         /*** Calculate the interest rate **/
+        $monthly_total_repayments = $monthly_total_balance = $monthly_total_interest = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ];
+        
         $loans = $this->loans_calc->getLoans();
-        $monthly_total_repayments = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        $monthly_total_balance = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        $monthly_total_interest = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         $monthly_total_loans = $this->loans_calc->getLoansMonthlyTotals();
 
         foreach ($loans as $loan) {
@@ -152,55 +155,58 @@ extends PlanCalculatorService
 			$period	= $loan->loan_invest_pays_per_years;
 			$terms	= $loan->loan_invest_years_to_pay;
 			$pmtperiod = $period * $terms;
-			
-			//monthly repayment
-            $repayments = [];
-            $balance = [];
-            $interest = [];
-			$tmp_sum = 0;
-						
-			for($i = 0; $i < 12; $i++) {
+            $start_interest = $prev_interest = ($loan->totals[0] * $interest_rate) * ($terms / $period);
+            $start_repayment = $prev_repayment = $loan->totals[0] / ($period * 1);
+            $start_balance = $prev_balance = 0;
+            
+			for($i = 0; $i < 36; $i++) {
                 $key = "limr_month_" . ((($i + 1) < 10) ? '0' : '') . ($i + 1);
-                $tmp_sum  += $loan->$key;
+                $val = isset($loan->$key) ? $loan->$key : 0;
+            
+                if (($prev_balance + $val) > 1) {
+                    $repayment = $start_repayment + $start_interest;
+                    $interest  = $start_interest;
+                }
+                else {
+                    $repayment = 0;
+                    $interest  = 0;
+                }
 
-                //monthly estimated repayments
-				if($i == 0 || $balance[$i - 1] == 0 || $tmp_sum == 0){
-					$repayments[$i] = 0;
-				} else {
-					$repayments[$i] = -self::PMT($interest_rate / $period, $pmtperiod, $tmp_sum);
-				}
-				
-				//monthly estimated interest
-				if($i == 0 || $balance[$i - 1] == 0) {
-					$interest[$i] = 0;
-				} else {
-                    $interest[$i] = -self::IPMT($interest_rate / $period, 1, $pmtperiod, $tmp_sum);
-				}
-			    
-                //monthly balance
-				$balance[$i] = ($i > 0 ? $balance[$i - 1] : 0) + $loan->$key - $repayments[$i] + $interest[$i];
-				
-                $monthly_total_repayments[$i] += $repayments[$i];
-                $monthly_total_balance[$i]    += $balance[$i];
-                $monthly_total_interest[$i]   += $interest[$i];
+                if (($prev_balance + $val) < 1) {
+                    $balance = 0;
+                }
+                else {
+                    $balance = $prev_balance + $val - $start_repayment;
+                }
+
+                $prev_balance = $balance;
+
+                $year_index  = intval($i/12);
+                $month_index = ($i % 12);
+
+                $monthly_total_repayments[$year_index][$month_index] += $repayment;
+                $monthly_total_balance[$year_index][$month_index]    += $balance;
+                $monthly_total_interest[$year_index][$month_index]   += $interest;
 			}
         }
-
-        $total_interest = array_sum($monthly_total_interest);
-        $yearly_total_loans = $this->loans_calc->getLoansYearlyTotals();
-
-        // Verify if this is the correct calculation
-        $this->yearly_total_interests = [$total_interest, $total_interest, $total_interest];
         
-        $this->yearly_total_repayments[0] = array_sum($monthly_total_repayments);
-        $this->yearly_total_repayments[1] = ($yearly_total_loans[0] - $this->yearly_total_repayments[0] + $this->yearly_total_interests[0] + $yearly_total_loans[1]) > 0 ? $this->yearly_total_repayments[0] : 0;
-        $this->yearly_total_repayments[2] = ($yearly_total_loans[0] - $this->yearly_total_repayments[0] + $this->yearly_total_interests[0] + $yearly_total_loans[1] - $this->yearly_total_repayments[1] + $this->yearly_total_interests[1] + $yearly_total_loans[2]) > 0 ? $this->yearly_total_repayments[0] : 0;
+        $yearly_total_loans = $this->loans_calc->getLoansYearlyTotals();
+        $this->yearly_total_interests = [
+            array_sum($monthly_total_interest[0]), 
+            array_sum($monthly_total_interest[1]), 
+            array_sum($monthly_total_interest[2])
+        ];
+        $this->yearly_total_repayments = [
+            array_sum($monthly_total_repayments[0]), 
+            array_sum($monthly_total_repayments[1]), 
+            array_sum($monthly_total_repayments[2])
+        ];
         
         /*** End calculating interest rate **/
 
-        $this->monthly_total_interest = $monthly_total_interest;
-        $this->monthly_total_repayments = $monthly_total_repayments;
-        $this->monthly_total_balance = $monthly_total_balance;
+        $this->monthly_total_interest = $monthly_total_interest[0];
+        $this->monthly_total_repayments = $monthly_total_repayments[0];
+        $this->monthly_total_balance = $monthly_total_balance[0];
     }
 
     protected function calculateDepreciation()
