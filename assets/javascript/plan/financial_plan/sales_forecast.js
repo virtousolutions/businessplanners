@@ -9,6 +9,15 @@ var sales = {
     init : function () {
         var self = this;
 
+        $("input.sales-months").keyup(function() {
+            var val = 0;
+            $("input.sales-months").each(function(index, value) {
+                val += $(value).val() * 1;
+            });
+
+            $("input[name='years[0]']").val(val);
+        });
+
         $('a.back-to-outline').click(function () {
             // refresh the page
             return true;

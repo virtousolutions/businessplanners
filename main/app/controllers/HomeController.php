@@ -187,20 +187,23 @@ class HomeController extends BaseController {
         });
 
         Log::info('Email sent to admin');
+        
+        // only send the email to diy users
+        if ($user->package == 'diy') {
+            // send an email to the user
+            Mail::send('emails.notify_user', (array)$email_data, function($message) use ($user)
+            {
+                $from = Config::get('mail.from');
+                
+                $message->from($from['address'], $from['name']);
+                $message->to($user->email);
+                $message->bcc('markjoymacaso@gmail.com');
+                $message->subject('Thank you ' . sprintf('%s %s', $user->first_name, $user->last_name) . ' for your recent purchase with The Business Planners
+    ');
+            });
 
-        // send an email to the user
-        Mail::send('emails.notify_user', (array)$email_data, function($message) use ($user)
-        {
-            $from = Config::get('mail.from');
-            
-            $message->from($from['address'], $from['name']);
-            $message->to($user->email);
-            $message->bcc('markjoymacaso@gmail.com');
-            $message->subject('Thank you ' . sprintf('%s %s', $user->first_name, $user->last_name) . ' for your recent purchase with The Business Planners
-');
-        });
-
-        Log::info('Email sent to user');
+            Log::info('Email sent to user');
+        }
 
         // create user and sent credentials to user
         return View::make("home.order-complete", $email_data);

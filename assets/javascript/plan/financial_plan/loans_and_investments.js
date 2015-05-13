@@ -9,6 +9,15 @@ var loans = {
     init : function () {
         var self = this;
 
+        $("input.fund-months").keyup(function() {
+            var val = 0;
+            $("input.fund-months").each(function(index, value) {
+                val += $(value).val() * 1;
+            });
+
+            $("input[name='years[0]']").val(val);
+        });
+
         $('a.back-to-outline').click(function () {
             // refresh the page
             return true;

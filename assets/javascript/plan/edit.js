@@ -313,6 +313,8 @@ function editSection(data_container) {
     $("a.link-edit-section-content").removeClass('selected');
     $("a.link-edit-section-content-" + url).addClass('selected');
 
+    window.history.pushState(null, "The Business Planners", $("a.link-edit-section-content-" + url).attr('href'));
+    
     // focus on the textbox
     //var element = $("div.rich_textarea");
     //var offset = element.offset().top - $(window).scrollTop();
