@@ -49,9 +49,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'pro_bizplanner',
-			'username'  => 'root',
-			'password'  => 'qwerty',
+			'database'  => 'business_bizplanner',
+			'username'  => 'business_root',
+			'password'  => 'admin123',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
