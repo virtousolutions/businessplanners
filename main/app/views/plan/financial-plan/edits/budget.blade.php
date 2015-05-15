@@ -39,8 +39,16 @@ $start_year = $business_plan->getStartYear();
                 <li>
                     <a href="#" class="financial-plan-tab-edit {{ $selected_tab == 'tax' ? 'active' : '' }}" data-name="tax" data-elem_name="budget-selected-tab">
                         <span class="num">
-                         2</span>
+                         3</span>
                         <span class="label" style="width: 120px;">Income Taxes</span>
+                        <span class="clear"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="financial-plan-tab-edit {{ $selected_tab == 'distributions' ? 'active' : '' }}" data-name="distributions" data-elem_name="budget-selected-tab">
+                        <span class="num">
+                         4</span>
+                        <span class="label" style="width: 170px;">Dividends & Distributions</span>
                         <span class="clear"></span>
                     </a>
                 </li>
@@ -299,6 +307,10 @@ $start_year = $business_plan->getStartYear();
                                 <h3>Enter your estimated rate for income taxes</h3>
                                 <p>If your business is profitable in a given year, you will need to pay a variety of taxes on that profit. Enter an overall tax rate to include in your plan. This estimated rate should cover all applicable income taxes - federal, state, local, etc. Don't stress too much about this. This is business planning, not tax planning. It's good to include a reasonable allotment for taxes. If you're not sure what to put, though, a 30% rate is probably close. These taxes typically apply only when you are profitable. Any year without a profit should show zero taxes.</p>
                                 <p>Note that this rate is only for income taxes. Employee-related taxes like payroll and social welfare taxes are covered in the Personnel Plan table. Other taxes, such as property taxes, are generally best added as miscellaneous expenses.</p>
+
+                                <p>If your business is profitable in a given year, you will need to pay a variety of taxes on that profit. Enter an overall tax rate to include in your plan. This estimated rate should cover all applicable taxes – income, corporation , federal, state, local, etc. Don't stress too much about this. This is business planning, not tax planning. It's good to include a reasonable allotment for taxes. If you're not sure what to put, though, a 30% rate is probably close if you are self-employed or 20% if you are a limited company. These taxes typically apply only when you are profitable. Any year without a profit should show zero taxes.</p>
+
+                                <p>Note that this rate is only for business-related taxes. Employee-related taxes like payroll and social welfare taxes are covered in the Personnel Plan table. Other taxes, such as property taxes, are generally best added as miscellaneous expenses.</p>
                             </div>
                         </div>
                         <div class="col-xs-12" style="padding: 0px;">
@@ -326,6 +338,26 @@ $start_year = $business_plan->getStartYear();
                         </div>
                     </div>    
                 </div>
+
+
+                 <div class="page financial-plan-tab-edit distributions-financial-plan-tab-edit" style="{{ $selected_tab == 'distributions' ? '' : 'display: none;' }}">
+                    <div class="page-body">
+                        <div id="" class="intro-block">
+                            <div class="widget-content">
+                                <h3>List your company's expenses</h3>
+                                <p>Get started on your budget by adding your projected expenses below. Expenses like these are all tax deductible and will affect your profits. Be sure not to add any major purchases with long-lasting value here. (We will deal with those later, since they are not immediately tax deductible.) If your company is just getting started, be sure to include any one-time or short-term startup expenses in the early months as you get up and running.</p>
+
+                                <h3>Personnel Expenses</h3>
+
+                                <p>The Salary and Employee Related Expenses lines are included on the Budget table. To edit them, <a href="">go to the Personnel table.</a></p>
+                                
+                            </div>
+                        </div>
+                       
+                    </div>    
+                </div><!-- style distributions -->
+
+
             </div><!--end of pages-->
         </div><!--end .tableBuilder-->
     </div> <!--end no name div -->
