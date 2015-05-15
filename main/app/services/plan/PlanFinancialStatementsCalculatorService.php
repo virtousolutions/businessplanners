@@ -376,8 +376,8 @@ extends PlanCalculatorService
         $this->yearly_accounts_receivable[2] = $this->yearly_accounts_receivable[0] / $yearly_total_sales[0] * $yearly_total_sales[2];
 
         $this->yearly_accounts_payable[0] = $this->monthly_accounts_payable[11];
-        $this->yearly_accounts_payable[1] = $this->yearly_accounts_payable[0] / $yearly_total_costs[0] * $yearly_total_costs[1];
-        $this->yearly_accounts_payable[2] = $this->yearly_accounts_payable[0] / $yearly_total_costs[0] * $yearly_total_costs[2];
+        $this->yearly_accounts_payable[1] = ($yearly_total_costs[0] == 0 || $yearly_total_costs[1] == 0) ? 0 : ($this->yearly_accounts_payable[0] / $yearly_total_costs[0] * $yearly_total_costs[1]);
+        $this->yearly_accounts_payable[2] = ($yearly_total_costs[0] == 0 || $yearly_total_costs[2] == 0) ? 0 : ($this->yearly_accounts_payable[0] / $yearly_total_costs[0] * $yearly_total_costs[2]);
         
         $this->yearly_cash[0] = $monthly_cash[11];
 
