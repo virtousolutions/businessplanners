@@ -19,10 +19,10 @@
 define('DB_NAME', 'business_blog');
 
 /** MySQL database username */
-define('DB_USER', 'business_u');
+define('DB_USER', 'business_root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'Reload2015');
+define('DB_PASSWORD', 'admin123');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
