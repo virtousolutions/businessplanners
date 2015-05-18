@@ -202,7 +202,7 @@ This enables you to easily create and manage your forecasts and budgets giving y
 	            <td></td>
 	            <td>Your business plan will be read cover to cover by at least 10 angel investors, we will get feedback and negotiate on your behalf to get you that investor meeting</td>
             </tr>
-            <tr>
+<!--             <tr>
 	            <td class="tblval">Access to Virtual FD:*
 Personalised Dashboard
 Full online access to your business plan
@@ -213,7 +213,7 @@ Collaborate with your team
 	            <td>3 month</td>
 	            <td>3 month</td>
 	            <td>1 year</td>
-            </tr>
+            </tr> -->
             <tr>
 	            <td class="tblval">Full reporting, financial monitoring and control
 * Virtual FD is our own award winning in-house business planning platform
@@ -232,14 +232,14 @@ Collaborate with your team
 	            <td></td>
 	            <td></td>
             </tr>
-            <tr>
+<!--             <tr>
 	            <td class="tblval">New Business Start up Guide</td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-            </tr>
+            </tr> -->
             <tr>
 	            <td class="tblval">Importance of Trademarks Guide </td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
@@ -280,14 +280,14 @@ Collaborate with your team
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
-            <tr>
+<!--             <tr>
 	            <td class="tblval">How to make more profit – Mini Guide for Small Businesses</td>    
 	            <td></td>
 	            <td></td>
 	            <td></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-            </tr>
+            </tr> -->
             <tr>
 	            <td class="tblval">How to pay less Tax, Avoid and Deal with Tax investigations – the complete guide for all small businesses</td>    
 	            <td></td>
@@ -361,12 +361,12 @@ Collaborate with your team
 
 			<div class="testi-box col-md-5 col-sm-10">
 				<div class="img"><img src="{{ url('assets/img/stock-photo-44871128-we-re-all-special-in-our-own-way_03.png') }}"></div><!-- .img -->
-				<p>"The team at Contractors Pro are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
+				<p>"The team at The Business Planners are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
 			</div>
 
 			<div class="testi-box col-md-5 col-sm-10">
 				<div class="img"><img src="{{ url('assets/img/stock-photo-44871128-we-re-all-special-in-our-own-way2_03.png') }}"></div><!-- .img -->
-				<p>"The team at Contractors Pro are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
+				<p>"The team at The Business Planners are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
 			</div>
 
 		</div>
