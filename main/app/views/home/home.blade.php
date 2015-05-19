@@ -14,7 +14,7 @@
 				</ul>
 			</div><!-- #bulleted -->
 			<div id="banner-branding" class="col-md-7 col-sm-12">
-				<!-- <img src="{{url('assets/img/banner-logo.png')}}">-->
+				 <img src="{{url('assets/img/banner-logo.png')}}">
 				<h2>Call us to find out more 0345 052 2742</h2>
 			</div><!-- #banner-branding -->
 		</div><!-- #inside-banner -->
@@ -100,22 +100,22 @@ This enables you to easily create and manage your forecasts and budgets giving y
 		<div id="container-box" class="col-md-12">
 
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
-				<h2>Recommended</h2>
+				<h3>Recommended</h3>
 				<img src="{{ url('assets/img/recommend-icon.png') }}">
 				<p>We are proud to say that we are recommended by nearly every major investment platform</p>
 			</div><!-- .boxes -->
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
-				<h2>Review</h2>
+				<h3>Review</h3>
 				<img src="{{ url('assets/img/calc-icon.png') }}">
 				<p>All of your financials will be reviewed by our in-house accountant</p>
 			</div><!-- .boxes -->
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
-				<h2>Bespoke</h2>
+				<h3>Bespoke</h3>
 				<img src="{{ url('assets/img/bust-icon.png') }}">
 				<p>All of our bespoke packages are tailored to you and your needs, to suit you perfectly</p>
 			</div><!-- .boxes -->
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
-				<h2>12 month access</h2>
+				<h3>12 month access</h3>
 				<img src="{{ url('assets/img/12monthsaccess-icon.png') }}">
 				<p>You and your accountant will have 12 month access to update/amend your plan</p>
 			</div><!-- .boxes -->
