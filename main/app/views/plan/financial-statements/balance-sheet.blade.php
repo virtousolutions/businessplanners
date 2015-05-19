@@ -1,6 +1,6 @@
 <?php
     $calculator = $data['calculator'];
-    $data       = $calculator->getBalanceSheetData();
+    $data       = $calculator->getBalanceSheetYearlyData();
     $start_year = $business_plan->getStartYear();
 ?>
 <div class="col-xs-12" style="padding: 0px; margin-top: 20px;">

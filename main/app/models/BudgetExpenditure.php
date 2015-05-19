@@ -23,7 +23,7 @@ extends Eloquent
             DB::beginTransaction();
 
             $obj = parent::create($data); 
-            $obj->fillForecast();
+            $obj->fillForecast($data);
 
             DB::commit();
 
@@ -42,7 +42,7 @@ extends Eloquent
     public function update(array $attributes = Array())
     {
         parent::update($attributes);
-        $this->fillForecast();
+        $this->fillForecast($attributes);
     }
 
     public function businessPlan()
@@ -50,66 +50,23 @@ extends Eloquent
         return BusinessPlan::find($this->expenditure_bp_id);
     }
 
-    public function fillForecast()
+    public function fillForecast($data)
     {
         $business_plan = $this->businessPlan();
-        $start_date_str = $business_plan->bp_financial_start_date;
-        $start_date = strtotime($start_date_str);
-        $start_year = date('Y', $start_date);
-        $start_month = date('F', $start_date);
-
-        $first_year_total = 0;
-        $start_adding_first_year_total = false;
-
-        if ($this->pay_per_year) {
-            $yearly_payment = $this->pay_amount;
-            $monthly_payment = $this->pay_amount / 12;
-        }
-        else {
-            $yearly_payment = $this->pay_amount * 12;
-            $monthly_payment = $this->pay_amount;
-        }
-
+        $expenditure_months = $data['expenditure_months'];
         $months = [];
 
-		for ($x = 0; $x < 12; $x++) 
+		for ($x = 0; $x < 12; $x++)
 		{															
-			$time = strtotime("+" . $x . " months", strtotime( $start_year . "-" . $start_month . "-01"));
-			$date_key = date('M Y', $time);
-
-            if ($date_key == $this->expenditure_start_date) {
-                $start_adding_first_year_total = true;
-            }
-
-            if ($start_adding_first_year_total == true) {
-                $a = $monthly_payment;
-                $first_year_total += $monthly_payment;
-            }
-            else {
-                $a = 0;
-            }
-
-            $array_key = 'month_' . ($x < 9 ? '0' : '') . ($x + 1);
-            $months[$array_key] = $a;
+			$array_key = 'month_' . ($x < 9 ? '0' : '') . ($x + 1);
+            $months[$array_key] = $expenditure_months[$x];
 		}
 
         // get the last year
-        $year = $date_key = date('Y', $time);
-        $prev_amount = $yearly_payment;
-        $years = [$year => $first_year_total];
-
-        for ($i = 1; $i <= 2; $i++) {
-            $change = $prev_amount * ($this->percentage_of_change / 100);
-            if ($this->expected_change == 'increase') {
-                $a = $prev_amount + $change;
-            }
-            else {
-                $a = $prev_amount - $change;
-            }
-
-            $years[($year + $i)] = $a;
-            $prev_amount = $a;
-        }
+        $year = $business_plan->getStartYear();
+        $years = [$year => array_sum($months)];
+        $years[$year + 1] = $years[$year];
+        $years[$year + 2] = $years[$year + 1];
 
         $months_id = DB::table('expenditure_12_month_plan')->where('expenditure_id', $this->exp_id)->pluck('epp_id');
 
@@ -134,7 +91,7 @@ extends Eloquent
                 'financial_year' => $year,
                 'total_per_yr' => $amount,
                 'related_expenses' => $business_plan->bp_related_expenses_in_percentage,
-                'pay_per_year' => $this->pay_per_year,
+                'pay_per_year' => $amount,
                 'expenditure_id' => $this->exp_id
             ];
 

@@ -10,6 +10,9 @@ extends PlanCalculatorService
     protected $purchases;
     protected $purchases_yearly_totals;
     protected $purchases_monthly_totals;
+    protected $dividends;
+    protected $dividends_yearly_totals;
+    protected $dividends_monthly_totals;
     
     public function __construct(BusinessPlan $bp, PlanPersonnelCalculatorService $personnel_calc)
     {
@@ -21,7 +24,8 @@ extends PlanCalculatorService
     protected function calculate()
     {
         $this->calculateList(BudgetExpenditure::getAll($this->business_plan->id), 'expenses');
-
+        $this->calculateList(BudgetDividend::getAll($this->business_plan->id), 'dividends');
+        
         $personnels = $this->getPersonnelsYearlyTotals();
         $related_expenses_yearly_totals = $this->getRelatedExpensesYearlyTotals();
 
@@ -112,5 +116,20 @@ extends PlanCalculatorService
     public function getPurchasesMonthlyTotals()
     {
         return $this->purchases_monthly_totals;
+    }
+
+    public function getDividends()
+    {
+        return $this->dividends;
+    }
+
+    public function getDividendsYearlyTotals()
+    {
+        return $this->dividends_yearly_totals;
+    }
+
+    public function getDividendsMonthlyTotals()
+    {
+        return $this->dividends_monthly_totals;
     }
 }

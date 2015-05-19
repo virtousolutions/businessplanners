@@ -1,0 +1,32 @@
+ALTER TABLE employee MODIFY employee_pay_amount float(11,2);
+
+ALTER TABLE employee_12_month_plan MODIFY month_01 float(11,2);
+ALTER TABLE employee_12_month_plan MODIFY month_02 float(11,2);
+ALTER TABLE employee_12_month_plan MODIFY month_03 float(11,2);
+ALTER TABLE employee_12_month_plan MODIFY month_04 float(11,2);
+ALTER TABLE employee_12_month_plan MODIFY month_05 float(11,2);
+ALTER TABLE employee_12_month_plan MODIFY month_06 float(11,2);
+ALTER TABLE employee_12_month_plan MODIFY month_07 float(11,2);
+ALTER TABLE employee_12_month_plan MODIFY month_08 float(11,2);
+ALTER TABLE employee_12_month_plan MODIFY month_09 float(11,2);
+ALTER TABLE employee_12_month_plan MODIFY month_10 float(11,2);
+ALTER TABLE employee_12_month_plan MODIFY month_11 float(11,2);
+ALTER TABLE employee_12_month_plan MODIFY month_12 float(11,2);
+
+ALTER TABLE expenditure_12_month_plan MODIFY month_01 float(11,2);
+ALTER TABLE expenditure_12_month_plan MODIFY month_02 float(11,2);
+ALTER TABLE expenditure_12_month_plan MODIFY month_03 float(11,2);
+ALTER TABLE expenditure_12_month_plan MODIFY month_04 float(11,2);
+ALTER TABLE expenditure_12_month_plan MODIFY month_05 float(11,2);
+ALTER TABLE expenditure_12_month_plan MODIFY month_06 float(11,2);
+ALTER TABLE expenditure_12_month_plan MODIFY month_07 float(11,2);
+ALTER TABLE expenditure_12_month_plan MODIFY month_08 float(11,2);
+ALTER TABLE expenditure_12_month_plan MODIFY month_09 float(11,2);
+ALTER TABLE expenditure_12_month_plan MODIFY month_10 float(11,2);
+ALTER TABLE expenditure_12_month_plan MODIFY month_11 float(11,2);
+ALTER TABLE expenditure_12_month_plan MODIFY month_12 float(11,2);
+
+ALTER TABLE loan_investment MODIFY loan_invest_interest_rate float(11,2);
+
+ALTER TABLE sales_12_month_forecast MODIFY price float(11,2);
+ALTER TABLE sales_12_month_forecast MODIFY cost float(11,2);

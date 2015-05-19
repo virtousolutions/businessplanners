@@ -774,70 +774,72 @@ understanding that you will not share its contents or ideas with third parties w
         $html = "<table>";
         
         $html_gross = '<tr><td>Gross Margin</td>';
-        $html_expenses = '<tr><td>Operating Expenses</td>';
-        $html_income =  '<tr><td>Operating Income</td>';
+        $html_expenses = '<tr><td>Total Overheads</td>';
         $html_interest =  '<tr><td>Interest Incurred</td>';
         $html_depreciation =  '<tr><td>Depreciation and Amortization</td>';
-        $html_tax =  '<tr><td>Income Tax</td>';
-        $html_net =  '<tr><td>Net Profit</td>';
+        $html_pre_tax_profit =  '<tr><td>Pre Tax Profit</td>';
         $html_net_percent =  '<tr><td>Net Profit / Sales</td>';
-
+        $html_tax =  '<tr><td>Income Tax</td>';
+        $html_dividends =  '<tr><td>Dividends</td>';
+        
         for ($x = 0; $x < 12; $x++) {
             $html_gross .= '<td style="text-align: right;">' . $fs_calculator->formatNumberDisplay($monthly_gross_margin[$x], 0) . '</td>';
             $html_expenses .= '<td style="text-align: right;">' . $fs_calculator->formatNumberDisplay($monthly_total_expenses[$x], 0) . '</td>';
-            $html_income .= '<td style="text-align: right;">' . $fs_calculator->formatNumberDisplay($monthly_totals['operating_income'][$x], 0) . '</td>';
             $html_interest .= '<td style="text-align: right;">' . $fs_calculator->formatNumberDisplay($monthly_totals['interest_incurred'][$x], 0) . '</td>';
             $html_depreciation .= '<td style="text-align: right;">' . $fs_calculator->formatNumberDisplay($monthly_totals['depreciation'][$x], 0) . '</td>';
-            $html_tax .= '<td style="text-align: right;">' . $fs_calculator->formatNumberDisplay($monthly_totals['income_tax'][$x], 0) . '</td>';
-            $html_net .= '<td style="text-align: right;">' . $fs_calculator->formatNumberDisplay($monthly_totals['net_profit'][$x], 0) . '</td>';
+            $html_pre_tax_profit .= '<td style="text-align: right;">' . $fs_calculator->formatNumberDisplay($monthly_totals['pre_tax_profit'][$x], 0) . '</td>';
             $html_net_percent .= '<td style="text-align: right;">' . $fs_calculator->formatNumberDisplay($monthly_totals['net_profit_percent'][$x], 0, '', '%') . '</td>';
+            $html_tax .= '<td style="text-align: right;">' . $fs_calculator->formatNumberDisplay($monthly_totals['income_tax'][$x], 0) . '</td>';
+            $html_dividends .= '<td style="text-align: right;">' . $fs_calculator->formatNumberDisplay($monthly_totals['dividends'][$x], 0) . '</td>';
+            
         }
 
         $html_gross .= '</tr>';
         $html_expenses .= '</tr>';
-        $html_income .= '</tr>';
         $html_interest .= '</tr>';
         $html_depreciation .= '</tr>';
-        $html_tax .= '</tr>';
-        $html_net .= '</tr>';
+        $html_pre_tax_profit .= '</tr>';
         $html_net_percent .= '</tr>';
+        $html_tax .= '</tr>';
+        $html_dividends .= '</tr>';
+        
 
-        $html .= $html_gross . $html_expenses . $html_income . $html_interest . $html_depreciation . $html_tax . $html_net . $html_net_percent . "</table>";
+        $html .= $html_gross . $html_expenses . $html_interest . $html_depreciation . $html_pre_tax_profit . $html_net_percent . $html_tax . $html_dividends . "</table>";
 
-        $yearly_data = $fs_calculator->getProfitAndLossData();
+        $yearly_data = $fs_calculator->getProfitAndLossYearlyData();
 
         $html_y = "<table>";
         
         $html_y_gross = '<tr><td colspan="2">Gross Margin</td>';
-        $html_y_expenses = '<tr><td colspan="2">Operating Expenses</td>';
-        $html_y_income =  '<tr><td colspan="2">Operating Income</td>';
+        $html_y_expenses = '<tr><td colspan="2">Total Overheads</td>';
         $html_y_interest =  '<tr><td colspan="2">Interest Incurred</td>';
         $html_y_depreciation =  '<tr><td colspan="2">Depreciation and Amortization</td>';
-        $html_y_tax =  '<tr><td colspan="2">Income Tax</td>';
-        $html_y_net =  '<tr><td colspan="2">Net Profit</td>';
+        $html_y_pre_tax_profit =  '<tr><td colspan="2">Pre Tax Profit</td>';
         $html_y_net_percent =  '<tr><td colspan="2">Net Profit / Sales</td>';
-
+        $html_y_tax =  '<tr><td colspan="2">Income Tax</td>';
+        $html_y_dividends =  '<tr><td colspan="2">Dividends</td>';
+        
         for ($x = 0; $x < 3; $x++) {
             $html_y_gross .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['gross_margin'][$x], 2) . '</td>';
             $html_y_expenses .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['operating_expenses'][$x], 2) . '</td>';
-            $html_y_income .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['operating_income'][$x], 2) . '</td>';
             $html_y_interest .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['interest_incurred'][$x], 2) . '</td>';
             $html_y_depreciation .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['depreciation'][$x], 2) . '</td>';
-            $html_y_tax .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['income_taxes'][$x], 2) . '</td>';
-            $html_y_net .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['net_profit'][$x], 2) . '</td>';
+            $html_y_pre_tax_profit .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['pre_tax_profit'][$x], 2) . '</td>';
             $html_y_net_percent .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['net_profit_percent'][$x], 2, '', '%') . '</td>';
+            $html_y_tax .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['income_taxes'][$x], 2) . '</td>';
+            $html_y_dividends .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['dividends'][$x], 2) . '</td>';
         }
 
         $html_y_gross .= '<td colspan="5"></td></tr>';
         $html_y_expenses .= '<td colspan="5"></td></tr>';
-        $html_y_income .= '<td colspan="5"></td></tr>';
         $html_y_interest .= '<td colspan="5"></td></tr>';
         $html_y_depreciation .= '<td colspan="5"></td></tr>';
-        $html_y_tax .= '<td colspan="5"></td></tr>';
-        $html_y_net .= '<td colspan="5"></td></tr>';
+        $html_y_pre_tax_profit .= '<td colspan="5"></td></tr>';
         $html_y_net_percent .= '<td colspan="5"></td></tr>';
-
-        $html_y .= $html_y_gross . $html_y_expenses . $html_y_income . $html_y_interest . $html_y_depreciation . $html_y_tax . $html_y_net . $html_y_net_percent . "</table>";
+        $html_y_tax .= '<td colspan="5"></td></tr>';
+        $html_y_dividends .= '<td colspan="5"></td></tr>';
+        
+        $html_y .= $html_y_gross . $html_y_expenses . $html_y_interest . $html_y_depreciation . $html_y_pre_tax_profit . $html_y_net_percent . $html_y_tax . $html_y_dividends . "</table>";
         
         $this->renderPageTitle('Profit and Loss Statement');
         $this->Ln(1);
@@ -857,7 +859,7 @@ understanding that you will not share its contents or ideas with third parties w
 
     protected function renderBalanceSheet($fs_calculator)
     {
-        $yearly_data = $fs_calculator->getBalanceSheetData();
+        $yearly_data = $fs_calculator->getBalanceSheetYearlyData();
         $monthly_data = $fs_calculator->getBalanceSheetMonthlyData();
         
         $ar_monthly_html = [
@@ -939,11 +941,11 @@ understanding that you will not share its contents or ideas with third parties w
 
     protected function renderCashFlow($fs_calculator)
     {
-        $yearly_data = $fs_calculator->getCashFlowData();
+        $yearly_data = $fs_calculator->getCashFlowYearlyData();
         $monthly_data = $fs_calculator->getCashFlowMonthlyData();
         
         $ar_monthly_html = [
-            '<tr><td>Net Profit</td>',
+            '<tr><td>Net Profit After Tax and Profit Distribution</td>',
             '<tr><td>Depreciation and Amortization</td>',
             '<tr><td>Change in Accounts Receivable</td>',
             '<tr><td>Change in Accounts Payable</td>',
@@ -958,7 +960,7 @@ understanding that you will not share its contents or ideas with third parties w
         ];
 
         $ar_yearly_html = [
-            '<tr><td colspan="2">Net Profit</td>',
+            '<tr><td colspan="2">Net Profit After Tax and Profit Distribution</td>',
             '<tr><td colspan="2">Depreciation and Amortization</td>',
             '<tr><td colspan="2">Change in Accounts Receivable</td>',
             '<tr><td colspan="2">Change in Accounts Payable</td>',

@@ -8,11 +8,7 @@
     $personnels = $budget_calculator->getPersonnelsYearlyTotals();
     $yearly_totals = $budget_calculator->getRelatedExpensesYearlyTotals();
     $start_year = $business_plan->getStartYear();
-    $operating_income = $fs_calculator->getYearlyOperatingIncome();
-    $interests = $fs_calculator->getYearlyInterestIncurred();
-    $depreciation = $fs_calculator->getYearlyDepreciation();
-    $tax = $fs_calculator->getYearlyIncomeTax();
-    $net_profit = $fs_calculator->getYearlyNetProfit();
+    $profit_loss_data = $fs_calculator->getProfitAndLossYearlyData();
 ?>
 @if (!empty($data_sales))
 <div class="col-xs-12" style="padding: 0px; margin-top: 20px;">
@@ -71,7 +67,7 @@
 <div class="col-xs-12" style="padding: 0px; margin-top: 20px;">
     <div class="data-row">
         <div class="col-xs-5" style="padding-left: 0px; font-weight: bold;">
-            Expenses
+            Overheads
         </div>
         <div class="col-xs-7" style="padding: 0px; font-weight: bold; text-align: right;">
             <div class="col-xs-4">FY{{ $start_year }}</div>
@@ -114,7 +110,7 @@
 
     <div class="data-title" style="margin-top: 0px;">
         <div class="col-xs-5" style="padding-left: 0px; font-weight: bold;">
-            Total Expenses
+            Total Overheads
         </div>
         <div class="col-xs-7" style="padding: 0px; font-weight: bold; text-align: right;">
             <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($total_expenses[0]) }}</div>
@@ -125,65 +121,57 @@
 </div>
 @endif
 
-@if (!empty($operating_income))
-<div class="col-xs-12" style="padding: 0px; margin-top: 15px;">
-    <div class="data-row">
-        <div class="col-xs-5" style="padding-left: 0px; font-weight: bold;">
-            Operating Income
-        </div>
-        <div class="col-xs-7" style="padding: 0px; font-weight: bold; text-align: right;">
-            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($operating_income[0]) }}</div>
-            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($operating_income[1]) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($operating_income[2]) }}</div>
-        </div>
-    </div>
-</div>
-@endif
-
 <div class="col-xs-12" style="padding: 0px; margin-top: 15px;">
     <div class="data-row">
         <div class="col-xs-5" style="padding-left: 0px;">Interest Incurred</div>
         <div class="col-xs-7" style="padding: 0px; text-align: right;">
-            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($interests[0]) }}</div>
-            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($interests[1]) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($interests[2]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['interest_incurred'][0]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['interest_incurred'][1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['interest_incurred'][2]) }}</div>
         </div>
     </div>
     <div class="data-row">
         <div class="col-xs-5" style="padding-left: 0px;">Depreciation and Amortization</div>
         <div class="col-xs-7" style="padding: 0px; text-align: right;">
-            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($depreciation[0]) }}</div>
-            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($depreciation[1]) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($depreciation[2]) }}</div>
-        </div>
-    </div>
-    <div class="data-row">
-        <div class="col-xs-5" style="padding-left: 0px;">Income Taxes</div>
-        <div class="col-xs-7" style="padding: 0px; text-align: right;">
-            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($tax[0]) }}</div>
-            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($tax[1]) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($tax[2]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['depreciation'][0]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['depreciation'][1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['depreciation'][2]) }}</div>
         </div>
     </div>
     <div class="data-row" style="font-weight: bold;">
-        <div class="col-xs-5" style="padding-left: 0px;">Net Profit</div>
+        <div class="col-xs-5" style="padding-left: 0px;">Pre Tax Profit</div>
         <div class="col-xs-7" style="padding: 0px; text-align: right;">
-            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($net_profit[0]) }}</div>
-            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($net_profit[1]) }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($net_profit[2]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['pre_tax_profit'][0]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['pre_tax_profit'][1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['pre_tax_profit'][2]) }}</div>
         </div>
     </div>
     <div class="data-title" style="margin-top: 0px;">
         <div class="col-xs-5" style="padding-left: 0px;">Net Profit / Sales</div>
         <div class="col-xs-7" style="padding: 0px; text-align: right;">
-            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay(($net_profit[0] / $total_sales[0]) * 100, 2, '', '%') }}</div>
-            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay(($net_profit[1] / $total_sales[1]) * 100, 2, '', '%') }}</div>
-            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay(($net_profit[2] / $total_sales[2]) * 100, 2, '', '%') }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['net_profit_percent'][0], 2, '', '%') }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['net_profit_percent'][1], 2, '', '%') }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['net_profit_percent'][2], 2, '', '%') }}</div>
+        </div>
+    </div>
+    <div class="data-row">
+        <div class="col-xs-5" style="padding-left: 0px;">Income Taxes</div>
+        <div class="col-xs-7" style="padding: 0px; text-align: right;">
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['income_taxes'][0]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['income_taxes'][1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['income_taxes'][2]) }}</div>
+        </div>
+    </div><div class="data-row">
+        <div class="col-xs-5" style="padding-left: 0px;">Dividends</div>
+        <div class="col-xs-7" style="padding: 0px; text-align: right;">
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['dividends'][0]) }}</div>
+            <div class="col-xs-4">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['dividends'][1]) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">{{ $fs_calculator->formatNumberDisplay($profit_loss_data['dividends'][2]) }}</div>
         </div>
     </div>
 </div>
 
-<?php if($net_profit[0] >= 100000) : ?>
+<?php if($profit_loss_data['net_profit'][0] >= 100000) : ?>
 <div class="col-xs-12 alert alert-success" style="margin-top: 30px;">
     <p>
         Did you know...
