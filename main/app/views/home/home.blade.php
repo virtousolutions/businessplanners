@@ -14,7 +14,7 @@
 				</ul>
 			</div><!-- #bulleted -->
 			<div id="banner-branding" class="col-md-7 col-sm-12">
-				<!-- <img src="{{url('assets/img/banner-logo.png')}}">-->
+				 <img src="{{url('assets/img/banner-logo.png')}}">
 				<h2>Call us to find out more 0345 052 2742</h2>
 			</div><!-- #banner-branding -->
 		</div><!-- #inside-banner -->
@@ -100,22 +100,22 @@ This enables you to easily create and manage your forecasts and budgets giving y
 		<div id="container-box" class="col-md-12">
 
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
-				<h2>Recommended</h2>
+				<h3>Recommended</h3>
 				<img src="{{ url('assets/img/recommend-icon.png') }}">
 				<p>We are proud to say that we are recommended by nearly every major investment platform</p>
 			</div><!-- .boxes -->
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
-				<h2>Review</h2>
+				<h3>Review</h3>
 				<img src="{{ url('assets/img/calc-icon.png') }}">
 				<p>All of your financials will be reviewed by our in-house accountant</p>
 			</div><!-- .boxes -->
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
-				<h2>Bespoke</h2>
+				<h3>Bespoke</h3>
 				<img src="{{ url('assets/img/bust-icon.png') }}">
 				<p>All of our bespoke packages are tailored to you and your needs, to suit you perfectly</p>
 			</div><!-- .boxes -->
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
-				<h2>12 month access</h2>
+				<h3>12 month access</h3>
 				<img src="{{ url('assets/img/12monthsaccess-icon.png') }}">
 				<p>You and your accountant will have 12 month access to update/amend your plan</p>
 			</div><!-- .boxes -->
@@ -202,7 +202,7 @@ This enables you to easily create and manage your forecasts and budgets giving y
 	            <td></td>
 	            <td>Your business plan will be read cover to cover by at least 10 angel investors, we will get feedback and negotiate on your behalf to get you that investor meeting</td>
             </tr>
-            <tr>
+<!--             <tr>
 	            <td class="tblval">Access to Virtual FD:*
 Personalised Dashboard
 Full online access to your business plan
@@ -213,7 +213,7 @@ Collaborate with your team
 	            <td>3 month</td>
 	            <td>3 month</td>
 	            <td>1 year</td>
-            </tr>
+            </tr> -->
             <tr>
 	            <td class="tblval">Full reporting, financial monitoring and control
 * Virtual FD is our own award winning in-house business planning platform
@@ -232,14 +232,14 @@ Collaborate with your team
 	            <td></td>
 	            <td></td>
             </tr>
-            <tr>
+<!--             <tr>
 	            <td class="tblval">New Business Start up Guide</td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-            </tr>
+            </tr> -->
             <tr>
 	            <td class="tblval">Importance of Trademarks Guide </td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
@@ -280,14 +280,14 @@ Collaborate with your team
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
-            <tr>
+<!--             <tr>
 	            <td class="tblval">How to make more profit – Mini Guide for Small Businesses</td>    
 	            <td></td>
 	            <td></td>
 	            <td></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-            </tr>
+            </tr> -->
             <tr>
 	            <td class="tblval">How to pay less Tax, Avoid and Deal with Tax investigations – the complete guide for all small businesses</td>    
 	            <td></td>
@@ -361,12 +361,12 @@ Collaborate with your team
 
 			<div class="testi-box col-md-5 col-sm-10">
 				<div class="img"><img src="{{ url('assets/img/stock-photo-44871128-we-re-all-special-in-our-own-way_03.png') }}"></div><!-- .img -->
-				<p>"The team at Contractors Pro are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
+				<p>"The team at The Business Planners are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
 			</div>
 
 			<div class="testi-box col-md-5 col-sm-10">
 				<div class="img"><img src="{{ url('assets/img/stock-photo-44871128-we-re-all-special-in-our-own-way2_03.png') }}"></div><!-- .img -->
-				<p>"The team at Contractors Pro are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
+				<p>"The team at The Business Planners are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
 			</div>
 
 		</div>

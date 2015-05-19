@@ -47,7 +47,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<div id="head-bg">
 		<div class="container">
 			<div id="logo" class="col-md-2">
+			<a href="{{ url('') }}">
 				<img src="{{ url('assets/img/logo.png') }}">
+			</a>
 			</div><!-- #logo -->
 			<div id="top-menu" class="col-md-8">
                 @if (!isset($hide_main_navigation))

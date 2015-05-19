@@ -11,6 +11,7 @@ Body
 }
 body{
 	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
 }
 h1, h2, h3, h4, h5, h6, p{
 	font-weight: 400;
@@ -72,7 +73,7 @@ Home Page
 	background-size: cover;
 	clear: both;
 	width: 100%;
- 	min-height: 648px;
+ 	min-height: 530px;
  	background-attachment: fixed;
  	position: relative;
  	z-index: 9999;
@@ -95,7 +96,7 @@ Home Page
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 	color: #FFF;
-	font-size: 20px;
+	/*font-size: 20px;*/
 	padding: 0.5em 0 0.5em 2em;
 	background-image: url(../images/check.png);
 	background-position: left 0.7em;
@@ -148,14 +149,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 	padding: 0 3em 0 0em;
 }
 #info-home .line .cols .txt h2{
-	font-size: 27px;
+	font-size: 20px;
+	font-weight: bold;
 	color: #FFF;
-	font-family: 'Open Sans', sans-serif;
 }
 #info-home .line .cols .txt p{
-	font-size: 19px;
-	color: #FFF;
-	font-family: 'Open Sans', sans-serif;
+	color: #eee;
 }
 #business-plan{
 	clear: both;
@@ -176,7 +175,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 	font-weight: 400;
 }
 #business-plan p{
-	font-size: 18px;
+	/*font-size: 18px;*/
 	color: #4c4c4c;
 	padding-top: 1em;
 }
@@ -187,7 +186,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 #business-plan #iMac{
 	z-index: 9999;
   	position: relative;
-  	top: 5em;
+  	top: 2em;
   	background-image: url(../images/iMac.png);
   	background-repeat: no-repeat;
   	max-width: 710px;
@@ -202,17 +201,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 #business-planners-review{
 	clear: both;
 	background-color: #EBEBEB;
-	min-height: 692px;
+	/*min-height: 692px;*/
 	width: 100%;
 }
 #business-planners-review h2{
-	font-size: 60px;
-	font-family: 'Open Sans', sans-serif;
+	font-size: 45px;
 	color: #4c4c4c;
 	text-align: center;
-	padding-top: 2em;
+	padding-top: 1em;
 	font-weight: 400;
 }
+#business-planners-review h3{
+	color: #63b6e7;
+}
+
 #business-planners-review h2 strong{
 	color: #63b6e7;
 	font-weight: 400;
@@ -231,8 +233,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 	color: #63b6e7;
 }
 #business-planners-review #container-box .boxes p{
-	font-family: 'Open Sans', sans-serif;
-	font-size: 17px;
+/*	font-family: 'Open Sans', sans-serif;
+	font-size: 17px;*/
 	color: #4c4c4c;
 	padding-top: 1em;
 }
@@ -240,11 +242,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 	clear: both;
 }
 #business-plan-packages h2{
-	font-size: 50px;
-	color: #4c4c4c;
-	font-family: 'Open Sans', sans-serif;
-	text-align: center;
-	font-weight: 400;
+  font-size: 45px;
+  color: #4c4c4c;
+  padding-top: 0.4em;
+  text-align: center;
 }
 #business-plan-packages h2 strong{
 	color: #63b6e7;
@@ -262,10 +263,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 	clear: both;
 	width: 100%;
 	background-color: #EBEBEB;
-	min-height: 860px;
+	min-height: 740px;
 }
 #testimonial h2{
-	font-size: 50px;
+	font-size: 45px;
+	padding-top: 0.5rem;
+	margin: 0;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
 	color: #4c4c4c;
@@ -286,7 +289,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 	background-color: #fff;
 	padding: 3em 1em 3em 4.7em;
 	position: relative;
-	margin-left: 6em;
+	margin-left: 5.8em;
   	margin-right: 0em;
   	margin-bottom: 2em;
 }
@@ -333,9 +336,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 	background-color: #fff;
 }
 #contactus h2{
-	font-size: 50px;
+	font-size: 45px;
 	text-align: center;
-	font-family: 'Open Sans', sans-serif;
+	padding-top: 0.4rem;
 	font-weight: 400;
 }
 #contactus h2 strong{
@@ -387,18 +390,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 Footer
 --------------------------------------------------------------*/
 footer{
-	min-height: 203px;
+	/*min-height: 203px;*/
 	width: 100%;
 	background-color: #63B6E7;
 	clear: both;
+	font-size: 14px;
+	padding: 2em 0 1.5rem 0;
 }
 footer #footer-menu{
-	padding: 5em 0 0 0;
+	/*padding: 2.6em 0 0 0;*/
 	position: relative;
   	z-index: 9999;
+  	
+  	padding: 0;
 }
 footer #footer-menu ul{
 	list-style: none;
+	margin-bottom: 3rem;
+
 }
 footer #footer-menu li{
 	display: inline;
@@ -407,41 +416,41 @@ footer #footer-menu li{
 footer #footer-menu li a{
 	color: #FFF;
 	padding: 0 0.3em 0 0.3em;
-	font-size: 17px;
-}
-footer{
-	padding: 0;
-	margin: 0;
 }
 footer p{
 	color: #FFF;
 	font-family: 'Open Sans', sans-serif;
-	font-size: 17px;
 	font-weight: 300;
+	margin-bottom: 0;
 }
 #social-icons{
 	position: relative;
   	z-index: 9999;
+  	margin-top: 2rem;
+  	padding: 0;
 }
 #social-icons ul{
 	list-style: none;
+	margin: 0;
 }
 #social-icons li{
-	display: inline;
-	float: left;
+	display: inline-block;
+	width: 35px;	
+
 }
+
 
 /*--------------------------------------------------------------
 Table Plans
 --------------------------------------------------------------*/
 /* START COMPARISON TABLE STYLES */
-#comparetable {width: 100%; table-layout: fixed; text-align: center; margin: 4em 0; border-collapse: collapse; }
+#comparetable {width: 100%; table-layout: fixed; text-align: center; margin: 3em 0; border-collapse: collapse; }
 #comparetable tr {background: transparent!important;}
 #comparetable td,
-#comparetable th {padding: 20px; text-align: center;}
+#comparetable th {padding: 1.5rem; text-align: center;}
 #comparetable td.rowTitle {text-align: left;}
 .blank {background: none!important; border: none!important;}
- .blueshine th {background-color: #F2F2F2; font-size: 2.5rem; color: #63b6e7; text-align: center; font-weight: 400; text-shadow: 0 1px 0 #e0ecf7; border: 1px solid #9fb6c8; font-weight: 400;}
+ .blueshine th {background-color: #F2F2F2; font-size: 2rem; color: #63b6e7; text-align: center; font-weight: 400; text-shadow: 0 1px 0 #e0ecf7; border: 1px solid #c8d6e2; font-weight: 400;}
  .blueshine td {background-color: #F2F2F2; border: 1px solid #c8d6e2;} 
  .blueshine td.rowTitle {border-left: 4px solid #333}
  
@@ -452,7 +461,7 @@ Table Plans
  }
  #comparetable td.highlight{
  	font-weight: 400;
- 	font-size: 37px;
+ 	font-size: 25px;
  }
 /* END COMPARISON TABLE STYLES */
 
