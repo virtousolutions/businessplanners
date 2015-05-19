@@ -72,9 +72,10 @@ Route::group(['before' => 'auth|not_expired|not_temp_password'], function()
     Route::post("plan/financial-plan-budget-expenditure", 'PlanController@saveFinancialPlanBudgetExpenditure');
     Route::post("plan/financial-plan-budget-purchase", 'PlanController@saveFinancialPlanBudgetPurchase');
     Route::post("plan/financial-plan-budget-tax", 'PlanController@saveFinancialPlanBudgetTax');
+    Route::post("plan/financial-plan-budget-dividend", 'PlanController@saveFinancialPlanBudgetDividend');
     Route::get("plan/financial-plan-budget-delete-expenditure/{id}", 'PlanController@saveFinancialPlanBudgetDeleteExpenditure');
     Route::get("plan/financial-plan-budget-delete-purchase/{id}", 'PlanController@saveFinancialPlanBudgetDeletePurchase');
-
+    Route::get("plan/financial-plan-budget-delete-dividend/{id}", 'PlanController@saveFinancialPlanBudgetDeleteDividend');
 
     Route::get("plan/financial-plan-human-resources/{id}", 'PlanController@editFinancialPlanHumanResources');
     Route::post("plan/financial-plan-human-resources-personnel", 'PlanController@saveFinancialPlanHumanResourcesPersonnel');

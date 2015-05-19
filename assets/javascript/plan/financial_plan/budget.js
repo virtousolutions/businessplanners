@@ -10,7 +10,7 @@ var budget = {
     init : function () {
         this.initExpenditures();
         this.initPurchases();
-        
+        this.initDividends();
 
         $('a.back-to-outline').click(function () {
             // refresh the page
@@ -29,11 +29,7 @@ var budget = {
             var values = {
                 'expenditure_id' : '0', 
                 'expenditure_name' : '', 
-                'expenditure_how_much_is_it' : '',
-                'expenditure_percentage_of_change' : '',
-                'expenditure_how_you_pay' : '1',
-                'expenditure_month_year_date' : data.default_value,
-                'expenditure_expected_change' : 'increase'
+                'expenditure_months' : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             };
 
             self.setExpenditureValues(values);
@@ -50,11 +46,7 @@ var budget = {
             var values = {
                 'expenditure_id' : data.id, 
                 'expenditure_name' : data.name, 
-                'expenditure_how_much_is_it' : data.pay_amount,
-                'expenditure_percentage_of_change' : data.percentage_of_change,
-                'expenditure_how_you_pay' : data.pay_per_year,
-                'expenditure_month_year_date' : data.start_date,
-                'expenditure_expected_change' : data.expected_change
+                'expenditure_months' : data.expenditure_months
             };
 
             self.setExpenditureValues(values);
@@ -104,29 +96,124 @@ var budget = {
                         }
                     }
                 },
-                expenditure_how_much_is_it: {
+                'expenditure_months[0]' : {
                     validators: {
                         notEmpty: {
                             message: 'Amount is a required field.'
                         },
                         numeric: {
                             message: 'Amount should be a valid number.'
-                        }
+                        },
                     }
                 },
-                expenditure_percentage_of_change : {
+                'expenditure_months[1]' : {
                     validators: {
                         notEmpty: {
-                            message: 'Forecasted Percentage Change Due to Inflation is a required field.'
+                            message: 'Amount is a required field.'
                         },
                         numeric: {
-                            message: 'Forecasted Percentage Change Due to Inflation should be a valid number.'
+                            message: 'Amount should be a valid number.'
                         },
-                        between: {
-                            min: 0,
-                            max: 100,
-                            message: 'Forecasted Percentage Change Due to Inflation value should be between 0 to 100.'
-                        }
+                    }
+                },
+                'expenditure_months[2]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'expenditure_months[3]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'expenditure_months[4]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'expenditure_months[5]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'expenditure_months[6]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'expenditure_months[7]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'expenditure_months[8]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'expenditure_months[9]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'expenditure_months[10]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'expenditure_months[11]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
                     }
                 }
             }
@@ -283,6 +370,247 @@ var budget = {
         })
     },
 
+    initDividends : function () {
+        var self = this;
+
+        $("input.dividend-months").keyup(function() {
+            var val = 0;
+            $("input.dividend-months").each(function(index, value) {
+                val += $(value).val() * 1;
+            });
+
+            $("input[name='dividend_years[0]']").val(val);
+        });
+
+        $("#add-dividend").click(function() {
+            var values = {
+                'dividend_id' : '0', 
+                'dividend_name' : '', 
+                'dividend_months' : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                'dividend_years' : [0, 0, 0]
+            };
+
+            self.setDividendValues(values);
+
+            $("#dividends-list").hide();
+            $("#edit-dividend").show();
+            
+            return false;
+        })
+
+        $("a.edit-dividend").click(function () {
+            var data = $(this).data();
+
+            var values = {
+                'dividend_id' : data.id, 
+                'dividend_name' : data.name, 
+                'dividend_months' : data.dividend_months,
+                'dividend_years' : data.dividend_years
+            };
+
+            self.setDividendValues(values);
+
+            $("#dividends-list").hide();
+            $("#edit-dividend").show();
+            
+            return false;
+        })
+
+        $("#cancel-dividend").click(function() {
+            $("#dividends-list").show();
+            $("#edit-dividend").hide();
+            
+            return false;
+        })
+
+        $("#delete-dividend").click(function() {
+            if (confirm('Are you sure you want to delete this dividend and profit distribution?'))
+            {
+                var id = $('#budget-dividend-form').find("input[name='dividend_id']").val();
+                var href = $(this).attr('href') + "/" + id;
+                $(this).attr('href', href);
+
+                return true;
+            }
+            else {
+                return false;
+            }
+        })
+
+        $('#budget-dividend-form').bootstrapValidator({
+            submitHandler: function(validator, form, submitButton) {
+                alert(1);
+
+                return false;
+            },
+            fields: {
+                dividend_name: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Name is a required field.'
+                        },
+                        stringLength: {
+                            min: 3,
+                            message: 'Name must be more than 5 characters long.'
+                        }
+                    }
+                },
+                'dividend_months[0]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'dividend_months[1]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'dividend_months[2]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'dividend_months[3]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'dividend_months[4]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'dividend_months[5]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'dividend_months[6]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'dividend_months[7]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'dividend_months[8]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'dividend_months[9]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'dividend_months[10]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'dividend_months[11]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'dividend_years[1]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                },
+                'dividend_years[2]' : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Amount is a required field.'
+                        },
+                        numeric: {
+                            message: 'Amount should be a valid number.'
+                        },
+                    }
+                }
+            }
+        });
+
+        $("#budget-expenditure-form").submit(function() {
+            var has_errors = $(this).find('div.form-group').hasClass('has-error');
+
+            if (has_errors == true)
+            {
+                return false;
+            }
+            else {
+                return true;
+            }
+        })
+    },
+
     setExpenditureValues : function (values) {
         $("#budget-expenditure-form").find('.form-group').removeClass('has-error has-feedback');
         $("#budget-expenditure-form").find('.form-group').find('small.help-block').hide();
@@ -290,11 +618,10 @@ var budget = {
 
         $("input[name='expenditure_id']").val(values['expenditure_id']);
         $("input[name='expenditure_name']").val(values['expenditure_name']);
-        $("input[name='expenditure_how_much_is_it']").val(values['expenditure_how_much_is_it']);
-        $("input[name='expenditure_percentage_of_change']").val(values['expenditure_percentage_of_change']);
-        $("select[name='expenditure_how_you_pay']").val(values['expenditure_how_you_pay']);
-        $("select[name='expenditure_month_year_date']").val(values['expenditure_month_year_date']);
-        $("select[name='expenditure_expected_change']").val(values['expenditure_expected_change']);
+
+        for (var $i = 0; $i < 12; $i++) {
+            $("input[name='expenditure_months[" + $i + "]']").val(values['expenditure_months'][$i]);
+        }
 
         if (values['expenditure_id'] * 1 == 0) {
             $("#delete-expenditure").hide();
@@ -320,6 +647,30 @@ var budget = {
         }
         else {
             $("#delete-purchase").show();
+        }
+    },
+
+    setDividendValues : function (values) {
+        $("#budget-dividend-form").find('.form-group').removeClass('has-error has-feedback');
+        $("#budget-dividend-form").find('.form-group').find('small.help-block').hide();
+        $("#budget-dividend-form").find('.form-group').find('i.form-control-feedback').hide();
+
+        $("input[name='dividend_id']").val(values['dividend_id']);
+        $("input[name='dividend_name']").val(values['dividend_name']);
+
+        for (var $i = 0; $i < 12; $i++) {
+            $("input[name='dividend_months[" + $i + "]']").val(values['dividend_months'][$i]);
+        }
+
+        for (var $i = 0; $i < 3; $i++) {
+            $("input[name='dividend_years[" + $i + "]']").val(values['dividend_years'][$i]);
+        }
+
+        if (values['dividend_id'] * 1 == 0) {
+            $("#delete-dividend").hide();
+        }
+        else {
+            $("#delete-dividend").show();
         }
     }
 }

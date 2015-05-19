@@ -8,8 +8,10 @@
     $start_year = $business_plan->getStartYear();
     $personnels = $budget_calculator->getPersonnelsYearlyTotals();
     $yearly_totals = $budget_calculator->getRelatedExpensesYearlyTotals();
+    $dividends = $budget_calculator->getDividends();
+    $total_dividends = $budget_calculator->getDividendsYearlyTotals();
 ?>
-@if (!empty($expenses) || !empty($purchases))
+@if (!empty($expenses) || !empty($purchases) || !empty($dividends))
 <div class="col-xs-12" style="padding: 0px; margin-bottom: 50px;">
     <h4>Budget Table</h4>
     <div class="click-to-edit" style="margin-right: -10px;  margin-top: -30px;">
@@ -107,6 +109,40 @@
             <div class="col-xs-4">&pound;{{ number_format($total_purchases[0], 2) }}</div>
             <div class="col-xs-4">&pound;{{ number_format($total_purchases[1], 2) }}</div>
             <div class="col-xs-4" style="padding-right: 0px;">&pound;{{ number_format($total_purchases[2], 2) }}</div>
+        </div>
+    </div>
+    <div class="data-row" style="margin-top: 15px;">
+        <div class="col-xs-5" style="padding-left: 0px; font-weight: bold;">
+            Dividends and Profit Distribution
+        </div>
+        <div class="col-xs-7" style="padding: 0px; font-weight: bold; text-align: right;">
+            <div class="col-xs-4">FY{{ $start_year }}</div>
+            <div class="col-xs-4">FY{{ ($start_year + 1) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">FY{{ ($start_year + 2)}}</div>
+        </div>
+    </div>
+
+    @foreach ($dividends as $row)
+        <div class="data-row">
+            <div class="col-xs-5" style="padding-left: 0px;">
+            {{ $row->dividend_name}}
+            </div>
+            <div class="col-xs-7" style="padding: 0px; text-align: right;">
+                <div class="col-xs-4">&pound;{{ number_format($row->totals[0], 2) }}</div>
+                <div class="col-xs-4">&pound;{{ number_format($row->totals[1], 2) }}</div>
+                <div class="col-xs-4" style="padding-right: 0px;">&pound;{{ number_format($row->totals[2], 2) }}</div>
+            </div>
+        </div>
+    @endforeach
+
+    <div class="data-title" style="margin-top: 0px;">
+        <div class="col-xs-5" style="padding-left: 0px; font-weight: bold;">
+            Total Dividends and Profit Distribution
+        </div>
+        <div class="col-xs-7" style="padding: 0px; font-weight: bold; text-align: right;">
+            <div class="col-xs-4">&pound;{{ number_format($total_dividends[0], 2) }}</div>
+            <div class="col-xs-4">&pound;{{ number_format($total_dividends[1], 2) }}</div>
+            <div class="col-xs-4" style="padding-right: 0px;">&pound;{{ number_format($total_dividends[2], 2) }}</div>
         </div>
     </div>
 </div>

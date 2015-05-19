@@ -39,8 +39,16 @@ $start_year = $business_plan->getStartYear();
                 <li>
                     <a href="#" class="financial-plan-tab-edit {{ $selected_tab == 'tax' ? 'active' : '' }}" data-name="tax" data-elem_name="budget-selected-tab">
                         <span class="num">
-                         2</span>
+                         3</span>
                         <span class="label" style="width: 120px;">Income Taxes</span>
+                        <span class="clear"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="financial-plan-tab-edit {{ $selected_tab == 'dividends' ? 'active' : '' }}" data-name="dividends" data-elem_name="budget-selected-tab">
+                        <span class="num">
+                         4</span>
+                        <span class="label" style="width: 200px;">Dividends & Profit Distributions</span>
                         <span class="clear"></span>
                     </a>
                 </li>
@@ -59,11 +67,30 @@ $start_year = $business_plan->getStartYear();
                         </div>
                         <div class="col-xs-12" style="padding: 0px;" id="expenditure-list">
                             @foreach ($data['expenses'] as $row)
+                                <?php
+                                $months_data_html = "";
+                                $months_display_html = "";
+                                $years_data_html = "";
+                                $years_display_html = "";
+                                $year_totals = explode(",", $row->totals); 
+                                    
+                                foreach ($data['months'] as $index => $month) {
+                                    $key = "month_" . (($index + 1) < 10 ? '0' : '') . ($index + 1); 
+                                    $value = $row->$key;
+                                    $months_data_html .= (empty($months_data_html) ? '' : ', ') . '"' . $index . '" : "' . $value . '"';
+                                    $months_display_html .= '
+                                        <div class="col-xs-2" style="padding: 0 5px;">
+                                            <p class="each-entry-month" style="text-align: center;">' . $month . '</p>
+                                            <p class="each-entry-value" style="text-align: center;">&pound;' . number_format($value, 2) . '</p>
+                                        </div>';
+                                }
+                                ?>
+
                                 <div class="each-entry col-xs-12">
                                     <div class="each-entry-title col-xs-12">{{ $row->expenditure_name}}</div>
                                     <div class="click-to-edit" style="margin-right: -15px;  margin-top: -34px;">
                                         <div class="tuck">
-                                            <a href="{{ url('plan/financial-plan-budget/edit/' . $row->exp_id) }}" class="edit-expenditure" data-id="{{ $row->exp_id }}" data-name="{{ $row->expenditure_name }}" data-start_date="{{ $row->expenditure_start_date }}" data-expected_change="{{ $row->expected_change }}" data-percentage_of_change="{{ $row->percentage_of_change }}" data-pay_per_year="{{ $row->pay_per_year }}" data-pay_amount="{{ $row->pay_amount }}">
+                                            <a href="{{ url('plan/financial-plan-budget/edit/' . $row->exp_id) }}" class="edit-expenditure" data-id="{{ $row->exp_id }}" data-name="{{ $row->expenditure_name }}" data-expenditure_months='{ {{ $months_data_html }} }'>
                                                 <div class="flag">
                                                     <span class="click-to-edit-text" id="ext-gen6"> &nbsp;</span> 
                                                 </div>
@@ -72,14 +99,7 @@ $start_year = $business_plan->getStartYear();
                                     </div>
                                     <div class="col-xs-12" style="padding: 0px;">
                                     <?php $count = 1; ?>
-                                    @foreach ($data['months'] as $month)
-                                        <div class="col-xs-2" style="padding: 0 5px;">
-                                            <p class="each-entry-month">{{ $month }}</p>
-                                            <?php $key = "month_" . ($count < 10 ? '0' : '') . $count; ?>
-                                            <p class="each-entry-value">&pound;{{ number_format($row->$key, 2) }}</p>
-                                        </div>
-                                        <?php $count++; ?>
-                                    @endforeach
+                                    {{ $months_display_html }}
                                     </div>
                                     <?php 
                                     $year_totals = explode(",", $row->totals); 
@@ -88,8 +108,8 @@ $start_year = $business_plan->getStartYear();
                                     <div class="col-xs-12" style="padding: 0px;">
                                     @foreach ($year_totals as $total)
                                         <div class="col-xs-2" style="padding: 0 5px;">
-                                            <p class="each-entry-month">{{ 'FY' . ($row->financial_yr_forecast + $count) }}</p>
-                                            <p class="each-entry-value">&pound;{{ number_format($total, 2) }}</p>
+                                            <p class="each-entry-month" style="text-align: center;">{{ 'FY' . ($row->financial_yr_forecast + $count) }}</p>
+                                            <p class="each-entry-value" style="text-align: center;">&pound;{{ number_format($total, 2) }}</p>
                                         </div>
                                         <?php $count++; ?>
                                     @endforeach
@@ -124,16 +144,16 @@ $start_year = $business_plan->getStartYear();
                                             <div class="num"> 2</div>
                                             <h4 class="label">How much is it?</h4>
                                             <div class="step-inner form-group">
-                                                <span class="currency" style="float: left; padding-right: 5px">&pound;</span>
-                                                <input type="text" name="expenditure_how_much_is_it" value="" maxlength="14" class="form-control" style="float: left; margin-right: 15px; width: 185px;">
-                                                <select name="expenditure_how_you_pay" class="entry-period form-control" size="1" style="float: left; width: 200px;">	
-                                                    <option value="0">Per Month</option>
-                                                    <option value="1">Per Year</option>
-                                                </select>
+                                                @foreach ($data['months'] as $index => $month)
+                                                <div class="col-xs-2">
+                                                    <p>{{ $month }}</p>
+                                                    <p><input class="expenditure-months" style="width: 70px;" type="text" name="expenditure_months[{{ $index }}]" value="" maxlength="11" class="form-control"></p>
+                                                </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="expense-budget-entryMethod">
+                                    <!--div class="expense-budget-entryMethod">
                                         <div class="step expense-name">
                                             <div class="num"> 3</div>
                                             <h4 class="label">When does it start?</h4>
@@ -167,7 +187,7 @@ $start_year = $business_plan->getStartYear();
                                                 <span class="currency" style="float: left;">%</span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div-->
                                 </div>
                                 <div class="col-xs-12" style="padding: 0px; text-align: right;">
                                     <button type="submit" class="btn btn-primary" id="save-expenditure">Save</button>
@@ -297,8 +317,12 @@ $start_year = $business_plan->getStartYear();
                         <div id="" class="intro-block">
                             <div class="widget-content">
                                 <h3>Enter your estimated rate for income taxes</h3>
-                                <p>If your business is profitable in a given year, you will need to pay a variety of taxes on that profit. Enter an overall tax rate to include in your plan. This estimated rate should cover all applicable income taxes - federal, state, local, etc. Don't stress too much about this. This is business planning, not tax planning. It's good to include a reasonable allotment for taxes. If you're not sure what to put, though, a 30% rate is probably close. These taxes typically apply only when you are profitable. Any year without a profit should show zero taxes.</p>
-                                <p>Note that this rate is only for income taxes. Employee-related taxes like payroll and social welfare taxes are covered in the Personnel Plan table. Other taxes, such as property taxes, are generally best added as miscellaneous expenses.</p>
+                                <p>
+                                If your business is profitable in a given year, you will need to pay a variety of taxes on that profit. Enter an overall tax rate to include in your plan. This estimated rate should cover all applicable taxes – income, corporation , federal, state, local, etc. Don't stress too much about this. This is business planning, not tax planning. It's good to include a reasonable allotment for taxes. If you're not sure what to put, though, a 30% rate is probably close if you are self-employed or 20% if you are a limited company. These taxes typically apply only when you are profitable. Any year without a profit should show zero taxes.
+                                </p>
+                                <p>
+                                Note that this rate is only for business-related taxes. Employee-related taxes like payroll and social welfare taxes are covered in the Personnel Plan table. Other taxes, such as property taxes, are generally best added as miscellaneous expenses.
+                                </p>
                             </div>
                         </div>
                         <div class="col-xs-12" style="padding: 0px;">
@@ -326,6 +350,125 @@ $start_year = $business_plan->getStartYear();
                         </div>
                     </div>    
                 </div>
+
+                <div class="page financial-plan-tab-edit dividends-financial-plan-tab-edit" style="{{ $selected_tab == 'dividends' ? '' : 'display: none;' }}">
+                    <div class="page-body">
+                        <div class="intro-block ">
+                            <div class="widget-content">
+                                <h3>List your company's dividends and profit distributions</h3>
+                                <p>Dividends and profits can only be distributed out of retained earnings after tax.</p>
+                                <p>If retained earnings are negative then dividends and profits can not be distributed and therefore need to be reduced or removed or need to be reduced.</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12" style="padding: 0px;" id="dividends-list">
+                            @foreach ($data['dividends'] as $row)
+                                <?php
+                                $months_data_html = "";
+                                $months_display_html = "";
+                                $years_data_html = "";
+                                $years_display_html = "";
+                                $year_totals = explode(",", $row->totals); 
+                                    
+                                foreach ($data['months'] as $index => $month) {
+                                    $key = "month_" . (($index + 1) < 10 ? '0' : '') . ($index + 1); 
+                                    $value = $row->$key;
+                                    $months_data_html .= (empty($months_data_html) ? '' : ', ') . '"' . $index . '" : "' . $value . '"';
+                                    $months_display_html .= '
+                                        <div class="col-xs-2" style="padding: 0 5px;">
+                                            <p class="each-entry-month" style="text-align: center;">' . $month . '</p>
+                                            <p class="each-entry-value" style="text-align: center;">&pound;' . number_format($value, 2) . '</p>
+                                        </div>';
+                                }
+
+                                foreach ($year_totals as $index => $total) {
+                                    $years_data_html .= (empty($years_data_html) ? '' : ', ') . '"' . $index . '" : "' . $total . '"';
+                                    $years_display_html .= '<div class="col-xs-2" style="padding: 0 5px;">
+                                        <p class="each-entry-month" style="text-align: center;">FY' . ($start_year + $index) . '</p>
+                                        <p class="each-entry-value" style="text-align: center;">' . $total . '</p>
+                                    </div>';
+                                }
+                                ?>
+                                <div class="each-entry col-xs-12">
+                                    <div class="each-entry-title col-xs-12">{{ $row->dividend_name}}</div>
+                                    <div class="click-to-edit" style="margin-right: -15px;  margin-top: -34px;">
+                                        <div class="tuck">
+                                            <a href="{{ url('plan/financial-plan-budget/edit/' . $row->dividend_id) }}" class="edit-dividend" data-id="{{ $row->dividend_id }}" data-name="{{ $row->dividend_name }}" data-dividend_months='{ {{ $months_data_html }} }' data-dividend_years='{ {{ $years_data_html }} }'>
+                                                <div class="flag">
+                                                    <span class="click-to-edit-text" id="ext-gen6"> &nbsp;</span> 
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12" style="padding: 0px;">
+                                    {{ $months_display_html }}
+                                    </div>
+                                    <div class="col-xs-12" style="padding: 0px;">
+                                    {{ $years_display_html }}
+                                    </div>
+                                </div>
+                            @endforeach
+                            <div class="col-xs-12" style="padding: 0px; text-align: right;">
+                                <a href="#" class="btn btn-primary add-budget-data-button add-budget-data-button-dividends" id="add-dividend">Add Dividend and Distribution</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12" id="edit-dividend" style="padding: 0px; display: none;">
+                            <form id="budget-dividend-form" action="{{ asset('plan/financial-plan-budget-dividend') }}" method="POST">
+                                <input name="_token" value="{{ csrf_token() }}" type="hidden"/>
+                                <input name="business_plan_id" value="{{ $business_plan->id }}" type="hidden"/>
+                                <input name="dividend_id" value="" type="hidden"/>
+                                
+                                <div class="selected-expense">
+                                    <div class="item-header">
+                                        <h3>Fill in the details for this dividend and distribution</h3>
+                                    </div>
+                                    <div class="expense-budget-entryMethod" style="width: 100%;">
+                                        <div class="step expense-name" style="width: 100%;">
+                                            <div class="num"> 1</div>
+                                            <h4 class="label">What do you want to call this dividend and profit distribution?</h4>
+                                            <div class="step-inner form-group"  style="width: 100%;">
+                                                <input type="text" name="dividend_name" value="" maxlength="255" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="expense-budget-entryMethod">
+                                        <div class="step expense-name">
+                                            <div class="num"> 2</div>
+                                            <h4 class="label">How much is it?</h4>
+                                            <div class="step-inner form-group">
+                                                @foreach ($data['months'] as $index => $month)
+                                                <div class="col-xs-2">
+                                                    <p>{{ $month }}</p>
+                                                    <p><input class="dividend-months" style="width: 70px;" type="text" name="dividend_months[{{ $index }}]" value="" maxlength="11" class="form-control"></p>
+                                                </div>
+                                                @endforeach
+                                                <?php $start_year = $business_plan->getStartYear(); ?>
+                                                <div class="col-xs-2">
+                                                    <p>FY{{ $start_year }}</p>
+                                                    <p><input style="width: 70px;" type="text" name="dividend_years[0]" value="" maxlength="11" class="form-control" disabled></p>
+                                                </div>
+                                                <div class="col-xs-2">
+                                                    <p>FY{{ $start_year + 1 }}</p>
+                                                    <p><input style="width: 70px;" type="text" name="dividend_years[1]" value="" maxlength="11" class="form-control"></p>
+                                                </div>
+                                                <div class="col-xs-2">
+                                                    <p>FY{{ $start_year + 2 }}</p>
+                                                    <p><input style="width: 70px;" type="text" name="dividend_years[2]" value="" maxlength="11" class="form-control"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12" style="padding: 0px; text-align: right;">
+                                    <button type="submit" class="btn btn-primary" id="save-dividend">Save</button>
+                                    <a href="{{ url('plan/financial-plan-budget-delete-dividend') }}" class="btn btn-danger" id="delete-dividend">Delete</a>
+                                    <a href="#" class="btn btn-default" id="cancel-dividend">Cancel</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!--end .page-body-->
+                </div><!--end of page-->
+
+
             </div><!--end of pages-->
         </div><!--end .tableBuilder-->
     </div> <!--end no name div -->

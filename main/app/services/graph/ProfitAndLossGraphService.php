@@ -31,10 +31,12 @@ class ProfitAndLossGraphService
             unlink($physical);
         }
 
+        $profit_loss_data = $this->calculator->getProfitAndLossYearlyData();
+
         $img = $graph_creator->generateBarGraph(
             [
                 'datax' => $this->years, 
-                'datay' => $this->calculator->getYearlyNetProfit(), 
+                'datay' => $profit_loss_data['net_profit'], 
                 'title' => ''
             ], 
             [

@@ -1,6 +1,6 @@
 <?php
     $calculator = $data['calculator'];
-    $data       = $calculator->getCashFlowData();
+    $data       = $calculator->getCashFlowYearlyData();
     $start_year = $business_plan->getStartYear();
 ?>
 <div class="col-xs-12" style="padding: 0px; margin-top: 20px;">
@@ -17,7 +17,7 @@
         <div class="col-xs-7" style="padding: 0px; text-align: right;"></div>
     </div>
     <div class="data-row">
-        <div class="col-xs-5" style="padding-left: 0px;">Net Profit</div>
+        <div class="col-xs-5" style="padding-left: 0px;">Net Profit After Tax and Profit Distribution</div>
         <div class="col-xs-7" style="padding: 0px; text-align: right;">
             <div class="col-xs-4">{{ $calculator->formatNumberDisplay($data['net_profit'][0]) }}</div>
             <div class="col-xs-4">{{ $calculator->formatNumberDisplay($data['net_profit'][1]) }}</div>

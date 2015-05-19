@@ -36,7 +36,7 @@ extends PlanCalculatorService
 	{
         $this->cash_flow_data = $this->business_plan->CashFlowProjections();
 
-        $this->calculateOperatingIncome();
+        $this->calculateOperatingIncome(); /*Operating income is Ebitda in new excel sheet*/
         $this->calculateInterestRate();
         $this->calculateDepreciation();
         
@@ -45,17 +45,27 @@ extends PlanCalculatorService
             $this->yearly_operating_income[1] - $this->yearly_total_interests[1] - $this->yearly_depreciation[1],
             $this->yearly_operating_income[2] - $this->yearly_total_interests[2] - $this->yearly_depreciation[2]
         ];
-        
+
+        $yearly_total_sales = $this->sales_calc->getYearlyTotalSales();
+
+        $net_profit_percent = [
+            ($pre_tax_profit[0] / $yearly_total_sales[0]) * 100,
+            ($pre_tax_profit[1] / $yearly_total_sales[1]) * 100,
+            ($pre_tax_profit[2] / $yearly_total_sales[2]) * 100
+        ];
+
         $this->yearly_income_tax = [
             $pre_tax_profit[0] < 0 ? 0 : $pre_tax_profit[0] * ($this->business_plan->bp_income_tax_in_percentage / 100),
             $pre_tax_profit[1] < 0 ? 0 : $pre_tax_profit[1] * ($this->business_plan->bp_income_tax_in_percentage / 100),
             $pre_tax_profit[2] < 0 ? 0 : $pre_tax_profit[2] * ($this->business_plan->bp_income_tax_in_percentage / 100)
         ];
+
+        $yearly_dividends = $this->budget_calc->getDividendsYearlyTotals();
         
         $this->yearly_net_profit = [
-            $pre_tax_profit[0] - $this->yearly_income_tax[0], 
-            $pre_tax_profit[1] - $this->yearly_income_tax[1], 
-            $pre_tax_profit[2] - $this->yearly_income_tax[2], 
+            $pre_tax_profit[0] - $this->yearly_income_tax[0] - $yearly_dividends[0], 
+            $pre_tax_profit[1] - $this->yearly_income_tax[1] - $yearly_dividends[1], 
+            $pre_tax_profit[2] - $this->yearly_income_tax[2] - $yearly_dividends[2], 
         ];
 
         $yearly_expenses    = $this->budget_calc->getExpensesYearlyTotals();
@@ -73,23 +83,17 @@ extends PlanCalculatorService
         $this->calculateBalanceSheet();
         $this->calculateCashFlow();
 
-        $yearly_total_sales = $this->sales_calc->getYearlyTotalSales();
-
-        $net_profit_percent = [
-            ($this->yearly_net_profit[0] / $yearly_total_sales[0]) * 100,
-            ($this->yearly_net_profit[1] / $yearly_total_sales[1]) * 100,
-            ($this->yearly_net_profit[2] / $yearly_total_sales[2]) * 100
-        ];
-
         $this->profit_and_loss_data = [
             'gross_margin' => $this->sales_calc->getYearlyGrossMargin(),
             'operating_expenses' => $this->budget_calc->getExpensesYearlyTotals(),
             'operating_income' => $this->yearly_operating_income,
             'interest_incurred' => $this->yearly_total_interests,
             'depreciation' => $this->yearly_depreciation,
-            'income_taxes' => $this->yearly_income_tax,
-            'net_profit' => $this->yearly_net_profit,
+            'pre_tax_profit' => $pre_tax_profit,
             'net_profit_percent' => $net_profit_percent,
+            'income_taxes' => $this->yearly_income_tax,
+            'dividends' =>  $yearly_dividends,
+            'net_profit' => $this->yearly_net_profit
         ];
 
         $this->profit_and_loss_labels = [
@@ -98,9 +102,12 @@ extends PlanCalculatorService
             'operating_income' => 'Operating Income',
             'interest_incurred' => 'Interest Incurred',
             'depreciation' => 'Depreciation and Amortization',
-            'income_taxes' => 'Income Taxes',
-            'net_profit' => 'Net Profit',
+            'pre_tax_profit' => 'Pre Tax Profit',
             'net_profit_percent' => 'Net Profit / Sales',
+            'income_taxes' => 'Income Taxes',
+            'dividends' => 'Dividends',
+            'net_profit' => 'Net Profit'
+            
         ];
 
         // monthly data
@@ -108,9 +115,11 @@ extends PlanCalculatorService
             'operating_income' => $this->monthly_operating_income,
             'interest_incurred' => $this->monthly_total_interest,
             'depreciation' => $this->monthly_accumulated_depreciation,
-            'income_tax' => $this->monthly_income_tax,
-            'net_profit' => $this->monthly_net_profit,
+            'pre_tax_profit' => $this->monthly_pre_tax_profit,
             'net_profit_percent' => $this->monthly_net_profit_percent,
+            'income_tax' => $this->monthly_income_tax,
+            'dividends' => $this->budget_calc->getDividendsMonthlyTotals(),
+            'net_profit' => $this->monthly_net_profit
         ];
 	}
 
@@ -218,6 +227,7 @@ extends PlanCalculatorService
         $purchases = $this->budget_calc->getPurchases();
         $monthly_depreciation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         $monthly_accumulated_depreciation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $monthly_pre_tax_profit = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         $monthly_income_tax = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         $monthly_net_profit = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         $monthly_net_profit_percent = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -235,10 +245,11 @@ extends PlanCalculatorService
         
         for ($i = 0; $i < 12; $i++) {
             $monthly_accumulated_depreciation[$i] = ($i == 0? 0 : $monthly_accumulated_depreciation[$i - 1]) + $monthly_depreciation[$i];
-            $pre_tax_profit = $this->monthly_operating_income[$i] - $monthly_total_interest[$i] - $monthly_accumulated_depreciation[$i];
-            $monthly_income_tax[$i] = $pre_tax_profit * ($this->business_plan->bp_income_tax_in_percentage / 100);
-            $monthly_net_profit[$i] = $pre_tax_profit - $monthly_income_tax[$i];
-            $monthly_net_profit_percent[$i] = $total_sales[$i] > 0 ? (($monthly_net_profit[$i] / $total_sales[$i]) * 100) : 0;
+            $monthly_pre_tax_profit[$i] = $this->monthly_operating_income[$i] - $monthly_total_interest[$i] - $monthly_accumulated_depreciation[$i];
+            $monthly_income_tax[$i] = $monthly_pre_tax_profit[$i] * ($this->business_plan->bp_income_tax_in_percentage / 100);
+            $monthly_net_profit_percent[$i] = $total_sales[$i] > 0 ? (($monthly_pre_tax_profit[$i] / $total_sales[$i]) * 100) : 0;
+            $monthly_net_profit[$i] = $monthly_pre_tax_profit[$i] - $monthly_income_tax[$i];
+            
         }
 
         $yearly_purchases = $this->budget_calc->getPurchasesYearlyTotals();
@@ -250,9 +261,10 @@ extends PlanCalculatorService
         /*** End calculating depreciation **/
 
         $this->monthly_accumulated_depreciation = $monthly_accumulated_depreciation;
+        $this->monthly_pre_tax_profit = $monthly_pre_tax_profit;
+        $this->monthly_net_profit_percent = $monthly_net_profit_percent;
         $this->monthly_income_tax = $monthly_income_tax;
         $this->monthly_net_profit = $monthly_net_profit;
-        $this->monthly_net_profit_percent = $monthly_net_profit_percent;
     }
 
     protected function calculateAccountsReceivable()
@@ -590,37 +602,7 @@ extends PlanCalculatorService
         ];
     }
 
-    public function getMonthlyOperatingIncome()
-    {
-        return $this->monthly_operating_income;
-    }
-
-    public function getYearlyOperatingIncome()
-    {
-        return $this->yearly_operating_income;
-    }
-
-    public function getYearlyInterestIncurred()
-    {
-        return $this->yearly_total_interests;
-    }
-
-    public function getYearlyDepreciation()
-    {
-        return $this->yearly_depreciation;
-    }
-
-    public function getYearlyIncomeTax()
-    {
-        return $this->yearly_income_tax;
-    }
-    
-    public function getYearlyNetProfit()
-    {
-        return $this->yearly_net_profit;
-    }
-
-    public function getProfitAndLossData()
+    public function getProfitAndLossYearlyData()
     {
         return $this->profit_and_loss_data;
     }
@@ -630,7 +612,7 @@ extends PlanCalculatorService
         return $this->profit_and_loss_labels;
     }
 
-    public function getBalanceSheetData()
+    public function getBalanceSheetYearlyData()
     {
         return $this->balance_sheet_data ;
     }
@@ -640,7 +622,7 @@ extends PlanCalculatorService
         return $this->balance_sheet_monthly_data ;
     }
     
-    public function getCashFlowData()
+    public function getCashFlowYearlyData()
     {
         return $this->cash_flow_data;
     }

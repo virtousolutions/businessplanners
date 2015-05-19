@@ -885,12 +885,14 @@ Two exit strategies are common;</p>
 
         $expenditure_list = BudgetExpenditure::getAll($business_plan->id);
         $purchases_list = BudgetPurchase::getAll($business_plan->id);
+        $dividends_list = BudgetDividend::getAll($business_plan->id);
         
 		$data = [
             'months' => $business_plan->getStartMonths(),
             'default_month_year' => $business_plan->bp_financial_start_date,
             'expenses' => $expenditure_list,
-            'purchases' => $purchases_list
+            'purchases' => $purchases_list,
+            'dividends' => $dividends_list
         ];
 
         $this->layout = View::make('layout.plan');
@@ -906,11 +908,7 @@ Two exit strategies are common;</p>
         $save_data = [
             'expenditure_bp_id' => $business_plan->id,
             'expenditure_name' => $input['expenditure_name'],
-            'expenditure_start_date' => $input['expenditure_month_year_date'],
-            'expected_change' => $input['expenditure_expected_change'],
-            'percentage_of_change' => $input['expenditure_percentage_of_change'],
-            'pay_per_year' => $input['expenditure_how_you_pay'],
-            'pay_amount' => $input['expenditure_how_much_is_it']
+            'expenditure_months' => $input['expenditure_months']
         ];
 
         if ($expenditure_id) {
@@ -977,6 +975,39 @@ Two exit strategies are common;</p>
         $msg = "Successfully saved your changes";
         
         return Redirect::to('plan/financial-plan-budget/' . $business_plan->id . '?selected_tab=tax')->withMessage($msg);
+    }
+
+    public function saveFinancialPlanBudgetDividend()
+    {
+        $input = Input::get();
+
+        $business_plan = BusinessPlan::find($input['business_plan_id']);
+        $dividend_id = $input['dividend_id'];
+        $save_data = [
+            'dividend_bp_id' => $business_plan->id,
+            'dividend_name' => $input['dividend_name'],
+            'dividend_months' => $input['dividend_months'],
+            'dividend_years' => $input['dividend_years']
+        ];
+
+        if ($dividend_id) {
+            $obj = BudgetDividend::find($dividend_id);
+            $obj->update($save_data);
+            $msg = "Successfully saved your changes";
+        }
+        else {
+            $obj = BudgetDividend::create($save_data);
+            $msg = "Successfully added a new dividen and profit distribution";
+        }
+
+        return Redirect::to('plan/financial-plan-budget/' . $business_plan->id . '?selected_tab=dividends')->withMessage($msg);
+    }
+
+    public function saveFinancialPlanBudgetDeleteDividend($id)
+    {
+        $obj = BudgetDividend::find($id);
+        $obj->delete();
+        return Redirect::to('plan/financial-plan-budget/' . $obj->businessPlan()->id . '?selected_tab=dividends')->withMessage("Successfully deleted dividend and profit distribution");
     }
 
     public function editFinancialPlanHumanResources($id)

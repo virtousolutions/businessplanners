@@ -313,7 +313,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `employee_start_date` varchar(110) NOT NULL,
   `employee_type` varchar(255) NOT NULL,
   employee_pay_per_year BOOLEAN,
-  employee_pay_amount decimal(11,2) NOT NULL DEFAULT '0.00',
+  employee_pay_amount float(11,2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`employee_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=111 ;
 
@@ -328,18 +328,18 @@ CREATE TABLE IF NOT EXISTS `employee` (
 DROP TABLE IF EXISTS `employee_12_month_plan`;
 CREATE TABLE IF NOT EXISTS `employee_12_month_plan` (
   `mpp_id` int(110) NOT NULL AUTO_INCREMENT,
-  `month_01` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_02` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_03` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_04` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_05` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_06` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_07` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_08` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_09` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_10` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_11` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_12` decimal(11,2) NOT NULL DEFAULT '0.00',
+  `month_01` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_02` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_03` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_04` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_05` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_06` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_07` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_08` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_09` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_10` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_11` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_12` float(11,2) NOT NULL DEFAULT '0.00',
   `financial_yr_forecast` year(4) NOT NULL,
   `employee_id` int(110) NOT NULL,
   PRIMARY KEY (`mpp_id`)
@@ -400,7 +400,7 @@ CREATE TABLE IF NOT EXISTS `expenditure` (
   expected_change VARCHAR(10),
   percentage_of_change INT(3),
   pay_per_year BOOLEAN,
-  pay_amount decimal(11,2) NOT NULL DEFAULT '0.00',
+  pay_amount float(11,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`exp_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
@@ -415,18 +415,18 @@ CREATE TABLE IF NOT EXISTS `expenditure` (
 DROP TABLE IF EXISTS `expenditure_12_month_plan`;
 CREATE TABLE IF NOT EXISTS `expenditure_12_month_plan` (
   `epp_id` int(110) NOT NULL AUTO_INCREMENT,
-  `month_01` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_02` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_03` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_04` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_05` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_06` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_07` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_08` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_09` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_10` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_11` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `month_12` decimal(11,2) NOT NULL DEFAULT '0.00',
+  `month_01` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_02` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_03` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_04` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_05` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_06` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_07` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_08` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_09` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_10` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_11` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_12` float(11,2) NOT NULL DEFAULT '0.00',
   `financial_yr_forecast` year(4) NOT NULL,
   `expenditure_id` int(110) NOT NULL,
   PRIMARY KEY (`epp_id`)
@@ -449,6 +449,68 @@ CREATE TABLE IF NOT EXISTS `expenditure_financial_forecast` (
   `pay_per_year` binary(1) NOT NULL DEFAULT '0',
   `expenditure_id` int(110) NOT NULL,
   PRIMARY KEY (`exff_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=91 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dividends`
+--
+-- Creation: Dec 30, 2013 at 09:55 AM
+--
+
+DROP TABLE IF EXISTS `dividends`;
+CREATE TABLE IF NOT EXISTS `dividends` (
+  `dividend_id` int(110) NOT NULL AUTO_INCREMENT,
+  `dividend_bp_id` int(110) NOT NULL,
+  `dividend_name` varchar(225) NOT NULL,
+  PRIMARY KEY (`dividend_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dividend_12_month_plan`
+--
+-- Creation: Dec 30, 2013 at 09:55 AM
+--
+
+DROP TABLE IF EXISTS `dividend_12_month_plan`;
+CREATE TABLE IF NOT EXISTS `dividend_12_month_plan` (
+  `dmp_id` int(110) NOT NULL AUTO_INCREMENT,
+  `month_01` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_02` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_03` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_04` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_05` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_06` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_07` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_08` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_09` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_10` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_11` float(11,2) NOT NULL DEFAULT '0.00',
+  `month_12` float(11,2) NOT NULL DEFAULT '0.00',
+  `financial_yr_forecast` year(4) NOT NULL,
+  `dividend_id` int(110) NOT NULL,
+  PRIMARY KEY (`dmp_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dividend_financial_forecast`
+--
+-- Creation: Dec 30, 2013 at 09:55 AM
+--
+
+DROP TABLE IF EXISTS `dividend_financial_forecast`;
+CREATE TABLE IF NOT EXISTS `dividend_financial_forecast` (
+  `dff_id` int(110) NOT NULL AUTO_INCREMENT,
+  `financial_year` int(110) NOT NULL,
+  `total_per_yr` int(110) NOT NULL,
+  `related_expenses` int(110) NOT NULL,
+  `dividend_id` int(110) NOT NULL,
+  PRIMARY KEY (`dff_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=91 ;
 
 -- --------------------------------------------------------
