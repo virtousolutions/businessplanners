@@ -373,7 +373,7 @@ Collaborate with your team
 
 		<div class="testi-boxx col-md-5 col-sm-10 col-md-offset-4">
 			<div class="img"><img src="{{ url('assets/img/stock-photo-44871128-we-re-all-special-in-our-own-way3_03.png') }}"></div><!-- .img -->
-			<p>"The team at Contractors Pro are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
+			<p>"The team at The Business Planners are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
 		</div>
 
 	</div><!-- .container -->
