@@ -189,7 +189,7 @@ class HomeController extends BaseController {
         Log::info('Email sent to admin');
         
         // only send the email to diy users
-        if ($user->package == 'diy') {
+        if ($user->package == 'diy' || $user->package == 'premium') {
             // send an email to the user
             Mail::send('emails.notify_user', (array)$email_data, function($message) use ($user)
             {
