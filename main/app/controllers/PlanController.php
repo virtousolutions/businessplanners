@@ -146,6 +146,14 @@ extends BaseController
                 'plan_month' => $plan_month,
                 'bp_user_id' => 1,
                 'bp_id' => $business_plan->id,
+                'contact_name' => $business_plan->contact_name,
+                'address_1' => $business_plan->address_1,
+                'address_2' => $business_plan->address_2,
+                'city' => $business_plan->city,
+                'country' => $business_plan->country,
+                'post_code' => $business_plan->post_code,
+                'email' => $business_plan->email,
+                'telephone' => $business_plan->telephone,
                 'plan_details_form_button_text' => 'Save Details'
             ], 
             null,
@@ -162,8 +170,17 @@ extends BaseController
 
         $plan->fill([
             'bp_name' => $input['plan_name'],
-            'bp_financial_start_date' => date("M", strtotime($input['start_month'])) . " " . $input['start_year']
+            'bp_financial_start_date' => date("M", strtotime($input['start_month'])) . " " . $input['start_year'],
+            'contact_name' => $input['contact_name'],
+            'address_1' => $input['address_1'],
+            'address_2' => $input['address_2'],
+            'city' => $input['city'],
+            'country' => $input['country'],
+            'post_code' => $input['post_code'],
+            'email' => $input['email'],
+            'telephone' => $input['telephone']
         ]);
+
         $plan->save();
 
         return Redirect::to('plan/details/' . $plan->id)->with('message', 'Successfully saved changes');

@@ -30,6 +30,8 @@ class User extends Eloquent implements UserInterface {
 		'email'          => 'required|email',
 	];
 
+    protected $country_name;
+
     public function getPackageNice()
     {
         return $this->package == 'diy' ? 'DIY' : ucwords($this->package);
@@ -38,6 +40,15 @@ class User extends Eloquent implements UserInterface {
     public function getTemporaryPassword()
     {
         return DB::table('temp_passwords')->where('user_id', $this->id)->pluck('password');
+    }
+
+    public function getCountryName()
+    {
+        if (!$this->country_name) {
+            $this->country_name = DB::table('countries')->where('id', $this->country)->pluck('country_name');
+        }
+
+        return $this->country_name;
     }
 
     /**
