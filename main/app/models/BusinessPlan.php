@@ -18,7 +18,15 @@ extends Eloquent
 		'bp_yrs_of_monthly_financial_details',
 		'bp_related_expenses_in_percentage',
 		'bp_income_tax_in_percentage',
-		'user_id'
+		'user_id',
+        'contact_name',
+        'address_1',
+        'address_2',
+        'city',
+        'country',
+        'post_code',
+        'email',
+        'telephone'
 	];
 
     protected $start_months = null;
@@ -38,6 +46,14 @@ extends Eloquent
 		$create_data['bp_related_expenses_in_percentage']  = self::$bp_releated_expenses_in_percentage; 
 		$create_data['income_tax_in_percentage'] = self::$bp_income_tax_in_percentage;
 		$create_data['currency'] = self::$bp_currency;
+        $create_data['contact_name'] = $data['contact_name'];
+        $create_data['address_1'] = $data['address_1'];
+        $create_data['address_2'] = $data['address_2'];
+        $create_data['city'] = $data['city'];
+        $create_data['country'] = $data['country'];
+        $create_data['post_code'] = $data['post_code'];
+        $create_data['email'] = $data['email'];
+        $create_data['telephone'] = $data['telephone'];
 
         /*echo '<pre>';
         var_dump($create_data);
@@ -104,5 +120,14 @@ extends Eloquent
         }
 
         return $this->start_months;
+    }
+
+    public function getCountryName()
+    {
+        if (!$this->country_name) {
+            $this->country_name = DB::table('countries')->where('id', $this->country)->pluck('country_name');
+        }
+
+        return $this->country_name;
     }
 }

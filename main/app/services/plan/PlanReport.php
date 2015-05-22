@@ -6,7 +6,7 @@ class PlanReport extends TCPDF {
     protected $user;
     protected $contents;
     protected $add_financial_statements;
-
+    protected $graphs = [];
     protected $img_path = 'img/pdf';
 
     public function __construct(BusinessPlan $business_plan, User $user, $contents, $add_financial_statements)
@@ -159,7 +159,7 @@ understanding that you will not share its contents or ideas with third parties w
         $this->buildAppendix();
         $this->buildTOC();
         
-        $this->Output("report.pdf", $output);
+        $this->Output($this->business_plan->bp_name . " Business Plan.pdf", $output);
     }
 
     public function buildCoverPage()
@@ -202,34 +202,31 @@ understanding that you will not share its contents or ideas with third parties w
 
         $this->MultiCell(155, 5, 'CONTACT INFORMATION', 0, 'L', 0, 0, '', 240, true);
 
-        $user_name = sprintf("%s %s", $this->user->first_name, $this->user->last_name);
-
         $this->SetFont('fradmcn', '', 10, '', true);
         $this->setTextColor(255, 204, 51);
-        $this->MultiCell(0, 5, $user_name, 0, 'L', 0, 0, '', 248, true);
-
-        $address = sprintf(
-            "%s%s, %s%s, %s, %s", 
-            $this->user->address_1, 
-            empty($this->user->address_2) ? '' : (' ' . $this->user->address_2), 
-            $this->user->city, 
-            empty($this->user->state) ? '' : (' ' . $this->user->state), 
-            $this->user->country, 
-            $this->user->zip
-        );  
-
-        $this->MultiCell(0, 5, $address, 0, 'R', 0, 0, '', 248, true);
+        $this->MultiCell(0, 5, $this->business_plan->contact_name, 0, 'L', 0, 0, '', 248, true);
         
-        $this->MultiCell(0, 5, $this->user->email, 0, 'L', 0, 0, '', 252, true);
+        $this->MultiCell(0, 5, $this->business_plan->email, 0, 'L', 0, 0, '', 252, true);
 
-        if (!empty($this->user->contact_number)) {
-            $this->MultiCell(0, 5, $this->user->contact_number, 0, 'R', 0, 0, '', 252, true);
+        if (!empty($this->business_plan->telephone)) {
+            $this->MultiCell(0, 5, $this->business_plan->telephone, 0, 'L', 0, 0, '', 256, true);
         }
 
-        if (!empty($this->user->website)) {
-            $this->MultiCell(0, 5, $this->user->website, 0, 'L', 0, 0, '', 256, true);
+        $y_pos = 248;
+
+        $this->MultiCell(0, 5, $this->business_plan->address_1, 0, 'R', 0, 0, '', $y_pos, true);
+        $y_pos += 4;
+        
+        if (!empty($this->business_plan->address_2)) {
+            $this->MultiCell(0, 5, $this->business_plan->address_2, 0, 'R', 0, 0, '', $y_pos, true);
+            $y_pos += 4;
         }
-    
+
+        $this->MultiCell(0, 5, ($this->business_plan->city . ', ' . $this->business_plan->getCountryName()), 0, 'R', 0, 0, '', $y_pos, true);
+        $y_pos += 4;
+
+        $this->MultiCell(0, 5, $this->business_plan->post_code, 0, 'R', 0, 0, '', $y_pos, true);
+        
         //reset true to include header and footer for succeeding pages
         $this->setPrintHeader(true);
         $this->setPrintFooter(true);
@@ -264,6 +261,7 @@ understanding that you will not share its contents or ideas with third parties w
             $this->writeHeader($content['title'], 'P');
             
             foreach ($content['sub_pages']as $sub_page) {
+                $this->Ln(3);
                 $this->renderPageTitle($sub_page['title']);
                 $this->renderPageContent($sub_page['content']);
             }
@@ -429,6 +427,18 @@ understanding that you will not share its contents or ideas with third parties w
 		$this->Ln(1);
         $this->writeHTML($html_y_cost, true, false, false, true, 'L');
         $this->Ln(1);
+        
+        $sales_graph = new SalesGraphService($this->business_plan, $sales_calculator);
+        $graphs = $sales_graph->getGraphs();
+        
+        $this->renderGraphs([
+            $graphs['monthly_sales'], 
+            $graphs['monthly_gross_margin'], 
+            $graphs['yearly_sales'], 
+            $graphs['yearly_gross_margin']
+        ]);
+
+        $this->graphs += $graphs;
     }
 
     protected function renderPersonnelPlan($personnel_calculator)
@@ -643,6 +653,16 @@ understanding that you will not share its contents or ideas with third parties w
 		$this->Ln(1);
         $this->writeHTML($html_y_purchases, true, false, false, true, 'L');
         $this->Ln(1);
+
+        $budget_graph = new BudgetGraphService($this->business_plan, $budget_calculator);
+        $graphs = $budget_graph->getGraphs();
+
+        $this->renderGraphs([
+            $graphs['monthly_expenses'], 
+            $graphs['yearly_expenses']
+        ]);
+
+        $this->graphs += $graphs;
     }
 
     protected function renderFundings($fund_calculator)
@@ -855,6 +875,15 @@ understanding that you will not share its contents or ideas with third parties w
         $this->writeHTML($this->generateYears(), true, false, false, true, 'L');
         $this->Ln(1);
         $this->writeHTML($html_y, true, false, false, true, 'L');
+
+        $this->renderGraphs([
+            $this->graphs['monthly_sales'], 
+            $this->graphs['monthly_expenses'], 
+            $this->graphs['monthly_gross_margin'], 
+            $this->graphs['yearly_sales'], 
+            $this->graphs['yearly_expenses'],
+            $this->graphs['yearly_gross_margin']
+        ]);
     }
 
     protected function renderBalanceSheet($fs_calculator)
@@ -1042,6 +1071,12 @@ understanding that you will not share its contents or ideas with third parties w
 
     protected function renderPageContent($content)
     {
+        $content = trim($content);
+
+        if (!empty($content)) {
+            $content = '<p style="font-size: 1px;">&nbsp;</p>' . $content;
+        }
+
         $this->writeHTML($content, true, false, false, true, 'L');
         $this->Ln(4);
     }
@@ -1076,6 +1111,16 @@ understanding that you will not share its contents or ideas with third parties w
 		$this->SetFont('rockl', '', 10, '', true);
 		$this->setTextColor(0, 0, 0);
 	}
+
+    protected function renderGraphs($graphs)
+    {
+        foreach ($graphs as $graph) {
+            $this->addPage('L');
+            $this->Ln(10);
+            $this->writeH3($graph['name']);
+            $this->Image($graph['path'], 15, 60, 175, 100, 'PNG',null ,null ,2);    
+        }
+    }
 
     protected function generateMonths() 
     {
