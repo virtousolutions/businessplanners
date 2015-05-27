@@ -1280,46 +1280,25 @@ Blog
 Footer
 --------------------------------------------------------------*/
 footer{
-	min-height: 203px;
-	width: 100%;
-	background-color: #63B6E7;
-	clear: both;
+	margin-top: 1.5rem;
+	border-top: 1px solid #ddd;
+	background-color: #efefef;
+	padding: 3rem 0 2rem 0;
+	font-size: 1.2rem;
+	letter-spacing: 0.6px;
 }
-footer #footer-menu{
-	padding: 5em 0 0 0;
-}
-footer #footer-menu ul{
-	list-style: none;
-}
-footer #footer-menu li{
-	display: inline;
-	float: left;
-}
-footer #footer-menu li a{
-	color: #FFF;
-	padding: 0 0.3em 0 0.3em;
-	font-size: 17px;
-}
-footer{
+
+footer .col-sm-2,
+footer .col-sm-10{
 	padding: 0;
+}
+
+footer #footer-contactus{
+	font-size: 1.5rem;
+}
+
+footer #footer-contactus h2{
 	margin: 0;
-}
-footer p{
-	color: #FFF;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 17px;
-	font-weight: 300;
-}
-footer #social-icons{
-	position: relative;
-  	z-index: 9999;
-}
-footer #social-icons ul{
-	list-style: none;
-}
-footer #social-icons li{
-	display: inline;
-	float: left;
 }
 
 /*--------------------------------------------------------------

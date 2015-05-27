@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-
+<link rel="icon" type="image/png" href="http://thebusinessplanners.co.uk/assets/img/favicon-bizplanner.png">
 <?php wp_head(); ?>
 </head>
 
@@ -21,7 +21,7 @@
 <div id="head-bg">
 	<div class="container">
 		<div id="logo" class="col-md-3">
-			<img src="<?=get_template_directory_uri()?>/images/Logo.png">
+			<img src="http://thebusinessplanners.co.uk/assets/img/logo.png">
 		</div><!-- #logo -->
 		<div id="top-menu" class="col-md-6">
 			<div id="btn-resp"></div>
