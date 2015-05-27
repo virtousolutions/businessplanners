@@ -379,53 +379,53 @@ understanding that you will not share its contents or ideas with third parties w
 		//data is calculated in renderSalesForecast function call          
 		$this->writeH3('Sales Forecast Table (With Monthly Detail)');
 		$this->Ln(3);
-        $this->writeHTML($this->generateMonths(), true, false, false, true, 'L');
+        $this->writeHTML($this->generateMonths(), false, false, false, false, 'L');
         $this->Ln(1);
         $this->writeH3('Unit Sales');
 		$this->Ln(1);
-        $this->writeHTML($html_unit_sales, true, false, false, true, 'L');
+        $this->writeHTML($html_unit_sales, false, false, false, false, 'L');
         $this->Ln(1);
         $this->writeH3('Price Per Unit');
 		$this->Ln(1);
-        $this->writeHTML($html_price, true, false, false, true, 'L');
+        $this->writeHTML($html_price, false, false, false, false, 'L');
         $this->Ln(1);
         $this->writeH3('Sales');
 		$this->Ln(1);
-        $this->writeHTML($html_sales, true, false, false, true, 'L');
+        $this->writeHTML($html_sales, false, false, false, false, 'L');
         $this->Ln(1);
         $this->writeH3('Direct Cost Per Unit');
 		$this->Ln(1);
-        $this->writeHTML($html_unit_cost, true, false, false, true, 'L');
+        $this->writeHTML($html_unit_cost, false, false, false, false, 'L');
         $this->Ln(1);
         $this->writeH3('Direct Cost');
 		$this->Ln(1);
-        $this->writeHTML($html_cost, true, false, false, true, 'L');
+        $this->writeHTML($html_cost, false, false, false, false, 'L');
         $this->Ln(1);
         
         $this->Ln(4);
 		$this->writeH3('Sales Forecast Table (With Yearly Detail)');
 		$this->Ln(3);
-        $this->writeHTML($this->generateYears(), true, false, false, true, 'L');
+        $this->writeHTML($this->generateYears(), false, false, false, false, 'L');
         $this->Ln(1);
         $this->writeH3('Unit Sales');
 		$this->Ln(1);
-        $this->writeHTML($html_y_unit_sales, true, false, false, true, 'L');
+        $this->writeHTML($html_y_unit_sales, false, false, false, false, 'L');
         $this->Ln(1);
         $this->writeH3('Price Per Unit');
 		$this->Ln(1);
-        $this->writeHTML($html_y_price, true, false, false, true, 'L');
+        $this->writeHTML($html_y_price, false, false, false, false, 'L');
         $this->Ln(1);
         $this->writeH3('Sales');
 		$this->Ln(1);
-        $this->writeHTML($html_y_sales, true, false, false, true, 'L');
+        $this->writeHTML($html_y_sales, false, false, false, false, 'L');
         $this->Ln(1);
         $this->writeH3('Direct Cost Per Unit');
 		$this->Ln(1);
-        $this->writeHTML($html_y_unit_cost, true, false, false, true, 'L');
+        $this->writeHTML($html_y_unit_cost, false, false, false, false, 'L');
         $this->Ln(1);
         $this->writeH3('Direct Cost');
 		$this->Ln(1);
-        $this->writeHTML($html_y_cost, true, false, false, true, 'L');
+        $this->writeHTML($html_y_cost, false, false, false, false, 'L');
         $this->Ln(1);
         
         $sales_graph = new SalesGraphService($this->business_plan, $sales_calculator);
@@ -490,17 +490,17 @@ understanding that you will not share its contents or ideas with third parties w
         $this->Ln(1);
 		$this->writeH3('Personnel Plan Table (With Monthly Detail)');
 		$this->Ln(3);
-        $this->writeHTML($this->generateMonths(), true, false, false, true, 'L');
+        $this->writeHTML($this->generateMonths(), false, false, false, false, 'L');
         $this->Ln(2);
-        $this->writeHTML($html_personnels, true, false, false, true, 'L');
+        $this->writeHTML($html_personnels, false, false, false, false, 'L');
         $this->Ln(1);
 
         $this->Ln(4);
 		$this->writeH3('Personnel Plan Table (With Yearly Detail)');
 		$this->Ln(3);
-        $this->writeHTML($this->generateYears(), true, false, false, true, 'L');
+        $this->writeHTML($this->generateYears(), false, false, false, false, 'L');
         $this->Ln(1);
-        $this->writeHTML($html_y_personnels, true, false, false, true, 'L');
+        $this->writeHTML($html_y_personnels, false, false, false, false, 'L');
     }
 
     protected function renderBudget($budget_calculator, $personnel_calculator)
@@ -629,29 +629,29 @@ understanding that you will not share its contents or ideas with third parties w
         $this->Ln(1);
 		$this->writeH3('Budget Table (With Monthly Detail)');
 		$this->Ln(3);
-        $this->writeHTML($this->generateMonths(), true, false, false, true, 'L');
+        $this->writeHTML($this->generateMonths(), false, false, false, false, 'L');
         $this->Ln(1);
         $this->writeH3('Expenses');
 		$this->Ln(1);
-        $this->writeHTML($html_expenses, true, false, false, true, 'L');
+        $this->writeHTML($html_expenses, false, false, false, false, 'L');
         $this->Ln(1);
         $this->writeH3('Major Purchases');
 		$this->Ln(1);
-        $this->writeHTML($html_purchases, true, false, false, true, 'L');
+        $this->writeHTML($html_purchases, false, false, false, false, 'L');
         $this->Ln(1);
 
         $this->Ln(4);
 		$this->writeH3('Budget Table (With Yearly Detail)');
 		$this->Ln(3);
-        $this->writeHTML($this->generateYears(), true, false, false, true, 'L');
+        $this->writeHTML($this->generateYears(), false, false, false, false, 'L');
         $this->Ln(2);
         $this->writeH3('Expenses');
 		$this->Ln(1);
-        $this->writeHTML($html_y_expenses, true, false, false, true, 'L');
+        $this->writeHTML($html_y_expenses, false, false, false, false, 'L');
         $this->Ln(2);
         $this->writeH3('Major Purchases');
 		$this->Ln(1);
-        $this->writeHTML($html_y_purchases, true, false, false, true, 'L');
+        $this->writeHTML($html_y_purchases, false, false, false, false, 'L');
         $this->Ln(1);
 
         $budget_graph = new BudgetGraphService($this->business_plan, $budget_calculator);
@@ -759,29 +759,29 @@ understanding that you will not share its contents or ideas with third parties w
 		//data is calculated in renderSalesForecast function call          
 		$this->writeH3('Loan and Investments Table (With Monthly Detail)');
 		$this->Ln(3);
-        $this->writeHTML($this->generateMonths(), true, false, false, true, 'L');
+        $this->writeHTML($this->generateMonths(), false, false, false, false, 'L');
         $this->Ln(2);
         $this->writeH3('Loans');
 		$this->Ln(1);
-        $this->writeHTML($html_loans, true, false, false, true, 'L');
+        $this->writeHTML($html_loans, false, false, false, false, 'L');
         $this->Ln(2);
         $this->writeH3('Investments');
 		$this->Ln(1);
-        $this->writeHTML($html_investments, true, false, false, true, 'L');
+        $this->writeHTML($html_investments, false, false, false, false, 'L');
         $this->Ln(1);
         
         $this->Ln(4);
         $this->writeH3('Loan and Investments Table (With Yearly Detail)');
 		$this->Ln(3);
-        $this->writeHTML($this->generateYears(), true, false, false, true, 'L');
+        $this->writeHTML($this->generateYears(), false, false, false, false, 'L');
         $this->Ln(2);
         $this->writeH3('Loans');
 		$this->Ln(1);
-        $this->writeHTML($html_y_loans, true, false, false, true, 'L');
+        $this->writeHTML($html_y_loans, false, false, false, false, 'L');
         $this->Ln(2);
         $this->writeH3('Investments');
 		$this->Ln(1);
-        $this->writeHTML($html_y_investments, true, false, false, true, 'L');
+        $this->writeHTML($html_y_investments, false, false, false, false, 'L');
         $this->Ln(1);
     }
 
@@ -866,15 +866,15 @@ understanding that you will not share its contents or ideas with third parties w
 		//data is calculated in renderSalesForecast function call          
 		$this->writeH3('Profit and Loss Statement (With Monthly Detail)');
 		$this->Ln(3);
-        $this->writeHTML($this->generateMonths(), true, false, false, true, 'L');
+        $this->writeHTML($this->generateMonths(), false, false, false, false, 'L');
         $this->Ln(1);
-        $this->writeHTML($html, true, false, false, true, 'L');
+        $this->writeHTML($html, false, false, false, false, 'L');
         $this->Ln(5);
         $this->writeH3('Profit and Loss Statement (With Yearly Detail)');
         $this->Ln(3);
-        $this->writeHTML($this->generateYears(), true, false, false, true, 'L');
+        $this->writeHTML($this->generateYears(), false, false, false, false, 'L');
         $this->Ln(1);
-        $this->writeHTML($html_y, true, false, false, true, 'L');
+        $this->writeHTML($html_y, false, false, false, false, 'L');
 
         $this->renderGraphs([
             $this->graphs['monthly_sales'], 
@@ -957,15 +957,15 @@ understanding that you will not share its contents or ideas with third parties w
         $this->Ln(1);
 		$this->writeH3('Balance Sheet Table (With Monthly Detail)');
 		$this->Ln(3);
-        $this->writeHTML($this->generateMonths(), true, false, false, true, 'L');
+        $this->writeHTML($this->generateMonths(), false, false, false, false, 'L');
         $this->Ln(1);
-        $this->writeHTML($monthly_html, true, false, false, true, 'L');
+        $this->writeHTML($monthly_html, false, false, false, false, 'L');
         $this->Ln(5);
         $this->writeH3('Balance Sheet Table (With Yearly Detail)');
         $this->Ln(3);
-        $this->writeHTML($this->generateYears(), true, false, false, true, 'L');
+        $this->writeHTML($this->generateYears(), false, false, false, false, 'L');
         $this->Ln(1);
-        $this->writeHTML($yearly_html, true, false, false, true, 'L');
+        $this->writeHTML($yearly_html, false, false, false, false, 'L');
     }
 
     protected function renderCashFlow($fs_calculator)
@@ -1041,27 +1041,27 @@ understanding that you will not share its contents or ideas with third parties w
         $this->Ln(1);
 		$this->writeH3('Cash Flow Statement (With Monthly Detail)');
 		$this->Ln(3);
-        $this->writeHTML($this->generateMonths(), true, false, false, true, 'L');
+        $this->writeHTML($this->generateMonths(), false, false, false, false, 'L');
         $this->Ln(1);
         $this->writeH3('Operations');
         $this->Ln(1);
-        $this->writeHTML($monthly_op_html, true, false, false, true, 'L');
+        $this->writeHTML($monthly_op_html, false, false, false, false, 'L');
         $this->Ln(1);
         $this->writeH3('Investing and Finance');
         $this->Ln(1);
-        $this->writeHTML($monthly_if_html, true, false, false, true, 'L');
+        $this->writeHTML($monthly_if_html, false, false, false, false, 'L');
         $this->Ln(5);
         $this->writeH3('Cash Flow Statement (With Yearly Detail)');
         $this->Ln(3);
-        $this->writeHTML($this->generateYears(), true, false, false, true, 'L');
+        $this->writeHTML($this->generateYears(), false, false, false, false, 'L');
         $this->Ln(1);
         $this->writeH3('Operations');
         $this->Ln(1);
-        $this->writeHTML($yearly_op_html, true, false, false, true, 'L');
+        $this->writeHTML($yearly_op_html, false, false, false, false, 'L');
         $this->Ln(1);
         $this->writeH3('Investing and Finance');
         $this->Ln(1);
-        $this->writeHTML($yearly_if_html, true, false, false, true, 'L');
+        $this->writeHTML($yearly_if_html, false, false, false, false, 'L');
     }
 
     protected function renderPageTitle($title)
@@ -1077,7 +1077,7 @@ understanding that you will not share its contents or ideas with third parties w
             $content = '<p style="font-size: 1px;">&nbsp;</p>' . $content;
         }
 
-        $this->writeHTML($content, true, false, false, true, 'L');
+        $this->writeHTML($content, false, false, false, false, 'L');
         $this->Ln(4);
     }
 
