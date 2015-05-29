@@ -1305,7 +1305,7 @@ Two exit strategies are common;</p>
         
         try {
             $report = new PlanReport($business_plan, $user, $pdf_entries, (in_array(Auth::getUser()->package, $this->has_financial_statement)));
-            $report->toPdf('I');
+            $report->toPdf('D');
         }
         catch (Exception $e) {
             return $this->displayPage($business_plan, [], [], $section, ['layout_page' => "plan.cannot-print"]);
