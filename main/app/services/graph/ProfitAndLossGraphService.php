@@ -56,6 +56,6 @@ class ProfitAndLossGraphService
 
     public function formatAmount($val)
     {
-        return PlanCalculatorService::formatNumberDisplay($val, 2, '£');
+        return PlanCalculatorService::formatNumberDisplay($val, 0, '£');
     }
 }

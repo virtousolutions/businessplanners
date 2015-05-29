@@ -86,11 +86,11 @@ class BudgetGraphService
 
     public function formatAmount($val)
     {
-        return PlanCalculatorService::formatNumberDisplay($val, 2, '£');
+        return PlanCalculatorService::formatNumberDisplay($val, 0, '£');
     }
 
     public function formatPercent($val)
     {
-        return PlanCalculatorService::formatNumberDisplay($val, 2, '', '%');
+        return PlanCalculatorService::formatNumberDisplay($val, 0, '', '%');
     }
 }

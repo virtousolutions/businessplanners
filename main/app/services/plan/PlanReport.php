@@ -102,15 +102,15 @@ class PlanReport extends TCPDF {
         } 
         
         // *** replace the following parent::Footer() with your code for TOC page
-        $this->SetY(-24);                                        
+        $this->SetY(-13);                                        
         $this->SetTextColorArray(array(0,0,0));
         //set style for cell border
         
         //$this->SetY(-20);
         $this->SetFont('FRABK', '', 7.5, '', true);
         
-        $html = '<div style="padding-top: 15px; border-top: 1px solid #000"><p><span style="font-family: helvetica; font-weight: bold">CONFIDENTIAL - DO NOT DISSEMINATE.</span> This business plan contains confidential, trade-secret information and is shared only with the
-understanding that you will not share its contents or ideas with third parties without the express written consent of the plan author.</p></div>';
+        $html = '<div style="padding-top: 10px; border-top: 1px solid #000"><br><span style="font-family: helvetica; font-weight: bold">CONFIDENTIAL - DO NOT DISSEMINATE.</span> This business plan contains confidential, trade-secret information and is shared only with the
+understanding that you will not share its contents or ideas with third parties without the express written consent of the plan author.</div>';
         
         
         //$this->Cell(0, 25, $html, 0, 1, 'L');
@@ -200,32 +200,32 @@ understanding that you will not share its contents or ideas with third parties w
         $this->SetFont('fradmcn', '', 15, '', true);
         $this->setTextColor(204, 0, 0);
 
-        $this->MultiCell(155, 5, 'CONTACT INFORMATION', 0, 'L', 0, 0, '', 240, true);
+        $this->MultiCell(155, 5, 'CONTACT INFORMATION', 0, 'L', 0, 0, '', 245, true);
 
-        $this->SetFont('fradmcn', '', 10, '', true);
+        $this->SetFont('fradmcn', '', 11.5, '', true);
         $this->setTextColor(255, 204, 51);
-        $this->MultiCell(0, 5, $this->business_plan->contact_name, 0, 'L', 0, 0, '', 248, true);
+        $this->MultiCell(0, 5, $this->business_plan->contact_name, 0, 'L', 0, 0, '', 253, true);
         
-        $this->MultiCell(0, 5, $this->business_plan->email, 0, 'L', 0, 0, '', 252, true);
+        $this->MultiCell(0, 5, $this->business_plan->email, 0, 'L', 0, 0, '', 258, true);
 
         if (!empty($this->business_plan->telephone)) {
-            $this->MultiCell(0, 5, $this->business_plan->telephone, 0, 'L', 0, 0, '', 256, true);
+            $this->MultiCell(0, 5, $this->business_plan->telephone, 0, 'L', 0, 0, '', 263, true);
         }
 
-        $y_pos = 248;
+        $y_pos = 253;
 
         $this->MultiCell(0, 5, $this->business_plan->address_1, 0, 'R', 0, 0, '', $y_pos, true);
-        $y_pos += 4;
+        $y_pos += 5;
         
         if (!empty($this->business_plan->address_2)) {
             $this->MultiCell(0, 5, $this->business_plan->address_2, 0, 'R', 0, 0, '', $y_pos, true);
-            $y_pos += 4;
+            $y_pos += 5;
         }
 
-        $this->MultiCell(0, 5, ($this->business_plan->city . ', ' . $this->business_plan->getCountryName()), 0, 'R', 0, 0, '', $y_pos, true);
-        $y_pos += 4;
+        $this->MultiCell(0, 5, ($this->business_plan->city . ', ' . $this->business_plan->post_code), 0, 'R', 0, 0, '', $y_pos, true);
+        $y_pos += 5;
 
-        $this->MultiCell(0, 5, $this->business_plan->post_code, 0, 'R', 0, 0, '', $y_pos, true);
+        $this->MultiCell(0, 5, $this->business_plan->getCountryName(), 0, 'R', 0, 0, '', $y_pos, true);
         
         //reset true to include header and footer for succeeding pages
         $this->setPrintHeader(true);
@@ -242,7 +242,7 @@ understanding that you will not share its contents or ideas with third parties w
         $this->addTOCPage('P');
 
         // write the TOC title and/or other elements on the TOC page
-        $this->SetFont('rock', 'b', 25);
+        $this->SetFont('rock', 'b', 20);
         $this->setTextColor(0, 0, 0);
         $this->Ln();
         $this->MultiCell(0, 0, 'Table Of Contents', 0, 'L', 0, 1, '', '', true, 0);
@@ -331,10 +331,10 @@ understanding that you will not share its contents or ideas with third parties w
             
             for ($x = 0; $x < 3; $x++) {
                 $y_unit_sale .= '<td style="text-align: right;" colspan="2">' . $sale->totals[$x] . '</td>';
-                $y_price .= '<td style="text-align: right;" colspan="2">' . $sales_calculator->formatNumberDisplay($sale->price, 2) . '</td>';
-                $y_sale .= '<td style="text-align: right;" colspan="2">' . $sales_calculator->formatNumberDisplay($sale->total_sales[$x], 2) . '</td>';
-                $y_unit_cost .= '<td style="text-align: right;" colspan="2">' . $sales_calculator->formatNumberDisplay($sale->cost, 2) . '</td>';
-                $y_cost .= '<td style="text-align: right;" colspan="2">' . $sales_calculator->formatNumberDisplay($sale->total_costs[$x], 2) . '</td>';
+                $y_price .= '<td style="text-align: right;" colspan="2">' . $sales_calculator->formatNumberDisplay($sale->price, 0) . '</td>';
+                $y_sale .= '<td style="text-align: right;" colspan="2">' . $sales_calculator->formatNumberDisplay($sale->total_sales[$x], 0) . '</td>';
+                $y_unit_cost .= '<td style="text-align: right;" colspan="2">' . $sales_calculator->formatNumberDisplay($sale->cost, 0) . '</td>';
+                $y_cost .= '<td style="text-align: right;" colspan="2">' . $sales_calculator->formatNumberDisplay($sale->total_costs[$x], 0) . '</td>';
             }
             
             $a_unit_sale .= '</tr>';
@@ -461,7 +461,7 @@ understanding that you will not share its contents or ideas with third parties w
             }
 
             for ($index = 0; $index < 3; $index++) {
-                $y_personnel .= '<td style="text-align: right;" colspan="2">' . $personnel_calculator->formatNumberDisplay($row->totals[$index], 2) . '</td>';
+                $y_personnel .= '<td style="text-align: right;" colspan="2">' . $personnel_calculator->formatNumberDisplay($row->totals[$index], 0) . '</td>';
             }
             
             $a_personnel .= '</tr>';
@@ -481,7 +481,7 @@ understanding that you will not share its contents or ideas with third parties w
         $html_y_personnels .= '<tr style="font-size: 12px; color: #000000;"><td colspan="2">Total</td>';
 
         for ($index = 0; $index < 3; $index++) {
-            $html_y_personnels .= '<td style="text-align: right;" colspan="2">' . $personnel_calculator->formatNumberDisplay($yearly_totals[$index], 2) . '</td>';
+            $html_y_personnels .= '<td style="text-align: right;" colspan="2">' . $personnel_calculator->formatNumberDisplay($yearly_totals[$index], 0) . '</td>';
         }
 
         $html_y_personnels .= '<td colspan="5"></td></tr></table>';
@@ -540,8 +540,8 @@ understanding that you will not share its contents or ideas with third parties w
         $y_related_expenses = '<tr><td colspan="2">Employee Related Expenses</td>';
 
         for ($x = 0; $x < 3; $x++) {
-            $y_salaries .= '<td style="text-align: right;" colspan="2">' . $budget_calculator->formatNumberDisplay($yearly_salaries[$x], 2) . '</td>';
-            $y_related_expenses .= '<td style="text-align: right;" colspan="2">' . $budget_calculator->formatNumberDisplay($yearly_related_expenses[$x], 2) . '</td>';
+            $y_salaries .= '<td style="text-align: right;" colspan="2">' . $budget_calculator->formatNumberDisplay($yearly_salaries[$x], 0) . '</td>';
+            $y_related_expenses .= '<td style="text-align: right;" colspan="2">' . $budget_calculator->formatNumberDisplay($yearly_related_expenses[$x], 0) . '</td>';
         }
 
         $y_salaries .= '<td colspan="5"></td></tr>';
@@ -562,7 +562,7 @@ understanding that you will not share its contents or ideas with third parties w
             }
 
             for ($index = 0; $index < 3; $index++) {
-                $html_y_expenses .= '<td style="text-align: right;" colspan="2">' . $budget_calculator->formatNumberDisplay($row->totals[$index], 2) . '</td>';
+                $html_y_expenses .= '<td style="text-align: right;" colspan="2">' . $budget_calculator->formatNumberDisplay($row->totals[$index], 0) . '</td>';
             }
             
             $html_expenses .= '</tr>';
@@ -580,7 +580,7 @@ understanding that you will not share its contents or ideas with third parties w
         $html_y_expenses .= '<tr><td colspan="2">Total</td>';
 
         for ($x = 0; $x < 3; $x++) {
-            $html_y_expenses .= '<td style="text-align: right;" colspan="2">' . $budget_calculator->formatNumberDisplay($yearly_total_expenses[$x], 2) . '</td>';
+            $html_y_expenses .= '<td style="text-align: right;" colspan="2">' . $budget_calculator->formatNumberDisplay($yearly_total_expenses[$x], 0) . '</td>';
         }
 
         $html_y_expenses .= '<td colspan="5"></td></tr>';
@@ -597,7 +597,7 @@ understanding that you will not share its contents or ideas with third parties w
             $html_y_purchases .= '<tr style="font-size: 12px; color: #000000;"><td colspan="2">' . $row->mp_name . '</td>';
 
             for ($index = 0; $index < 3; $index++) {
-                $html_y_purchases .= '<td style="text-align: right;" colspan="2">' . $budget_calculator->formatNumberDisplay($row->totals[$index], 2) . '</td>';
+                $html_y_purchases .= '<td style="text-align: right;" colspan="2">' . $budget_calculator->formatNumberDisplay($row->totals[$index], 0) . '</td>';
             }
             
             $html_purchases .= '</tr>';
@@ -615,7 +615,7 @@ understanding that you will not share its contents or ideas with third parties w
         $html_y_purchases .= '<tr><td colspan="2">Total</td>';
 
         for ($x = 0; $x < 3; $x++) {
-            $html_y_purchases .= '<td style="text-align: right;" colspan="2">' . $budget_calculator->formatNumberDisplay($yearly_total_purchases[$x], 2) . '</td>';
+            $html_y_purchases .= '<td style="text-align: right;" colspan="2">' . $budget_calculator->formatNumberDisplay($yearly_total_purchases[$x], 0) . '</td>';
         }
 
         $html_y_purchases .= '<td colspan="5"></td></tr>';
@@ -691,7 +691,7 @@ understanding that you will not share its contents or ideas with third parties w
             }
 
             for ($index = 0; $index < 3; $index++) {
-                $html_y_loans .= '<td style="text-align: right;" colspan="2">' . $fund_calculator->formatNumberDisplay($row->totals[$index], 2) . '</td>';
+                $html_y_loans .= '<td style="text-align: right;" colspan="2">' . $fund_calculator->formatNumberDisplay($row->totals[$index], 0) . '</td>';
             }
             
             $html_loans .= '</tr>';
@@ -701,7 +701,7 @@ understanding that you will not share its contents or ideas with third parties w
         $html_loans .= '<tr><td>Total</td>';
 
         for ($x = 0; $x < 12; $x++) {
-            $html_loans .= '<td style="text-align: right;">' . $fund_calculator->formatNumberDisplay($monthly_total_loans[$x], 2) . '</td>';
+            $html_loans .= '<td style="text-align: right;">' . $fund_calculator->formatNumberDisplay($monthly_total_loans[$x], 0) . '</td>';
         }
 
         $html_loans .= '</tr>';
@@ -709,7 +709,7 @@ understanding that you will not share its contents or ideas with third parties w
         $html_y_loans .= '<tr><td colspan="2">Total</td>';
 
         for ($x = 0; $x < 3; $x++) {
-            $html_y_loans .= '<td style="text-align: right;" colspan="2">' . $fund_calculator->formatNumberDisplay($yearly_total_loans[$x], 2) . '</td>';
+            $html_y_loans .= '<td style="text-align: right;" colspan="2">' . $fund_calculator->formatNumberDisplay($yearly_total_loans[$x], 0) . '</td>';
         }
 
         $html_y_loans .= '<td colspan="5"></td></tr>';
@@ -726,7 +726,7 @@ understanding that you will not share its contents or ideas with third parties w
             }
 
             for ($index = 0; $index < 3; $index++) {
-                $html_y_investments .= '<td style="text-align: right;" colspan="2">' . $fund_calculator->formatNumberDisplay($row->totals[$index], 2) . '</td>';
+                $html_y_investments .= '<td style="text-align: right;" colspan="2">' . $fund_calculator->formatNumberDisplay($row->totals[$index], 0) . '</td>';
             }
             
             $html_investments .= '</tr>';
@@ -736,7 +736,7 @@ understanding that you will not share its contents or ideas with third parties w
         $html_investments .= '<tr><td>Total</td>';
 
         for ($x = 0; $x < 12; $x++) {
-            $html_investments .= '<td style="text-align: right;">' . $fund_calculator->formatNumberDisplay($monthly_total_investments[$x], 2) . '</td>';
+            $html_investments .= '<td style="text-align: right;">' . $fund_calculator->formatNumberDisplay($monthly_total_investments[$x], 0) . '</td>';
         }
 
         $html_investments .= '</tr>';
@@ -744,7 +744,7 @@ understanding that you will not share its contents or ideas with third parties w
         $html_y_investments .= '<tr><td colspan="2">Total</td>';
 
         for ($x = 0; $x < 3; $x++) {
-            $html_y_investments .= '<td style="text-align: right;" colspan="2">' . $fund_calculator->formatNumberDisplay($yearly_total_investments[$x], 2) . '</td>';
+            $html_y_investments .= '<td style="text-align: right;" colspan="2">' . $fund_calculator->formatNumberDisplay($yearly_total_investments[$x], 0) . '</td>';
         }
 
         $html_y_investments .= '<td colspan="5"></td></tr>';
@@ -840,14 +840,14 @@ understanding that you will not share its contents or ideas with third parties w
         $html_y_dividends =  '<tr><td colspan="2">Dividends</td>';
         
         for ($x = 0; $x < 3; $x++) {
-            $html_y_gross .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['gross_margin'][$x], 2) . '</td>';
-            $html_y_expenses .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['operating_expenses'][$x], 2) . '</td>';
-            $html_y_interest .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['interest_incurred'][$x], 2) . '</td>';
-            $html_y_depreciation .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['depreciation'][$x], 2) . '</td>';
-            $html_y_pre_tax_profit .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['pre_tax_profit'][$x], 2) . '</td>';
-            $html_y_net_percent .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['net_profit_percent'][$x], 2, '', '%') . '</td>';
-            $html_y_tax .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['income_taxes'][$x], 2) . '</td>';
-            $html_y_dividends .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['dividends'][$x], 2) . '</td>';
+            $html_y_gross .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['gross_margin'][$x], 0) . '</td>';
+            $html_y_expenses .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['operating_expenses'][$x], 0) . '</td>';
+            $html_y_interest .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['interest_incurred'][$x], 0) . '</td>';
+            $html_y_depreciation .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['depreciation'][$x], 0) . '</td>';
+            $html_y_pre_tax_profit .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['pre_tax_profit'][$x], 0) . '</td>';
+            $html_y_net_percent .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['net_profit_percent'][$x], 0, '', '%') . '</td>';
+            $html_y_tax .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['income_taxes'][$x], 0) . '</td>';
+            $html_y_dividends .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data['dividends'][$x], 0) . '</td>';
         }
 
         $html_y_gross .= '<td colspan="5"></td></tr>';
@@ -937,7 +937,7 @@ understanding that you will not share its contents or ideas with third parties w
                 $ar_monthly_html[$y] .= '<td style="text-align: right;">' . $fs_calculator->formatNumberDisplay($monthly_data[$keys[$y]][$x], 0) . '</td>';
 
                 if ($x < 3) {
-                    $ar_yearly_html[$y] .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data[$keys[$y]][$x], 2) . '</td>';    
+                    $ar_yearly_html[$y] .= '<td style="text-align: right;" colspan="2">' . $fs_calculator->formatNumberDisplay($yearly_data[$keys[$y]][$x], 0) . '</td>';    
                 }
             }
         }
@@ -1013,7 +1013,7 @@ understanding that you will not share its contents or ideas with third parties w
 
                 if ($x < 3) {
                     $value = $keys[$y] == 'assets_purchased_or_sold' ? ($yearly_data[$keys[$y]][$x] * -1) : $yearly_data[$keys[$y]][$x];
-                    $ar_yearly_html[$y] .= '<td style="text-align: right;" colspan="2">' .   $fs_calculator->formatNumberDisplay($value, 2) . '</td>';    
+                    $ar_yearly_html[$y] .= '<td style="text-align: right;" colspan="2">' .   $fs_calculator->formatNumberDisplay($value, 0) . '</td>';    
                 }
             }
         }
@@ -1085,7 +1085,7 @@ understanding that you will not share its contents or ideas with third parties w
     {
 		$this->AddPage($orientation);		
 		$this->Bookmark($txt, 0, 0, '', '', array(93,0,0));
-		$this->SetFont('rockb', '', 25, '', true);
+		$this->SetFont('rockb', '', 20, '', true);
 		$this->setTextColor(0, 0, 0);
 		$this->SetX($this->lMargin - 1);
 		$this->Cell(0, 0, $txt, 0, 1, 'L');
@@ -1094,7 +1094,7 @@ understanding that you will not share its contents or ideas with third parties w
     protected function writeSubHeader($txt) 
     {
 		$this->Bookmark($txt, 1, 0, '', '', array(0,0,0));
-		$this->SetFont('rock', '', 18, '', true);
+		$this->SetFont('rock', '', 16, '', true);
 		$this->setTextColor(93, 0, 0);
 		$this->SetX($this->lMargin - 1);
 		$this->Cell(0, 5, $txt, 0, 1, 'L');
