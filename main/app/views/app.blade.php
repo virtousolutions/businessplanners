@@ -58,7 +58,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <ul>
                         <li><a href="{{ url('/') }}" id="forhome">Home</a></li>
                         <li><a href="{{ url('/#info-home') }}" id="forfeature">Features</a></li>
-                        <li><a href="{{url('blog')}}">Blog</a></li>
+                        <!-- <li><a href="{{url('blog')}}">Blog</a></li> -->
                         <li><a href="{{ url('/#contactus') }}" id="forcontactus">Contact Us</a></li>
                         @if (Auth::check())
                             <li><a href="{{ url('plan') }}">My Plan</a></li>
@@ -90,7 +90,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<p style="padding-left: 6px;" class="col-md-12">Rates are variable dependant on circumstances and will be discussed in full once an assessment has been made.</p>
 			
 
-			<p style="padding-left: 6px;" class="col-md-12">© 2015 The Business Planners. All Rights Reserved. Company Number: 0871 789 0580. Address: The Business Planners Offices in London in Tower 42.</p>
+			<p style="padding-left: 6px;" class="col-md-12">© 2015 The Business Planners. All Rights Reserved. </p>
 			
 				<div id="social-icons" class="col-xs-12">
 				<ul>
