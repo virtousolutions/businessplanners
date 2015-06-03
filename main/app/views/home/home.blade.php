@@ -360,13 +360,8 @@ Collaborate with your team
 		<div class="box-container">
 
 			<div class="testi-box col-md-5 col-sm-10">
-<<<<<<< HEAD
-				<div class="img"><img src="{{ url('assets/img/stock-photo-44871128-we-re-all-special-in-our-own-way_03.png') }}"></div><!-- .img -->
-				<p>"The team at The Business Planners are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
-=======
 				<div class="img"><img src="{{ url('assets/img/bp-testimonial3.png') }}"></div><!-- .img -->
 				<p>"The Business Planners have been so helpful. I was really unsure about how to go about creating a business plan, but I knew it was important to help increase the chance of my business being a success. Once I’d got in touch they were great from start to finish. I now have a really professional business plan that outlines everything, and has given me a greater insight into how to take my business forward." – Lilian Cole, Bradford</p>
->>>>>>> cd423e5... Updated some bugs in testimonial and header/footer
 			</div>
 
 			<div class="testi-box col-md-5 col-sm-10">
