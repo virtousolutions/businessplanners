@@ -361,7 +361,7 @@ Collaborate with your team
 
 			<div class="testi-box col-md-5 col-sm-10">
 				<div class="img"><img src="{{ url('assets/img/stock-photo-44871128-we-re-all-special-in-our-own-way_03.png') }}"></div><!-- .img -->
-				<p>"The team at The Business Planners are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
+				<p> “I had already created a business plan, but on looking for investment I was unsuccessful. The potential investors told me that my business plan was not thorough enough and too vague. Unsure on how to proceed, I got in touch with The Business Planners. They got everything down that was needed, and managed to create a much more thorough and clear business plan. I took my plan back to the investors and managed to secure the investment. I can’t thank The Business Planners enough.” – Troy Stevenson, Clapham </p>
 			</div>
 
 			<div class="testi-box col-md-5 col-sm-10">
