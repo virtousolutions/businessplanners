@@ -320,14 +320,14 @@ Collaborate with your team
 	            <td>15% discount</td>
 	            <td>20% discount</td>
             </tr>
-            <tr>
+           <!--  <tr>
 	            <td class="tblval">Trademark Review, Search and application services</td>    
 	            <td></td>
 	            <td>10% discount</td>
 	            <td>10% discount</td>
 	            <td>15% discount</td>
 	            <td>20% discount</td>
-            </tr>
+            </tr> -->
             <tr>
 	            <td class="tblval">Full IHT Review & Report and IHT mitigation service</td>    
 	            <td></td>
