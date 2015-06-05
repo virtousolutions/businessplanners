@@ -4,11 +4,11 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<meta name="description" content="@yield('description')">
+	<title>@yield('title')</title>
+	
     <!-- biz planner fav icon -->
     <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon-bizplanner.png') }}">
-
-	<title>Business Planners @yield('title')</title>
 
 	<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lib/bootstrap.min.css') }}"/>
