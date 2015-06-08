@@ -205,11 +205,16 @@ understanding that you will not share its contents or ideas with third parties w
         $this->SetFont('fradmcn', '', 11.5, '', true);
         $this->setTextColor(255, 204, 51);
         $this->MultiCell(0, 5, $this->business_plan->contact_name, 0, 'L', 0, 0, '', 253, true);
+
+        $y_pos = 258;
         
-        $this->MultiCell(0, 5, $this->business_plan->email, 0, 'L', 0, 0, '', 258, true);
+        if (!empty($this->business_plan->email)) {
+            $this->MultiCell(0, 5, $this->business_plan->email, 0, 'L', 0, 0, '', $y_pos, true);
+            $y_pos += 5;
+        }
 
         if (!empty($this->business_plan->telephone)) {
-            $this->MultiCell(0, 5, $this->business_plan->telephone, 0, 'L', 0, 0, '', 263, true);
+            $this->MultiCell(0, 5, $this->business_plan->telephone, 0, 'L', 0, 0, '', $y_pos, true);
         }
 
         $y_pos = 253;
