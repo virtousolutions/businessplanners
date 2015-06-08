@@ -1,5 +1,20 @@
 @extends('app')
 
+<!-- Page title and meta description -->
+
+@section('title')
+{{Lang::get('pagedetails.HOMETITLE')}}
+@stop
+
+@section('description')
+{{Lang::get('pagedetails.HOMEDESCRIPTION')}}
+@stop
+
+<!-- EOF of page title and meta description -->
+
+
+
+
 @section('content')
 <div id="banner">
 	<div class="container">
@@ -307,10 +322,10 @@ Collaborate with your team
             <tr>
 	            <td class="tblval">Remuneration Report – find out how to pay less tax, the things your accountant doesn’t know</td>    
 	            <td></td>
-	            <td>10% discount</td>
-	            <td>10% discount</td>
-	            <td>15% discount</td>
-	            <td>20% discount</td>
+	            <td>60% discount</td>
+	            <td>60% discount</td>
+	            <td>70% discount</td>
+	            <td>80% discount</td>
             </tr>
             <tr>
 	            <td class="tblval">Business Valuation Services</td>    
@@ -320,14 +335,14 @@ Collaborate with your team
 	            <td>15% discount</td>
 	            <td>20% discount</td>
             </tr>
-            <tr>
+           <!--  <tr>
 	            <td class="tblval">Trademark Review, Search and application services</td>    
 	            <td></td>
 	            <td>10% discount</td>
 	            <td>10% discount</td>
 	            <td>15% discount</td>
 	            <td>20% discount</td>
-            </tr>
+            </tr> -->
             <tr>
 	            <td class="tblval">Full IHT Review & Report and IHT mitigation service</td>    
 	            <td></td>
@@ -360,20 +375,20 @@ Collaborate with your team
 		<div class="box-container">
 
 			<div class="testi-box col-md-5 col-sm-10">
-				<div class="img"><img src="{{ url('assets/img/stock-photo-44871128-we-re-all-special-in-our-own-way_03.png') }}"></div><!-- .img -->
-				<p>"The team at The Business Planners are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
+				<div class="img"><img src="{{ url('assets/img/bp-testimonial3.png') }}"></div><!-- .img -->
+				<p>"The Business Planners have been so helpful. I was really unsure about how to go about creating a business plan, but I knew it was important to help increase the chance of my business being a success. Once I’d got in touch they were great from start to finish. I now have a really professional business plan that outlines everything, and has given me a greater insight into how to take my business forward." – Lilian Cole, Bradford</p>
 			</div>
 
 			<div class="testi-box col-md-5 col-sm-10">
-				<div class="img"><img src="{{ url('assets/img/stock-photo-44871128-we-re-all-special-in-our-own-way2_03.png') }}"></div><!-- .img -->
-				<p>"The team at The Business Planners are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
+				<div class="img"><img src="{{ url('assets/img/bp-testimonial1.png') }}"></div><!-- .img -->
+				<p>“The Business Planners have been exceptionally helpful in getting me funding for my business. With their professional and thorough business plan I was able to take it to the bank and secure the loan I desperately needed for my business. They knew exactly what needed to go in it and the whole process was quick, simple and easy. I cannot recommend them enough,” – Daniel Gray, Cambridgeshire </p>
 			</div>
 
 		</div>
 
 		<div class="testi-boxx col-md-5 col-sm-10 col-md-offset-4">
-			<div class="img"><img src="{{ url('assets/img/stock-photo-44871128-we-re-all-special-in-our-own-way3_03.png') }}"></div><!-- .img -->
-			<p>"The team at The Business Planners are very helpful and ex-plained everything in clear and professional way. They went the extra mile to ensure I got the best possible solution for my personal circumstances."</p>
+			<div class="img"><img src="{{ url('assets/img/bp-testimonial2.png') }}"></div><!-- .img -->
+			<p>“I had already created a business plan, but on looking for investment I was unsuccessful. The potential investors told me that my business plan was not thorough enough and too vague. Unsure on how to proceed, I got in touch with The Business Planners. They got everything down that was needed, and managed to create a much more thorough and clear business plan. I took my plan back to the investors and managed to secure the investment. I can’t thank The Business Planners enough.” – Troy Stevenson, Clapham</p>
 		</div>
 
 	</div><!-- .container -->
