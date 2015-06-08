@@ -4,9 +4,9 @@
     </p>
     <br>
     <p>
-        Name: {{ $first_name . ' ' . $last_name }} <br/>
-        Email: {{ $email }} <br/>
-        Telephone: {{ $telephone }}
+        Name: {{ $full_name }} <br/>
+        Email: {{ $email_address }} <br/>
+        Telephone: {{ $contact_number }}
     </p>
     <p>
         1. What is your business plan for?

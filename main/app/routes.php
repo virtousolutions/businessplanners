@@ -37,7 +37,9 @@ Route::get("terms", 'HomeController@terms');
 Route::get("privacy", 'HomeController@privacy');
 Route::get("license", 'HomeController@license');
 Route::get("survey/{user_id}", 'HomeController@survey');
+Route::get("survey", 'HomeController@survey');
 Route::post("survey/{user_id}", 'HomeController@surveySubmit');
+Route::post("survey", 'HomeController@surveySubmit');
 Route::get("email/view/{enc_user_id}/{enc_temp_password}", 'HomeController@emailView');
 
 Route::group(['before' => 'auth'], function()

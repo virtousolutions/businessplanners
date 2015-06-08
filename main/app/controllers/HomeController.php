@@ -235,33 +235,27 @@ class HomeController extends BaseController {
         return View::make("home.order-complete", $email_data);
     }
 
-    public function survey($user_id)
+    public function survey($user_id = null)
     {
-        $user = User::find($user_id);
-
-        if (!$user) {
-            return Redirect::to('');
-        }
-
+        $user = $user_id ? User::find($user_id) : null;
+        
         Asset::container('header')->add('terms-and-conditions-css', 'assets/css/terms_and_conditions.css');
         Asset::container('footer')->add('bootstrap-validator-js', 'assets/plugins/bootstrap_validator/js/bootstrapValidator.js');
         Asset::container('footer')->add('survey-js', 'assets/javascript/survey.js');
 
-        View::share('hide_main_navigation', true);
-
-        return View::make("home.survey", ['user' => $user]);
+        return View::make("home.survey", [
+            'full_name'      => $user ? sprintf("%s %s", $user->first_name, $user->first_name) : '',
+            'email_address'  => $user ? $user->email : '',
+            'contact_number' => $user ? $user->telephone : '',
+            'package'        => $user ? $user->package : 'diy'
+        ]);
     }
 
     public function surveySubmit()
     {
         $input = Input::all();
         unset($input['_token']);
-        $user  = User::find($input['user_id']);
-        $input['first_name'] = $user->first_name;
-        $input['last_name'] = $user->last_name;
-        $input['email'] = $user->email;
-        $input['telephone'] = $user->telephone;
-
+        
         // send an email to admin
         Mail::send('emails.survey', $input, function($message) use ($input)
         {

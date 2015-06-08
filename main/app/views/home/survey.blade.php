@@ -3,15 +3,44 @@
 @section('content')
 <div class="container">
      <div class="col-md-10 col-md-offset-1 col-xs-12 tac-contents">
-        <div class="col-xs-12 tac-title" style="text-align: left; font-size: 18px;">
-            @if ($user->package == 'diy')
+        <div class="col-xs-12 tac-title" style="text-align: left; font-size: 18px; margin-bottom: 30px;">
+            @if ($package == 'diy')
             It would be great if you could fill in the three questions below for us, so we can find out a bit more about you and your needs
             @else
             Before we get started, we need you to answer a couple of questions for us so we can write the perfect business plan for you.
             @endif
         </div>
         {{ Form::open(array('method' => 'post', 'class' => 'form-horizontal', 'id' => 'survey-form')) }}
-        {{ Form::hidden('user_id', $user->id) }}
+        <div class="form-group">
+            <div class="col-xs-12">
+                <label class="col-sm-2" style="padding-left: 0px;">
+                   Full Name
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" value="{{ $full_name }}" name="full_name"/>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12">
+                <label class="col-sm-2" style="padding-left: 0px;">
+                   Email Address
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" value="{{ $email_address }}" name="email_address"/>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12">
+                <label class="col-sm-2" style="padding-left: 0px;">
+                   Contact Number
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" value="{{ $contact_number }}" name="contact_number"/>
+                </div>
+            </div>
+        </div>
         <div class="col-xs-12" style="padding: 0px; margin-top: 20px;">
             <div class="section-number">1.</div><div class="section-title">What is your business plan for? (select all that apply) </div>
             <div class="section-content">
