@@ -1,5 +1,20 @@
 @extends('app')
 
+<!-- Page title and meta description -->
+
+@section('title')
+{{Lang::get('pagedetails.HOMETITLE')}}
+@stop
+
+@section('description')
+{{Lang::get('pagedetails.HOMEDESCRIPTION')}}
+@stop
+
+<!-- EOF of page title and meta description -->
+
+
+
+
 @section('content')
 <div id="banner">
 	<div class="container">
