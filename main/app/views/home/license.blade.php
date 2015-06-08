@@ -1,8 +1,16 @@
 @extends('app')
 
+<!-- Page title and meta description -->
+
 @section('title')
-License
+{{Lang::get('pagedetails.LICENSETITLE')}}
 @stop
+
+@section('description')
+{{Lang::get('pagedetails.LICENSEDESCRIPTION')}}
+@stop
+
+<!-- EOF of page title and meta description -->
 
 @section('content')
 <div class="container">

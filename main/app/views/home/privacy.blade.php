@@ -1,8 +1,16 @@
 @extends('app')
 
+<!-- Page title and meta description -->
+
 @section('title')
-Privacy Policies
+{{Lang::get('pagedetails.PRIVACYTITLE')}}
 @stop
+
+@section('description')
+{{Lang::get('pagedetails.PRIVACYDESCRIPTION')}}
+@stop
+
+<!-- EOF of page title and meta description -->
 
 @section('content')
 <div class="container">
