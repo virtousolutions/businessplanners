@@ -232,8 +232,6 @@ class HomeController extends BaseController {
         Asset::container('footer')->add('bootstrap-validator-js', 'assets/plugins/bootstrap_validator/js/bootstrapValidator.js');
         Asset::container('footer')->add('survey-js', 'assets/javascript/survey.js');
 
-        View::share('hide_main_navigation', true);
-
         return View::make("home.survey", [
             'full_name'      => $user ? sprintf("%s %s", $user->first_name, $user->first_name) : '',
             'email_address'  => $user ? $user->email : '',
