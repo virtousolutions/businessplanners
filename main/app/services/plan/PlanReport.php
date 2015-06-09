@@ -266,7 +266,7 @@ understanding that you will not share its contents or ideas with third parties w
             $this->writeHeader($content['title'], 'P');
             
             foreach ($content['sub_pages']as $sub_page) {
-                $this->Ln(3);
+                $this->Ln(2);
                 $this->renderPageTitle($sub_page['title']);
                 $this->renderPageContent($sub_page['content']);
             }
