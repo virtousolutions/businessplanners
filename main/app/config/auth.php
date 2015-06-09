@@ -60,9 +60,9 @@ return array(
 
 	'reminder' => array(
 
-		'email' => 'emails.auth.reminder',
+		'email' => 'emails.password.remind',
 
-		'table' => 'password_reminders',
+		'table' => 'password_resets',
 
 		'expire' => 60,
 

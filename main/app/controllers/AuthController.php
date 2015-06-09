@@ -106,10 +106,10 @@ class AuthController extends BaseController {
 	 *
 	 * @return View
 	 */
-	public function getForgotPassword()
+	public function forgotPassword()
 	{
 		// Show the page
-		return View::make('frontend.auth.forgot-password');
+		return View::make('auth.forgot-password');
 	}
 
 	/**
@@ -117,7 +117,7 @@ class AuthController extends BaseController {
 	 *
 	 * @return Redirect
 	 */
-	public function postForgotPassword()
+	public function forgotPasswordSubmit()
 	{
 		// Declare the rules for the validator
 		$rules = array(
@@ -130,7 +130,7 @@ class AuthController extends BaseController {
 		// If validation fails, we'll exit the operation now.
 		if ($validator->fails()) {
 			// Ooops.. something went wrong
-			return Redirect::route('forgot-password')->withInput()->withErrors($validator);
+			return Redirect::to('forgot_password')->withInput()->withErrors($validator);
 		}
 
 		try {
@@ -157,7 +157,7 @@ class AuthController extends BaseController {
 		}
 
 		//  Redirect to the forgot password
-		return Redirect::route('forgot-password')->with('success', 'An email has been sent to recover your password.');
+		return Redirect::to('forgot_password')->with('success', 'An email has been sent to recover your password.');
 	}
 
 	/**

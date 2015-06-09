@@ -11,7 +11,14 @@ Login
             <legend>
                 <h4 class="text-center">Login</h4>
             </legend>
-
+            @if($errors->any())
+            <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <ul style="list-style-type: none; padding: 0px; margin: 0px;">
+                {{ implode('', $errors->all('<li class="error">:message</li>')) }}
+                </ul>
+            </div>
+            @endif
             {{ Form::open(array('url' => 'login', 'id' => 'login-form')) }}
             <div class="form-group">
                 <label class="col-sm-3 control-label">Email:</label>
@@ -28,21 +35,14 @@ Login
             <div class="form-group">
                 <div class="col-sm-9 col-sm-offset-3" style="margin-bottom: 5px;">
                     <button type="submit" class="btn btn-primary"> Log In </button>
-                    <a href="{{ url('forgot-password') }}" style="float: right;"> Forgot Password </a>
+                    <a href="{{ url('password/reset') }}" style="float: right;"> Forgot Password </a>
                 </div>
             </div>
             {{ Form::close() }}
 
             <legend>&nbsp;</legend>
         </div>
-        @if($errors->any())
-        <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <ul style="list-style-type: none; padding: 0px; margin: 0px;">
-            {{ implode('', $errors->all('<li class="error">:message</li>')) }}
-            </ul>
-        </div>
-        @endif
+        
     </div>
 </div>
 @stop
