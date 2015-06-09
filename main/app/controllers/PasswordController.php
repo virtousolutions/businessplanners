@@ -14,7 +14,10 @@ class PasswordController extends BaseController {
     public function request()
     {
         $credentials = array('email' => Input::get('email'));
-        $result = Password::remind($credentials);
+        $result = Password::remind($credentials, function($message)
+        {
+            $message->subject('Password Reset Reminder');
+        });
 
         if ($result == PasswordBroker::REMINDER_SENT) {
             return Redirect::to('password/reset')->with('success', 'Success');

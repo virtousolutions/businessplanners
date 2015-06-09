@@ -64,7 +64,7 @@ return array(
 
 		'table' => 'password_resets',
 
-		'expire' => 60,
+		'expire' => 300,
 
 	),
 
