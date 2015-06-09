@@ -16,7 +16,7 @@ Reset Password
                     @if (Session::has('error'))
                         <div class="alert alert-danger">Invalid email address</div>
                     @elseif (Session::has('success'))
-                        <div class="alert alert-success">An email with the password reset has been sent.</div>
+                        <div class="alert alert-success">An email with the password reset link has been sent. The password reset link expires in 5 hours.</div>
                     @endif
                 </div>
             @endif
