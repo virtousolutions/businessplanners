@@ -27,6 +27,25 @@ Route::group(['before' => 'guest'], function()
     Route::get("order/{package}", "HomeController@order");
     Route::post("order/{package}", "HomeController@orderSubmit");
     Route::get("order-complete/{package}", "HomeController@orderComplete");
+
+    Route::get('password/reset', array(
+      'uses' => 'PasswordController@remind',
+      'as' => 'password.remind'
+    ));
+
+    Route::post('password/reset', array(
+      'uses' => 'PasswordController@request',
+      'as' => 'password.request'
+    ));
+
+    Route::get('password/reset/{token}', array(
+      'uses' => 'PasswordController@reset',
+      'as' => 'password.reset'
+    ));
+    Route::post('password/reset/{token}', array(
+      'uses' => 'PasswordController@update',
+      'as' => 'password.update'
+    ));
     
     Route::get('start_payment', 'PaypalPaymentController@startPayment');
     Route::get('cancel_payment/{timestamp}', 'PaypalPaymentController@cancelPayment');
