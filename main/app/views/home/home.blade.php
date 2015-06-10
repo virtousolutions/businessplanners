@@ -20,8 +20,9 @@
 	<div class="container">
 		<div id="inside-banner">
 			<div id="bulleted" class="col-md-5 col-sm-12">
+			<h3 class="align-center" style="text-align: center;color: #fff;">The number 1 business planning choice </h4>
 				<ul>
-					<li>Need to raise capital for your business?</li>
+					<li>Need bank borrowing or business funding?</li>
 					<li>Need a Business Plan to help you expand into new markets or launch new products?</li>
 					<li>Need a highly professional business plan which will attract funding from investors or other financial institutions?</li>
 					<li>Do you need a road map for your business in an engaging and professional way?</li>
@@ -46,9 +47,8 @@
 					<img src="{{ url('assets/img/hand-shake.png') }}">
 				</div><!-- .imgs -->
 				<div class="txt col-md-9">
-					<h2>Collaborate with your team</h2>
-					<p>Included in every business plan, you will have leading edge software which enables you to collaborate with your team.
-This enables you to easily create and manage your forecasts and budgets giving you that all important chance to grow your business in the best possible way. </p>
+					<h2>Pitching for funding or borrowing</h2>
+					<p>All of our business plans will give you the right platform to attract funding from investors or banks.  We know how to package it up in the correct strategic format to give you maximum impact and maximum chances.</p>
 				</div><!-- .txt -->
 			</div><!-- .cols -->
 
@@ -57,8 +57,9 @@ This enables you to easily create and manage your forecasts and budgets giving y
 					<img src="{{ url('assets/img/bar-charts.png') }}">
 				</div><!-- .imgs -->
 				<div class="txt col-md-9">
-					<h2>Track your progress</h2>
-					<p>With our state of the art software, you can monitor and compare your performance and forecasts with your colleagues using our easy-to-understand dashboard. Login to make those quick adjustments to your business to stay on track. </p>
+				<h2>Dedicated professional in-house team</h2>
+					<p>We will assign you your own dedicated professional Business planner.  All of our business planners are vetted, with a minimum requirement of a masters degree qualification and should you chose the financial package, we offer you one of our in-house financial accountants </p>
+					
 				</div><!-- .txt -->
 			</div><!-- .cols -->
 
@@ -71,8 +72,8 @@ This enables you to easily create and manage your forecasts and budgets giving y
 					<img src="{{ url('assets/img/group.png') }}">
 				</div><!-- .imgs -->
 				<div class="txt col-md-9">
-					<h2>Dedicated Professionals at your service</h2>
-					<p>We will assign you your own dedicated professional Business planner.  All of our business planners are vetted, with a minimum requirement of a masters degree qualification and should you chose the financial package, we offer you one of our in-house financial accountants </p>
+					<h2>Track your progress</h2>
+					<p>With our state of the art software, you can monitor and compare your performance and forecasts with your colleagues using our easy-to-understand dashboard. Login to make those quick adjustments to your business to stay on track. </p>
 				</div><!-- .txt -->
 			</div><!-- .cols -->
 
@@ -81,8 +82,8 @@ This enables you to easily create and manage your forecasts and budgets giving y
 					<img src="{{ url('assets/img/micman.png') }}">
 				</div><!-- .imgs -->
 				<div class="txt col-md-9">
-					<h2>Pitch for funding</h2>
-					<p>All of our business plans will give you the right platform to attract funding from investors or banks.  We know how to package it up in the correct strategic format to give you maximum impact and maximum chances.</p>
+									<h2>Collaborate with your team</h2>
+					<p>Included in every business plan, you will have access to award winning, in-house built software. Enabling you to collaborate with your team, easily enable you to create and manage your forecasts and budgets, giving you the best chance to grow your business.  </p>
 				</div><!-- .txt -->
 			</div><!-- .cols -->
 
@@ -93,7 +94,7 @@ This enables you to easily create and manage your forecasts and budgets giving y
 
 <div class="theblog" id="business-plan">
 	<div class="container">
-		<h2>Why You Need a <strong>Business Plan</strong></h2>
+		<h2>Why You Need a <strong>Business Plan?</strong></h2>
 
 		<p>A business plan will allow you as a business owner to increase your chances of business success, will dramatically increase your chances of raising funding or borrowing, and increase your value of your business exponentially. A well written thought out business plan will map out what your business intends to do, and is often used as a proposal document to help secure funding from investors and banks. When used internally, any potential problems can be identified in advance as well as any unnecessary costs, to help improve profitability.</p>
 
@@ -170,7 +171,7 @@ This enables you to easily create and manage your forecasts and budgets giving y
 	            <td>Best for raising finances and venture capital. Your business plan will be sent to 50 angel investors to help get the funding you need</td>
             </tr>
             <tr>
-	            <td class="tblval">Online Business Planning Software</td>    
+	            <td class="tblval">Business plan review</td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
