@@ -246,9 +246,9 @@ Collaborate with your team
 	            <td class="tblval">Full reporting, financial monitoring and control
 * the award winning BizPlanner App is our own award winning in-house business planning platform
 </td>    
-	            <td></td>
-	            <td></td>
-	            <td></td>
+	            <td>2 weeks access</td>
+	            <td>1 months access</td>
+	            <td>1 months access</td>
 	            <td>3 months access</td>
 	            <td>6 months access</td>
             </tr>
