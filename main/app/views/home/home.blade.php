@@ -120,24 +120,24 @@
 		<div id="container-box" class="col-md-12">
 
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
-				<h3>Recommended</h3>
+				<h3>Number 1 UK Business Planners</h3>
 				<img src="{{ url('assets/img/recommend-icon.png') }}">
-				<p>We are proud to say that we are recommended by nearly every major investment platform</p>
+				<p>We are proud to say that we are the Number 1 business plan writers in the UK</p>
 			</div><!-- .boxes -->
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
-				<h3>Review</h3>
+				<h3> Award winning dedicated software</h3>
 				<img src="{{ url('assets/img/calc-icon.png') }}">
-				<p>All of your financials will be reviewed by our in-house accountant</p>
+				<p>We have developed our own in-house award winning software, dedicated purely to business plans</p>
 			</div><!-- .boxes -->
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
-				<h3>Bespoke</h3>
+				<h3>Professional in-house team</h3>
 				<img src="{{ url('assets/img/bust-icon.png') }}">
-				<p>All of our bespoke packages are tailored to you and your needs, to suit you perfectly</p>
+				<p>We have our own professional in-house team, including financial accountants, researchers and business plan writers, to help you with your business plan</p>
 			</div><!-- .boxes -->
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
-				<h3>12 month access</h3>
+				<h3>A bespoke plan for your circumstances</h3>
 				<img src="{{ url('assets/img/12monthsaccess-icon.png') }}">
-				<p>You and your accountant will have 12 month access to update/amend your plan</p>
+				<p>We will create you a bespoke business plan that suits you, your business and your circumstances </p>
 			</div><!-- .boxes -->
 
 		</div><!-- #container-box -->
@@ -183,7 +183,7 @@
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
-	            <td class="tblval">MBA Graduate review</td>    
+	            <td class="tblval">MBA Graduate</td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><!-- <img src="{{ url('assets/img/checked.png') }}"> --></td>
 	            <td><!-- <img src="{{ url('assets/img/checked.png') }}"> --></td>
@@ -249,8 +249,8 @@ Collaborate with your team
 	            <td></td>
 	            <td></td>
 	            <td></td>
-	            <td></td>
-	            <td></td>
+	            <td>3 months access</td>
+	            <td>6 months access</td>
             </tr>
             <tr>
 	            <td style="width:100%;" colspan="6"><b>Bonus Materials</b></td>    
@@ -292,14 +292,25 @@ Collaborate with your team
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
-            <tr>
+            <!-- <tr>
 	            <td class="tblval">How to reduce your IHT liability and what to do</td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+            </tr> -->
+
+			<tr>
+	            <td class="tblval">Bespoke remuneration report – find out how to pay less tax, the things your accountant doesn’t know</td>    
+	            <td></td>
+	            <td>60% discount</td>
+	            <td>60% discount</td>
+	            <td>70% discount</td>
+	            <td>80% discount</td>
             </tr>
+
+
             <tr>
 	            <td class="tblval">A Guide to The importance of having a Company Will </td>    
 	            <td></td>
@@ -357,13 +368,22 @@ Collaborate with your team
 	            <td>20% discount</td>
             </tr> -->
             
-			 <tr>
+			 <!-- <tr>
 	            <td class="tblval">Bespoke remuneration report – find out how to pay less tax, the things your accountant doesn’t know</td>    
 	            <td></td>
 	            <td>60% discount</td>
 	            <td>60% discount</td>
 	            <td>70% discount</td>
 	            <td>80% discount</td>
+            </tr> -->
+
+            <tr>
+	            <td class="tblval">How to reduce your IHT liability and what to do</td>    
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
 
 
