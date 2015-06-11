@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-
+<meta name="description" content="Regular news and updates from the world of business with The Business Planners blog" />
 <?php wp_head(); ?>
 </head>
 

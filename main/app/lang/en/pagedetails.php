@@ -4,6 +4,7 @@ return array(
 
 	'HOMETITLE' => 'The Business Planners | Business Plan Writing Services',
 	'HOMEDESCRIPTION' => 'Every business needs a business plan, and we\'re here to help. We\'ll help to write you a professional and concise business plan to help your business succeed. ',
+	'HOMEKEYWORD' => 'business plan writing',
 
 
 	'BLOGTITLE' => 'The Business Planners | Blog',

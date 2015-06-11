@@ -53,8 +53,8 @@ Route::group(['before' => 'guest'], function()
 });
 
 Route::get("terms", 'HomeController@terms');
-Route::get("privacy", 'HomeController@privacy');
-Route::get("license", 'HomeController@license');
+Route::get("privacy-policy", 'HomeController@privacy');
+Route::get("cookie-policy", 'HomeController@license');
 Route::get("survey/{user_id}", 'HomeController@survey');
 Route::get("survey", 'HomeController@survey');
 Route::post("survey/{user_id}", 'HomeController@surveySubmit');
