@@ -6,6 +6,10 @@
 {{Lang::get('pagedetails.HOMETITLE')}}
 @stop
 
+@section('keyword')
+{{Lang::get('pagedetails.HOMEKEYWORD')}}
+@stop
+
 @section('description')
 {{Lang::get('pagedetails.HOMEDESCRIPTION')}}
 @stop

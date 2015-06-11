@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="@yield('description')">
+	<meta name="description" content="@yield('keyword')">
 	<title>@yield('title')</title>
 	
     <!-- biz planner fav icon -->
@@ -82,8 +83,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<div id="footer-menu" class="col-md-7">
 				<ul>
 					<li><a href="javascript:void(0)" id="forcontactus">Contact</a></li>
-					<li><a href="{{url('privacy')}}">Privacy Policy</a></li>
-					<li><a href="{{url('license')}}">Cookie Policy</a></li>
+					<li><a href="{{url('privacy-policy')}}">Privacy Policy</a></li>
+					<li><a href="{{url('cookie-policy')}}">Cookie Policy</a></li>
 				</ul>
 			</div><!-- #footer-menu -->
 			
