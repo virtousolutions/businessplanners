@@ -58,7 +58,7 @@
 
 			<div class="cols col-md-6">
 				<div class="imgs col-md-3">
-					<img src="{{ url('assets/img/bar-charts.png') }}">
+					<img src="{{ url('assets/img/group.png') }}">
 				</div><!-- .imgs -->
 				<div class="txt col-md-9">
 				<h2>Dedicated professional in-house team</h2>
@@ -73,7 +73,7 @@
 
 			<div class="cols col-md-6">
 				<div class="imgs col-md-3">
-					<img src="{{ url('assets/img/group.png') }}">
+					<img src="{{ url('assets/img/bar-charts.png') }}">
 				</div><!-- .imgs -->
 				<div class="txt col-md-9">
 					<h2>Track your progress</h2>
@@ -182,14 +182,14 @@
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
-            <tr>
+            <!--<tr>
 	            <td class="tblval">MBA Graduate</td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><!-- <img src="{{ url('assets/img/checked.png') }}"> --></td>
-	            <td><!-- <img src="{{ url('assets/img/checked.png') }}"> --></td>
-	            <td><!-- <img src="{{ url('assets/img/checked.png') }}"> --></td>
-	            <td><!-- <img src="{{ url('assets/img/checked.png') }}"> --></td>
-            </tr>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+            </tr>-->
             <tr>
 	            <td class="tblval">Dedicated Business Account Manager</td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
@@ -268,6 +268,25 @@ Collaborate with your team
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr> -->
+
+            <tr>
+	            <td class="tblval">How to reduce your IHT liability and what to do</td>    
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+            </tr>
+
+            <tr>
+	            <td class="tblval">The Secrets of how big companies remunerate themselves in a tax efficient manner (the things your accountant doesn’t know) </td>    
+	            <td></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+            </tr>
+
             <tr>
 	            <td class="tblval">Importance of Trademarks Guide </td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
@@ -284,14 +303,7 @@ Collaborate with your team
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
-            <tr>
-	            <td class="tblval">The Secrets of how big companies remunerate themselves in a tax efficient manner (the things your accountant doesn’t know) </td>    
-	            <td></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-            </tr>
+            
             <!-- <tr>
 	            <td class="tblval">How to reduce your IHT liability and what to do</td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
@@ -301,14 +313,7 @@ Collaborate with your team
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr> -->
 
-			<tr>
-	            <td class="tblval">Bespoke remuneration report – find out how to pay less tax, the things your accountant doesn’t know</td>    
-	            <td></td>
-	            <td>60% discount</td>
-	            <td>60% discount</td>
-	            <td>70% discount</td>
-	            <td>80% discount</td>
-            </tr>
+			
 
 
             <tr>
@@ -343,6 +348,16 @@ Collaborate with your team
 	            <td></td>
 	            <td></td> -->
             </tr>
+
+            <tr>
+	            <td class="tblval">Bespoke remuneration report – find out how to pay less tax, the things your accountant doesn’t know</td>    
+	            <td></td>
+	            <td>60% discount</td>
+	            <td>60% discount</td>
+	            <td>70% discount</td>
+	            <td>80% discount</td>
+            </tr>
+
             <tr>
 	            <td class="tblval">Full IHT Review & Report and IHT mitigation service</td>    
 	            <td></td>
@@ -377,14 +392,7 @@ Collaborate with your team
 	            <td>80% discount</td>
             </tr> -->
 
-            <tr>
-	            <td class="tblval">How to reduce your IHT liability and what to do</td>    
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-            </tr>
+            
 
 
 
