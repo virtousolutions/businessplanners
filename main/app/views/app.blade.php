@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="@yield('description')">
+	<meta name="description" content="@yield('keyword')">
 	<title>@yield('title')</title>
 	
     <!-- biz planner fav icon -->
