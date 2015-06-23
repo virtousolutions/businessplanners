@@ -42,23 +42,40 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-WHWNCX');</script>
-<!-- End Google Tag Manager -->
+    <!-- End Google Tag Manager -->
+    <div id="head-bg">
+        <div class="container">
+            <nav class="navbar navbar-default">
+              <div class="container-fluid" style="padding: 0px;">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header col-md-2">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="{{ url('') }}">
+                        <img src="{{ url('assets/img/logo.png') }}">
+                    </a>
+                </div>
 
-	<div id="head-bg">
-		<div class="container">
-			<div id="logo" class="col-md-2">
-			<a href="{{ url('') }}">
-				<img src="{{ url('assets/img/logo.png') }}">
-			</a>
-			</div><!-- #logo -->
-			<div id="top-menu" class="col-md-8">
-                @if (!isset($hide_main_navigation))
-                <div class="col-md-10 col-md-offset-1">
-                    <div id="btn-resp"></div>
-                    <ul>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="col-md-8">
+                    <div class="collapse navbar-collapse" id="main-menu-collapse">
+                      <ul class="nav navbar-nav">
                         <li><a href="{{ url('/') }}" id="forhome">Home</a></li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Packages <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="{{ url('diy-business-plan-package') }}">DIY package</a></li>
+                            <li><a href="{{ url('value-business-plan-package') }}">Value package</a></li>
+                            <li><a href="{{ url('standard-business-plan-package') }}">Standard Package</a></li>
+                            <li><a href="{{ url('professional-business-plan-package') }}">Professional Package</a></li>
+                            <li><a href="{{ url('premium-business-plan-package') }}">Premium Package</a></li>
+                          </ul>
+                        </li>
                         <li><a href="{{ url('/#info-home') }}" id="forfeature">Features</a></li>
-                        <!-- <li><a href="{{url('blog')}}">Blog</a></li> -->
                         <li><a href="{{ url('/#contactus') }}" id="forcontactus">Contact Us</a></li>
                         @if (Auth::check())
                             <li><a href="{{ url('plan') }}">My Plan</a></li>
@@ -66,42 +83,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         @else
                             <li><a href="{{ url('login') }}">Login</a></li>
                         @endif
-                    </ul>
+                        
+                      </ul>
+                    </div>
                 </div>
-                @endif
-			</div><!-- #top-menu -->
-			<div id="info-head" class="col-md-2">0345 052 2742</div>
-		</div><!-- .body_container -->
-	</div>
-
+                <div id="info-head" class="col-md-2">
+                    0345 052 2742
+                </div>
+              </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+    </div>
 	@yield('content')
 
     <a href="#" id="scrollcon" class="scrolltop">Top</a>
-	<footer>
-		<div class="container">
-			<div id="footer-menu" class="col-md-7">
-				<ul>
-					<li><a href="javascript:void(0)" id="forcontactus">Contact</a></li>
-					<li><a href="{{url('privacy')}}">Privacy Policy</a></li>
-					<li><a href="{{url('license')}}">Cookie Policy</a></li>
-				</ul>
-			</div><!-- #footer-menu -->
-			
-			<p style="padding-left: 6px;" class="col-md-12">Rates are variable dependant on circumstances and will be discussed in full once an assessment has been made.</p>
-			
-
-			<p style="padding-left: 6px;" class="col-md-12">© 2015 The Business Planners. All Rights Reserved. </p>
-			
-				<div id="social-icons" class="col-xs-12">
-				<ul>
-					<li><a href="https://www.facebook.com/thebusinessplannersuk?ref=bookmarks"><img src="{{url('assets/img/footer-social-fb.png')}}"></a></li>
-					<li><a href="https://twitter.com/BizPlannersUK"><img src="{{url('assets/img/footer-social-twitter.png')}}"></a></li>
-				</ul>
-			</div><!-- #social-icons -->
-
-		</div><!-- .container -->
-	</footer>
-
+	@include('layout/footer')
 	<!-- Scripts -->
     <!--
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

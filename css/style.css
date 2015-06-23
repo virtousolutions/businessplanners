@@ -23,6 +23,7 @@ Head
 	min-height: 70px;
   	width: 100%;
   	padding-top: 0.5em;
+	border-bottom: 1px solid #848484 !important;
 }
 #logo{
 
@@ -60,11 +61,41 @@ Head
 #top-menu li:last-child:after{
 	background-image: none;
 }
-#info-head{
-	font-size: 23px;
+
+#info-head {
+	font-size: 22px;
   	line-height: 2.4em;
   	font-family: 'Open Sans', sans-serif;
+	text-align: center;
 }
+
+@media(max-width: 1199px) {
+	#info-head {
+		font-size: 17.5px;
+	}
+}
+
+@media(max-width: 991px) {
+	#info-head {
+		font-size: 22px;
+		text-align: left;
+	}
+}
+
+.navbar-default {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+	color: #555;
+	background-color: transparent;
+}
+
+.navbar-nav>li>.dropdown-menu {
+	z-index: 10001;
+}
+
 /*--------------------------------------------------------------
 Home Page
 --------------------------------------------------------------*/

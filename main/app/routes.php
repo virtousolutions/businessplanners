@@ -61,6 +61,12 @@ Route::post("survey/{user_id}", 'HomeController@surveySubmit');
 Route::post("survey", 'HomeController@surveySubmit');
 Route::get("email/view/{enc_user_id}/{enc_temp_password}", 'HomeController@emailView');
 
+Route::get("diy-business-plan-package", "PackageController@diy");
+Route::get("value-business-plan-package", "PackageController@value");
+Route::get("standard-business-plan-package", "PackageController@standard");
+Route::get("professional-business-plan-package", "PackageController@professional");
+Route::get("premium-business-plan-package", "PackageController@premium");
+
 Route::group(['before' => 'auth'], function()
 {
     Route::get("change-temp-password", 'AuthController@changeTempPassword');
@@ -119,6 +125,12 @@ Route::group(['before' => 'auth|not_expired|not_temp_password'], function()
 
     Route::get("profile", 'PlanController@profile');
     Route::post("profile", 'PlanController@profileSubmit');
+
+});
+
+Route::group(['before' => 'auth|not_temp_password'], function()
+{
+    Route::get("account-expired", 'PlanController@expired');
 });
 // Route::get('payment', function($alias) {
 //   return Redirect::to('p' . $alias);
