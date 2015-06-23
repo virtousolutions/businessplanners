@@ -1311,4 +1311,9 @@ Two exit strategies are common;</p>
             return $this->displayPage($business_plan, [], [], $section, ['layout_page' => "plan.cannot-print"]);
         }
     }
+
+    public function expired()
+    {
+        $this->layout = View::make('layout.expired');
+    }
 }

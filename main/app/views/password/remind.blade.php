@@ -7,7 +7,7 @@ Reset Password
 @section('content')
 <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
     <div class="col-sm-6 col-xs-12 col-sm-offset-3">
-        <div class="well login-form" style="background-color: #5BA4D2; padding: 30px 20px 50px;">
+        <div style="padding: 30px 20px 50px;">
             <legend>
                 <h4>Enter your email address</h4>
             </legend>

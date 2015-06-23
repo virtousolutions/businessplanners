@@ -31,7 +31,7 @@
     {{ Asset::container('header')->styles() }}
   </head>
 
-  <body style="background-color: #66bae8;">
+  <body style="background-color: #63B6E7;">
     @yield('ecommerce')
 
     <!-- Google Tag Manager -->

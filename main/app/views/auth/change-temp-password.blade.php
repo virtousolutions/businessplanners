@@ -7,7 +7,7 @@ Login
 @section('content')
 <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
     <div class="col-sm-6 col-xs-12 col-sm-offset-3">
-        <div class="well login-form" style="background-color: #5BA4D2;">
+        <div>
             <legend>
                 <h4 class="text-center">Change Temporary Password</h4>
             </legend>

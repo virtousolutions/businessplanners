@@ -233,11 +233,11 @@ Collaborate with your team
 	            <td class="tblval">Full reporting, financial monitoring and control
 * Virtual FD is our own award winning in-house business planning platform
 </td>    
-	            <td></td>
-	            <td></td>
-	            <td></td>
-	            <td></td>
-	            <td></td>
+	            <td>1 month access</td>
+	            <td>1 month access</td>
+	            <td>1 month access</td>
+	            <td>3 months access</td>
+	            <td>6 months access</td>
             </tr>
             <tr>
 	            <td class="tblval"><b>Bonus Materials</b></td>    
