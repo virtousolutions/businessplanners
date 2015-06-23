@@ -6,6 +6,10 @@
 {{Lang::get('pagedetails.HOMETITLE')}}
 @stop
 
+@section('keyword')
+{{Lang::get('pagedetails.HOMEKEYWORD')}}
+@stop
+
 @section('description')
 {{Lang::get('pagedetails.HOMEDESCRIPTION')}}
 @stop
@@ -20,8 +24,9 @@
 	<div class="container">
 		<div id="inside-banner">
 			<div id="bulleted" class="col-md-5 col-sm-12">
+			<h3 class="align-center" style="text-align: center;color: #fff;">The number 1 business planning choice </h4>
 				<ul>
-					<li>Need to raise capital for your business?</li>
+					<li>Need bank borrowing or business funding?</li>
 					<li>Need a Business Plan to help you expand into new markets or launch new products?</li>
 					<li>Need a highly professional business plan which will attract funding from investors or other financial institutions?</li>
 					<li>Do you need a road map for your business in an engaging and professional way?</li>
@@ -46,11 +51,25 @@
 					<img src="{{ url('assets/img/hand-shake.png') }}">
 				</div><!-- .imgs -->
 				<div class="txt col-md-9">
-					<h2>Collaborate with your team</h2>
-					<p>Included in every business plan, you will have leading edge software which enables you to collaborate with your team.
-This enables you to easily create and manage your forecasts and budgets giving you that all important chance to grow your business in the best possible way. </p>
+					<h2>Pitching for funding or borrowing</h2>
+					<p>All of our business plans will give you the right platform to attract funding from investors or banks.  We know how to package it up in the correct strategic format to give you maximum impact and maximum chances.</p>
 				</div><!-- .txt -->
 			</div><!-- .cols -->
+
+			<div class="cols col-md-6">
+				<div class="imgs col-md-3">
+					<img src="{{ url('assets/img/group.png') }}">
+				</div><!-- .imgs -->
+				<div class="txt col-md-9">
+				<h2>Dedicated professional in-house team</h2>
+					<p>We will assign you your own dedicated professional Business planner.  All of our business planners are vetted, with a minimum requirement of a masters degree qualification and should you chose the financial package, we offer you one of our in-house financial accountants </p>
+					
+				</div><!-- .txt -->
+			</div><!-- .cols -->
+
+		</div><!-- .line -->
+
+		<div class="line col-md-12">
 
 			<div class="cols col-md-6">
 				<div class="imgs col-md-3">
@@ -62,27 +81,13 @@ This enables you to easily create and manage your forecasts and budgets giving y
 				</div><!-- .txt -->
 			</div><!-- .cols -->
 
-		</div><!-- .line -->
-
-		<div class="line col-md-12">
-
-			<div class="cols col-md-6">
-				<div class="imgs col-md-3">
-					<img src="{{ url('assets/img/group.png') }}">
-				</div><!-- .imgs -->
-				<div class="txt col-md-9">
-					<h2>Dedicated Professionals at your service</h2>
-					<p>We will assign you your own dedicated professional Business planner.  All of our business planners are vetted, with a minimum requirement of a masters degree qualification and should you chose the financial package, we offer you one of our in-house financial accountants </p>
-				</div><!-- .txt -->
-			</div><!-- .cols -->
-
 			<div class="cols col-md-6">
 				<div class="imgs col-md-3">
 					<img src="{{ url('assets/img/micman.png') }}">
 				</div><!-- .imgs -->
 				<div class="txt col-md-9">
-					<h2>Pitch for funding</h2>
-					<p>All of our business plans will give you the right platform to attract funding from investors or banks.  We know how to package it up in the correct strategic format to give you maximum impact and maximum chances.</p>
+									<h2>Collaborate with your team</h2>
+					<p>Included in every business plan, you will have access to award winning, in-house built software. Enabling you to collaborate with your team, easily enable you to create and manage your forecasts and budgets, giving you the best chance to grow your business.  </p>
 				</div><!-- .txt -->
 			</div><!-- .cols -->
 
@@ -93,9 +98,9 @@ This enables you to easily create and manage your forecasts and budgets giving y
 
 <div class="theblog" id="business-plan">
 	<div class="container">
-		<h2>Why You Need a <strong>Business Plan</strong></h2>
+		<h2>Why You Need a <strong>Business Plan?</strong></h2>
 
-		<p>A business plan allows you as a business owner to increase your chances of <strong>business success</strong>. A professionally written business plan will map out what your business intends to do, and is often used as a proposal document to help secure funding from investors and banks. When used internaly, any potential problems can be identified in advance as well as any uncessary costs, to help improve profitability.</p>
+		<p>A business plan will allow you as a business owner to increase your chances of business success, will dramatically increase your chances of raising funding or borrowing, and increase your value of your business exponentially. A well written thought out business plan will map out what your business intends to do, and is often used as a proposal document to help secure funding from investors and banks. When used internally, any potential problems can be identified in advance as well as any unnecessary costs, to help improve profitability.</p>
 
 <p>We recommend <strong>every business</strong>, large or small, to invest time in creating a thorough business plan to help both internally and externally.</p>
 	
@@ -111,28 +116,28 @@ This enables you to easily create and manage your forecasts and budgets giving y
 
 <div id="business-planners-review">
 	<div class="container">
-		<h2>Why The <strong>Business Planners</strong></h2>
+		<h2>Why The <strong>Business Planners ?</strong></h2>
 		<div id="container-box" class="col-md-12">
 
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
-				<h3>Recommended</h3>
+				<h3>Number 1 UK Business Planners</h3>
 				<img src="{{ url('assets/img/recommend-icon.png') }}">
-				<p>We are proud to say that we are recommended by nearly every major investment platform</p>
+				<p>We are proud to say that we are the Number 1 business plan writers in the UK</p>
 			</div><!-- .boxes -->
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
-				<h3>Review</h3>
+				<h3> Award winning dedicated software</h3>
 				<img src="{{ url('assets/img/calc-icon.png') }}">
-				<p>All of your financials will be reviewed by our in-house accountant</p>
+				<p>We have developed our own in-house award winning software, dedicated purely to business plans</p>
 			</div><!-- .boxes -->
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
-				<h3>Bespoke</h3>
+				<h3>Professional in-house team</h3>
 				<img src="{{ url('assets/img/bust-icon.png') }}">
-				<p>All of our bespoke packages are tailored to you and your needs, to suit you perfectly</p>
+				<p>We have our own professional in-house team, including financial accountants, researchers and business plan writers, to help you with your business plan</p>
 			</div><!-- .boxes -->
 			<div class="boxes col-md-3 col-sm-6 col-xs-12">
-				<h3>12 month access</h3>
+				<h3>A bespoke plan for your circumstances</h3>
 				<img src="{{ url('assets/img/12monthsaccess-icon.png') }}">
-				<p>You and your accountant will have 12 month access to update/amend your plan</p>
+				<p>We will create you a bespoke business plan that suits you, your business and your circumstances </p>
 			</div><!-- .boxes -->
 
 		</div><!-- #container-box -->
@@ -142,7 +147,7 @@ This enables you to easily create and manage your forecasts and budgets giving y
 <div id="business-plan-packages">
 	<div class="container">
 		<h2>Business Plan <strong>Packages</strong></h2>
-		<p>Choose from one of our three business plan packages. Alternatively, why not consider our DIY business plan?</p>
+		<!-- <p>Choose from one of our three business plan packages. Alternatively, why not consider our DIY business plan?</p> -->
 		
 		<table id="comparetable" class="blueshine">
            <tr>
@@ -162,7 +167,7 @@ This enables you to easily create and manage your forecasts and budgets giving y
 	            <td class="highlight">£5,000</td>
             </tr>
             <tr>
-            	<td class="tblval"></td>            
+            	<td class="tblval">Suitable for</td>            
 	            <td>Best suited to those on a budget</td>
 	            <td>Ideal for understanding your goals</td>
 	            <td>Businesses that have been established for over a year</td>
@@ -170,21 +175,21 @@ This enables you to easily create and manage your forecasts and budgets giving y
 	            <td>Best for raising finances and venture capital. Your business plan will be sent to 50 angel investors to help get the funding you need</td>
             </tr>
             <tr>
-	            <td class="tblval">Online Business Planning Software</td>    
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td></td>
-	            <td></td>
-	            <td></td>
-	            <td></td>
-            </tr>
-            <tr>
-	            <td class="tblval">MBA Graduate review</td>    
+	            <td class="tblval">Business plan review</td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
+            <!--<tr>
+	            <td class="tblval">MBA Graduate</td>    
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+            </tr>-->
             <tr>
 	            <td class="tblval">Dedicated Business Account Manager</td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
@@ -194,7 +199,7 @@ This enables you to easily create and manage your forecasts and budgets giving y
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
-	            <td class="tblval">Professionally written Business plan written by Professional Business Planner</td>    
+	            <td class="tblval">Professional written business plan</td>    
 	            <td></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
@@ -202,12 +207,20 @@ This enables you to easily create and manage your forecasts and budgets giving y
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
-	            <td class="tblval">Financial forecasting with qualified Financial Accountant</td>    
+	            <td class="tblval">Your own dedicated researcher</td>    
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+            </tr>
+            <tr>
+	            <td class="tblval">Financial forecast by a professional qualified financial accountant</td>    
 	            <td></td>
 	            <td></td>
-	            <td>Yes 1 year</td>
-	            <td>Yes 3 years</td>
-	            <td>Yes 3 years</td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"><br> 1 year financials</td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"><br> 3 year financials</td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"><br> 3 year financials</td>
             </tr>
             <tr>
 	            <td class="tblval">Investor meeting</td>    
@@ -231,7 +244,7 @@ Collaborate with your team
             </tr> -->
             <tr>
 	            <td class="tblval">Full reporting, financial monitoring and control
-* Virtual FD is our own award winning in-house business planning platform
+* the award winning BizPlanner App is our own award winning in-house business planning platform
 </td>    
 	            <td>1 month access</td>
 	            <td>1 month access</td>
@@ -240,12 +253,12 @@ Collaborate with your team
 	            <td>6 months access</td>
             </tr>
             <tr>
-	            <td class="tblval"><b>Bonus Materials</b></td>    
+	            <td style="width:100%;" colspan="6"><b>Bonus Materials</b></td>    
+	         <!--    <td></td>
 	            <td></td>
 	            <td></td>
 	            <td></td>
-	            <td></td>
-	            <td></td>
+	            <td></td> -->
             </tr>
 <!--             <tr>
 	            <td class="tblval">New Business Start up Guide</td>    
@@ -255,6 +268,25 @@ Collaborate with your team
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr> -->
+
+            <tr>
+	            <td class="tblval">How to reduce your IHT liability and what to do</td>    
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+            </tr>
+
+            <tr>
+	            <td class="tblval">The Secrets of how big companies remunerate themselves in a tax efficient manner (the things your accountant doesn’t know) </td>    
+	            <td></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+            </tr>
+
             <tr>
 	            <td class="tblval">Importance of Trademarks Guide </td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
@@ -271,22 +303,19 @@ Collaborate with your team
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
-            <tr>
-	            <td class="tblval">The Secrets of how big companies remunerate themselves in a tax efficient manner (the things your accountant doesn’t know) </td>    
-	            <td></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-            </tr>
-            <tr>
+            
+            <!-- <tr>
 	            <td class="tblval">How to reduce your IHT liability and what to do</td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-            </tr>
+            </tr> -->
+
+			
+
+
             <tr>
 	            <td class="tblval">A Guide to The importance of having a Company Will </td>    
 	            <td></td>
@@ -308,24 +337,34 @@ Collaborate with your team
 	            <td></td>
 	            <td></td>
 	            <td></td>
-	            <td></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
-	            <td class="tblval"><b>Additional Services</b></td>    
+	            <td style="width:100%;" colspan="6"><b>Additional Services</b></td>    
+	           <!--  <td></td>
 	            <td></td>
 	            <td></td>
 	            <td></td>
-	            <td></td>
-	            <td></td>
+	            <td></td> -->
             </tr>
+
             <tr>
-	            <td class="tblval">Remuneration Report – find out how to pay less tax, the things your accountant doesn’t know</td>    
+	            <td class="tblval">Bespoke remuneration report – find out how to pay less tax, the things your accountant doesn’t know</td>    
 	            <td></td>
 	            <td>60% discount</td>
 	            <td>60% discount</td>
 	            <td>70% discount</td>
 	            <td>80% discount</td>
+            </tr>
+
+            <tr>
+	            <td class="tblval">Full IHT Review & Report and IHT mitigation service</td>    
+	            <td></td>
+	            <td>10% discount</td>
+	            <td>10% discount</td>
+	            <td>15% discount</td>
+	            <td>20% discount</td>
             </tr>
             <tr>
 	            <td class="tblval">Business Valuation Services</td>    
@@ -343,14 +382,20 @@ Collaborate with your team
 	            <td>15% discount</td>
 	            <td>20% discount</td>
             </tr> -->
-            <tr>
-	            <td class="tblval">Full IHT Review & Report and IHT mitigation service</td>    
+            
+			 <!-- <tr>
+	            <td class="tblval">Bespoke remuneration report – find out how to pay less tax, the things your accountant doesn’t know</td>    
 	            <td></td>
-	            <td>10% discount</td>
-	            <td>10% discount</td>
-	            <td>15% discount</td>
-	            <td>20% discount</td>
-            </tr>
+	            <td>60% discount</td>
+	            <td>60% discount</td>
+	            <td>70% discount</td>
+	            <td>80% discount</td>
+            </tr> -->
+
+            
+
+
+
             <tr>
 	            <td class="nostyle"></td>    
 	            <td class="nostyle"><a href="{{ url('order/diy') }}"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
