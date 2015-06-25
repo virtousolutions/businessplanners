@@ -2,7 +2,8 @@
 		<div class="container">
 			<div id="footer-menu" class="col-md-7">
 				<ul>
-					<li><a href="javascript:void(0)" id="forcontactus">Contact</a></li>
+                    <li><a href="{{ url('/#contactus') }}" id="forcontactus">Contact Us</a></li>
+					<li><a href="{{url('terms')}}">Terms and Conditions</a></li>
 					<li><a href="{{url('privacy-policy')}}">Privacy Policy</a></li>
 					<li><a href="{{url('cookie-policy')}}">Cookie Policy</a></li>
 				</ul>

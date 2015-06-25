@@ -13,6 +13,9 @@ return array(
 	'PRIVACYTITLE' => 'The Business Planners | Privacy Policy',
 	'PRIVACYDESCRIPTION' => 'A business plan is crucial to the success of a business, we\'ll help write a business plan for you | The Business Planners Privacy Policy ',
 
+    'TERMSTITLE' => 'The Business Planners | Terms and Conditions',
+	'TERMSDESCRIPTION' => 'A business plan is crucial to the success of a business, we\'ll help write a business plan for you | The Business Planners Terms and Conditions',
+
 	'LICENSETITLE' => 'The Business Planners | Cookie Policy',
 	'LICENSEDESCRIPTION' => 'Finding it difficult to write a business plan? We\'re here to help with our business plan writing services | The Business Planners Cookie Policy.',
 

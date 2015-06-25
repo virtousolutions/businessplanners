@@ -1,5 +1,13 @@
 @extends('app')
 
+@section('title')
+{{Lang::get('pagedetails.TERMSTITLE')}}
+@stop
+
+@section('description')
+{{Lang::get('pagedetails.TERMSDESCRIPTION')}}
+@stop
+
 @section('content')
 <div class="container">
      <div class="col-md-10 col-md-offset-1 col-xs-12 tac-contents">

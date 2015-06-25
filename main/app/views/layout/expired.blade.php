@@ -44,24 +44,11 @@
     })(window,document,'script','dataLayer','GTM-WHWNCX');</script>
     <!-- End Google Tag Manager -->
 
-    <div class="col-xs-12" style="padding: 0; background-color: #ffffff;">
-        <div class="container" style="padding-top: 10px;">
-            <div class="wrapper">
-                <div class="col-xs-12 col-sm-7" style="padding: 0px; margin: 20px 0; text-align: left;">
-                    <a href="{{ url('') }}">
-                        <img style="width: 150px; margin-left: 0px;" src="{{ url('assets/img/logo.png') }}"/>
-                    </a>
-                </div>
-                <!--div class="col-xs-12 col-sm-5 text-right">
-                    <img src="{{ asset('assets/img/secureseal.png') }}" style="width: 200px" alt="" class="seal">
-                    <p>Questions? Call - 01732 2042 4188</p>
-                </div-->
-            </div>
-        </div>
-    </div>
+    @include('layout/plan-header')
+
     <div class="col-xs-12" style="background-color: #ffffff;">
         <div class="wrapper" style="background-color: #ffffff; margin-top: 50px; margin-bottom: 50px;">
-             <h2>Sorry but your account has already expired.  Kindly contact us for more details.</h2>
+             <h2>Sorry, your account has already expired.  Kindly contact us for more details.</h2>
         </div>
     </div>
     @include('layout/footer')
