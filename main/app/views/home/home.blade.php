@@ -199,16 +199,16 @@
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
-	            <td class="tblval">Professional written business plan</td>    
-	            <td></td>
+	            <td class="tblval">Your own dedicated researcher</td>    
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             <tr>
-	            <td class="tblval">Your own dedicated researcher</td>    
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td class="tblval">Professional written business plan</td>    
+	            <td></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
@@ -279,15 +279,6 @@ Collaborate with your team
             </tr>
 
             <tr>
-	            <td class="tblval">The Secrets of how big companies remunerate themselves in a tax efficient manner (the things your accountant doesn’t know) </td>    
-	            <td></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-            </tr>
-
-            <tr>
 	            <td class="tblval">Importance of Trademarks Guide </td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
@@ -304,6 +295,16 @@ Collaborate with your team
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
             
+
+            <tr>
+	            <td class="tblval">The Secrets of how big companies remunerate themselves in a tax efficient manner (the things your accountant doesn’t know) </td>    
+	            <td></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
+            </tr>
+
             <!-- <tr>
 	            <td class="tblval">How to reduce your IHT liability and what to do</td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
