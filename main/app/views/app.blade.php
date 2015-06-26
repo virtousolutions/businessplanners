@@ -77,6 +77,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                           </ul>
                         </li>
                         <li><a href="{{ url('/#info-home') }}" id="forfeature">Features</a></li>
+                        
                         <li><a href="{{ url('/#contactus') }}" id="forcontactus">Contact Us</a></li>
                         @if (Auth::check())
                             <li><a href="{{ url('plan') }}">My Plan</a></li>
@@ -84,7 +85,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         @else
                             <li><a href="{{ url('login') }}">Login</a></li>
                         @endif
-                        
+                        <li><a href="{{ url('resources/download') }}" id="forfeature">Resources</a></li>
                       </ul>
                     </div>
                 </div>

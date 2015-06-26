@@ -136,3 +136,12 @@ Route::group(['before' => 'auth|not_temp_password'], function()
 //   return Redirect::to('p' . $alias);
 // });
 
+
+Route::get('resources/download', function(){
+
+    $file= "PDF/New Business Start Up Guide.pdf";
+    $headers = array(
+        'Content-Type: application/pdf',
+    );
+    return Response::download($file, 'The Business Planners.pdf', $headers);
+});
