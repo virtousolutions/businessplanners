@@ -106,8 +106,9 @@
 	
 	<div id="iMac" class="col-md-12 col-md-offset-2">
 		<!-- <img src="{{ url('assets/img/iMac.png') }}"> -->
-		<div id="logo-cover" class="col-md-12">
-			<img src="{{url('assets/img/banner-logo.png')}}">
+		<div id="logo-coverx" class="col-md-12" style="padding-top: 5rem">
+			<!-- <img src="{{url('assets/img/banner-logo.png')}}"> -->
+			<iframe width="640" height="360" src="https://www.youtube.com/embed/hjZRLmpk9Fo?rel=0&autoplay=1&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 		</div>
 	</div><!-- #iMac -->
 
