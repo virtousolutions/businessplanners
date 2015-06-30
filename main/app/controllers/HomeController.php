@@ -285,5 +285,44 @@ class HomeController extends BaseController {
         $this->layout = View::make('layout.email-view');
         $this->layout->content = View::make("home.email-view", $data);
     }
+
+
+    // resources
+    function resources(){
+        
+        $this->layout = View::make('app');
+        $this->layout->content = View::make("resources.resources");
+
+    }
+
+    function resourcesDownload(){
+
+        if (Request::isMethod('post'))
+        {
+            $input = Input::get();
+            Mail::send('emails.resources', (array)$input, function($message) use ($input)
+            {
+                $to = Config::get('mail.contact_us');
+
+                $message->from($input['email'], $input['name']);
+                $message->to($to['address']);
+                $message->subject('Create My CV Resources Download');
+            });
+
+            $file= "PDF/New Business Start Up Guide.pdf";
+            $headers = array(
+                'Content-Type: application/pdf',
+            );
+
+            return Response::download($file, 'The Business Planners.pdf', $headers);
+
+        }else{
+
+            $this->layout = View::make('layout.index');
+            $this->layout->content = View::make("resources.info");
+
+        }
+
+    }
 }
 
