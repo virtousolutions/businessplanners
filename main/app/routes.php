@@ -137,11 +137,7 @@ Route::group(['before' => 'auth|not_temp_password'], function()
 // });
 
 
-Route::get('resources/download', function(){
-
-    $file= "PDF/New Business Start Up Guide.pdf";
-    $headers = array(
-        'Content-Type: application/pdf',
-    );
-    return Response::download($file, 'The Business Planners.pdf', $headers);
-});
+//Resources
+Route::get("resources", 'HomeController@resources');
+Route::get("resources/download", 'HomeController@resourcesDownload');
+Route::post("resources/download", 'HomeController@resourcesDownload');
