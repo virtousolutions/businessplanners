@@ -940,6 +940,30 @@ Head
 #top-menu li:last-child:after{
 	background-image: none;
 }
+#top-menu ul li.menu-item-has-children:before{
+	/*content: " ";
+  	position: absolute;
+  	right: 3px;
+  	z-index: 9;
+ 	top: 50%;
+  	transform: translateY(-50%);
+  	width: 0;
+  	height: 0;
+  	border-left: 5px solid transparent;
+  	border-right: 5px solid transparent;
+  	border-top: 5px solid #999;*/
+}
+#top-menu ul li ul.sub-menu{
+	display: none;
+	position: absolute;
+}
+#top-menu ul li:hover>ul.sub-menu{
+	display: block;
+}
+#top-menu ul li:hover>ul.sub-menu li{
+	clear: both;
+	float: left;
+}
 #info-head{
 	font-size: 23px;
   	line-height: 2.4em;
@@ -1368,7 +1392,7 @@ Miscellaneous
 	background-color: #62B6E7;
 	height: 3px;
 	width: 100%;
-	margin: 12px 0 0 0;
+	margin: 0px 0 0 0;
 	clear: both;
 }
 .widget_listcategorypostswidget{
@@ -1382,4 +1406,9 @@ Miscellaneous
 	display: inline-block;
 	float: left;
 	clear: both;
+}
+.navbar-default{
+	background-color: transparent!important;
+	border: 0!important;
+	padding-top: 1em;
 }
