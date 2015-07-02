@@ -86,7 +86,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <li><a href="{{ url('login') }}">Login</a></li>
                         @endif
                         <!-- <li><a href="{{ url('resources') }}" id="forfeature">Resources</a></li> -->
-                        <li><a href="{{ url('blog') }}" id="forfeature">blog</a></li>
+                        <li><a href="{{ url('blog') }}" id="forfeature">Blog</a></li>
                       </ul>
                     </div>
                 </div>
