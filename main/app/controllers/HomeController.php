@@ -324,5 +324,10 @@ class HomeController extends BaseController {
         }
 
     }
+
+    public function thankyoupage($product)
+    {
+        return View::make("package.thank-you", ['prdt' => $product]);
+    }
 }
 
