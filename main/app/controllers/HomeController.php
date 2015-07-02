@@ -127,19 +127,8 @@ class HomeController extends BaseController {
         Session::put('order_data', base64_encode(http_build_query($data)));
         
         // TODO: redirect to the order form
-
-        $order_form_links = [
-            'diy' => 'https://qk243.infusionsoft.com/app/orderForms/DIY-Business-Plan',
-            'value' => 'https://qk243.infusionsoft.com/app/orderForms/Value-Business-Plan',
-            'standard' => 'https://qk243.infusionsoft.com/app/orderForms/Standard-Business-Plan',
-            'professional' => 'https://qk243.infusionsoft.com/app/orderForms/Professional-Business-Plan',
-            'premium' => 'https://qk243.infusionsoft.com/app/orderForms/Premium-Professional-Business-Plan'
-        ];
-
-        return Redirect::to($order_form_links[$package]);
-
         // For now, redirect to the payment complete first
-        // return Redirect::to('order-complete/' . $package);
+        return Redirect::to('order-complete/' . $package);
     }
 
     public function orderComplete($package)
@@ -334,6 +323,11 @@ class HomeController extends BaseController {
 
         }
 
+    }
+
+    public function thankyoupage($product)
+    {
+        return View::make("package.thank-you", ['prdt' => $product]);
     }
 }
 

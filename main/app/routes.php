@@ -20,6 +20,8 @@ Route::post("contact_us", array(
 	'uses' => "HomeController@sendContactUs"
 ));
 
+Route::get('thank-you/{product}', 'HomeController@thankyoupage');
+
 Route::group(['before' => 'guest'], function()
 {
     Route::get("login", "AuthController@login");

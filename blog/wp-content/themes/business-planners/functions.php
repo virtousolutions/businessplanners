@@ -146,3 +146,13 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+function getsiteurl($theurl){
+	$domain = get_bloginfo('home');
+	$ex = explode("/", $domain);
+
+	$currentpage = end($ex);
+
+	return $url = 'http://thebusinessplanners.co.uk/'.$theurl;
+	#return $url = 'http://localhost/gtwo/willplanner/'.$theurl;
+}
