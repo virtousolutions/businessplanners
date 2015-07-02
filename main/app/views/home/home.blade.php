@@ -446,7 +446,8 @@ Collaborate with your team
 	<h2>Contact <strong>Us</strong></h2>
 
 	<div id="contacttbl" class="col-md-offset-1">
-	{{ Form::open(array('id' => 'contactusform', 'method' => 'get', 'class' => 'cmxform')) }}
+
+<!-- 	{{ Form::open(array('id' => 'contactusform', 'method' => 'get', 'class' => 'cmxform')) }}
 		<div class="form-group">
 			<label class="col-md-3" for="Name">Name</label>
 			<input type="text" name="name" id="name" required aria-required="true" class="required-field col-md-8 form-control" data-bv-field="name">
@@ -470,7 +471,54 @@ Collaborate with your team
 		<div id="submit-btn-con" class="col-md-2 col-md-offset-3">
 			<button type="button" id="contactussubmit-btn" class="btn btn-default">Submit</button>
 		</div>
-		{{ Form::close() }}
+		{{ Form::close() }} -->
+
+
+
+
+
+<form id="contactusform" accept-charset="UTF-8" action="https://qk243.infusionsoft.com/app/form/process/f0cef0558e67c0912b9721c7b67ee1f0" class="cmxform infusion-form" method="POST">
+    <input name="inf_form_xid" type="hidden" value="f0cef0558e67c0912b9721c7b67ee1f0" />
+    <input name="inf_form_name" type="hidden" value="Contact Form - Business Planners" />
+    <input name="infusionsoft_version" type="hidden" value="1.42.0.44" />
+
+
+    <div class="form-group">
+        <label class="col-md-3" for="inf_field_FirstName">First Name *</label>
+        <input required class="infusion-field-input-container required-field col-md-8 form-control" id="inf_field_FirstName" name="inf_field_FirstName" type="text" />
+    </div>
+    <div class="form-group">
+        <label class="col-md-3" for="inf_field_LastName">Last Name *</label>
+        <input required class="infusion-field-input-container required-field col-md-8 form-control" id="inf_field_LastName" name="inf_field_LastName" type="text" />
+    </div>
+    <div class="form-group">
+        <label class="col-md-3" for="inf_field_Email">Email *</label>
+        <input required class="infusion-field-input-container required-field col-md-8 form-control" id="inf_field_Email" name="inf_field_Email" type="text" />
+    </div>
+    <div class="form-group">
+        <label class="col-md-3" for="inf_field_Phone1">Phone number *</label>
+        <input required class="infusion-field-input-container required-field col-md-8 form-control" id="inf_field_Phone1" name="inf_field_Phone1" type="text" />
+    </div>
+    <div class="form-group">
+        <label class="col-md-3" for="inf_custom_Referral">Where did you hear us? *</label>
+        <input required class="infusion-field-input-container required-field col-md-8 form-control" id="inf_custom_Referral" name="inf_custom_Referral" type="text" />
+    </div>
+    <div class="form-group">
+        <label class="col-md-3" for="inf_custom_Enquiry">Enquiry *</label>
+        <textarea required class="infusion-field-input-container required-field col-md-8 form-control" id="inf_custom_Enquiry" name="inf_custom_Enquiry" type="text" ></textarea>
+    </div>
+    <div id="submit-btn-con" class="col-md-2 col-md-offset-3">
+        <input type="submit" value="Submit" id="contactussubmit-btn" class="btn btn-default"/>
+    </div>
+</form>
+<script type="text/javascript" src="https://qk243.infusionsoft.com/app/webTracking/getTrackingCode?trackingId=e6ebba2e3123cbcbaa48a9dd4a303dec"></script>
+
+
+
+
+
+
+
 	</div><!-- #contacttbl -->
 	</div><!-- .container -->
 </div><!-- #contactus -->
