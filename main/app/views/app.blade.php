@@ -37,7 +37,6 @@
 
 </head>
 <body>
-
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WHWNCX"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -46,8 +45,8 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-WHWNCX');</script>
-@yield('tagmanager')
     <!-- End Google Tag Manager -->
+@yield('tagmanager')
 
     <div id="head-bg">
         <div class="container">
@@ -84,16 +83,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <li><a href="{{ url('/#info-home') }}" id="forfeature">Features</a></li>
                         
                         <li><a href="{{ url('/#contactus') }}" id="forcontactus">Contact Us</a></li>
-                        <li><a href="{{ url('resources') }}" id="forfeature">Resources</a></li>
-                        <li><a href="{{ url('blog') }}" id="forfeature">Blog</a></li>
                         @if (Auth::check())
                             <li><a href="{{ url('plan') }}">My Plan</a></li>
                             <li><a href="{{ url('logout') }}">Logout</a></li>
                         @else
                             <li><a href="{{ url('login') }}">Login</a></li>
                         @endif
-                       
-                       
+                        <!-- <li><a href="{{ url('resources') }}" id="forfeature">Resources</a></li> -->
+                        <li><a href="{{ url('blog') }}" id="forfeature">Blog</a></li>
                       </ul>
                     </div>
                 </div>
