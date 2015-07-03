@@ -2,7 +2,7 @@
 <?php $num = rand(500, 10000); ?>
 @if($prdt == 'diy')
     @section('tagmanager')
-        <script>
+        
             ga('require', 'ecommerce');
 
             ga('ecommerce:addTransaction', {
@@ -23,11 +23,11 @@
             });
 
             ga('ecommerce:send');
-        </script>
+        
     @stop
 @elseif($prdt == 'value')
     @section('tagmanager')
-        <script>
+        
             ga('require', 'ecommerce');
 
             ga('ecommerce:addTransaction', {
@@ -48,11 +48,11 @@
             });
 
             ga('ecommerce:send');
-        </script>
+        
     @stop
 @elseif($prdt == 'standard')
     @section('tagmanager')
-        <script>
+        
             ga('require', 'ecommerce');
 
             ga('ecommerce:addTransaction', {
@@ -73,11 +73,11 @@
             });
 
             ga('ecommerce:send');
-        </script>
+        
     @stop
 @elseif($prdt == 'professional')
     @section('tagmanager')
-        <script>
+        
             ga('require', 'ecommerce');
 
             ga('ecommerce:addTransaction', {
@@ -98,11 +98,11 @@
             });
 
             ga('ecommerce:send');
-        </script>
+        
     @stop
 @elseif($prdt == 'premium')
     @section('tagmanager')
-        <script>
+        
             ga('require', 'ecommerce');
 
             ga('ecommerce:addTransaction', {
@@ -123,7 +123,7 @@
             });
 
             ga('ecommerce:send');
-        </script>
+       
     @stop
 @endif
 
