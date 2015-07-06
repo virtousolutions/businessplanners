@@ -18,6 +18,7 @@
 				<ul>
 					<li><a href="https://www.facebook.com/thebusinessplannersuk?ref=bookmarks"><img src="{{url('assets/img/footer-social-fb.png')}}"></a></li>
 					<li><a href="https://twitter.com/BizPlannersUK"><img src="{{url('assets/img/footer-social-twitter.png')}}"></a></li>
+					<li><a href="https://www.linkedin.com/company/10033571?trk=tyah&trkInfo=clickedVertical%3Acompany%2Cidx%3A1-2-2%2CtarId%3A1436171107535%2Ctas%3Athe%20business%20planners%20"><img src="{{url('assets/img/linkedin.png')}}"></a></li>
 				</ul>
 			</div><!-- #social-icons -->
 

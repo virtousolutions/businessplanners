@@ -42,7 +42,7 @@ At that moment the bull reaches the balloonist and tosses him over the fence. Lu
 <br><br>
 Let’s begin…
 <br><br>
-	<a title="business planners PDF" href="{{ url('resources/download') }}">Continue reading...</a>
+	<a title="business planners PDF" href="{{ url('resources/download') }}">Download PDF</a>
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>

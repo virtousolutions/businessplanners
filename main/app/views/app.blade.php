@@ -94,14 +94,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <li><a href="{{ url('/#info-home') }}" id="forfeature">Features</a></li>
                         
                         <li><a href="{{ url('/#contactus') }}" id="forcontactus">Contact Us</a></li>
+                        <li><a href="{{ url('blog') }}" id="forfeature">Blog</a></li>
+                        <li><a href="{{ url('resources') }}" id="forfeature">Resources</a></li>
                         @if (Auth::check())
                             <li><a href="{{ url('plan') }}">My Plan</a></li>
                             <li><a href="{{ url('logout') }}">Logout</a></li>
                         @else
                             <li><a href="{{ url('login') }}">Login</a></li>
                         @endif
-                        <!-- <li><a href="{{ url('resources') }}" id="forfeature">Resources</a></li> -->
-                        <li><a href="{{ url('blog') }}" id="forfeature">Blog</a></li>
                       </ul>
                     </div>
                 </div>
