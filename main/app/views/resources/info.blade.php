@@ -15,12 +15,12 @@ Resources
 
 <div class="form-group">
 	<label for="email">Email Address</label>
-	<input type="email" required class="form-control" name="email" id="email" placeholder="Email">
+	<input style="width: 100%;" type="email" required class="form-control" name="email" id="email" placeholder="Email">
 </div>
 
 <div class="form-group">
 	<label for="name">Name</label>
-	<input type="text" required class="form-control" name="name" id="name" placeholder="Name">
+	<input style="width: 100%;" type="text" required class="form-control" name="name" id="name" placeholder="Name">
 </div>
 
 <div class="form-group">

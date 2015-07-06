@@ -319,6 +319,8 @@ class HomeController extends BaseController {
         }else{
 
             $this->layout = View::make('layout.index');
+                    $this->layout = View::make('app');
+        // $this->layout->content = View::make("resources.resources");
             $this->layout->content = View::make("resources.info");
 
         }
