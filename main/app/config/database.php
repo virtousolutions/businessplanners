@@ -49,7 +49,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'pro_bizplanner',
+			'database'  => 'business_bizplanner',
 			'username'  => 'business_root',
 			'password'  => 'qwerty',
 			'charset'   => 'utf8',
