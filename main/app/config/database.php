@@ -50,7 +50,7 @@ return array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'pro_bizplanner',
-			'username'  => 'root',
+			'username'  => 'business_root',
 			'password'  => 'qwerty',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
