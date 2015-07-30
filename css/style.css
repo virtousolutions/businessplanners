@@ -116,9 +116,15 @@ Home Page
 #inside-banner{
 	padding: 5em 0 0 0;
 }
+#inside-banner h3{
+	font-size: 32px;
+	font-weight: bold;
+}
 #inside-banner #bulleted{
 	background-color: #5BA4D2;
 	padding: 1em 2em 0.4em 2em;
+	min-height: 320px;
+	border-radius: 12px;
 }
 #inside-banner #bulleted ul{
 	list-style: none;
@@ -145,7 +151,11 @@ Home Page
 	font-family: 'Open Sans', sans-serif;
 	font-size: 29px;
 	color: #FFF;
-	line-height: 1.7em;
+	line-height: 1.5em;
+}
+.head-banner .carousel-inner{
+	top: 2em;
+	padding-bottom: 4rem;
 }
 #info-home{
 	clear: both;
@@ -194,7 +204,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 #business-plan{
 	clear: both;
 	background-color: #fff;
-	min-height: 805px;
+	min-height: 850px;
 	text-align: center;
 	width: 100%;
 }
@@ -228,6 +238,116 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
   	height: 579px;
   	-webkit-background-size: 100% 100%;
   	background-size: 100% 100%;
+}
+.iMac-small{
+	z-index: 9999;
+  	position: relative;
+  	top: -5.5em;
+  	background-image: url(../images/iMac-500x408.png);
+  	background-repeat: no-repeat;
+  	max-width: 710px;
+  	height: 579px;
+  	-webkit-background-size: 100% 100%;
+  	background-size: 100% 100%;
+}
+.after-iMac{
+	padding-top: 14.5rem;
+}
+.after-iMac h2{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold!important;
+	font-size: 40px!important;
+	margin:0;
+	padding-bottom: 0;
+}
+.after-iMac p{
+	padding: 0;
+	margin: 0;
+	color: #FFF;
+	font-size: 17px;
+	line-height: 0;
+}
+.three-steps{
+	clear: both;
+}
+.clearfix{
+	clear: both;
+}
+#comparetable .button-package{
+	border-radius: 10px;
+	background-color: #C9D755;
+	padding:1rem;
+	color: #FFF;
+	font-weight: bold;
+}
+#comparetable .button-package:hover{
+	text-decoration: none;
+}
+#comparetable tr th:nth-child(3){
+	border-radius: 10px;
+	border-top: 7px solid #C9D755;
+	border-left: 7px solid #C9D755;
+	border-right: 7px solid #C9D755;
+}
+#comparetable tr td:nth-child(3){
+	border-left: 7px solid #C9D755;
+	border-right: 7px solid #C9D755;
+	border-radius: 10px
+}
+#comparetable tr:last-child td:nth-child(3){
+	border-bottom: 7px solid #C9D755;
+	border-left: 7px solid #C9D755;
+	border-right: 7px solid #C9D755;
+	border-radius: 10px
+}
+.three-steps h2{
+
+}
+.three-steps .thesteps .stepbox{
+	border-radius: 12px;
+	border: 7px solid #4C4C4C;
+	overflow: hidden;
+	min-height: 370px;
+	margin: 0 4% 0 4%;
+	margin-bottom: 1rem;
+}
+.three-steps .thesteps .stepbox .icons{
+	font-size: 12rem;
+	color: #5EB1E2;
+	padding-bottom: 2.5rem;
+}
+.three-steps .thesteps .stepbox .button{
+	background-color: #63B6E7;
+	border-radius: 10px;
+	padding:1.5rem;
+	clear: both;
+	color: #FFF;
+}
+.three-steps .thesteps .stepbox .button:hover{
+	text-decoration: none;
+}
+.head-banner .carousel-caption{
+	position: initial!important;
+	font-size: 20px;
+}
+.head-banner li{
+	background-image: none!important;
+	padding: 0!important;
+}
+.head-banner .carousel-control.left{
+	background-image: none!important;
+}
+.head-banner .carousel-control.right{
+	background-image: none!important;
+}
+.head-banner .carousel-indicators{
+	margin-left: -7%!important;
+	top: 6em;
+}
+@media only screen and (max-width: 991px){
+	.iMac-small{
+		position: initial;
+	}
 }
 #logo-cover{
 	padding: 9em 3em;

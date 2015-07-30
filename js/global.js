@@ -133,6 +133,11 @@ jQuery(function($){
 				}, 'slow');
 			}
 		},
+		newRevBanner : function(){
+			$('.head-banner').carousel({
+			  interval: 5000
+			});
+		},
 		executecode_here : function(){
 			// For the responsive menu
 			this.respMenu();
@@ -147,6 +152,8 @@ jQuery(function($){
 			this.scrolltotop();
 
 			this.checknametag();
+
+			this.newRevBanner();
 		}
 	}
 

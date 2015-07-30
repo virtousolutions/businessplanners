@@ -25,17 +25,77 @@
 		<div id="inside-banner">
 			<div id="bulleted" class="col-md-5 col-sm-12">
 			<h3 class="align-center" style="text-align: center;color: #fff;">The number 1 business planning choice </h4>
-				<ul>
+				<!-- <ul>
 					<li>Need bank borrowing or business funding?</li>
 					<li>Need a Business Plan to help you expand into new markets or launch new products?</li>
 					<li>Need a highly professional business plan which will attract funding from investors or other financial institutions?</li>
 					<li>Do you need a road map for your business in an engaging and professional way?</li>
 					<li>Need to make your ideas become reality?</li>
-				</ul>
+				</ul> -->
+				<div id="carousel-example-generic" class="carousel slide head-banner" data-ride="carousel">
+				  <!-- Indicators -->
+				  <!-- <ol class="carousel-indicators">
+				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+				  </ol> -->
+
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner" role="listbox">
+				    <div class="item active">
+				      
+				    <div class="carousel-caption">
+				       Need bank borrowing or business funding?
+				      </div>
+				    </div>
+
+				    <div class="item"> 
+				      <div class="carousel-caption">
+				        Need a Business Plan to help you expand into new markets or launch new products?
+				      </div>
+				    </div>
+				    <div class="item"> 
+				      <div class="carousel-caption">
+				        Need a highly professional business plan which will attract funding from investors or other financial institutions?
+				      </div>
+				    </div>
+				    <div class="item"> 
+				      <div class="carousel-caption">
+				       Do you need a road map for your business in an engaging and professional way?
+				      </div>
+				    </div>
+				    <div class="item"> 
+				      <div class="carousel-caption">
+				       Need to make your ideas become reality?
+				      </div>
+				    </div>
+				    
+
+				  </div>
+
+				  <!-- Controls -->
+				 <!--  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				  </a>
+				  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </a> -->
+				</div>
 			</div><!-- #bulleted -->
 			<div id="banner-branding" class="col-md-7 col-sm-12">
-				 <img src="{{url('assets/img/banner-logo.png')}}">
-				<h2>Call us to find out more 0345 052 2742</h2>
+				 <!-- <img src="{{url('assets/img/banner-logo.png')}}">
+				<h2>Call us to find out more 0345 052 2742</h2> -->
+				<div class="iMac-small">
+					<iframe style="padding-top: 2.8rem; padding-left: 2.2rem;" width="96%" height="435" src="https://www.youtube.com/embed/qWFZNqS8cZY" frameborder="0" allowfullscreen></iframe>
+					<div class="after-iMac text-center">
+						<h2>Call NOW: 0345 052 2742</h2>
+						<p>Local Rate applies</p>
+					</div><!-- .after-iMac -->
+				</div><!-- .iMac-small -->
 			</div><!-- #banner-branding -->
 		</div><!-- #inside-banner -->
 	</div><!-- .container -->
@@ -104,13 +164,37 @@
 
 <p>We recommend <strong>every business</strong>, large or small, to invest time in creating a thorough business plan to help both internally and externally.</p>
 	
-	<div id="iMac" class="col-md-12 col-md-offset-2">
-		<!-- <img src="{{ url('assets/img/iMac.png') }}"> -->
-		<div id="logo-coverx" class="col-md-12" style="padding-top: 5rem">
-			<!-- <img src="{{url('assets/img/banner-logo.png')}}"> -->
-			<iframe width="640" height="360" src="https://www.youtube.com/embed/hjZRLmpk9Fo?rel=0&autoplay=1&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+	<div class="three-steps">
+		<h2>Three Simple Steps</h2>
+		<p>A simple three steps process makes writing your business plan easy and simple</p>
+
+		<div class="thesteps col-lg-12 col-md-12 col-xs-12 center-block text-center">
+			<div class="stepbox col-md-3 col-sm-10 col-xs-12">
+				<h3>Step 1</h3>
+				<p>Book your FREE consultation with a professional Business Planner</p>
+				<i class="fa fa-book icons"></i>
+				<div class="clearfix"></div>
+				<a href="#" class="button">Order Now</a>
+			</div><!-- .stepbox -->
+			<div class="stepbox col-md-3 col-sm-10 col-xs-12 col-md-offset-1">
+				<h3>Step 2</h3>
+				<p>Choose your package<br /><br /></p>
+				<i class="fa fa-cubes icons"></i>
+				<div class="clearfix"></div>
+				<br />
+				<a href="#" class="button">Order Now</a>
+			</div><!-- .stepbox -->
+			<div class="stepbox col-md-3 col-sm-10 col-xs-12 col-md-offset-1">
+				<h3>Step 3</h3>
+				<p>Pay when you are 100% satisfied</p>
+				<i class="fa fa-thumbs-up icons"></i>
+				<div class="clearfix"></div>
+				<br />
+				<a href="#" class="button">Order Now</a>
+			</div><!-- .stepbox -->
 		</div>
-	</div><!-- #iMac -->
+	</div><!-- .three-steps -->
+	
 
 	</div><!-- .body_container -->
 </div><!-- #business-plan -->
@@ -150,7 +234,7 @@
 		<h2>Business Plan <strong>Packages</strong></h2>
 		<!-- <p>Choose from one of our three business plan packages. Alternatively, why not consider our DIY business plan?</p> -->
 		
-		<table id="comparetable" class="blueshine">
+<!-- 		<table id="comparetable" class="blueshine">
            <tr>
             <td class=""></td>
                 <th>DIY</th>
@@ -183,14 +267,7 @@
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
-            <!--<tr>
-	            <td class="tblval">MBA Graduate</td>    
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-            </tr>-->
+            
             <tr>
 	            <td class="tblval">Dedicated Business Account Manager</td>    
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
@@ -231,18 +308,7 @@
 	            <td></td>
 	            <td>Your business plan will be read cover to cover by at least 10 angel investors, we will get feedback and negotiate on your behalf to get you that investor meeting</td>
             </tr>
-<!--             <tr>
-	            <td class="tblval">Access to Virtual FD:*
-Personalised Dashboard
-Full online access to your business plan
-Collaborate with your team
-</td>    
-	            <td>1 month</td>
-	            <td>1 month</td>
-	            <td>3 month</td>
-	            <td>3 month</td>
-	            <td>1 year</td>
-            </tr> -->
+
             <tr>
 	            <td class="tblval">Full reporting, financial monitoring and control
 * the award winning BizPlanner App is our own award winning in-house business planning platform
@@ -255,20 +321,9 @@ Collaborate with your team
             </tr>
             <tr>
 	            <td style="width:100%;" colspan="6"><b>Bonus Materials</b></td>    
-	         <!--    <td></td>
-	            <td></td>
-	            <td></td>
-	            <td></td>
-	            <td></td> -->
+	         
             </tr>
-<!--             <tr>
-	            <td class="tblval">New Business Start up Guide</td>    
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-            </tr> -->
+
 
             <tr>
 	            <td class="tblval">How to reduce your IHT liability and what to do</td>    
@@ -306,18 +361,6 @@ Collaborate with your team
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
 
-            <!-- <tr>
-	            <td class="tblval">How to reduce your IHT liability and what to do</td>    
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-            </tr> -->
-
-			
-
-
             <tr>
 	            <td class="tblval">A Guide to The importance of having a Company Will </td>    
 	            <td></td>
@@ -326,14 +369,7 @@ Collaborate with your team
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
 	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
             </tr>
-<!--             <tr>
-	            <td class="tblval">How to make more profit – Mini Guide for Small Businesses</td>    
-	            <td></td>
-	            <td></td>
-	            <td></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-	            <td><img src="{{ url('assets/img/checked.png') }}"></td>
-            </tr> -->
+
             <tr>
 	            <td class="tblval">How to pay less Tax, Avoid and Deal with Tax investigations – the complete guide for all small businesses</td>    
 	            <td></td>
@@ -344,11 +380,7 @@ Collaborate with your team
             </tr>
             <tr>
 	            <td style="width:100%;" colspan="6"><b>Additional Services</b></td>    
-	           <!--  <td></td>
-	            <td></td>
-	            <td></td>
-	            <td></td>
-	            <td></td> -->
+	           
             </tr>
 
             <tr>
@@ -376,28 +408,6 @@ Collaborate with your team
 	            <td>15% discount</td>
 	            <td>20% discount</td>
             </tr>
-           <!--  <tr>
-	            <td class="tblval">Trademark Review, Search and application services</td>    
-	            <td></td>
-	            <td>10% discount</td>
-	            <td>10% discount</td>
-	            <td>15% discount</td>
-	            <td>20% discount</td>
-            </tr> -->
-            
-			 <!-- <tr>
-	            <td class="tblval">Bespoke remuneration report – find out how to pay less tax, the things your accountant doesn’t know</td>    
-	            <td></td>
-	            <td>60% discount</td>
-	            <td>60% discount</td>
-	            <td>70% discount</td>
-	            <td>80% discount</td>
-            </tr> -->
-
-            
-
-
-
             <tr>
 	            <td class="nostyle"></td>    
 	            <td class="nostyle"><a href="{{ url('order/diy') }}"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
@@ -406,7 +416,67 @@ Collaborate with your team
 	            <td class="nostyle"><a href="{{ url('order/professional') }}"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
 	            <td class="nostyle"><a href="{{ url('order/premium') }}"><img class="col-md-12 buynow-btn" src="{{ url('assets/img/buynow.png') }}"></a></td>
             </tr>
-            </table>
+            </table> -->
+
+    <table id="comparetable" class="blueshine">
+        <tr>
+            <th>Value</th>
+            <th>Standard</th>
+            <th>Professional</th>
+            <th>Premium</th>
+            <th>Entrepreneur</th>
+        </tr>
+        <tr>
+			<td>£119</td>
+			<td>£999</td>
+			<td>£1,750</td>
+			<td>£1,950</td>
+			<td>£5,000</td>
+        </tr>
+        <tr>
+			<td>30 minute consultation call with our business planner</td>
+			<td>30 minute consultation call with our business planner</td>
+			<td>30 minute consultation call with our business planner</td>
+			<td>30 minute consultation call with our business planner</td>
+			<td>30 minute consultation call with our business planner</td>
+        </tr>
+        <tr>
+			<td>Use our award winning business planning software to create your business plan</td>
+			<td>Dedicated account manager</td>
+			<td>Dedicated account manager</td>
+			<td>Dedicated account manager</td>
+			<td>Dedicated account manager</td>
+        </tr>
+        <tr>
+			<td>professional Business Planner will review your business plann</td>
+			<td>Professionally written business plan by a professional business planner</td>
+			<td>Professionally written business plan by a professional business planner</td>
+			<td>Professionally written business plan by a professional business planner</td>
+			<td>Professionally written business plan by a professional business planner</td>
+        </tr>
+        <tr>		
+			<td></td>
+			<td></td>
+			<td>Financial forecasting for one year</td>
+			<td>Financial forecasting for 3 years</td>
+			<td>Financial forecasting for 3 years</td>
+        </tr>
+        <tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>Investor meeting</td>
+        </tr>
+
+         <tr>
+			<td><a href="{{url('value-business-plan-package')}}" class="button-package">Find out more</a></td>
+			<td><a href="{{url('standard-business-plan-package')}}" class="button-package">Find out more</a></td>
+			<td><a href="{{url('professional-business-plan-package')}}" class="button-package">Find out more</a></td>
+			<td><a href="{{url('premium-business-plan-package')}}" class="button-package">Find out more</a></td>
+			<td><a href="{{url('entrepreneur-business-plan-package')}}" class="button-package">Find out more</a></td>
+        </tr>
+    </table>
          
 
 	</div><!-- .container -->
@@ -476,39 +546,36 @@ Collaborate with your team
 
 
 
-
-<form id="contactusform" accept-charset="UTF-8" action="https://qk243.infusionsoft.com/app/form/process/f0cef0558e67c0912b9721c7b67ee1f0" class="cmxform infusion-form" method="POST">
+<form accept-charset="UTF-8" action="https://qk243.infusionsoft.com/app/form/process/f0cef0558e67c0912b9721c7b67ee1f0" class="infusion-form" method="POST">
     <input name="inf_form_xid" type="hidden" value="f0cef0558e67c0912b9721c7b67ee1f0" />
     <input name="inf_form_name" type="hidden" value="Contact Form - Business Planners" />
-    <input name="infusionsoft_version" type="hidden" value="1.42.0.44" />
-
-
-    <div class="form-group">
-        <label class="col-md-3" for="inf_field_FirstName">First Name *</label>
-        <input required class="infusion-field-input-container required-field col-md-8 form-control" id="inf_field_FirstName" name="inf_field_FirstName" type="text" />
+    <input name="infusionsoft_version" type="hidden" value="1.43.0.46" />
+    <div class="infusion-field form-group">
+        <label for="inf_field_FirstName" class="col-md-3">First Name *</label>
+        <input class="infusion-field-input-container required-field col-md-8 form-control" id="inf_field_FirstName" name="inf_field_FirstName" type="text" />
     </div>
-    <div class="form-group">
-        <label class="col-md-3" for="inf_field_LastName">Last Name *</label>
-        <input required class="infusion-field-input-container required-field col-md-8 form-control" id="inf_field_LastName" name="inf_field_LastName" type="text" />
+    <div class="infusion-field form-group">
+        <label for="inf_field_LastName" class="col-md-3">Last Name *</label>
+        <input class="infusion-field-input-container required-field col-md-8 form-control" id="inf_field_LastName" name="inf_field_LastName" type="text" />
     </div>
-    <div class="form-group">
-        <label class="col-md-3" for="inf_field_Email">Email *</label>
-        <input required class="infusion-field-input-container required-field col-md-8 form-control" id="inf_field_Email" name="inf_field_Email" type="text" />
+    <div class="infusion-field form-group">
+        <label for="inf_field_Company" class="col-md-3">Company *</label>
+        <input class="infusion-field-input-container required-field col-md-8 form-control" id="inf_field_Company" name="inf_field_Company" type="text" />
     </div>
-    <div class="form-group">
-        <label class="col-md-3" for="inf_field_Phone1">Phone number *</label>
-        <input required class="infusion-field-input-container required-field col-md-8 form-control" id="inf_field_Phone1" name="inf_field_Phone1" type="text" />
+    <div class="infusion-field form-group">
+        <label for="inf_field_Email" class="col-md-3">Email *</label>
+        <input class="infusion-field-input-container required-field col-md-8 form-control" id="inf_field_Email" name="inf_field_Email" type="text" />
     </div>
-    <div class="form-group">
-        <label class="col-md-3" for="inf_custom_Referral">Where did you hear us? *</label>
-        <input required class="infusion-field-input-container required-field col-md-8 form-control" id="inf_custom_Referral" name="inf_custom_Referral" type="text" />
+    <div class="infusion-field form-group">
+        <label for="inf_field_Phone1" class="col-md-3">Phone number *</label>
+        <input class="infusion-field-input-container required-field col-md-8 form-control" id="inf_field_Phone1" name="inf_field_Phone1" type="text" />
     </div>
-    <div class="form-group">
-        <label class="col-md-3" for="inf_custom_Enquiry">Enquiry *</label>
-        <textarea required class="infusion-field-input-container required-field col-md-8 form-control" id="inf_custom_Enquiry" name="inf_custom_Enquiry" type="text" ></textarea>
+    <div class="infusion-field form-group">
+        <label for="inf_custom_Enquiry" class="col-md-3">Enquiry *</label>
+        <textarea class="infusion-field-input-container required-field col-md-8 form-control" id="inf_custom_Enquiry" name="inf_custom_Enquiry" type="text" /></textarea>
     </div>
-    <div id="submit-btn-con" class="col-md-2 col-md-offset-3">
-        <input type="submit" value="Submit" id="contactussubmit-btn" class="btn btn-default"/>
+    <div class="form-group infusion-submit col-md-2 col-md-offset-3" id="submit-btn-con">
+        <input type="submit" value="Submit" id="contactussubmit-btn" class="btn btn-default" />
     </div>
 </form>
 <script type="text/javascript" src="https://qk243.infusionsoft.com/app/webTracking/getTrackingCode?trackingId=e6ebba2e3123cbcbaa48a9dd4a303dec"></script>

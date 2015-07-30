@@ -138,14 +138,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	
 	{{ Asset::container('footer')->scripts() }}
 	
-	 <!--Start of Zopim Live Chat Script-->
-    <script type="text/javascript">
-    window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
-    d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
-    _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
-    $.src="//v2.zopim.com/?2tZPSGz9BA795pN02UdFe48eTxSWijXu";z.t=+new Date;$.
-    type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
-    </script>
-    <!--End of Zopim Live Chat Script-->
+<!-- For live chat --> 
+<script type="text/javascript">
+    var __lc = {};
+    __lc.license = 6379881;
+
+    (function() {
+     var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+     lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+    })();
+</script>
+<!-- For live chat -->
 </body>
 </html>
