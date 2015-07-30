@@ -19,7 +19,7 @@
     <div style="margin-top: 20px;">
         <p>When looking to raise finances, a well-written business plan can be the difference between securing the funding or not. Potential investors will want to see your business plan in order to make their decision, and having a poorly written, non detailed business plan, or not even one at all, could mean missing out on that all-important investment. </p>
         <br>
-        <p><strong>Benefits of the Professional business plan package:</strong></p>
+        <p><strong>Benefits of the Premium business plan package:</strong></p>
         <ul style="margin-left: 45px;">
             <li>Your premium written business plan will help to secure funding, as it clearly outlines your goals and objectives</li>
             <li>3 years of financial forecasting to help raise venture capital</li>

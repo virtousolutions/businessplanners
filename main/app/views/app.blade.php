@@ -84,11 +84,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Packages <span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                            <li><a href="{{ url('diy-business-plan-package') }}">DIY package</a></li>
                             <li><a href="{{ url('value-business-plan-package') }}">Value package</a></li>
-                            <li><a href="{{ url('standard-business-plan-package') }}">Standard Package</a></li>
-                            <li><a href="{{ url('professional-business-plan-package') }}">Professional Package</a></li>
+                            <li><a href="{{ url('standard-business-plan-package') }}">Standard package</a></li>
+                            <li><a href="{{ url('professional-business-plan-package') }}">professional Package</a></li>
                             <li><a href="{{ url('premium-business-plan-package') }}">Premium Package</a></li>
+                            <li><a href="{{ url('entrepreneur-business-plan-package') }}">Entrepreneur Package</a></li>
                           </ul>
                         </li>
                         <li><a href="{{ url('/#info-home') }}" id="forfeature">Features</a></li>
