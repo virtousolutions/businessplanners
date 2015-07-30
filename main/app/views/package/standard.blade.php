@@ -14,19 +14,19 @@
 
 @section('content')
 <div class="container" style="margin-top: 30px; margin-bottom: 45px;">
-    <h2>Get a professionally written business plan and financial forecasting with the Standard business plan package</h2>
+    <h2>Get a professionally written business plan and financial forecasting with the Professional business plan package</h2>
     
     <div style="margin-top: 20px;">
         <p>If you're an established business, it's still not too late to create a business plan - it's not just useful for start-ups. A business plan will enable you to keep a clear focus on the direction you want to head in, and will also help you to see any possible problems with your business, before they become an issue. </p>
         <br>
-        <p><strong>Benefits of the Standard business plan package:</strong></p>
+        <p><strong>Benefits of the Professional business plan package:</strong></p>
         <ul style="margin-left: 45px;">
             <li>A full, professionally written business plan</li>
             <li>A dedicated accounts manager to help you throughout the process</li>
             <li>Receive 1 year financial forecasting, to help you to get your finances in order</li>
         </ul>
         <br>
-        <p><strong>With the Standard business plan package, you receive:</strong></p>
+        <p><strong>With the Professional business plan package, you receive:</strong></p>
         <ul style="margin-left: 45px;">
             <li>A professionally written business plan</li>
             <li>A dedicated accounts manager</li>

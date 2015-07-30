@@ -63,11 +63,11 @@ Route::post("survey/{user_id}", 'HomeController@surveySubmit');
 Route::post("survey", 'HomeController@surveySubmit');
 Route::get("email/view/{enc_user_id}/{enc_temp_password}", 'HomeController@emailView');
 
-Route::get("diy-business-plan-package", "PackageController@diy");
-Route::get("value-business-plan-package", "PackageController@value");
-Route::get("standard-business-plan-package", "PackageController@standard");
-Route::get("professional-business-plan-package", "PackageController@professional");
-Route::get("premium-business-plan-package", "PackageController@premium");
+Route::get("value-business-plan-package", "PackageController@diy");
+Route::get("standard-business-plan-package", "PackageController@value");
+Route::get("professional-business-plan-package", "PackageController@standard");
+Route::get("premium-business-plan-package", "PackageController@professional");
+Route::get("entrepreneur-business-plan-package", "PackageController@premium");
 
 Route::group(['before' => 'auth'], function()
 {
