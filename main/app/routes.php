@@ -147,3 +147,7 @@ Route::group(['before' => 'auth|not_temp_password'], function()
 Route::get("resources", 'HomeController@resources');
 Route::get("resources/download", 'HomeController@resourcesDownload');
 Route::post("resources/download", 'HomeController@resourcesDownload');
+
+Route::get('resources/new-business-startup-guide', 'HomeController@resourcesNewBusinessStartupGuide');
+Route::get('resources/social-media-brochure', 'HomeController@resourcesSocialMediaBrochure');
+Route::get('resources/business-plan-outline', 'HomeController@resourcesBusinessPLanOutline');

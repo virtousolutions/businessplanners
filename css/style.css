@@ -337,7 +337,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 	text-decoration: none;
 }
 #comparetable tr th:nth-child(3){
-	border-radius: 10px;
 	border-top: 7px solid #C9D755;
 	border-left: 7px solid #C9D755;
 	border-right: 7px solid #C9D755;
@@ -345,13 +344,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8ebf', end
 #comparetable tr td:nth-child(3){
 	border-left: 7px solid #C9D755;
 	border-right: 7px solid #C9D755;
-	border-radius: 10px
 }
 #comparetable tr:last-child td:nth-child(3){
 	border-bottom: 7px solid #C9D755;
 	border-left: 7px solid #C9D755;
 	border-right: 7px solid #C9D755;
-	border-radius: 10px
 }
 .three-steps h2{
 
@@ -676,6 +673,9 @@ Table Plans
 /*--------------------------------------------------------------
 Miscellaneous
 --------------------------------------------------------------*/
+#scrollcon{
+	display: none;
+}
 .scrolltop{
 	display: inline-block;
 	height: 40px;
@@ -693,4 +693,7 @@ Miscellaneous
 }
 .error{
 	color: red;
+}
+.resources-page ul{
+	padding-left: 4em;
 }
