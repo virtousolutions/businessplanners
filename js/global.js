@@ -138,6 +138,21 @@ jQuery(function($){
 			  interval: 5000
 			});
 		},
+		fixednavigation : function(){
+			$(window).scroll(function(event) {
+				/* Act on the event */
+				if($(this).scrollTop() > 100){
+					$("#head-bg").css({
+						position: 'fixed',
+						top: '0',
+						zIndex: '99999',
+						backgroundColor: '#FFF',
+					});
+				}else{
+					$("#head-bg").attr('style', '');
+				}
+			});
+		},
 		executecode_here : function(){
 			// For the responsive menu
 			this.respMenu();
@@ -154,6 +169,8 @@ jQuery(function($){
 			this.checknametag();
 
 			this.newRevBanner();
+
+			this.fixednavigation();
 		}
 	}
 

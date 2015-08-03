@@ -23,8 +23,9 @@
 <div id="banner">
 	<div class="container">
 		<div id="inside-banner">
-			<div id="bulleted" class="col-md-5 col-sm-12">
-			<h3 class="align-center" style="text-align: center;color: #fff;">The number 1 business planning choice </h4>
+			<div id="bulleted" class="col-md-7 col-sm-12">
+			<h4 class="align-center" style="text-align: center;color: #fff;">FREE Business Plan</h4>
+			<p>We are the UK's number one Business Planning company. Established since 1987, we have helped over 50,000 businesses. Use our award winning business planning software for FREE</p>
 				<!-- <ul>
 					<li>Need bank borrowing or business funding?</li>
 					<li>Need a Business Plan to help you expand into new markets or launch new products?</li>
@@ -39,61 +40,222 @@
 				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
 				    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
 				    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-				    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
 				  </ol> -->
 
 				  <!-- Wrapper for slides -->
 				  <div class="carousel-inner" role="listbox">
-				    <div class="item active">
-				      
+
+				    <div class="item active">    
 				    <div class="carousel-caption">
-				       Need bank borrowing or business funding?
+
+				    <div class="col-md-5 nopadding">
+				       <h3>Get a FREE Business Plan review worth £99.00</h3>
+				       <p class="text-left">Want a professional business planner to review your business plan?</p>
+				       <p class="text-left">Book a review Today with one of our experts</p>
+				    </div>
+
+				    <div class="col-md-7 nopadding">
+				    	<form accept-charset="UTF-8" action="https://qk243.infusionsoft.com/app/form/process/8d285715f65d3ff25476e18bc4ed3e53" class="infusion-form" method="POST">
+					    <input name="inf_form_xid" type="hidden" value="8d285715f65d3ff25476e18bc4ed3e53" />
+					    <input name="inf_form_name" type="hidden" value="Banner Form - Business Planner Slide 1" />
+					    <input name="infusionsoft_version" type="hidden" value="1.43.0.46" />
+
+							<div class="form-group">
+	        					<label for="name" class="col-md-3 text-left">Name</label>
+	        					<input type="text" class="col-md-9" name="inf_field_FirstName">
+	        				</div>
+	        				<div class="form-group">
+	        					<label for="company-name" class="col-md-3 text-left">Company Name</label>
+	        					<input type="text" class="col-md-9" name="inf_field_Company">
+	        				</div>
+	        				<div class="form-group">
+	        					<label for="email" class="col-md-3 text-left">Email</label>
+	        					<input type="text" class="col-md-9" name="inf_field_Email">
+	        				</div>
+	        				<div class="form-group">
+	        					<label for="tel" class="col-md-3 text-left">Telephone</label>
+	        					<input type="text" class="col-md-9" name="inf_field_Phone1">
+	        				</div>
+	        				<div class="form-group">
+	        					<button type="submit" class="btn btn-primary btn-large">YES!! Please claim my FREE business Plan review</button>
+	        				</div>
+
+        				</form>
+        				<script type="text/javascript" src="https://qk243.infusionsoft.com/app/webTracking/getTrackingCode?trackingId=e6ebba2e3123cbcbaa48a9dd4a303dec"></script>
+
+				    </div>
+
 				      </div>
 				    </div>
 
-				    <div class="item"> 
-				      <div class="carousel-caption">
-				        Need a Business Plan to help you expand into new markets or launch new products?
+
+				    <div class="item">    
+				    <div class="carousel-caption">
+
+				    <div class="col-md-5 nopadding">
+				       <h3>Why choose us?</h3>
+				       <p class="text-left">Voted the number ONE business planners in the UK.<br />Recommended by the BizAngel Network.<br /> Established since 1987</p>
+				       <h3>Get a FREE Consultation <br />Choose your package <br />ONLY Pay when you are 100% Satisfied</h3>
+				    </div>
+
+				    <div class="col-md-7 nopadding">
+				    	<form accept-charset="UTF-8" action="https://qk243.infusionsoft.com/app/form/process/292e1dca1716935cc9846e42d309cff9" class="infusion-form" method="POST">
+					    <input name="inf_form_xid" type="hidden" value="292e1dca1716935cc9846e42d309cff9" />
+					    <input name="inf_form_name" type="hidden" value="Banner Form - Business Planner Slide 2" />
+					    <input name="infusionsoft_version" type="hidden" value="1.43.0.46" />
+							<div class="form-group">
+	        					<label for="name" class="col-md-3 text-left">Name</label>
+	        					<input type="text" class="col-md-9" name="inf_field_FirstName">
+	        				</div>
+	        				<div class="form-group">
+	        					<label for="company-name" class="col-md-3 text-left">Company Name</label>
+	        					<input type="text" class="col-md-9" name="inf_field_Company">
+	        				</div>
+	        				<div class="form-group">
+	        					<label for="email" class="col-md-3 text-left">Email</label>
+	        					<input type="text" class="col-md-9" name="inf_field_Email">
+	        				</div>
+	        				<div class="form-group">
+	        					<label for="tel" class="col-md-3 text-left">Telephone</label>
+	        					<input type="text" class="col-md-9" name="inf_field_Phone1">
+	        				</div>
+							<input type="hidden" name="book_free_consultation" value="Book a FREE consultation">
+	        				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+	        				<div class="form-group">
+	        					<button type="submit" class="btn btn-primary btn-large">YES!! Book my FREE consultation call today</button>
+	        				</div>
+
+        				</form>
+        				<script type="text/javascript" src="https://qk243.infusionsoft.com/app/webTracking/getTrackingCode?trackingId=e6ebba2e3123cbcbaa48a9dd4a303dec"></script>
+
+				    </div>
+
 				      </div>
 				    </div>
-				    <div class="item"> 
-				      <div class="carousel-caption">
-				        Need a highly professional business plan which will attract funding from investors or other financial institutions?
+
+
+
+				    <div class="item">    
+				    <div class="carousel-caption">
+
+				    <div class="col-md-5 nopadding">
+				       <h3>Claim your FREE "Secrets to writing a professional business plan.</h3>
+				       <p class="text-left">Discover the secrets in this FREE Ebook. <br /> Every business owner should have one. <br /> Download yours today!</p>
+				    </div>
+
+				    <div class="col-md-7 nopadding">
+				    	<form accept-charset="UTF-8" action="https://qk243.infusionsoft.com/app/form/process/946545f3107223dd9144175ce95dfed6" class="infusion-form" method="POST">
+					    <input name="inf_form_xid" type="hidden" value="946545f3107223dd9144175ce95dfed6" />
+					    <input name="inf_form_name" type="hidden" value="Banner Form - Business Planner Slide 3" />
+					    <input name="infusionsoft_version" type="hidden" value="1.43.0.46" />
+							<div class="form-group">
+	        					<label for="name" class="col-md-3 text-left">Name</label>
+	        					<input type="text" class="col-md-9" name="inf_field_FirstName">
+	        				</div>
+	        				<div class="form-group">
+	        					<label for="company-name" class="col-md-3 text-left">Company Name</label>
+	        					<input type="text" class="col-md-9" name="inf_field_Company">
+	        				</div>
+	        				<div class="form-group">
+	        					<label for="email" class="col-md-3 text-left">Email</label>
+	        					<input type="text" class="col-md-9" name="inf_field_Email">
+	        				</div>
+	        				<div class="form-group">
+	        					<label for="tel" class="col-md-3 text-left">Telephone</label>
+	        					<input type="text" class="col-md-9" name="inf_field_Phone1">
+	        				</div>
+							<input type="hidden" name="claim_free_book" value="Claim a FREE book">
+	        				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+	        				<div class="form-group">
+	        					<button type="submit" class="btn btn-primary btn-large">YES!! please claim my free book</button>
+	        				</div>
+
+        				</form>
+        				<script type="text/javascript" src="https://qk243.infusionsoft.com/app/webTracking/getTrackingCode?trackingId=e6ebba2e3123cbcbaa48a9dd4a303dec"></script>
+
+				    </div>
+
 				      </div>
 				    </div>
-				    <div class="item"> 
-				      <div class="carousel-caption">
-				       Do you need a road map for your business in an engaging and professional way?
+
+
+				    <div class="item">    
+				    <div class="carousel-caption">
+
+				    <div class="col-md-5 nopadding">
+				       <h3>ONLY pay when you are 100% satisfied <br /> Writing a business plan couldn't be easier</h3>
+				    	<p class="text-left">Choose your package and book your consulation call TODAY.</p>
+				    </div>
+
+				    <div class="col-md-7 nopadding">
+				    	<form accept-charset="UTF-8" action="https://qk243.infusionsoft.com/app/form/process/f696d3adbb66fa2fd650a2c1b5f29e99" class="infusion-form" method="POST">
+					    <input name="inf_form_xid" type="hidden" value="f696d3adbb66fa2fd650a2c1b5f29e99" />
+					    <input name="inf_form_name" type="hidden" value="Banner Form - Business Planner Slde 4" />
+					    <input name="infusionsoft_version" type="hidden" value="1.43.0.46" />
+							<div class="form-group">
+	        					<label for="name" class="col-md-3 text-left">Name</label>
+	        					<input type="text" class="col-md-9" name="inf_field_FirstName">
+	        				</div>
+	        				<div class="form-group">
+	        					<label for="company-name" class="col-md-3 text-left">Company Name</label>
+	        					<input type="text" class="col-md-9" name="inf_field_Company">
+	        				</div>
+	        				<div class="form-group">
+	        					<label for="email" class="col-md-3 text-left">Email</label>
+	        					<input type="text" class="col-md-9" name="inf_field_Email">
+	        				</div>
+	        				<div class="form-group">
+	        					<label for="tel" class="col-md-3 text-left">Telephone</label>
+	        					<input type="text" class="col-md-9" name="inf_field_Phone1">
+	        				</div>
+							<input type="hidden" name="book_free_consultation" value="Book a FREE consultation">
+	        				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+	        				<div class="form-group">
+	        					<button type="submit" class="btn btn-primary btn-large">YES!! Book my FREE consultation call TODAY</button>
+	        				</div>
+
+        				</form>
+        				<script type="text/javascript" src="https://qk243.infusionsoft.com/app/webTracking/getTrackingCode?trackingId=e6ebba2e3123cbcbaa48a9dd4a303dec"></script>
+
+				    </div>
+
 				      </div>
 				    </div>
-				    <div class="item"> 
-				      <div class="carousel-caption">
-				       Need to make your ideas become reality?
-				      </div>
-				    </div>
+
 				    
 
 				  </div>
 
 				  <!-- Controls -->
-				 <!--  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+
+				<div class="arrow-controls"> 
+				  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 				    <span class="sr-only">Previous</span>
 				  </a>
 				  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
 				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				    <span class="sr-only">Next</span>
-				  </a> -->
+				  </a>
+				</div><!-- .arrow-controls -->
+
 				</div>
+
+				@if($errors->has())
+                    <div class="alert alert-danger alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        {{implode(",", $errors->all(':message'))}}
+                    </div>
+                @endif
 			</div><!-- #bulleted -->
-			<div id="banner-branding" class="col-md-7 col-sm-12">
+			<div id="banner-branding" class="col-md-5 col-sm-12">
 				 <!-- <img src="{{url('assets/img/banner-logo.png')}}">
 				<h2>Call us to find out more 0345 052 2742</h2> -->
 				<div class="iMac-small">
-					<iframe style="padding-top: 2.8rem; padding-left: 2.2rem;" width="96%" height="435" src="https://www.youtube.com/embed/qWFZNqS8cZY" frameborder="0" allowfullscreen></iframe>
+					<iframe style="padding-top: 2.4rem; padding-left: 2.2rem;" width="96%" height="300" src="https://www.youtube.com/embed/qWFZNqS8cZY" frameborder="0" allowfullscreen></iframe>
 					<div class="after-iMac text-center">
 						<h2>Call NOW: 0345 052 2742</h2>
-						<p>Local Rate applies</p>
+						<p class="text-center">Local Rate applies</p>
 					</div><!-- .after-iMac -->
 				</div><!-- .iMac-small -->
 			</div><!-- #banner-branding -->

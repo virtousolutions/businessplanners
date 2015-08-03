@@ -15,10 +15,14 @@
 Route::get("/", "HomeController@index");
 Route::post("contactus", array('uses' => 'HomeController@contactus'));
 
+Route::post("book_now", ['uses' => 'HomeController@bookNow', 'as' => 'booknow']);
+
 Route::post("contact_us", array(
 	'as' => 'contact_us',
 	'uses' => "HomeController@sendContactUs"
 ));
+
+Route::get('book-successfull', 'HomeController@book_success');
 
 Route::get('thank-you/{product}', 'HomeController@thankyoupage');
 
