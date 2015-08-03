@@ -375,11 +375,31 @@ class HomeController extends BaseController {
 
             $this->layout = View::make('layout.index');
                     $this->layout = View::make('app');
-        // $this->layout->content = View::make("resources.resources");
             $this->layout->content = View::make("resources.info");
 
         }
 
+    }
+
+    public function resourcesNewBusinessStartupGuide()
+    {
+        $this->layout = View::make('layout.index');
+            $this->layout = View::make('app');
+        $this->layout->content = View::make("resources.new-business-startup-guide");
+    }
+
+    public function resourcesSocialMediaBrochure()
+    {
+        $this->layout = View::make('layout.index');
+            $this->layout = View::make('app');
+        $this->layout->content = View::make("resources.social-media-brochure");
+    }
+
+    public function resourcesBusinessPLanOutline()
+    {
+         $this->layout = View::make('layout.index');
+            $this->layout = View::make('app');
+        $this->layout->content = View::make("resources.business-plan-outline");
     }
 
     public function thankyoupage($product)

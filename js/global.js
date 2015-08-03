@@ -141,7 +141,7 @@ jQuery(function($){
 		fixednavigation : function(){
 			$(window).scroll(function(event) {
 				/* Act on the event */
-				if($(this).scrollTop() > 100){
+				if($(this).scrollTop() > 230){
 					$("#head-bg").css({
 						position: 'fixed',
 						top: '0',

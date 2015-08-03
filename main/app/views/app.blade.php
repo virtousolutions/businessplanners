@@ -114,7 +114,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 	@yield('content')
 
-    <a href="#" id="scrollcon" class="scrolltop">Top</a>
+    <a href="#" id="scrollcon" class="scrolltop"></a>
 	@include('layout/footer')
 	<!-- Scripts -->
     <!--
