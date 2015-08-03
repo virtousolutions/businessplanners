@@ -252,7 +252,7 @@
 				 <!-- <img src="{{url('assets/img/banner-logo.png')}}">
 				<h2>Call us to find out more 0345 052 2742</h2> -->
 				<div class="iMac-small">
-					<iframe style="padding-top: 2.4rem; padding-left: 2.2rem;" width="96%" height="300" src="https://www.youtube.com/embed/qWFZNqS8cZY" frameborder="0" allowfullscreen></iframe>
+					<iframe style="padding-top: 2.4rem; padding-left: 2.2rem;" width="96%" height="300" src="https://www.youtube.com/embed/qWFZNqS8cZY?autoplay=1" frameborder="0" allowfullscreen></iframe>
 					<div class="after-iMac text-center">
 						<h2>Call NOW: 0345 052 2742</h2>
 						<p class="text-center">Local Rate applies</p>
