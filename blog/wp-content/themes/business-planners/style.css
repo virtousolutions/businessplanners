@@ -1412,3 +1412,13 @@ Miscellaneous
 	border: 0!important;
 	padding-top: 1em;
 }
+#secondary h1.widget-title{
+	font-size: 16px;
+	position: relative;
+	z-index: 9999;
+	font-weight: bold;
+}
+footer.entry-footer span a:nth-child(n+2):after{
+	content: "|";
+	display: block;
+}
