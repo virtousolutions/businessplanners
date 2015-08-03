@@ -73,6 +73,9 @@ Head
   	font-family: 'Open Sans', sans-serif;
 	text-align: center;
 }
+#info-head a{
+
+}
 
 @media(max-width: 1199px) {
 	#info-head {
@@ -128,6 +131,8 @@ Home Page
 .head-banner label{
 	font-size: 14px;
 	font-weight: normal;
+	color: #000;
+    text-shadow: none;
 }
 .head-banner input{
 	color: #000;
@@ -156,13 +161,19 @@ Home Page
 	font-weight: normal;
 	margin-top: 10px;
 	text-align: left;
+	color: #1F1E1E;
+	text-shadow: none;
+	line-height: 1.4em;
+	font-weight: bold;
 }
 #inside-banner p{
 	font-size: 13px;
-	color: #FFF;
+	color: #151515;
+	text-shadow: none;
+	letter-spacing: 0.1em;
 }
 #inside-banner #bulleted{
-	background-color: #5BA4D2;
+	background-color: #E5EAEF;
 	padding: 1em 2em 0.4em 2em;
 	min-height: 440px;
 	border-radius: 12px;
@@ -669,7 +680,7 @@ Miscellaneous
 	height: 40px;
 	width: 40px;
 	position: fixed;
-	bottom: 40px;
+	bottom: 100px;
 	right: 25px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 	overflow: hidden;

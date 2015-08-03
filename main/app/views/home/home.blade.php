@@ -24,7 +24,7 @@
 	<div class="container">
 		<div id="inside-banner">
 			<div id="bulleted" class="col-md-7 col-sm-12">
-			<h4 class="align-center" style="text-align: center;color: #fff;">FREE Business Plan</h4>
+			<h4 class="align-center" style="text-align: center;color: #545454;">FREE Business Plan</h4>
 			<p>We are the UK's number one Business Planning company. Established since 1987, we have helped over 50,000 businesses. Use our award winning business planning software for FREE</p>
 				<!-- <ul>
 					<li>Need bank borrowing or business funding?</li>
@@ -61,22 +61,22 @@
 					    <input name="infusionsoft_version" type="hidden" value="1.43.0.46" />
 
 							<div class="form-group">
-	        					<label for="name" class="col-md-3 text-left">Name</label>
+	        					<label for="name" class="col-md-3 text-left">Name:</label>
 	        					<input type="text" class="col-md-9" name="inf_field_FirstName">
 	        				</div>
 	        				<div class="form-group">
-	        					<label for="company-name" class="col-md-3 text-left">Company Name</label>
+	        					<label for="company-name" class="col-md-3 text-left">Company Name:</label>
 	        					<input type="text" class="col-md-9" name="inf_field_Company">
 	        				</div>
 	        				<div class="form-group">
-	        					<label for="email" class="col-md-3 text-left">Email</label>
+	        					<label for="email" class="col-md-3 text-left">Email:</label>
 	        					<input type="text" class="col-md-9" name="inf_field_Email">
 	        				</div>
 	        				<div class="form-group">
-	        					<label for="tel" class="col-md-3 text-left">Telephone</label>
+	        					<label for="tel" class="col-md-3 text-left">Telephone:</label>
 	        					<input type="text" class="col-md-9" name="inf_field_Phone1">
 	        				</div>
-	        				<div class="form-group">
+	        				<div class="form-group pull-right">
 	        					<button type="submit" class="btn btn-primary btn-large">YES!! Please claim my FREE business Plan review</button>
 	        				</div>
 
@@ -104,24 +104,24 @@
 					    <input name="inf_form_name" type="hidden" value="Banner Form - Business Planner Slide 2" />
 					    <input name="infusionsoft_version" type="hidden" value="1.43.0.46" />
 							<div class="form-group">
-	        					<label for="name" class="col-md-3 text-left">Name</label>
+	        					<label for="name" class="col-md-3 text-left">Name:</label>
 	        					<input type="text" class="col-md-9" name="inf_field_FirstName">
 	        				</div>
 	        				<div class="form-group">
-	        					<label for="company-name" class="col-md-3 text-left">Company Name</label>
+	        					<label for="company-name" class="col-md-3 text-left">Company Name:</label>
 	        					<input type="text" class="col-md-9" name="inf_field_Company">
 	        				</div>
 	        				<div class="form-group">
-	        					<label for="email" class="col-md-3 text-left">Email</label>
+	        					<label for="email" class="col-md-3 text-left">Email:</label>
 	        					<input type="text" class="col-md-9" name="inf_field_Email">
 	        				</div>
 	        				<div class="form-group">
-	        					<label for="tel" class="col-md-3 text-left">Telephone</label>
+	        					<label for="tel" class="col-md-3 text-left">Telephone:</label>
 	        					<input type="text" class="col-md-9" name="inf_field_Phone1">
 	        				</div>
 							<input type="hidden" name="book_free_consultation" value="Book a FREE consultation">
 	        				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-	        				<div class="form-group">
+	        				<div class="form-group pull-right">
 	        					<button type="submit" class="btn btn-primary btn-large">YES!! Book my FREE consultation call today</button>
 	        				</div>
 
@@ -149,24 +149,24 @@
 					    <input name="inf_form_name" type="hidden" value="Banner Form - Business Planner Slide 3" />
 					    <input name="infusionsoft_version" type="hidden" value="1.43.0.46" />
 							<div class="form-group">
-	        					<label for="name" class="col-md-3 text-left">Name</label>
+	        					<label for="name" class="col-md-3 text-left">Name:</label>
 	        					<input type="text" class="col-md-9" name="inf_field_FirstName">
 	        				</div>
 	        				<div class="form-group">
-	        					<label for="company-name" class="col-md-3 text-left">Company Name</label>
+	        					<label for="company-name" class="col-md-3 text-left">Company Name:</label>
 	        					<input type="text" class="col-md-9" name="inf_field_Company">
 	        				</div>
 	        				<div class="form-group">
-	        					<label for="email" class="col-md-3 text-left">Email</label>
+	        					<label for="email" class="col-md-3 text-left">Email:</label>
 	        					<input type="text" class="col-md-9" name="inf_field_Email">
 	        				</div>
 	        				<div class="form-group">
-	        					<label for="tel" class="col-md-3 text-left">Telephone</label>
+	        					<label for="tel" class="col-md-3 text-left">Telephone:</label>
 	        					<input type="text" class="col-md-9" name="inf_field_Phone1">
 	        				</div>
 							<input type="hidden" name="claim_free_book" value="Claim a FREE book">
 	        				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-	        				<div class="form-group">
+	        				<div class="form-group pull-right">
 	        					<button type="submit" class="btn btn-primary btn-large">YES!! please claim my free book</button>
 	        				</div>
 
@@ -193,24 +193,24 @@
 					    <input name="inf_form_name" type="hidden" value="Banner Form - Business Planner Slde 4" />
 					    <input name="infusionsoft_version" type="hidden" value="1.43.0.46" />
 							<div class="form-group">
-	        					<label for="name" class="col-md-3 text-left">Name</label>
+	        					<label for="name" class="col-md-3 text-left">Name:</label>
 	        					<input type="text" class="col-md-9" name="inf_field_FirstName">
 	        				</div>
 	        				<div class="form-group">
-	        					<label for="company-name" class="col-md-3 text-left">Company Name</label>
+	        					<label for="company-name" class="col-md-3 text-left">Company Name:</label>
 	        					<input type="text" class="col-md-9" name="inf_field_Company">
 	        				</div>
 	        				<div class="form-group">
-	        					<label for="email" class="col-md-3 text-left">Email</label>
+	        					<label for="email" class="col-md-3 text-left">Email:</label>
 	        					<input type="text" class="col-md-9" name="inf_field_Email">
 	        				</div>
 	        				<div class="form-group">
-	        					<label for="tel" class="col-md-3 text-left">Telephone</label>
+	        					<label for="tel" class="col-md-3 text-left">Telephone:</label>
 	        					<input type="text" class="col-md-9" name="inf_field_Phone1">
 	        				</div>
 							<input type="hidden" name="book_free_consultation" value="Book a FREE consultation">
 	        				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-	        				<div class="form-group">
+	        				<div class="form-group pull-right">
 	        					<button type="submit" class="btn btn-primary btn-large">YES!! Book my FREE consultation call TODAY</button>
 	        				</div>
 
@@ -676,7 +676,7 @@
 <div class="thecontactus" id="contactus">
 	<div class="container">
 	<h2>Contact <strong>Us</strong></h2>
-
+	<p class="text-center">Contact us now to find out more information from one of our dedication business planner consultants. </p>
 	<div id="contacttbl" class="col-md-offset-1">
 
 <!-- 	{{ Form::open(array('id' => 'contactusform', 'method' => 'get', 'class' => 'cmxform')) }}
