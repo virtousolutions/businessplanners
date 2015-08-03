@@ -27,6 +27,61 @@ class HomeController extends BaseController {
         return View::make('home.home');
     }
 
+    public function bookNow()
+    {
+        $input  = Input::get();
+
+        $data = array();
+
+        if(isset($input['businesplan_review'])){
+
+            $data['subject'] = $input['businesplan_review'];
+
+        }else if(isset($input['book_free_consultation'])){
+
+            $data['subject'] = $input['book_free_consultation'];
+
+        }else if(isset($input['claim_free_book'])){
+
+            $data['subject'] = $input['claim_free_book'];
+
+        }else if(isset($input['book_free_consultation'])){
+
+            $data['subject'] = $input['book_free_consultation'];
+            
+        }
+
+        $rules = array(
+            'name'          => 'required',
+            'company-name'  => 'required',
+            'email'         => 'required|email',
+            'tel'           => 'required'
+            );
+        $validator = Validator::make($input, $rules);
+
+        if(!$validator->fails()){
+
+            Mail::send('emails.free_business_plan', $input, function ($message) use ($data) {
+
+                $message->from($input['email'], $input['name']);
+                $message->to($to['address']);
+                $message->bcc('markjoymacaso@gmail.com');
+                $message->subject('Yours Slenderly Concern');
+            });
+
+            return Redirect::to('book-successfull')->with('message', 'We have received your information. We will contact you shortly.');
+        }else{
+            return Redirect::back()
+            ->withErrors($validator)
+            ->withInput();
+        }
+    }
+
+    public function book_success()
+    {
+        return View::make("home.sucess-free-business-plan");
+    }
+
 	public function sendContactUs() 
     {
         $input = Input::get();
