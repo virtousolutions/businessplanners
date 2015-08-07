@@ -15,6 +15,24 @@ img{
 		font-size: 13px;
 	}
 }
+@media only screen and (max-width: 990px){
+	#info-head a{
+		font-size: 17px;
+	}
+	#head-bg .navbar-default{
+		margin-bottom: 0;
+	}
+	#inside-banner .form-group{
+		text-align: right;
+		padding:0;
+	}
+	.carousel-caption .btn{
+		font-size: 11px;
+	}
+	#bulleted .arrow-controls{
+		padding-bottom: 3rem;
+	}
+}
 @media only screen and (max-width: 1000px){
 	.blueshine th{
 		font-size: 19px;
