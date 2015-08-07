@@ -105,7 +105,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                       </ul>
                     </div>
                 </div>
-                <div id="info-head" class="col-md-2">
+                <div id="info-head" class="col-md-2 col-xs-12">
                     <a href="tel:03450522742">0345 052 2742</a>
                 </div>
               </div><!-- /.container-fluid -->
