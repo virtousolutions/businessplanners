@@ -107,6 +107,9 @@ jQuery(function($){
 				}, 'slow');
 			});
 		},
+		nav: function(){
+			$('#head-bg').stickyNavbar();
+		},
 		executecode_here : function(){
 			// For the responsive menu
 			this.respMenu();
@@ -119,6 +122,8 @@ jQuery(function($){
 
 			// Scroll to top
 			this.scrolltotop();
+
+			this.nav();
 		}
 	}
 
