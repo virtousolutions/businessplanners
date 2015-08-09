@@ -15,6 +15,13 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <meta name="description" content="Regular news and updates from the world of business with The Business Planners blog" />
 <?php wp_head(); ?>
+<?php if(is_admin_bar_showing()) : ?>
+    <style type="text/css">
+        #head-bg{
+            margin-top: 1rem;
+        }
+    </style>
+<?php endif; ?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -66,7 +73,7 @@
                       </ul>
                     </div>
                 </div>
-                <div id="info-head" class="col-md-2">
+                <div id="info-head">
                     0345 052 2742
                 </div>
               </div><!-- /.container-fluid -->
@@ -76,4 +83,4 @@
 		<!-- <div id="info-head" class="col-md-3">0345 052 2742</div> -->
 	</div><!-- .body_container -->
 </div>
-<div class="head-div"></div>
+<!-- <div class="head-div"></div> -->

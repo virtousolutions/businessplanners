@@ -33,6 +33,9 @@ function business_planners_setup() {
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
+	add_theme_support( 'post-thumbnails' );
+	add_image_size('home-thumbnail',250, 300, true);
+
 	/*
 	 * Let WordPress manage the document title.
 	 * By adding theme support, we declare that this theme does not use a
@@ -114,9 +117,15 @@ function business_planners_scripts() {
 
 	wp_enqueue_style( 'bootstrap-style', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' );
 
+	wp_enqueue_style( 'animatecss', 'http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.0.0/animate.min.css' );
+
 	wp_enqueue_script( 'bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js' );
 
 	wp_enqueue_style( 'responsive-style', get_template_directory_uri() . '/css/responsive.css' );
+
+	wp_enqueue_script( 'jquery-easing', 'http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js' );
+
+	wp_enqueue_script( 'stikcy-js', 'http://cdn.jsdelivr.net/stickynavbar.js/1.1.2/jquery.stickyNavbar.min.js' );
 
 	wp_enqueue_script( 'global-script', get_template_directory_uri() . '/js/global.js' );
 }
