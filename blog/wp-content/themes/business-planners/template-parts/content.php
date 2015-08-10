@@ -24,14 +24,19 @@
 				<?php the_title( sprintf( '<h1 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
 			</header><!-- .entry-header -->
 			<?php
-				$str = wordwrap(strip_tags(get_the_content()), 257);
-				$pos = strpos($str, "\n");
+
+				$str = wordwrap(strip_tags(get_the_content()), 257, "<br>"); #echo $str."<br><br>";
+				$pos = strpos($str, "<br>");
+
 				$readmore = '<a href="'.get_permalink(get_the_ID()).'">Read more</a>';
 				if(strlen(strip_tags(get_the_content())) > 300 ){
 					echo substr(strip_tags(get_the_content()), 0, $pos). ' ... ' .  $readmore;
 				}else if(strlen(strip_tags(get_the_content())) < 300 ){
 					echo get_the_content();
-				}else{
+				}else if(strlen(strip_tags(get_the_content())) < 50 ){
+					echo get_the_content();
+				}
+				else{
 					echo get_the_content();
 				}
 				/* translators: %s: Name of current post */
