@@ -14,6 +14,10 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
+		<div class="pull-left" style="padding-right:3rem;"><?php if(has_post_thumbnail(get_the_ID())) : ?>
+			<?php the_post_thumbnail('home-thumbnail'); ?>
+		<?php endif; ?></div>
+
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
