@@ -57,11 +57,11 @@
                         <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Packages <span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                            <li><a href="<?=getsiteurl('diy-business-plan-package')?>">DIY package</a></li>
-                            <li><a href="<?=getsiteurl('value-business-plan-package')?>">Value package</a></li>
-                            <li><a href="<?=getsiteurl('standard-business-plan-package')?>">Standard Package</a></li>
-                            <li><a href="<?=getsiteurl('professional-business-plan-package')?>">Professional Package</a></li>
-                            <li><a href="<?=getsiteurl('premium-business-plan-package')?>">Premium Package</a></li>
+                             <li><a href="<?= getsiteurl('value-business-plan-package') ?>">Value package</a></li>
+                            <li><a href="<?= getsiteurl('standard-business-plan-package') ?>">Standard package</a></li>
+                            <li><a href="<?= getsiteurl('professional-business-plan-package') ?>">professional Package</a></li>
+                            <li><a href="<?= getsiteurl('premium-business-plan-package') ?>">Premium Package</a></li>
+                            <li><a href="<?= getsiteurl('entrepreneur-business-plan-package') ?>">Entrepreneur Package</a></li>
                           </ul>
                         </li>
                         <li><a href="<?=getsiteurl('#info-home')?>" id="forfeature">Features</a></li>
